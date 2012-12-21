@@ -81,9 +81,11 @@ class ControllerProductCategory extends Controller {
 			$this->document->setDescription($category_info['meta_description']);
 			$this->document->setKeywords($category_info['meta_keyword']);
 			
-			$this->data['seo_h1'] = $category_info['seo_h1'];
-
-			$this->data['heading_title'] = $category_info['name'];
+			if ($category_info['seo_h1']) {
+				$this->data['heading_title'] = $category_info['seo_h1'];
+			} else {
+				$this->data['heading_title'] = $category_info['name'];
+			}
 			
 			$this->data['text_refine'] = $this->language->get('text_refine');
 			$this->data['text_empty'] = $this->language->get('text_empty');			

@@ -36,9 +36,11 @@ class ControllerInformationInformation extends Controller {
         		'separator' => $this->language->get('text_separator')
       		);		
 						
-			$this->data['seo_h1'] = $information_info['seo_h1'];
-
-			$this->data['heading_title'] = $information_info['title'];
+			if ($information_info['seo_h1']) {
+				$this->data['heading_title'] = $information_info['seo_h1'];
+			} else {
+				$this->data['heading_title'] = $information_info['title'];
+			}
       		
       		$this->data['button_continue'] = $this->language->get('button_continue');
 			

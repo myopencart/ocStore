@@ -159,12 +159,15 @@ class ControllerProductManufacturer extends Controller {
 				'href'      => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url),
       			'separator' => $this->language->get('text_separator')
    			);
-
-			$this->data['seo_h1'] = $manufacturer_info['seo_h1'];
+			
+			if ($manufacturer_info['seo_h1']) {
+				$this->data['heading_title'] = $manufacturer_info['seo_h1'];
+			} else {
+				$this->data['heading_title'] = $manufacturer_info['name'];
+			}
 
 			$this->data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
 		
-			$this->data['heading_title'] = $manufacturer_info['name'];
 			
 			$this->data['text_empty'] = $this->language->get('text_empty');
 			$this->data['text_quantity'] = $this->language->get('text_quantity');
