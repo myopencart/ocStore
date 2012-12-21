@@ -209,7 +209,7 @@ class ControllerStep3 extends Controller {
 			$this->error['password'] = 'Password required!';
 		}
 
-		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+		if ((utf8_strlen($this->request->post['email']) > 96) || !$this->ocstore->validate($this->request->post['email'])) {
 			$this->error['email'] = 'Invalid E-Mail!';
 		}
 

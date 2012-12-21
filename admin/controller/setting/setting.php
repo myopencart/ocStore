@@ -1054,7 +1054,7 @@ class ControllerSettingSetting extends Controller {
 			$this->error['address'] = $this->language->get('error_address');
 		}
 		
-    	if ((utf8_strlen($this->request->post['config_email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['config_email'])) {
+    	if ((utf8_strlen($this->request->post['config_email']) > 96) || !$this->ocstore->validate($this->request->post['config_email'])) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
 
