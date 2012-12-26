@@ -1,7 +1,6 @@
 <?php
 /*
 Библиотека полезных функций ocStore
-
 http://myopencart.ru
 http://opencartforum.ru
 ocStore © 2012
