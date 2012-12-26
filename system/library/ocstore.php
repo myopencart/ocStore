@@ -5,6 +5,7 @@ http://myopencart.ru
 http://opencartforum.ru
 ocStore © 2012
 ocTeam Dinox, afwollis
+
 */
 
 class ocStore {
