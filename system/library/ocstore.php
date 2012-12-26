@@ -6,7 +6,6 @@ http://opencartforum.ru
 ocStore © 2012
 ocTeam Dinox, afwollis
 */
-
 class ocStore {
 	private $config;
 	private $db;
