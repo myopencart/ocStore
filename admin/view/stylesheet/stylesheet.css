@@ -24,7 +24,7 @@ textarea {
 	padding: 2px;
 }
 a, a:visited {
-	color: #003366;
+	color: #b44;
 	text-decoration: underline;
 	cursor: pointer;
 }
@@ -46,13 +46,13 @@ label {
 }
 #header .div2 {
 	color: #FFFFFF;
-	padding: 18px 0px 0px 0px;
+	padding: 11px 0px 0px 0px;
 	float: left;
 }
 #header .div3 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color: #FFF;
+	color: #eee;
 	text-align: right;
 	padding: 15px 0px 0px 0px;
 	float: right;
@@ -166,7 +166,7 @@ body > #container {
 }
 .breadcrumb, .breadcrumb a {
 	font-size: 12px;
-	color: #666;
+	color: #b44;
 	margin-bottom: 15px;
 }
 .success {
@@ -241,17 +241,14 @@ body > #container {
 	padding-right: 7px;
 	border: 1px solid #DBDBDB;
 	background: url('../image/box.png') repeat-x;
-	-webkit-border-radius: 7px 7px 0px 0px;
-	-moz-border-radius: 7px 7px 0px 0px;
-	-khtml-border-radius: 7px 7px 0px 0px;
-	border-radius: 7px 7px 0px 0px;
 }
 .box > .heading h1 {
 	margin: 0px;
 	padding: 11px 0px 0px 0px;
-	color: #003A88;
+	color: #b44;
 	font-size: 16px;
 	float: left;
+	text-shadow:0 1px 0 #eee;
 }
 .box > .heading h1 img {
 	float: left;
@@ -285,14 +282,15 @@ body > #container {
 }
 a.button, .list a.button {
 	text-decoration: none;
-	color: #FFF;
+	color: #fff;
 	display: inline-block;
 	padding: 5px 15px 5px 15px;
-	background: #003A88;
-	-webkit-border-radius: 10px 10px 10px 10px;
-	-moz-border-radius: 10px 10px 10px 10px;
-	-khtml-border-radius: 10px 10px 10px 10px;
-	border-radius: 10px 10px 10px 10px;
+	background: url('../image/button.png') top left repeat-x;
+	-webkit-border-radius: 4px 4px 4px 4px;
+	-moz-border-radius: 4px 4px 4px 4px;
+	-khtml-border-radius: 4px 4px 4px 4px;
+	border-radius: 4px 4px 4px 4px;
+	text-shadow:0 -1px #800000;
 }
 .list {
 	border-collapse: collapse;
@@ -537,16 +535,23 @@ table.form > tbody > tr > td {
 	background: #FFF;
 }
 .dashboard-heading {
-	background: #547C96;
+background: rgb(169,3,41); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+	text-shadow:0 -2px 1px #600000;
 	color: #FFF;
-	border-bottom: 1px solid #8EAEC3;
 	padding: 5px;
 	font-size: 14px;
 	font-weight: bold;
 }
 .dashboard-content {
 	background: #FCFCFC;
-	border: 1px solid #8EAEC3;
+	border: 1px solid #800000;
 	padding: 10px;
 	min-height: 180px;
 }
