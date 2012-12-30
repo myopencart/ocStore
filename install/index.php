@@ -32,6 +32,7 @@ if (filesize('../config.php') > 0) {
 
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
+require_once(DIR_SYSTEM . 'library/ocstore.php');
 
 // Registry
 $registry = new Registry();
@@ -52,6 +53,9 @@ $registry->set('response', $response);
 // Document
 $document = new Document();
 $registry->set('document', $document);
+
+// ocStore features
+$registry->set('ocstore', new ocStore($registry));
 
 // Front Controller
 $controller = new Front($registry);
