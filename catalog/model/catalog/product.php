@@ -99,8 +99,24 @@ class ModelCatalogProduct extends Model {
 				}
 				
 				if (!empty($data['filter_tag'])) {
-					$sql .= "MATCH(pd.tag) AGAINST('" . $this->db->escape(utf8_strtolower($data['filter_tag'])) . "')";
-				}
+					//$sql .= "MATCH(pd.tag) AGAINST('" . $this->db->escape(utf8_strtolower($data['filter_tag'])) . "')";
+					// [w]
+					$tags = explode(',', $data['filter_tag']);
+					$tagSql = array();
+					foreach($tags as $tag) {
+							$tagSql[] = "(
+										(pd.`tag` LIKE '".$this->db->escape(utf8_strtolower($tag))."')
+										OR
+										(pd.`tag` LIKE '".$this->db->escape(utf8_strtolower($tag)).",%')
+										OR
+										(pd.`tag` LIKE '%, ".$this->db->escape(utf8_strtolower($tag)).",%')
+										OR
+										(pd.`tag` LIKE '%, ".$this->db->escape(utf8_strtolower($tag))."')
+										)";
+					}
+					
+					$sql .= implode('OR', $tagSql);
+                }
 			
 				$sql .= ")";
 				
