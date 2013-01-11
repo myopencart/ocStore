@@ -10,6 +10,15 @@
 <?php if ($keywords) { ?>
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
+<meta property="og:title" content="<?php echo $title; ?>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php echo $og_url; ?>" />
+<?php if ($og_image) { ?>
+<meta property="og:image" content="<?php echo $og_image; ?>" />
+<?php } else { ?>
+<meta property="og:image" content="<?php echo $logo; ?>" />
+<?php } ?>
+<meta property="og:site_name" content="<?php echo $name; ?>" />
 <?php if ($icon) { ?>
 <link href="<?php echo $icon; ?>" rel="icon" />
 <?php } ?>

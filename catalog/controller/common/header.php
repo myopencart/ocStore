@@ -64,6 +64,8 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$this->data['logo'] = '';
 		}
+		$this->data['og_url'] = (isset($this->request->server['HTTPS']) ? HTTPS_SERVER : HTTP_SERVER) . $this->request->server['REQUEST_URI'];
+		$this->data['og_image'] = $this->document->getOgImage();
 		
 		$this->data['text_home'] = $this->language->get('text_home');
 		$this->data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));

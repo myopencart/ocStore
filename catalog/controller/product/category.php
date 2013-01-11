@@ -109,6 +109,7 @@ class ControllerProductCategory extends Controller {
 					
 			if ($category_info['image']) {
 				$this->data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
+				$this->document->setOgImage($this->data['thumb']);
 			} else {
 				$this->data['thumb'] = '';
 			}
