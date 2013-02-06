@@ -982,6 +982,12 @@
               <td><?php echo $entry_google_analytics; ?></td>
               <td><textarea name="config_google_analytics" cols="40" rows="5"><?php echo $config_google_analytics; ?></textarea></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_google_api_key; ?></td>
+              <td><input type="text" name="config_google_api_key" value="<?php echo $config_google_api_key; ?>" size="40" /></td>
+            </tr>
+            
+            
           </table>
         </div>
       </form>

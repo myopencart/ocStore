@@ -107,6 +107,7 @@ $_['entry_error_display']      = 'Показывать ошибки:';
 $_['entry_error_log']          = 'Записывать ошибки:';
 $_['entry_error_filename']     = 'Файл журнала ошибок:';
 $_['entry_google_analytics']   = 'Код Google Analytics:<br /><span class="help">Войдите в Ваш <a onclick="window.open(\'http://www.google.com/analytics/\');"><u>Google Analytics аккаунт</u></a> и после настройки добавьте сюда код выданный Google Analytics.</span>';
+$_['entry_google_api_key']     = 'Ключ Google API:<br /><span class="help">Используется для Geo IP и карт Google. <a onclick="window.open(\'https://developers.google.com/maps/documentation/javascript/tutorial?hl=ru#api_key\');"><u>Получить ключ</u></a>.</span>';
 $_['entry_sms_gatename']       = 'Сервис отправки SMS:';
 $_['entry_sms_to']             = 'Номер телефона получателя:<br/><span class="help">В международном формате, только цифры 7926xxxxxxx</span>';
 $_['entry_sms_from']           = 'Псевдоним отправителя:<br/><span class="help">Не более 11 символов, либо номер телефона до 15 цифр</span>';

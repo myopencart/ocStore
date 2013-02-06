@@ -17,7 +17,16 @@ class ControllerCheckoutGuestShipping extends Controller {
 		$this->data['entry_zone'] = $this->language->get('entry_zone');
 	
 		$this->data['button_continue'] = $this->language->get('button_continue');
-					
+
+		$this->data['init_geo_ip'] = false;
+		if (!isset($this->session->data['guest']['shipping'])) {
+			$google_api_key = $this->config->get('config_google_api_key');
+			if ($google_api_key) {
+				$this->data['init_geo_ip'] = true;
+				$this->data['google_api_key'] = $google_api_key;
+			}
+		}
+
 		if (isset($this->session->data['guest']['shipping']['firstname'])) {
 			$this->data['firstname'] = $this->session->data['guest']['shipping']['firstname'];
 		} else {

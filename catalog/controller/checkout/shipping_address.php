@@ -19,7 +19,16 @@ class ControllerCheckoutShippingAddress extends Controller {
 		$this->data['entry_zone'] = $this->language->get('entry_zone');
 	
 		$this->data['button_continue'] = $this->language->get('button_continue');
-			
+
+		$this->data['init_geo_ip'] = false;
+		if (!isset($this->session->data['shipping_country_id']) && !isset($this->session->data['shipping_zone_id'])) {
+			$google_api_key = $this->config->get('config_google_api_key');
+			if ($google_api_key) {
+				$this->data['init_geo_ip'] = true;
+				$this->data['google_api_key'] = $google_api_key;
+			}
+		}
+		
 		if (isset($this->session->data['shipping_address_id'])) {
 			$this->data['address_id'] = $this->session->data['shipping_address_id'];
 		} else {

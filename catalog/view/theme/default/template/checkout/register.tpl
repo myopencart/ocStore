@@ -83,9 +83,9 @@
   <option value=""><?php echo $text_select; ?></option>
   <?php foreach ($countries as $country) { ?>
   <?php if ($country['country_id'] == $country_id) { ?>
-  <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
+  <option value="<?php echo $country['country_id']; ?>" data-iso2="<?php echo $country['iso_code_2']; ?>" selected="selected"><?php echo $country['name']; ?></option>
   <?php } else { ?>
-  <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
+  <option value="<?php echo $country['country_id']; ?>" data-iso2="<?php echo $country['iso_code_2']; ?>"><?php echo $country['name']; ?></option>
   <?php } ?>
   <?php } ?>
 </select>
@@ -215,4 +215,7 @@ $('.colorbox').colorbox({
 	width: 640,
 	height: 480
 });
-//--></script> 
+//--></script>
+<?php if ($init_geo_ip) { ?>
+<script type="text/javascript" src="catalog/view/javascript/jquery/geoip.ru.js"></script>
+<?php } ?>
