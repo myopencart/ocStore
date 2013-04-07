@@ -13,21 +13,21 @@ class Url {
 		$this->rewrite[] = $rewrite;
 	}
 		
-	public function link($route, $args = '', $connection = 'NONSSL') {
+	public function link($route, $args = '', $connection = 'NONSSL', $code = '') {
 		if ($connection ==  'NONSSL') {
 			$url = $this->url;	
 		} else {
 			$url = $this->ssl;	
 		}
 		
-		$url .= 'index.php?route=' . $route;
+		$url .= $code . 'index.php?route=' . $route;
 			
 		if ($args) {
 			$url .= str_replace('&', '&amp;', '&' . ltrim($args, '&')); 
 		}
 		
 		foreach ($this->rewrite as $rewrite) {
-			$url = $rewrite->rewrite($url);
+			$url = $rewrite->rewrite($url, $code);
 		}
 				
 		return $url;
