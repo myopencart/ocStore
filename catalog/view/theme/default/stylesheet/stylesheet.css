@@ -614,7 +614,7 @@ input.button {
 	padding: 0px 12px 0px 12px;
 }
 a.button:hover, input.button:hover {
-	background: url('../image/button-active.png') repeat-x;
+	background: url('../image/button.png') -24px;
 }
 .buttons {
 	background: #FFFFFF;
