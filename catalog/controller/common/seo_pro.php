@@ -348,18 +348,33 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-			$url = str_replace('&amp;', '&', $this->config->get('config_ssl') . ltrim($this->request->server['REQUEST_URI'], '/'));
+			$config_ssl = substr($this->config->get('config_ssl'), 0, $this->strpos_offset('/', $this->config->get('config_ssl'), 3) + 1);
+			$url = str_replace('&amp;', '&', $config_ssl . ltrim($this->request->server['REQUEST_URI'], '/'));
 			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), 'SSL'));
 		} else {
-			$url = str_replace('&amp;', '&', $this->config->get('config_url') . ltrim($this->request->server['REQUEST_URI'], '/'));
+			$config_url = substr($this->config->get('config_url'), 0, $this->strpos_offset('/', $this->config->get('config_url'), 3) + 1);
+			$url = str_replace('&amp;', '&', $config_url . ltrim($this->request->server['REQUEST_URI'], '/'));
 			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), 'NONSSL'));
 		}
 
 		if (rawurldecode($url) != rawurldecode($seo)) {
-
 			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 
 			$this->response->redirect($seo);
+		}
+	}
+
+	private function strpos_offset($needle, $haystack, $occurrence) {
+		// explode the haystack
+		$arr = explode($needle, $haystack);
+		// check the needle is not out of bounds
+		switch($occurrence) {
+			case $occurrence == 0:
+				return false;
+			case $occurrence > max(array_keys($arr)):
+				return false;
+			default:
+				return strlen(implode($needle, array_slice($arr, 0, $occurrence)));
 		}
 	}
 
