@@ -12,6 +12,6 @@ $_['entry_backup']     = 'Бэкап:';
 
 // Error
 $_['error_permission'] = 'У Вас нет прав для управления этим модулем!';
+$_['error_empty']      = 'Выберите хотя бы один пункт для бэкапа!';
 $_['error_empty']      = 'Загруженный файл пуст!';
-$_['error_empty']      = 'Warning: The file you uploaded was empty!';
 ?>

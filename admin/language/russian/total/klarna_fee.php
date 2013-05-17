@@ -1,18 +1,18 @@
 <?php
 // Heading
-$_['heading_title']    = 'Klarna Fee';
+$_['heading_title']    = 'Взнос Klarna';
 
 // Text
-$_['text_total']       = 'Order Totals';
-$_['text_success']     = 'Success: You have modified Klarna fee total!';
+$_['text_total']       = 'Все заказы';
+$_['text_success']     = 'Настройки модуля обновлены!';
 
 // Entry
-$_['entry_total']      = 'Order Total:';
-$_['entry_fee']        = 'Fee:';
-$_['entry_tax_class']  = 'Tax Class:';
-$_['entry_status']     = 'Status:';
-$_['entry_sort_order'] = 'Sort Order:';
+$_['entry_total']      = 'Общая сумма заказа:';
+$_['entry_fee']        = 'Взнос:';
+$_['entry_tax_class']  = 'Налоговый класс:';
+$_['entry_status']     = 'Статус:';
+$_['entry_sort_order'] = 'Порядок сортировки:';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify Klarna fee total!';
+$_['error_permission'] = 'У Вас нет прав для управления взносом!';
 ?>

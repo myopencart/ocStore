@@ -18,5 +18,5 @@ $_['entry_password']                = 'Пароль:';
 
 // Error
 $_['error_login']                   = 'Не найден введённый адрес E-Mail и/или пароль указан неправильно.';
-$_['error_approved']                = 'Warning: Your account requires approval before you can login.';
+$_['error_approved']                = 'Ошибка: Вход в личный кабинет требует предварительного его подтверждения.';
 ?>

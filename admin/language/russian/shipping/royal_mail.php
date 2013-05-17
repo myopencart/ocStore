@@ -3,44 +3,44 @@
 $_['heading_title']                          = 'Royal Mail';
 
 // Text
-$_['text_shipping']                          = 'Shipping';
-$_['text_success']                           = 'Success: You have modified Royal Mail shipping!';
+$_['text_shipping']                          = 'Доставка';
+$_['text_success']                           = 'Настройки модуля обновлены!';
 
 // Entry
-$_['entry_rate']                             = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..</span>';
-$_['entry_insurance']                        = 'Compensation Rates:<br /><span class="help">Enter values upto 5,2 decimal places. (12345.67) Example: 34:0,100:1,250:2.25 - Insurance cover for cart values upto 34 would cost 0.00 extra, those values more than 100 and upto 250 will cost 2.25 extra. Do not enter currency symbols.</span>';
-$_['entry_airmail_rate_1']                   = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..<br /><br />These rates will only be applied to the below countries:<br />AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IE, IT, KZ, KG, LV, LI, LT, LU, MK, MT, MD, MC, NL, NO, PL, PT, RO, RU, SM, SK, SI, ES, SE, CH, TJ, TR, TM, UA, UZ, VA</span>';
-$_['entry_airmail_rate_2']                   = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..<br /><br />These rates will only be applied to all other countries not in the above list.</span>';
-$_['entry_international_signed_rate_1']      = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..<br /><br />These rates will only be applied to the below countries:<br />AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IE, IT, KZ, KG, LV, LI, LT, LU, MK, MT, MD, MC, NL, NO, PL, PT, RO, RU, SM, SK, SI, ES, SE, CH, TJ, TR, TM, UA, UZ, VA</span>';
-$_['entry_international_signed_insurance_1'] = 'Compensation Rates:<br /><span class="help">Enter values upto 5,2 decimal places. (12345.67) Example: 34:0,100:1,250:2.25 - Insurance cover for cart values upto 34 would cost 0.00 extra, those values more than 100 and upto 250 will cost 2.25 extra. Do not enter currency symbols.<br /><br />These rates will only be applied to the below countries:<br />AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IE, IT, KZ, KG, LV, LI, LT, LU, MK, MT, MD, MC, NL, NO, PL, PT, RO, RU, SM, SK, SI, ES, SE, CH, TJ, TR, TM, UA, UZ, VA</span>';
-$_['entry_international_signed_rate_2']      = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..<br /><br />These rates will only be applied to all other countries not in the above list.</span>';
-$_['entry_international_signed_insurance_2'] = 'Compensation Rates:<br /><span class="help">Enter values upto 5,2 decimal places. (12345.67) Example: 34:0,100:1,250:2.25 - Insurance cover for cart values upto 34 would cost 0.00 extra, those values more than 100 and upto 250 will cost 2.25 extra. Do not enter currency symbols.<br /><br />These rates will only be applied to all other countries not in the above list.</span>';
-$_['entry_airsure_rate_1']                   = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..<br /><br />These rates will only be applied to the below countries:<br />AD, AT, BE, CH, DE, DK, ES, FO, FI, FR, IE, IS, LI, LU, MC, NL, PT, SE</span>';
-$_['entry_airsure_insurance_1']              = 'Compensation Rates:<br /><span class="help">Enter values upto 5,2 decimal places. (12345.67) Example: 34:0,100:1,250:2.25 - Insurance cover for cart values upto 34 would cost 0.00 extra, those values more than 100 and upto 250 will cost 2.25 extra. Do not enter currency symbols.<br /><br />These rates will only be applied to the below countries:<br />AD, AT, BE, CH, DE, DK, ES, FO, FI, FR, IE, IS, LI, LU, MC, NL, PT, SE</span>';
-$_['entry_airsure_rate_2']                   = 'Rates:<br /><span class="help">Example: 5:10.00,7:12.00 Weight:Cost,Weight:Cost, etc..<br /><br />These rates will only be applied to the below countries:<br />BR, CA, HK, MY, NZ, SG, US</span>';
-$_['entry_airsure_insurance_2']              = 'Compensation Rates:<br /><span class="help">Enter values upto 5,2 decimal places. (12345.67) Example: 34:0,100:1,250:2.25 - Insurance cover for cart values upto 34 would cost 0.00 extra, those values more than 100 and upto 250 will cost 2.25 extra. Do not enter currency symbols.<br /><br />These rates will only be applied to the below countries:<br />BR, CA, HK, MY, NZ, SG, US</span>';
-$_['entry_display_weight']                   = 'Display Delivery Weight:<br /><span class="help">Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 Kg\'s)</span>';
-$_['entry_display_insurance']                = 'Display Insurance:<br /><span class="help">Do you want to display the shipping insurance? (e.g. Insured upto &pound;500)</span>';
-$_['entry_weight_class']                     = 'Weight Class:';
-$_['entry_tax_class']                        = 'Tax Class:';
-$_['entry_geo_zone']                         = 'Geo Zone:';
-$_['entry_status']                           = 'Status:';
-$_['entry_sort_order']                       = 'Sort Order:';
+$_['entry_rate']                             = 'Тарифы:<br /><span class="help">Наример: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..</span>';
+$_['entry_insurance']                        = 'Размер компенсации:<br /><span class="help">Стоимость указывайте в формате до 5,2 десятичных рядов. (12345.67) Например: 34:0,100:1,250:2.25 - Страховая защита корзины ценностью до 34 составит 0.00 компенсации,ценностью более 100 и до 250 составит 2.25 компенсации. Значения вводятся без валютного знака.</span>';
+$_['entry_airmail_rate_1']                   = 'Тарифы:<br /><span class="help">Например: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..<br /><br />Эти тарифы применяются только для следующих стран:<br />AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IE, IT, KZ, KG, LV, LI, LT, LU, MK, MT, MD, MC, NL, NO, PL, PT, RO, RU, SM, SK, SI, ES, SE, CH, TJ, TR, TM, UA, UZ, VA</span>';
+$_['entry_airmail_rate_2']                   = 'Тарифы:<br /><span class="help">Например: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..<br /><br /> Эти тарифы применяются для всех стран, не указанных в списке выше.</span>';
+$_['entry_international_signed_rate_1']      = 'Тарифы:<br /><span class="help">Например: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..<br /><br />Эти тарифы применяются только для следующих стран:<br />AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IE, IT, KZ, KG, LV, LI, LT, LU, MK, MT, MD, MC, NL, NO, PL, PT, RO, RU, SM, SK, SI, ES, SE, CH, TJ, TR, TM, UA, UZ, VA</span>';
+$_['entry_international_signed_insurance_1'] = 'Размеры компенсации:<br /><span class="help">Стоимость указывайте в формате до 5,2 десятичных рядов. (12345.67) Например: 34:0,100:1,250:2.25 - Страховая защита корзины ценностью до 34 составит 0.00 компенсации,ценностью более 100 и до 250 составит 2.25 компенсации. Значения вводятся без валютного знака.<br /><br />Эти тарифы применяются только для следующих стран:<br />AL, AD, AM, AT, AZ, BY, BE, BA, BG, HR, CY, CZ, DK, EE, FO, FI, FR, GE, DE, GI, GR, GL, HU, IS, IE, IT, KZ, KG, LV, LI, LT, LU, MK, MT, MD, MC, NL, NO, PL, PT, RO, RU, SM, SK, SI, ES, SE, CH, TJ, TR, TM, UA, UZ, VA</span>';
+$_['entry_international_signed_rate_2']      = 'Тарифы:<br /><span class="help">Например: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..<br /><br />Эти тарифы применяются для всех стран, не указанных в списке выше.</span>';
+$_['entry_international_signed_insurance_2'] = 'Размеры компенсации:<br /><span class="help">Стоимость указывайте в формате до 5,2 десятичных рядов. (12345.67) Например: 34:0,100:1,250:2.25 - Страховая защита корзины ценностью до 34 составит 0.00 компенсации,ценностью более 100 и до 250 составит 2.25 компенсации. Значения вводятся без валютного знака.<br /><br />Эти тарифы применяются для всех стран, не указанных в списке выше.</span>';
+$_['entry_airsure_rate_1']                   = 'Тарифы:<br /><span class="help">Наример: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..<br /><br />Эти тарифы применяются только для следующих стран:<br />AD, AT, BE, CH, DE, DK, ES, FO, FI, FR, IE, IS, LI, LU, MC, NL, PT, SE</span>';
+$_['entry_airsure_insurance_1']              = 'Размеры компенсации:<br /><span class="help">Стоимость указывайте в формате до 5,2 десятичных рядов. (12345.67) Например: 34:0,100:1,250:2.25 - Страховая защита корзины ценностью до 34 составит 0.00 компенсации,ценностью более 100 и до 250 составит 2.25 компенсации. Значения вводятся без валютного знака.<br /><br />Эти тарифы применяются только для следующих стран:<br />AD, AT, BE, CH, DE, DK, ES, FO, FI, FR, IE, IS, LI, LU, MC, NL, PT, SE</span>';
+$_['entry_airsure_rate_2']                   = 'Тарифы:<br /><span class="help">Наример: 5:10.00,7:12.00 Вес:Стоимость,Вес:Стоимость, и т.д..<br /><br />Эти тарифы применяются только для следующих стран:<br />BR, CA, HK, MY, NZ, SG, US</span>';
+$_['entry_airsure_insurance_2']              = 'Размеры компенсации:<br /><span class="help">Стоимость указывайте в формате до 5,2 десятичных рядов. (12345.67) Например: 34:0,100:1,250:2.25 - Страховая защита корзины ценностью до 34 составит 0.00 компенсации,ценностью более 100 и до 250 составит 2.25 компенсации. Значения вводятся без валютного знака.<br /><br />Эти тарифы применяются только для следующих стран:<br />BR, CA, HK, MY, NZ, SG, US</span>';
+$_['entry_display_weight']                   = 'Отображать вес доставки:<br /><span class="help">Отображать вес доставки? (например,вес доставки: 2.7674 кг\г)</span>';
+$_['entry_display_insurance']                = 'Отображать размер страховки:<br /><span class="help">Отображать размер страховки? ( например, застраховано на 500)</span>';
+$_['entry_weight_class']                     = 'Единица веса:';
+$_['entry_tax_class']                        = 'Налоговый класс:';
+$_['entry_geo_zone']                         = 'Географическая зона:';
+$_['entry_status']                           = 'Статус:';
+$_['entry_sort_order']                       = 'Порядок сортировки:';
 
 // Tab
-$_['tab_1st_class_standard']                 = 'First Class Standard Post';
-$_['tab_1st_class_recorded']                 = 'First Class Recorded Post';
-$_['tab_2nd_class_standard']                 = 'Second Class Standard Post';
-$_['tab_2nd_class_recorded']                 = 'Second Class Recorded Post';
-$_['tab_special_delivery_500']               = 'Special Delivery Next Day (&pound;500)';
-$_['tab_special_delivery_1000']              = 'Special Delivery Next Day (&pound;1000)';
-$_['tab_special_delivery_2500']              = 'Special Delivery Next Day (&pound;2500)';
-$_['tab_standard_parcels']                   = 'Standard Parcels';
-$_['tab_airmail']                            = 'Airmail';
-$_['tab_international_signed']               = 'International Signed';
-$_['tab_airsure']                            = 'Airsure';
-$_['tab_surface']                            = 'Surface';
+$_['tab_1st_class_standard']                 = 'Доставка почтой Первого Класса';
+$_['tab_1st_class_recorded']                 = 'Заказная доставка почтой Первого Класса';
+$_['tab_2nd_class_standard']                 = 'Доставка почтой Второго Класса';
+$_['tab_2nd_class_recorded']                 = 'Заказная доставка почтой Второго Класса';
+$_['tab_special_delivery_500']               = 'Спецальная доставка следующего дня (&фунты;500)';
+$_['tab_special_delivery_1000']              = 'Спецальная доставка следующего дня (&фунты;1000)';
+$_['tab_special_delivery_2500']              = 'Спецальная доставка следующего дня (&фунты;2500)';
+$_['tab_standard_parcels']                   = 'Стандартная посылка';
+$_['tab_airmail']                            = 'Авиапочта';
+$_['tab_international_signed']               = 'Международная подпись';
+$_['tab_airsure']                            = 'Рекомендованная авиапочта';
+$_['tab_surface']                            = 'Внешние параметры';
 
 // Error
-$_['error_permission']                       = 'Warning: You do not have permission to modify Royal Mail shipping!';
+$_['error_permission']                       = 'У Вас нет прав для управления этим модулем!';
 ?>

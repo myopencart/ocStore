@@ -1,11 +1,11 @@
 <?php
 // Text
 $_['text_title']          = 'Кредитная карта / Дебетовая карта (Paymate)';
-$_['text_unable']         = 'Unable to locate or update your order status';
-$_['text_declined']       = 'Payment was declined by Paymate';
-$_['text_failed']         = 'Paymate Transaction Failed';
-$_['text_failed_message'] = '<p>Unfortunately there was an error processing your Paymate transaction.</p><p><b>Error: </b>%s</p><p>Please verify your Paymate account balance before attempting to re-process this order</p><p> If you believe this transaction has completed successfully, or is showing as a deduction in your Paymate account, please <a href="%s">Contact Us</a> with your order details.</p>';
-$_['text_basket']         = 'Basket';
+$_['text_unable']         = 'Не удалось найти и обновить Ваш заказ';
+$_['text_declined']       = 'Платёж отклонен системой Paymate';
+$_['text_failed']         = 'Ошибка транзакции';
+$_['text_failed_message'] = '<p>Ошибка транзакции в системе Paymate .</p><p><b>Error: </b>%s</p><p>Пожалуйста, проверьте Ваш системный счёт и повторите попытку</p><p> Если транзакция прошла успешно или обнаружена ошибка счёта, пожалуйста <a href="%s">Свяжитесь с нами</a> указав детали заказа.</p>';
+$_['text_basket']         = 'Корзина';
 $_['text_checkout']       = 'Оформить заказ';
 $_['text_success']        = 'Операция проведена успешно';
 ?>

@@ -3,25 +3,25 @@
 $_['heading_title']      = 'WorldPay';
 
 // Text 
-$_['text_payment']       = 'Payment';
-$_['text_success']       = 'Success: You have modified WorldPay account details!';
-$_['text_successful']    = 'On - Always Successful';
-$_['text_declined']      = 'On - Always Declined';
-$_['text_off']           = 'Off';
+$_['text_payment']       = 'Оплата';
+$_['text_success']       = 'Настройки модуля обновлены!';
+$_['text_successful']    = 'Вкл. - Всегда успешно';
+$_['text_declined']      = 'Вкл. - Always Declined';
+$_['text_off']           = 'Выкл.';
       
 // Entry
-$_['entry_merchant']     = 'Merchant ID:';
-$_['entry_password']     = 'Payment Response password:<br /><span class="help">This has to be set in the WordPay control panel.</span>';
-$_['entry_callback']     = 'Relay Response URL:<br /><span class="help">This has to be set in the WordPay control panel. You will also need to check the "Enable the Shopper Response".</span>';
-$_['entry_test']         = 'Test Mode:';
-$_['entry_total']        = 'Total:<br /><span class="help">The checkout total the order must reach before this payment method becomes active.</span>';
-$_['entry_order_status'] = 'Order Status:';
-$_['entry_geo_zone']     = 'Geo Zone:';
-$_['entry_status']       = 'Status:';
-$_['entry_sort_order']   = 'Sort Order:';
+$_['entry_merchant']     = 'ID магазина:';
+$_['entry_password']     = 'Пароль ответа:<br /><span class="help">Устанавливается в контрольной панели системы WordPay.</span>';
+$_['entry_callback']     = 'URL ответа:<br /><span class="help">Устанавливается в контрольной панели системы WordPay.Проверьте включен ли параметр "Enable the Shopper Response".</span>';
+$_['entry_test']         = 'Тестовый режим:';
+$_['entry_total']        = 'Общая сумма:<br /><span class="help">Общая сумма заказа указывается до выбора способа оплаты.</span>';
+$_['entry_order_status'] = 'Статус заказа:';
+$_['entry_geo_zone']     = 'Географическая зона:';
+$_['entry_status']       = 'Статус:';
+$_['entry_sort_order']   = 'Порядок сортировки:';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify payment WorldPay!';
-$_['error_merchant']     = 'Merchant ID Required!';
-$_['error_password']     = 'Password Required!';
+$_['error_permission']   = 'У Вас нет прав для управления этим модулем!';
+$_['error_merchant']     = 'Необходимо указать ID магазина!';
+$_['error_password']     = 'Необходимо указать пароль!';
 ?>

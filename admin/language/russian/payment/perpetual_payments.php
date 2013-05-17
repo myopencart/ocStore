@@ -3,21 +3,21 @@
 $_['heading_title']      = 'Perpetual Payments';
 
 // Text 
-$_['text_payment']       = 'Payment';
-$_['text_success']       = 'Success: You have modified Perpetual Payments account details!';
+$_['text_payment']       = 'Оплата';
+$_['text_success']       = 'Настройки модуля обновлены!';
 
 // Entry
-$_['entry_auth_id']      = 'Authorization ID:';
-$_['entry_auth_pass']    = 'Authorization Password:';
-$_['entry_test']         = 'Test Mode:<span class="help">Use this module in Test (YES) or Production mode (NO)?</span>';
-$_['entry_total']        = 'Total:<br /><span class="help">The checkout total the order must reach before this payment method becomes active.</span>';
-$_['entry_order_status'] = 'Order Status:';
-$_['entry_geo_zone']     = 'Geo Zone:';
-$_['entry_status']       = 'Status:';
-$_['entry_sort_order']   = 'Sort Order:';
+$_['entry_auth_id']      = 'ID авторизации:';
+$_['entry_auth_pass']    = 'Пароль авторизации:';
+$_['entry_test']         = 'Режим тестирования:<span class="help">Использовать данный модуль в тестовом(да) или продукционном(нет) режиме.?</span>';
+$_['entry_total']        = 'Общая сумма:<br /><span class="help">Общая сумма заказа указывается до выбора способа оплаты.</span>';
+$_['entry_order_status'] = 'Статус заказа:';
+$_['entry_geo_zone']     = 'Географическая зона:';
+$_['entry_status']       = 'Статус:';
+$_['entry_sort_order']   = 'Порядок сортировки:';
 
 // Error
-$_['error_permission']   = 'Warning: You do not have permission to modify payment Perpetual Payments!';
-$_['error_auth_id']      = 'Authorization ID Required!'; 
-$_['error_auth_pass']    = 'Authorization Password Required!'; 
+$_['error_permission']   = 'У Вас нет прав для управления этим модулем!';
+$_['error_auth_id']      = 'Необходимо указать ID авторизации!'; 
+$_['error_auth_pass']    = 'Необходимо указать пароль авторизации!'; 
 ?>

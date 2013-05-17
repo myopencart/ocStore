@@ -44,7 +44,7 @@ $_['entry_commission']          = 'Вознаграждение (%):<span class=
 $_['entry_tax']                 = 'ИНН:';
 $_['entry_payment']             = 'Способ оплаты:';
 $_['entry_cheque']              = 'Имя получателся чека:';
-$_['entry_paypal']              = 'PayPal Email аккаунта:';
+$_['entry_paypal']              = 'Email PayPal аккаунта:';
 $_['entry_bank_name']           = 'Название банка:';
 $_['entry_bank_branch_number']  = 'ABA/BSB номер (Номер отделения):';
 $_['entry_bank_swift_code']     = 'SWIFT Код:';

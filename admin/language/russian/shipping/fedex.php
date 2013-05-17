@@ -3,10 +3,10 @@
 $_['heading_title']                            = 'Fedex';
 
 // Text
-$_['text_shipping']                            = 'Shipping';
-$_['text_success']                             = 'Success: You have modified Fedex shipping!';
-$_['text_europe_first_international_priority'] = 'Europe First International Priority';
-$_['text_fedex_1_day_freight']                 = 'Fedex 1 Day Freight';
+$_['text_shipping']                            = 'Доставка';
+$_['text_success']                             = 'Настройки модуля обновлены!';
+$_['text_europe_first_international_priority'] = 'Европа Первый международный приоритет';
+$_['text_fedex_1_day_freight']                 = 'Доставка за 1 день';
 $_['text_fedex_2_day']                         = 'Fedex 2 Day';
 $_['text_fedex_2_day_am']                      = 'Fedex 2 Day AM';
 $_['text_fedex_2_day_freight']                 = 'Fedex 2 Day Freight';
@@ -30,41 +30,41 @@ $_['text_regular_pickup']                      = 'Regular Pickup';
 $_['text_request_courier']                     = 'Request Courier';
 $_['text_drop_box']                            = 'Drop Box';
 $_['text_business_service_center']             = 'Business Service Center';
-$_['text_station']                             = 'Station';
+$_['text_station']                             = 'Станция';
 $_['text_fedex_envelope']                      = 'FedEx Envelope';
 $_['text_fedex_pak']                           = 'FedEx Pak';
 $_['text_fedex_box']                           = 'FedEx Box';
 $_['text_fedex_tube']                          = 'FedEx Tube';
 $_['text_fedex_10kg_box']                      = 'FedEx 10kg Box';
 $_['text_fedex_25kg_box']                      = 'FedEx 25kg Box';
-$_['text_your_packaging']                      = 'Your Packaging';
-$_['text_list_rate']                           = 'List Rate';
-$_['text_account_rate']                        = 'Account Rate';
+$_['text_your_packaging']                      = 'Ваша упаковка';
+$_['text_list_rate']                           = 'Рейтинг в спике';
+$_['text_account_rate']                        = 'Рейтинг расчетного счёта';
 
 // Entry
-$_['entry_key']                                = 'Key:';
-$_['entry_password']                           = 'Password:';
-$_['entry_account']                            = 'Account Number:';
-$_['entry_meter']                              = 'Meter Number:';
-$_['entry_postcode']                           = 'Post Code:';
-$_['entry_test']                               = 'Test Mode:';
-$_['entry_service']                            = 'Services:';
-$_['entry_dropoff_type']                       = 'Drop Off Type:';
-$_['entry_packaging_type']                     = 'Packaging Type:';
-$_['entry_rate_type']                          = 'Rate Type:';
-$_['entry_display_time']                       = 'Display Delivery Time:<br /><span class="help">Do you want to display the shipping time? (e.g. Ships within 3 to 5 days)</span>';
-$_['entry_display_weight']                     = 'Display Delivery Weight:<br /><span class="help">Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 Kg\'s)</span>';
-$_['entry_weight_class']                       = 'Weight Class:<span class="help">Set to kilograms or pounds.</span>';
-$_['entry_tax_class']                          = 'Tax Class:';
-$_['entry_geo_zone']                           = 'Geo Zone:';
-$_['entry_status']                             = 'Status:';
-$_['entry_sort_order']                         = 'Sort Order:';
+$_['entry_key']                                = 'Ключ:';
+$_['entry_password']                           = 'Пароль:';
+$_['entry_account']                            = 'Номер расчетного счёта:';
+$_['entry_meter']                              = 'Расчетные данные:';
+$_['entry_postcode']                           = 'Почтовый индекс:';
+$_['entry_test']                               = 'Текстовый режим:';
+$_['entry_service']                            = 'Услуги:';
+$_['entry_dropoff_type']                       = 'Тип получения груза:';
+$_['entry_packaging_type']                     = 'Тип упаковки:';
+$_['entry_rate_type']                          = 'Тариф:';
+$_['entry_display_time']                       = 'Отображать сроки доставки:<br /><span class="help"> Отображать сроки доставки? (например, доставка в течении 3-5 дней)</span>';
+$_['entry_display_weight']                     = 'Отображать вес доставки:<br /><span class="help">Отображать вес доставки? (например, вес доставки: 2.7674 кг\г)</span>';
+$_['entry_weight_class']                       = 'Единица веса:<span class="help">Выбрать килограммы или фунты.</span>';
+$_['entry_tax_class']                          = 'Налоговый класс:';
+$_['entry_geo_zone']                           = 'Географическая зона:';
+$_['entry_status']                             = 'Статус:';
+$_['entry_sort_order']                         = 'Порядок сортировки:';
 
 // Error
-$_['error_permission']                         = 'Warning: You do not have permission to modify Fedex shipping!';
-$_['error_key']                                = 'Key Required!';
-$_['error_password']                           = 'Password Required!';
-$_['error_account']                            = 'Account Required!';
-$_['error_meter']                              = 'Meter Required!';
-$_['error_postcode']                           = 'Post Code Required!';
+$_['error_permission']                         = 'У Вас нет прав для управления этим модулем!';
+$_['error_key']                                = 'Необходимо указать ключ!';
+$_['error_password']                           = 'Необходимо указать пароль!';
+$_['error_account']                            = 'Необходимо указать расчетный счёт!';
+$_['error_meter']                              = 'Необходимо указать метраж!';
+$_['error_postcode']                           = 'Необходимо указать почтовый индекс!';
 ?>
