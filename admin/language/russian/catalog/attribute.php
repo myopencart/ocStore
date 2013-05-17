@@ -5,16 +5,11 @@ $_['heading_title']				= 'Атрибуты';
 // Text
 $_['text_success']				= 'Атрибуты успешно обновлены!';
 
-
 // Column
 $_['column_name']				= 'Название атрибута';
 $_['column_attribute_group']	= 'Группа атрибута';
 $_['column_sort_order']			= 'Порядок сортировки';
 $_['column_action']				= 'Действие';
-
-
-
-
 
 // Entry
 $_['entry_name']				= 'Название атрибута:';

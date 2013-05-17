@@ -16,7 +16,7 @@ $_['entry_title']         	  = 'Название статьи:';
 $_['entry_description'] 	  = 'Описание:';
 $_['entry_store']       	  = 'Магазины:';
 $_['entry_keyword']           = 'SEO URL:<br/><span class="help">Должно быть уникальным на всю систему.</span>';
-$_['entry_bottom']            = 'Bottom:<br/><span class="help"> Display in the bottom footer.</span>';
+$_['entry_bottom']            = 'Bottom:<br/><span class="help"> Отображать в нижней части сайта.</span>';
 $_['entry_status']            = 'Статус:';
 $_['entry_sort_order']  	  = 'Порядок сортировки:<br/><span class="help">-1 для скрытия</span>';
 $_['entry_layout']      	  = 'Выберите схему:';
