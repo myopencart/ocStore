@@ -59,7 +59,7 @@ $_['entry_password']               = 'Пароль:<span class="help">Введи
 $_['entry_pickup']                 = 'Тип погрузки:<span class="help"> Тип посылки, предоставляемой в UPS (только для жителей США)?</span>';
 $_['entry_packaging']              = 'Тип упаковки:<span class="help">Какой тип упаковки Вы используете?</span>';
 $_['entry_classification']         = 'Класификация клиентов:<span class="help">01 - оптовики, 03 - случайные, 04 - розничные (только для жителей США)</span>';
-$_['entry_origin']                 = 'Код доставки:<span class="help">Доступен только клиенту (this setting affects only what UPS product names are shown to the user)</span>';
+$_['entry_origin']                 = 'Код доставки:<span class="help">Доступен только клиенту (название UPS товара видно пользователю)</span>';
 $_['entry_city']                   = 'Город:<span class="help">Введите название города.</span>';
 $_['entry_state']                  = 'Область/район:<span class="help">Введите название области/района, при помощи абревиатуры.</span>';
 $_['entry_country']                = 'Страна:<span class="help">Введите название страны, при помощи абревиатуры.</span>';
@@ -71,7 +71,7 @@ $_['entry_insurance']              = 'Стаховка:<span class="help">Стр
 $_['entry_display_weight']         = 'Отображать вес доставки:<br /><span class="help">Отображать вес доставки? (например,вес доставки: 2.7674 кг\г)</span>';
 $_['entry_weight_class']           = 'Единица веса:<span class="help">Установить килограммы или фунты.</span>';
 $_['entry_length_class']           = 'Единица длинны:<span class="help">Установить сантиметры или дюймы.</span>';
-$_['entry_dimension']			   = 'Габариты (Д x Ш x В):<br /><span class="help">This is assumed to be your average packing box size. Individual item dimensions are not supported at this time so you must enter average dimensions like 5x5x5.</span>';
+$_['entry_dimension']			   = 'Габариты (Д x Ш x В):<br /><span class="help">Предположительный средний размер упаковочной коробки. Размер товара не учитывается, введите средние размеры в формате 5x5x5.</span>';
 $_['entry_tax_class']              = 'Налоговый класс:';
 $_['entry_geo_zone']               = 'Географическая зона:';
 $_['entry_status']                 = 'Статус:';

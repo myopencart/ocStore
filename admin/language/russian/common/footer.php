@@ -1,4 +1,4 @@
 <?php
 // Text
-$_['text_footer'] = '<a href="http://myopencart.ru">ocStore</a> &copy; 2009-' . дата('год') . ' Все права защищены.<br />Версия %s';
+$_['text_footer'] = '<a href="http://myopencart.ru">ocStore</a> &copy; 2009-' . data('Y') . ' Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹.<br />Р’РµСЂСЃРёСЏ %s';
 ?>

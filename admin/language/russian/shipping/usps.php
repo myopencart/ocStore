@@ -57,7 +57,7 @@ $_['entry_international']   = 'Международные услуги:';
 $_['entry_size']            = 'Размер:';
 $_['entry_container']       = 'Упаковка:';
 $_['entry_machinable']      = 'Обработка:';
-$_['entry_dimension']       = 'Габариты(Д x Ш x В):<br/><span class="help">Average package dimensions for shipping package. Product dimensions are not used for shipping at this time.</span>';
+$_['entry_dimension']       = 'Габариты(Д x Ш x В):<br/><span class="help">Укажите средние размеры упаковочного материала для доставки Размеры товара не учитываются при транспортировке.</span>';
 $_['entry_display_time']    = 'Отображать сроки доставки:<br /><span class="help">Отображать сроки доставки? (например, доставка в течении 3-5 дней)</span>';
 $_['entry_display_weight']  = 'Отображать вес:<br /><span class="help">Отображать вес доставки? (например, вес доставки 2.7674 кг\г)</span>';
 $_['entry_weight_class']    = 'Единицы веса:<br /><span class="help">Установить фунты.</span>';

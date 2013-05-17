@@ -4,7 +4,7 @@ $_['heading_title']     = 'Отчет по комиссиям партнеров
 
 // Column
 $_['column_affiliate']  = 'Имя партнера';
-$_['column_email']      = 'E-Mail';
+$_['column_email']      = 'Электронный адрес';
 $_['column_status']     = 'Статус';
 $_['column_commission'] = 'Комиссия';
 $_['column_orders']     = 'Кол-во заказов';
