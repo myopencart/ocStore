@@ -13,7 +13,7 @@ $_['text_remove_blacklist']   = 'Удалить черный список';
 
 // Column
 $_['column_name']             = 'Имя покупателя';
-$_['column_email']            = 'Электронный адрес';
+$_['column_email']            = 'E-Mail';
 $_['column_customer_group']   = 'Группа клиентов';
 $_['column_status']           = 'Статус';
 $_['column_login']            = 'Войти в магазин';
@@ -29,7 +29,7 @@ $_['column_action']           = 'Действие';
 // Entry
 $_['entry_firstname']         = 'Имя, Отчество:';
 $_['entry_lastname']          = 'Фамилия:';
-$_['entry_email']             = 'Электронный адрес:';
+$_['entry_email']             = 'E-Mail:';
 $_['entry_telephone']         = 'Телефон:';
 $_['entry_fax']               = 'Факс:';
 $_['entry_newsletter']        = 'Подписка на новости:';
@@ -54,10 +54,10 @@ $_['entry_description']       = 'Описание:';
 // Error
 $_['error_warning']           = 'Внимательно проверьте форму на ошибки!';
 $_['error_permission']        = 'У Вас нет прав для изменения покупателей!';
-$_['error_exists']            = 'Электронный адрес уже зарегистрирован!';
+$_['error_exists']            = 'E-Mail уже зарегистрирован!';
 $_['error_firstname']         = 'Имя должно быть от 1 до 32 символов!';
 $_['error_lastname']          = 'Фамилия должна быть от 1 до 32 символов!';
-$_['error_email']             = 'Электронный адрес введен неверно!';
+$_['error_email']             = 'E-Mail введен неверно!';
 $_['error_telephone']         = 'Телефон должен быть от 3 до 32 символов!';
 $_['error_password']          = 'Пароль должен быть от 4 до 20 символов!';
 $_['error_confirm']           = 'Пароли не совпадают!';

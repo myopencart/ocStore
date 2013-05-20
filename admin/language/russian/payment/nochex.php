@@ -10,7 +10,7 @@ $_['text_seller']        = 'Продавец / Кабинет';
 $_['text_merchant']      = 'Счёт продавца';
       
 // Entry
-$_['entry_email']        = 'Электронный адрес:';
+$_['entry_email']        = 'E-Mail:';
 $_['entry_account']      = 'Тип счёта:';
 $_['entry_merchant']     = 'ID магазина:';
 $_['entry_template']     = 'Шаблон:';
@@ -23,6 +23,6 @@ $_['entry_sort_order']   = 'Порядок сортировки:';
 
 // Error
 $_['error_permission']   = 'У Вас нет прав для управления этим модулем!';
-$_['error_email']        = 'Необходимо указать электронный адрес!';
+$_['error_email']        = 'Необходимо указать E-Mail!';
 $_['error_merchant']     = 'Необходимо указать ID магазина!';
 ?>

@@ -8,7 +8,7 @@ $_['text_success']		      = 'Настройки модуля обновлены.
 $_['text_moneybookers']	      = '<a onclick="window.open(\'https://www.moneybookers.com/partners/?p=OpenCart\');"><img src="view/image/payment/moneybookers.png" alt="Moneybookers" title="Moneybookers" style="border: 1px solid #EEEEEE;" /></a>';
 	
 // Entry					
-$_['entry_email']		      = 'Электронный адрес:';
+$_['entry_email']		      = 'E-Mail:';
 $_['entry_secret']		      = 'Секретное слово:';
 $_['entry_total']             = 'Нижняя граница:<br /><span class="help">Минимальная сумма заказа. Ниже этой суммы метод будет недоступен.</span>';
 $_['entry_order_status']      = 'Статус заказа:';
@@ -22,5 +22,5 @@ $_['entry_sort_order']        = 'Порядок сортировки:';
 
 // Error					
 $_['error_permission']	      = 'У Вас нет прав для управления этим модулем!'; 
-$_['error_email']		      = 'Необходимо указать электронный адрес!';
+$_['error_email']		      = 'Необходимо указать E-Mail!';
 ?>
