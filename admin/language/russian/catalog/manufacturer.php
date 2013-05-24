@@ -8,8 +8,6 @@ $_['text_default']       		= 'Основной магазин';
 $_['text_image_manager'] 		= 'Менеджер изображений';
 $_['text_browse']        		= 'Обзор';
 $_['text_clear']         		= 'Очистить';
-$_['text_percent']       		= 'Процент';
-$_['text_amount']        		= 'Фиксированная сумма';
 
 // Column
 $_['column_name']        		= 'Производитель';
@@ -22,7 +20,6 @@ $_['entry_store']        		= 'Магазины:';
 $_['entry_keyword']      		= 'SEO URL:<br/><span class="help">Должно быть уникальным на всю систему.</span>';
 $_['entry_image']        		= 'Изображение:';
 $_['entry_sort_order']   		= 'Порядок сортировки:';
-$_['entry_type']         		= 'Тип:';
 $_['entry_meta_keyword'] 		= 'Мета-тег Keywords:';
 $_['entry_meta_description']	= 'Мета-тег Description:';
 $_['entry_description']  		= 'Описание:';

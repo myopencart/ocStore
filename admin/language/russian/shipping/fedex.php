@@ -38,8 +38,8 @@ $_['text_fedex_tube']                          = 'FedEx Tube';
 $_['text_fedex_10kg_box']                      = 'FedEx 10kg Box';
 $_['text_fedex_25kg_box']                      = 'FedEx 25kg Box';
 $_['text_your_packaging']                      = 'Ваша упаковка';
-$_['text_list_rate']                           = 'Рейтинг в спике';
-$_['text_account_rate']                        = 'Рейтинг расчетного счёта';
+$_['text_list_rate']                           = 'List Rate';
+$_['text_account_rate']                        = 'Account Rate';
 
 // Entry
 $_['entry_key']                                = 'Ключ:';
@@ -47,7 +47,7 @@ $_['entry_password']                           = 'Пароль:';
 $_['entry_account']                            = 'Номер расчетного счёта:';
 $_['entry_meter']                              = 'Расчетные данные:';
 $_['entry_postcode']                           = 'Почтовый индекс:';
-$_['entry_test']                               = 'Текстовый режим:';
+$_['entry_test']                               = 'Тестовый режим:';
 $_['entry_service']                            = 'Услуги:';
 $_['entry_dropoff_type']                       = 'Тип получения груза:';
 $_['entry_packaging_type']                     = 'Тип упаковки:';

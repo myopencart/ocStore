@@ -54,8 +54,8 @@ $_['text_today_express_saver']     = 'UPS Today Express Saver';
 
 // Entry
 $_['entry_key']                    = 'Ключ доступа:<span class="help">Введите ключ доступа в систему UPS.</span>';
-$_['entry_username']               = 'Имя пользователя:<span class="help">Введите имя пользователя Вашего расчетного счета в UPS .</span>';
-$_['entry_password']               = 'Пароль:<span class="help">Введите пароль Вашего расчетного счета в UPS.</span>';
+$_['entry_username']               = 'Имя пользователя:<span class="help">Введите логин Вашей учетной записи в системе UPS.</span>';
+$_['entry_password']               = 'Пароль:<span class="help">Введите пароль Вашей учетной записи в системе UPS.</span>';
 $_['entry_pickup']                 = 'Тип погрузки:<span class="help"> Тип посылки, предоставляемой в UPS (только для жителей США)?</span>';
 $_['entry_packaging']              = 'Тип упаковки:<span class="help">Какой тип упаковки Вы используете?</span>';
 $_['entry_classification']         = 'Класификация клиентов:<span class="help">01 - оптовики, 03 - случайные, 04 - розничные (только для жителей США)</span>';
@@ -68,7 +68,7 @@ $_['entry_test']                   = 'Режимы:<span class="help">Испол
 $_['entry_quote_type']             = 'Тип квоты:<span class="help">Квота на фактическую или комерческую доставку.</span>';
 $_['entry_service']                = 'Услуги:<span class="help">Выберете услугу, предоставляемую службой UPS.</span>';
 $_['entry_insurance']              = 'Стаховка:<span class="help">Страховка включена в общую сумму товара</span>';
-$_['entry_display_weight']         = 'Отображать вес доставки:<br /><span class="help">Отображать вес доставки? (например,вес доставки: 2.7674 кг\г)</span>';
+$_['entry_display_weight']         = 'Отображать вес доставки:<br /><span class="help">Отображать вес доставки? (например, вес доставки: 2.7674 кг\г)</span>';
 $_['entry_weight_class']           = 'Единица веса:<span class="help">Установить килограммы или фунты.</span>';
 $_['entry_length_class']           = 'Единица длинны:<span class="help">Установить сантиметры или дюймы.</span>';
 $_['entry_dimension']			   = 'Габариты (Д x Ш x В):<br /><span class="help">Предположительный средний размер упаковочной коробки. Размер товара не учитывается, введите средние размеры в формате 5x5x5.</span>';
@@ -76,7 +76,7 @@ $_['entry_tax_class']              = 'Налоговый класс:';
 $_['entry_geo_zone']               = 'Географическая зона:';
 $_['entry_status']                 = 'Статус:';
 $_['entry_sort_order']             = 'Порядок сортировки:';
-$_['entry_debug']      			   = 'Режим отладки:<br /><span class="help">Сохраняет отправленные\полученные данный в системном журнале</span>';
+$_['entry_debug']      			   = 'Режим отладки:<br /><span class="help">Сохраняет отправленные\полученные данные в системном журнале</span>';
 
 // Error
 $_['error_permission']             = 'У Вас нет прав для управления этим модулем!';
