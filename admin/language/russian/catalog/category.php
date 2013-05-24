@@ -4,7 +4,7 @@ $_['heading_title']          = 'Категории';
 
 // Text
 $_['text_success']           = 'Список категорий обновлен!';
-$_['text_default']           = 'Основной магазин';
+$_['text_default']           = 'По-умолчанию';
 $_['text_image_manager']     = 'Менеджер изображений';
 $_['text_browse']            = 'Обзор';
 $_['text_clear']             = 'Очистить';
