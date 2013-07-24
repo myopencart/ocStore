@@ -106,19 +106,19 @@ $_['entry_compression']          = 'Output Compression Level:<br /><span class="
 $_['entry_error_display']        = 'Display Errors:';
 $_['entry_error_log']            = 'Log Errors:';
 $_['entry_error_filename']       = 'Error Log Filename:';
-$_['entry_google_analytics']     = 'Google Analytics Code:<br /><span class="help">Login to your <a onclick="window.open(\'http://www.google.com/analytics/\');"><u>Google Analytics</u></a> account and after creating your web site profile copy and paste the analytics code into this field.</span>';
-$_['entry_google_api_key']       = 'Google API key:<br /><span class="help">Used for Geo IP and Google maps. <a onclick="window.open(\'https://developers.google.com/maps/documentation/javascript/tutorial?hl=en#api_key\');"><u>Obtaining an API Key</u></a>.</span>';
-$_['entry_sms_gatename']         = '������ �������� SMS:';
-$_['entry_sms_to']               = '����� �������� ����������:<br/><span class="help">� ������������� �������, ������ ����� 7926xxxxxxx</span>';
-$_['entry_sms_from']             = '��������� �����������:<br/><span class="help">�� ����� 11 ��������, ���� ����� �������� �� 15 ����</span>';
-$_['entry_sms_message']          = '����� ���������:<br/><span class="help">����� ������������ ����:<br/>{ID} - ����� ������<br/>{DATE} - ���� ������<br/>{TIME} - ����� ������<br/>{SUM} - ����� ������<br/>{PHONE} - ������� �������</span>';
-$_['entry_sms_gate_username']    = '����� �� SMS ����:';
-$_['entry_sms_gate_password']    = '������ �� SMS ����:';
-$_['entry_sms_alert']            = '�������� SMS �����������:';
-$_['entry_sms_copy']             = '�������������� ������:<br/><span class="help">��������� ����� �������, � ������������� �������, ��� ������������ 7926xxxxxxx</span>';
-$_['entry_seo_url_type']         = '��� ���:';
-$_['entry_seo_url_include_path'] = '��� ������� � �����������:<span class="help">/category/subcategory/product<br />(������ ��� SeoPro)</span>';
-$_['entry_seo_url_postfix']      = '��������� ���:<span class="help">�������� .html<br />(������ ��� SeoPro)</span>';
+$_['entry_google_analytics']   = 'Код Google Analytics:<br /><span class="help">Войдите в Ваш <a onclick="window.open(\'http://www.google.com/analytics/\');"><u>Google Analytics аккаунт</u></a> и после настройки добавьте сюда код выданный Google Analytics.</span>';
+$_['entry_google_api_key']     = 'Ключ Google API:<br /><span class="help">Используется для Geo IP и карт Google. <a onclick="window.open(\'https://developers.google.com/maps/documentation/javascript/tutorial?hl=ru#api_key\');"><u>Получить ключ</u></a>.</span>';
+$_['entry_sms_gatename']       = 'Сервис отправки SMS:';
+$_['entry_sms_to']             = 'Номер телефона получателя:<br/><span class="help">В международном формате, только цифры 7926xxxxxxx</span>';
+$_['entry_sms_from']           = 'Псевдоним отправителя:<br/><span class="help">Не более 11 символов, либо номер телефона до 15 цифр</span>';
+$_['entry_sms_message']        = 'Текст сообщения:<br/><span class="help">Можно использовать теги:<br/>{ID} - номер заказа<br/>{DATE} - дата заказа<br/>{TIME} - время заказа<br/>{SUM} - сумма заказа<br/>{PHONE} - телефон клиента</span>';
+$_['entry_sms_gate_username']  = 'Логин на SMS шлюз:';
+$_['entry_sms_gate_password']  = 'Пароль на SMS шлюз:';
+$_['entry_sms_alert']          = 'Включить SMS уведомления:';
+$_['entry_sms_copy']           = 'Дополнительные номера:<br/><span class="help">Указывать через запятую, в международном формате, без разделителей 7926xxxxxxx</span>';
+$_['entry_seo_url_type']       = 'Тип ЧПУ:';
+$_['entry_seo_url_include_path'] = 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
+$_['entry_seo_url_postfix']    = 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
 
 // Error
 $_['error_warning']              = 'Warning: Please check the form carefully for errors!';
