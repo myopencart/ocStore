@@ -1,10 +1,13 @@
 <?php
 // Version
-define('VERSION', '1.5.4.1.2');
+define('VERSION', '1.5.6');
 
 // Configuration
-require_once('config.php');
-   
+if (file_exists('config.php')) {
+
+	require_once('config.php');
+}  
+
 // Install 
 if (!defined('DIR_APPLICATION')) {
 	header('Location: install/index.php');
@@ -69,7 +72,7 @@ if (!$store_query->num_rows) {
 }
 
 // Url
-$url = new Url($config->get('config_url'), $config->get('config_use_ssl') ? $config->get('config_ssl') : $config->get('config_url'));	
+$url = new Url($config->get('config_url'), $config->get('config_secure') ? $config->get('config_ssl') : $config->get('config_url'));	
 $registry->set('url', $url);
 
 // Log 
@@ -127,12 +130,12 @@ $registry->set('cache', $cache);
 
 // Session
 $session = new Session();
-$registry->set('session', $session); 
+$registry->set('session', $session);
 
 // Language Detection
 $languages = array();
 
-$query = $db->query("SELECT * FROM " . DB_PREFIX . "language WHERE status = '1'"); 
+$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE status = '1'");  
 
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;
@@ -140,7 +143,7 @@ foreach ($query->rows as $result) {
 
 $detect = '';
 
-if (isset($request->server['HTTP_ACCEPT_LANGUAGE']) && ($request->server['HTTP_ACCEPT_LANGUAGE'])) { 
+if (isset($request->server['HTTP_ACCEPT_LANGUAGE']) && $request->server['HTTP_ACCEPT_LANGUAGE']) { 
 	$browser_languages = explode(',', $request->server['HTTP_ACCEPT_LANGUAGE']);
 	
 	foreach ($browser_languages as $browser_language) {
@@ -191,7 +194,7 @@ $registry->set('customer', new Customer($registry));
 // Affiliate
 $registry->set('affiliate', new Affiliate($registry));
 
-if (isset($request->get['tracking']) && !isset($request->cookie['tracking'])) {
+if (isset($request->get['tracking'])) {
 	setcookie('tracking', $request->get['tracking'], time() + 3600 * 24 * 1000, '/');
 }
 		
@@ -210,9 +213,18 @@ $registry->set('length', new Length($registry));
 // Cart
 $registry->set('cart', new Cart($registry));
 
+//OpenBay Pro
+$registry->set('openbay', new Openbay($registry));
+$registry->set('play', new Play($registry));
+
+$registry->set('ebay', new Ebay($registry));
+$registry->set('amazon', new Amazon($registry));
+$registry->set('amazonus', new Amazonus($registry));
+
 // ocStore features
 $registry->set('ocstore', new ocStore($registry));
 		
+
 //  Encryption
 $registry->set('encryption', new Encryption($config->get('config_encryption')));
 		
