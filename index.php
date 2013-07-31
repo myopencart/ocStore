@@ -1,10 +1,9 @@
 <?php
 // Version
-define('VERSION', '1.5.6');
+define('VERSION', '1.5.5.1');
 
 // Configuration
 if (file_exists('config.php')) {
-
 	require_once('config.php');
 }  
 
@@ -135,7 +134,7 @@ $registry->set('session', $session);
 // Language Detection
 $languages = array();
 
-$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE status = '1'");  
+$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE status = '1'");
 
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;
@@ -213,33 +212,21 @@ $registry->set('length', new Length($registry));
 // Cart
 $registry->set('cart', new Cart($registry));
 
-//OpenBay Pro
-$registry->set('openbay', new Openbay($registry));
-$registry->set('play', new Play($registry));
-
-$registry->set('ebay', new Ebay($registry));
-$registry->set('amazon', new Amazon($registry));
-$registry->set('amazonus', new Amazonus($registry));
-
-// ocStore features
-$registry->set('ocstore', new ocStore($registry));
-		
-
 //  Encryption
 $registry->set('encryption', new Encryption($config->get('config_encryption')));
 		
 // Front Controller 
 $controller = new Front($registry);
-
-// Maintenance Mode
-$controller->addPreAction(new Action('common/maintenance'));
-
 // SEO URL's
 if (!$seo_type = $config->get('config_seo_url_type')) {
 	$seo_type = 'seo_url';
 }
 $controller->addPreAction(new Action('common/' . $seo_type));	
 	
+
+// Maintenance Mode
+$controller->addPreAction(new Action('common/maintenance'));
+
 // Router
 if (isset($request->get['route'])) {
 	$action = new Action($request->get['route']);
