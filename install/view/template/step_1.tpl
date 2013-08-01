@@ -1,5 +1,5 @@
 <?php echo $header; ?>
-<h1>Step 1 - License</h1>
+<h1>Шаг 1 - Лицензия</h1>
 <div id="column-right">
   <ul>
       <li><b>Лицензия</b></li>
