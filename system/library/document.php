@@ -54,6 +54,11 @@ class Document {
 	public function getStyles() {
 		return $this->styles;
 	}	
+
+
+
+
+
 	
 	public function addScript($script) {
 		$this->scripts[md5($script)] = $script;			

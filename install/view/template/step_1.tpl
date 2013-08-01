@@ -1,15 +1,21 @@
 <?php echo $header; ?>
-<h1 style="background: url('view/image/license.png') no-repeat;">Шаг 1 - Лицензия</h1>
-<div style="width: 100%; display: inline-block;">
-  <div style="float: left; width: 569px;">
-    <?php if ($error_warning) { ?>
-    <div class="warning"><?php echo $error_warning; ?></div>
-    <?php } ?>
-    <div style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; margin-bottom: 15px;">
-      <div style="color: #333; height: 300px; width: 545px; border: 1px solid #CCC; background: #FFF; overflow-y: scroll;overflow-x:hidden;">
-        <div style="padding: 5px;">
-<h3 style="text-align: center;">СТАНДАРТНАЯ ОБЩЕСТВЕННАЯ ЛИЦЕНЗИЯ GNU</h3>
-          <p style="text-align: center;">Версия 3, от 29 июня 2007</p>
+<h1>Step 1 - License</h1>
+<div id="column-right">
+  <ul>
+      <li><b>Лицензия</b></li>
+      <li>Перед установкой</li>
+      <li>Конфигурация</li>
+      <li>Окончание</li>
+    </ul>
+</div>
+<div id="content">
+  <?php if ($error_warning) { ?>
+  <div class="warning"><?php echo $error_warning; ?></div>
+  <?php } ?>
+  <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+    <div class="terms">
+      <h3>СТАНДАРТНАЯ ОБЩЕСТВЕННАЯ ЛИЦЕНЗИЯ GNU</h3>
+		<p>Версия 3, от 29 июня 2007</p>
           <p>Copyright &copy; 2007 Free Software Foundation, Inc. &lt;http://fsf.org/&gt;</p>
           <p> Каждый имеет право распространять точные копии этой лицензии, но без внесения изменений.</p>
           <h3><a name="ПРЕАМБУЛА"/>ПРЕАМБУЛА</h3>
@@ -143,24 +149,13 @@
 			</blockquote>
 		  <p>Гипотетические команды <tt>show w</tt> и <tt>show c</tt> должны показывать соответствующие части Стандартной Общественной Лицензии. Конечно, команды Вашей программы могут быть другими; в случае графического интерфейса пользователя, Вы можете использовать диалоговое окно &lt;О программе&gt;. </p>
 		  <p>Так же, в случае необходимости, Вам следует получить от Вашего работодателя (если Вы работаете программистом) или учебного заведения (если учитесь) письменный отказ от авторских прав на программу. Для дополнительной информации об этом, а также о применении и исполнении условий GNU GPL, смотрите &lt;<a href="http://www.gnu.org/licenses/&gt;" rel="nofollow">http://www.gnu.org/licenses/&gt;</a>. </p>
-		  <p>Стандартная Общественная Лицензия GNU не разрешает включение Вашей программы в собственническое ПО. Если Вы хотите этого, используйте Малую Стандартную Общественную Лицензию GNU (GNU Lesser General Public License, GNU LGPL) вместо этой лицензии, но, пожалуйста, прочитайте сначала &lt;<a href="http://www.gnu.org/philosophy/why-not-lgpl.html&gt;" rel="nofollow">http://www.gnu.org/philosophy/why-not-lgpl.html&gt;</a>. </p>
-        </div>
+		  <p>Стандартная Общественная Лицензия GNU не разрешает включение Вашей программы в собственническое ПО. Если Вы хотите этого, используйте Малую Стандартную Общественную Лицензию GNU (GNU Lesser General Public License, GNU LGPL) вместо этой лицензии, но, пожалуйста, прочитайте сначала &lt;<a href="http://www.gnu.org/philosophy/why-not-lgpl.html&gt;" rel="nofollow">http://www.gnu.org/philosophy/why-not-lgpl.html&gt;</a>. </p>    </div>
+    <div class="buttons">
+      <div class="right">Я согласен с лицензией
+        <input type="checkbox" name="agree" />&nbsp;
+        <input type="submit" value="Продолжить"button" />
       </div>
     </div>
-    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
-      <div style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; margin-bottom: 15px; text-align: right;">Я согласен с лицензией
-        <input type="checkbox" name="agree" />
-      </div>
-      <div style="text-align: right;"><a onclick="document.getElementById('form').submit()" class="button"><span class="button_left button_continue"></span><span class="button_middle">Продолжить</span><span class="button_right"></span></a></div>
-    </form>
-  </div>
-  <div style="float: right; width: 205px; height: 400px; padding: 10px; color: #663300; border: 1px solid #FFE0CC; background: #FFF5CC;">
-    <ul>
-      <li><b>Лицензия</b></li>
-      <li>Перед установкой</li>
-      <li>Конфигурация</li>
-      <li>Окончание</li>
-    </ul>
-  </div>
+  </form>
 </div>
 <?php echo $footer; ?>

@@ -3,8 +3,8 @@ class ControllerStep2 extends Controller {
 	private $error = array();
 	
 	public function index() {
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate())) {
-			$this->redirect(HTTP_SERVER . 'index.php?route=step_3');
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			$this->redirect($this->url->link('step_3'));
 		}
 
 		if (isset($this->error['warning'])) {
@@ -13,7 +13,7 @@ class ControllerStep2 extends Controller {
 			$this->data['error_warning'] = '';	
 		}
 		
-		$this->data['action'] = HTTP_SERVER . 'index.php?route=step_2';
+		$this->data['action'] = $this->url->link('step_2');
 
 		$this->data['config_catalog'] = DIR_OPENCART . 'config.php';
 		$this->data['config_admin'] = DIR_OPENCART . 'admin/config.php';
@@ -25,8 +25,9 @@ class ControllerStep2 extends Controller {
 		$this->data['image_data'] = DIR_OPENCART . 'image/data';
 		$this->data['download'] = DIR_OPENCART . 'download';
 		
+		$this->data['back'] = $this->url->link('step_1');
+		
 		$this->template = 'step_2.tpl';
-
 		$this->children = array(
 			'header',
 			'footer'
@@ -67,15 +68,18 @@ class ControllerStep2 extends Controller {
 		if (!extension_loaded('zlib')) {
 			$this->error['warning'] = 'Warning: ZLIB extension needs to be loaded for OpenCart to work!';
 		}
-	
-		if (!is_writable(DIR_OPENCART . 'config.php')) {
+		
+		if (!file_exists(DIR_OPENCART . 'config.php')) {
+			$this->error['warning'] = 'Warning: config.php does not exist. You need to rename config-dist.php to config.php!';
+		} elseif (!is_writable(DIR_OPENCART . 'config.php')) {
 			$this->error['warning'] = 'Warning: config.php needs to be writable for OpenCart to be installed!';
 		}
-				
-		if (!is_writable(DIR_OPENCART . 'admin/config.php')) {
+		
+		if (!file_exists(DIR_OPENCART . 'admin/config.php')) {
+			$this->error['warning'] = 'Warning: admin/config.php does not exist. You need to rename admin/config-dist.php to admin/config.php!';
+		} elseif (!is_writable(DIR_OPENCART . 'admin/config.php')) {
 			$this->error['warning'] = 'Warning: admin/config.php needs to be writable for OpenCart to be installed!';
 		}
-
 		if (!is_writable(DIR_SYSTEM . 'cache')) {
 			$this->error['warning'] = 'Warning: Cache directory needs to be writable for OpenCart to work!';
 		}

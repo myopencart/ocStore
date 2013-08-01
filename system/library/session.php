@@ -13,5 +13,9 @@ class Session {
 	
 		$this->data =& $_SESSION;
 	}
+	
+	function getId() {
+		return session_id();
+	}
 }
 ?>
