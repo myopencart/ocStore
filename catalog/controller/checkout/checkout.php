@@ -28,7 +28,9 @@ class ControllerCheckoutCheckout extends Controller {
 		$this->initGeoIp();
 		
 		$this->document->setTitle($this->language->get('heading_title')); 
-		
+		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
+		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
+					
 		$this->data['breadcrumbs'] = array();
 
       	$this->data['breadcrumbs'][] = array(
