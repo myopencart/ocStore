@@ -95,3 +95,6 @@ $('#shipping-address select[name=\'country_id\']').bind('change', function() {
 
 $('#shipping-address select[name=\'country_id\']').trigger('change');
 //--></script>
+<?php if ($init_geo_ip) { ?>
+<script type="text/javascript" src="catalog/view/javascript/jquery/geoip.ru.js"></script>
+<?php } ?>
