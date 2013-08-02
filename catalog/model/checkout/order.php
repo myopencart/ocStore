@@ -100,6 +100,8 @@ class ModelCheckoutOrder extends Model {
 				'payment_firstname'       => $order_query->row['payment_firstname'],
 				'payment_lastname'        => $order_query->row['payment_lastname'],				
 				'payment_company'         => $order_query->row['payment_company'],
+				'payment_company_id'      => $order_query->row['payment_company_id'],
+				'payment_tax_id'          => $order_query->row['payment_tax_id'],
 				'payment_address_1'       => $order_query->row['payment_address_1'],
 				'payment_address_2'       => $order_query->row['payment_address_2'],
 				'payment_postcode'        => $order_query->row['payment_postcode'],
@@ -169,7 +171,7 @@ class ModelCheckoutOrder extends Model {
 				}
 			}
 
-			// Blacklist
+			// Ban IP
 			$status = false;
 			
 			$this->load->model('account/customer');
@@ -178,14 +180,14 @@ class ModelCheckoutOrder extends Model {
 				$results = $this->model_account_customer->getIps($order_info['customer_id']);
 				
 				foreach ($results as $result) {
-					if ($this->model_account_customer->isBlacklisted($result['ip'])) {
+					if ($this->model_account_customer->isBanIp($result['ip'])) {
 						$status = true;
 						
 						break;
 					}
 				}
 			} else {
-				$status = $this->model_account_customer->isBlacklisted($order_info['ip']);
+				$status = $this->model_account_customer->isBanIp($order_info['ip']);
 			}
 			
 			if ($status) {
@@ -214,8 +216,8 @@ class ModelCheckoutOrder extends Model {
 			$order_download_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_download WHERE order_id = '" . (int)$order_id . "'");
 			
 			// Gift Voucher
-				$this->load->model('checkout/voucher');
-
+			$this->load->model('checkout/voucher');
+			
 			$order_voucher_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_voucher WHERE order_id = '" . (int)$order_id . "'");
 			
 			foreach ($order_voucher_query->rows as $order_voucher) {
@@ -228,7 +230,7 @@ class ModelCheckoutOrder extends Model {
 			if ($this->config->get('config_complete_status_id') == $order_status_id) {
 				$this->model_checkout_voucher->confirm($order_id);
 			}
-			
+					
 			// Order Totals			
 			$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 			
@@ -252,7 +254,7 @@ class ModelCheckoutOrder extends Model {
 			} else {
 				$order_status = '';
 			}
-							
+			
 			$subject = sprintf($language->get('text_new_subject'), $order_info['store_name'], $order_id);
 		
 			// HTML Mail
@@ -282,7 +284,7 @@ class ModelCheckoutOrder extends Model {
 			$template->data['text_footer'] = $language->get('text_new_footer');
 			$template->data['text_powered'] = $language->get('text_new_powered');
 			
-			$template->data['logo'] = HTTP_IMAGE . $this->config->get('config_logo');		
+			$template->data['logo'] = $this->config->get('config_url') . 'image/' . $this->config->get('config_logo');		
 			$template->data['store_name'] = $order_info['store_name'];
 			$template->data['store_url'] = $order_info['store_url'];
 			$template->data['customer_id'] = $order_info['customer_id'];
@@ -391,10 +393,10 @@ class ModelCheckoutOrder extends Model {
 						$value = utf8_substr($option['value'], 0, utf8_strrpos($option['value'], '.'));
 					}
 					
-						$option_data[] = array(
-							'name'  => $option['name'],
+					$option_data[] = array(
+						'name'  => $option['name'],
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
-						);
+					);					
 				}
 			  
 				$template->data['products'][] = array(
@@ -452,7 +454,7 @@ class ModelCheckoutOrder extends Model {
 			foreach ($order_voucher_query->rows as $voucher) {
 				$text .= '1x ' . $voucher['description'] . ' ' . $this->currency->format($voucher['amount'], $order_info['currency_code'], $order_info['currency_value']);
 			}
-			
+						
 			$text .= "\n";
 			
 			$text .= $language->get('text_new_order_total') . "\n";
@@ -473,11 +475,12 @@ class ModelCheckoutOrder extends Model {
 				$text .= $order_info['store_url'] . 'index.php?route=account/download' . "\n\n";
 			}
 			
+			// Comment
 			if ($order_info['comment']) {
 				$text .= $language->get('text_new_comment') . "\n\n";
 				$text .= $order_info['comment'] . "\n\n";
 			}
-			
+
 			$text .= $language->get('text_new_footer') . "\n\n";
 		
 			$mail = new Mail(); 
@@ -526,7 +529,7 @@ class ModelCheckoutOrder extends Model {
 				foreach ($order_voucher_query->rows as $voucher) {
 					$text .= '1x ' . $voucher['description'] . ' ' . $this->currency->format($voucher['amount'], $order_info['currency_code'], $order_info['currency_value']);
 				}
-				
+							
 				$text .= "\n";
 
 				$text .= $language->get('text_new_order_total') . "\n";
@@ -604,7 +607,7 @@ class ModelCheckoutOrder extends Model {
 				}
 			}			
 
-			// Blacklist
+			// Ban IP
 			$status = false;
 			
 			$this->load->model('account/customer');
@@ -614,14 +617,14 @@ class ModelCheckoutOrder extends Model {
 				$results = $this->model_account_customer->getIps($order_info['customer_id']);
 				
 				foreach ($results as $result) {
-					if ($this->model_account_customer->isBlacklisted($result['ip'])) {
+					if ($this->model_account_customer->isBanIp($result['ip'])) {
 						$status = true;
 						
 						break;
 					}
 				}
 			} else {
-				$status = $this->model_account_customer->isBlacklisted($order_info['ip']);
+				$status = $this->model_account_customer->isBanIp($order_info['ip']);
 			}
 			
 			if ($status) {
