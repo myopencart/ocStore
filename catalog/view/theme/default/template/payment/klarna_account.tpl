@@ -1,8 +1,27 @@
 <?php if ($error_warning) { ?>
 <div class="warning"><?php echo $error_warning; ?></div>
 <?php } ?>
-<div style="margin-bottom: 10px;"><img src="https://cdn.klarna.com/public/images/<?php echo $iso_code_2; ?>/badges/v1/invoice/<?php echo $iso_code_2; ?>_invoice_badge_std_blue.png?width=150&eid=<?php echo $merchant ?>" /></div>
+<div style="margin-bottom: 10px;"><img src="https://cdn.klarna.com/public/images/<?php echo $iso_code_2; ?>/badges/v1/account/<?php echo $iso_code_2; ?>_account_badge_std_blue.png?width=150&eid=<?php echo $merchant; ?>" /></div>
 <div id="payment">
+  <div style="margin-bottom: 3px;"><b><?php echo $text_payment_option; ?></b></div>
+  <div class="content">
+    <table class="radio">
+      <?php foreach ($payment_options as $payment_option) { ?>
+      <tr class="highlight">
+        <td><?php if (!isset($code)) { ?>
+          <?php $code = $payment_option['code']; ?>
+          <input type="radio" name="code" value="<?php echo $payment_option['code']; ?>" id="plan-id<?php echo $payment_option['code']; ?>" checked="checked" />
+          <?php } else { ?>
+          <input type="radio" name="code" value="<?php echo $payment_option['code']; ?>" id="plan-id<?php echo $payment_option['code']; ?>" />
+          <?php } ?></td>
+        <td><label for="plan-id<?php echo $payment_option['code']; ?>"><?php echo $payment_option['title']; ?></label></td>
+        <td style="width: 1%;"><?php if ($iso_code_3 == 'NLD') { ?>
+          <img src="catalog/view/theme/default/image/klarna_nld_banner.png" />
+          <?php } ?></td>
+      </tr>
+      <?php } ?>
+    </table>
+  </div>
   <div style="margin-bottom: 3px;"><b><?php echo $text_additional; ?></b></div>
   <div class="content">
     <table class="form">
@@ -72,7 +91,7 @@
       <tr>
         <td colspan="2"><input type="checkbox" name="deu_terms" value="1" />
           Mit der Übermittlung der für die Abwicklung des Rechnungskaufes und einer Identitäts - und Bonitätsprüfung erforderlichen 
-          Daten an Klarna bin ich einverstanden. Meine <a href="https://online.klarna.com/consent_de.yaws" target="_blank">Einwilligung</a> kann ich jederzeit mit Wirkung für die Zukunft widerrufen. </td>
+          Daten an Klarna bin ich einverstanden. Meine <a href="https://online.klarna.com/consent_de.yaws" target="_blank">Einwilligung</a> kann ich jederzeit mit Wirkung für die Zukunft widerrufen.</td>
       </tr>
       <?php } ?>
     </table>
@@ -86,14 +105,14 @@
 <script type="text/javascript"><!--
 $('#button-confirm').on('click', function() {
 	$.ajax({
-		url: 'index.php?route=payment/klarna_invoice/send',
+		url: 'index.php?route=payment/klarna_account/send',
 		type: 'post',
 		data: $('#payment input[type=\'text\'], #payment input[type=\'checkbox\']:checked, #payment input[type=\'radio\']:checked, #payment select'),
 		dataType: 'json',		
 		beforeSend: function() {
 			$('#button-confirm').attr('disabled', true);
 			
-			$('.warning, .error').remove();
+			$('.warning, .error').remove();	
 			
 			$('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
 		},
@@ -101,7 +120,7 @@ $('#button-confirm').on('click', function() {
 			$('#button-confirm').attr('disabled', false);
 			$('.attention').remove();
 		},		
-		success: function(json) {	
+		success: function(json) {
 			if (json['error']) {
 				$('#payment').before('<div class="warning">' + json['error'] + '</div>');
 			}

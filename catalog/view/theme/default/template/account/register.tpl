@@ -115,9 +115,9 @@
               <option value=""><?php echo $text_select; ?></option>
               <?php foreach ($countries as $country) { ?>
               <?php if ($country['country_id'] == $country_id) { ?>
-              <option value="<?php echo $country['country_id']; ?>" data-iso2="<?php echo $country['iso_code_2']; ?>" selected="selected"><?php echo $country['name']; ?></option>
+              <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
               <?php } else { ?>
-              <option value="<?php echo $country['country_id']; ?>" data-iso2="<?php echo $country['iso_code_2']; ?>"><?php echo $country['name']; ?></option>
+              <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
               <?php } ?>
               <?php } ?>
             </select>
@@ -254,7 +254,7 @@ $('select[name=\'country_id\']').bind('change', function() {
 			
 			html = '<option value=""><?php echo $text_select; ?></option>';
 			
-			if (json['zone']) {
+			if (json['zone'] != '') {
 				for (i = 0; i < json['zone'].length; i++) {
         			html += '<option value="' + json['zone'][i]['zone_id'] + '"';
 	    			
@@ -279,9 +279,11 @@ $('select[name=\'country_id\']').bind('change', function() {
 $('select[name=\'country_id\']').trigger('change');
 //--></script> 
 <script type="text/javascript"><!--
-$('.colorbox').colorbox({
-	width: 640,
-	height: 480
+$(document).ready(function() {
+	$('.colorbox').colorbox({
+		width: 640,
+		height: 480
+	});
 });
 //--></script> 
 <?php echo $footer; ?>

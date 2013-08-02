@@ -315,7 +315,7 @@ $('#button-register').live('click', function() {
 					}
 				});					
 				<?php } ?>
-				
+
 				$.ajax({
 					url: 'index.php?route=checkout/payment_address',
 					dataType: 'html',
@@ -456,7 +456,7 @@ $('#button-payment-address').live('click', function() {
 					error: function(xhr, ajaxOptions, thrownError) {
 						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 					}
-				});					
+				});				
 			}	  
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
@@ -553,13 +553,24 @@ $('#button-shipping-address').live('click', function() {
 							error: function(xhr, ajaxOptions, thrownError) {
 								alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 							}
-						});						
+						});
 					},
 					error: function(xhr, ajaxOptions, thrownError) {
 						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 					}
 				});	
-			}  
+				
+				$.ajax({
+					url: 'index.php?route=checkout/payment_address',
+					dataType: 'html',
+					success: function(html) {
+						$('#payment-address .checkout-content').html(html);
+					},
+					error: function(xhr, ajaxOptions, thrownError) {
+						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+					}
+				});					
+			}
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -572,7 +583,7 @@ $('#button-guest').live('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/guest/validate',
 		type: 'post',
-		data: $('#payment-address input[type=\'text\'], #payment-address input[type=\'checkbox\']:checked, #payment-address select'),
+		data: $('#payment-address input[type=\'text\'], #payment-address input[type=\'checkbox\']:checked, #payment-address input[type=\'radio\']:checked, #payment-address input[type=\'hidden\'], #payment-address select'),
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-guest').attr('disabled', true);
@@ -850,7 +861,6 @@ $('#button-shipping-method').live('click', function() {
 						$('#payment-method .checkout-heading a').remove();
 						
 						$('#shipping-method .checkout-heading').append('<a><?php echo $text_modify; ?></a>');	
-
 					},
 					error: function(xhr, ajaxOptions, thrownError) {
 						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -907,7 +917,7 @@ $('#button-payment-method').live('click', function() {
 					error: function(xhr, ajaxOptions, thrownError) {
 						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 					}
-				});					
+				});	
 			}
 		},
 		error: function(xhr, ajaxOptions, thrownError) {

@@ -83,9 +83,9 @@
   <option value=""><?php echo $text_select; ?></option>
   <?php foreach ($countries as $country) { ?>
   <?php if ($country['country_id'] == $country_id) { ?>
-  <option value="<?php echo $country['country_id']; ?>" data-iso2="<?php echo $country['iso_code_2']; ?>" selected="selected"><?php echo $country['name']; ?></option>
+  <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
   <?php } else { ?>
-  <option value="<?php echo $country['country_id']; ?>" data-iso2="<?php echo $country['iso_code_2']; ?>"><?php echo $country['name']; ?></option>
+  <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
   <?php } ?>
   <?php } ?>
 </select>
@@ -167,6 +167,7 @@ $('#payment-address input[name=\'customer_group_id\']:checked').trigger('change'
 //--></script> 
 <script type="text/javascript"><!--
 $('#payment-address select[name=\'country_id\']').bind('change', function() {
+	if (this.value == '') return;
 	$.ajax({
 		url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
 		dataType: 'json',
@@ -215,7 +216,4 @@ $('.colorbox').colorbox({
 	width: 640,
 	height: 480
 });
-//--></script>
-<?php if ($init_geo_ip) { ?>
-<script type="text/javascript" src="catalog/view/javascript/jquery/geoip.ru.js"></script>
-<?php } ?>
+//--></script> 
