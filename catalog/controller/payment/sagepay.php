@@ -186,23 +186,23 @@ class ControllerPaymentSagepay extends Controller {
 		}
 	}	 
 	
-	private function simpleXor($string, $password) {
+	protected function simpleXor($string, $password) {
 		$data = array();
 
-		for ($i = 0; $i < utf8_strlen($password); $i++) {
+		for ($i = 0; $i < strlen($password); $i++) {
 			$data[$i] = ord(substr($password, $i, 1));
 		}
 
 		$output = '';
 
-		for ($i = 0; $i < utf8_strlen($string); $i++) {
-    		$output .= chr(ord(substr($string, $i, 1)) ^ ($data[$i % utf8_strlen($password)]));
+		for ($i = 0; $i < strlen($string); $i++) {
+    		$output .= chr(ord(substr($string, $i, 1)) ^ ($data[$i % strlen($password)]));
 		}
 
 		return $output;		
 	}
 	
-	private function getToken($string) {
+	protected function getToken($string) {
   		$tokens = array(
    			'Status',
     		'StatusDetail',

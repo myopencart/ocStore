@@ -6,9 +6,7 @@ class ControllerPaymentLiqPay extends Controller {
 		$this->load->model('checkout/order');
 		
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
-
-		if ($order_info['currency_code'] == 'RUB') {$order_info['currency_code'] = 'RUR';}
-
+		
 		$this->data['action'] = 'https://liqpay.com/?do=clickNbuy';
 		
 		$xml  = '<request>';
@@ -48,10 +46,7 @@ class ControllerPaymentLiqPay extends Controller {
 		if ($signature == $this->request->post['signature']) {
 			$this->load->model('checkout/order');
 	
-			if( $order_info['order_status_id'] == 0) {
-				$this->model_checkout_order->confirm($order_id, $this->config->get('liqpay_order_status_id'), 'LiqPay');
-				return TRUE;
-			}
+			$this->model_checkout_order->confirm($order_id, $this->config->get('config_order_status_id'));			
 		}
 	}
 }
