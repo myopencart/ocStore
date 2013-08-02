@@ -12,7 +12,9 @@ class ControllerAccountReturn extends Controller {
     	$this->language->load('account/return');
 
     	$this->document->setTitle($this->language->get('heading_title'));
-			
+		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
+		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
+						
       	$this->data['breadcrumbs'] = array();
 
       	$this->data['breadcrumbs'][] = array(
@@ -106,7 +108,7 @@ class ControllerAccountReturn extends Controller {
 	}
 	
 	public function info() {
-		$this->load->language('account/return');
+		$this->language->load('account/return');
 		
 		if (isset($this->request->get['return_id'])) {
 			$return_id = $this->request->get['return_id'];
@@ -522,7 +524,27 @@ class ControllerAccountReturn extends Controller {
 			$this->data['captcha'] = $this->request->post['captcha'];
 		} else {
 			$this->data['captcha'] = '';
-		}		
+		}
+
+		if ($this->config->get('config_return_id')) {
+			$this->load->model('catalog/information');
+			
+			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_return_id'));
+			
+			if ($information_info) {
+				$this->data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/info', 'information_id=' . $this->config->get('config_return_id'), 'SSL'), $information_info['title'], $information_info['title']);
+			} else {
+				$this->data['text_agree'] = '';
+			}
+		} else {
+			$this->data['text_agree'] = '';
+		}
+		
+		if (isset($this->request->post['agree'])) {
+      		$this->data['agree'] = $this->request->post['agree'];
+		} else {
+			$this->data['agree'] = false;
+		}
 
 		$this->data['back'] = $this->url->link('account/account', '', 'SSL');
 				
@@ -589,7 +611,7 @@ class ControllerAccountReturn extends Controller {
  		$this->response->setOutput($this->render()); 
 	}
 		
-  	private function validate() {
+  	protected function validate() {
     	if (!$this->request->post['order_id']) {
       		$this->error['order_id'] = $this->language->get('error_order_id');
     	}
@@ -625,6 +647,16 @@ class ControllerAccountReturn extends Controller {
     	if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
       		$this->error['captcha'] = $this->language->get('error_captcha');
     	}
+		
+		if ($this->config->get('config_return_id')) {
+			$this->load->model('catalog/information');
+			
+			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_return_id'));
+			
+			if ($information_info && !isset($this->request->post['agree'])) {
+      			$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+			}
+		}
 
 		if (!$this->error) {
       		return true;

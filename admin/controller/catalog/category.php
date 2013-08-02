@@ -5,7 +5,7 @@ class ControllerCatalogCategory extends Controller {
 	private $path = array();
  
 	public function index() {
-		$this->load->language('catalog/category');
+		$this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -15,7 +15,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	public function insert() {
-		$this->load->language('catalog/category');
+		$this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -33,7 +33,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	public function update() {
-		$this->load->language('catalog/category');
+		$this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -51,7 +51,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	public function delete() {
-		$this->load->language('catalog/category');
+		$this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

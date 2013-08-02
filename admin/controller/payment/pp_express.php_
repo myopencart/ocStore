@@ -3,7 +3,7 @@ class ControllerPaymentPPExpress extends Controller {
 	private $error = array(); 
 
 	public function index() {
-		$this->load->language('payment/pp_express');
+		$this->language->load('payment/pp_express');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

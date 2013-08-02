@@ -3,7 +3,7 @@ class ControllerPaymentKlarnaPP extends Controller {
     private $error = array();
 
     public function index() {
-		$this->load->language('payment/klarna_pp');
+		$this->language->load('payment/klarna_pp');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
