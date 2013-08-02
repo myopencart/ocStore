@@ -1,5 +1,5 @@
 html {
-	overflow: -moz-scrollbars-vertical;
+	overflow-y: scroll;
 	margin: 0;
 	padding: 0;
 }
@@ -15,7 +15,7 @@ body, td, th, input, textarea, select, a {
 }
 h1, .welcome {
 	color: #636E75;
-	font-family: Verdana;
+	font: Verdana;
 	margin-top: 0px;
 	margin-bottom: 20px;
 	font-size: 32px;
@@ -285,7 +285,7 @@ label {
 	border-radius: 3px 3px 3px 3px;
 	-webkit-box-shadow: 0px 2px 0px #F0F0F0;
 	-moz-box-shadow: 0px 2px 0px #F0F0F0;
-	box-shadow: 0px 2px 0px #F0F0F0;	
+	box-shadow: 0px 2px 0px #F0F0F0;
 }
 #header #welcome {
 	position: absolute;
@@ -338,13 +338,10 @@ label {
 #menu > ul > li {
 	position: relative;
 	float: left;
-	z-index: 20;	
+	z-index: 20;
 	padding: 6px 5px 5px 0px;
 }
 #menu > ul > li:hover {
-}
-#menu > ul > li > a.active {
-	background: #000;
 }
 #menu > ul > li > a {
 	font-size: 13px;
@@ -496,7 +493,6 @@ table.list thead td a, .list thead td {
 	font-weight: bold;
 }
 table.list tbody td {
-	vertical-align: top;
 	padding: 0px 5px;
 }
 table.list .left {
@@ -517,7 +513,6 @@ table.radio {
 }
 table.radio td {
 	padding: 5px;
-	vertical-align: top;
 }
 table.radio td label {
 	display: block;
@@ -570,7 +565,7 @@ a.button, input.button {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	background: url('../image/button.png') top left repeat-x;
+	background: url('../image/button.png') repeat-x;
 	-webkit-border-radius: 7px 7px 7px 7px;
 	-moz-border-radius: 7px 7px 7px 7px;
 	-khtml-border-radius: 7px 7px 7px 7px;
@@ -591,7 +586,7 @@ input.button {
 	padding: 0px 12px 0px 12px;
 }
 a.button:hover, input.button:hover {
-	background: url('../image/button-active.png') repeat-x;
+	background-position: 0px -24px;
 }
 .buttons {
 	background: #FFFFFF;
@@ -614,14 +609,14 @@ a.button:hover, input.button:hover {
 	margin-right: auto;
 }
 .htabs {
-	height: 30px;		
+	height: 30px;
 	line-height: 16px;
-	border-bottom: 1px solid #DDDDDD;	
+	border-bottom: 1px solid #DDDDDD;
 }
 .htabs a {
 	border-top: 1px solid #DDDDDD;
 	border-left: 1px solid #DDDDDD;
-	border-right: 1px solid #DDDDDD; 
+	border-right: 1px solid #DDDDDD;
 	background: #FFFFFF url('../image/tab.png') repeat-x;
 	padding: 7px 15px 6px 15px;
 	float: left;
@@ -686,7 +681,7 @@ a.button:hover, input.button:hover {
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 20px;
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
 }
 #column-left + #column-right + #content .box-product > div {
 	width: 119px;
@@ -724,42 +719,58 @@ a.button:hover, input.button:hover {
 	margin-bottom: 4px;
 }
 /* box category */
-.box-category {
-	margin-top: -5px;
-}
-.box-category ul {
+ul.box-category, ul.box-category ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-.box-category > ul > li {
+ul.box-category > li:first-child {
+	padding: 0px 8px 8px 0px;
+}
+ul.box-category > li {
 	padding: 8px 8px 8px 0px;
 }
-.box-category > ul > li + li {
+ul.box-category > li + li {
 	border-top: 1px solid #EEEEEE;
 }
-.box-category > ul > li > a {
+ul.box-category > li > a {
 	text-decoration: none;
 	color: #333;
 }
-.box-category > ul > li ul {
+ul.box-category > li ul {
 	display: none;
 }
-.box-category > ul > li a.active {
+ul.box-category > li a.active {
 	font-weight: bold;
 }
-.box-category > ul > li a.active + ul {
+ul.box-category > li a.active + ul {
 	display: block;
 }
-.box-category > ul > li ul > li {
+ul.box-category > li ul > li {
 	padding: 5px 5px 0px 10px;
 }
-.box-category > ul > li ul > li > a {
+ul.box-category > li ul > li > a {
 	text-decoration: none;
 	display: block;
 }
-.box-category > ul > li ul > li > a.active {
+ul.box-category > li ul > li > a.active {
 	font-weight: bold;
+}
+/* box filter */
+ul.box-filter, ul.box-filter ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul.box-filter span {
+	font-weight: bold;
+	border-bottom: 1px solid #EEEEEE;	
+	display: block;
+	padding-bottom: 5px;
+	margin-bottom: 8px;
+}
+ul.box-filter > li ul {
+	padding-bottom: 10px;
 }
 /* content */
 #content .content {
@@ -1105,22 +1116,18 @@ a.button:hover, input.button:hover {
 	padding: 0px 5px 10px 5px;
 	margin-bottom: 20px;
 	color: #4D4D4D;
-	overflow: auto;
-}
-.product-info .cart div {
-	float: left;
-	vertical-align: middle;
 }
 .product-info .cart div > span {
-	padding-top: 7px;
-	display: block;
 	color: #999;
+}
+.product-info .cart .links {
+	display: inline-block;
+	vertical-align: middle;
 }
 .product-info .cart .minimum {
 	padding-top: 5px;
 	font-size: 11px;
 	color: #999;
-	clear: both;
 }
 .product-info .review {
 	color: #4D4D4D;
