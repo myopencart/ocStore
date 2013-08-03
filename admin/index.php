@@ -1,11 +1,13 @@
 <?php
 // Version
-define('VERSION', '1.5.4.1.2');
+define('VERSION', '1.5.5.1');
 
 // Configuration
-require_once('config.php');
+if (file_exists('config.php')) {
+	require_once('config.php');
+}  
 
-// Install 
+// Install
 if (!defined('DIR_APPLICATION')) {
 	header('Location: ../install/index.php');
 	exit;
@@ -48,7 +50,7 @@ foreach ($query->rows as $setting) {
 }
 
 // Url
-$url = new Url(HTTP_SERVER, $config->get('config_use_ssl') ? HTTPS_SERVER : HTTP_SERVER);	
+$url = new Url(HTTP_SERVER, $config->get('config_secure') ? HTTPS_SERVER : HTTP_SERVER);	
 $registry->set('url', $url);
 		
 // Log 
@@ -113,7 +115,7 @@ $languages = array();
 // ocStore features
 $registry->set('ocstore', new ocStore($registry));
 
-$query = $db->query("SELECT * FROM " . DB_PREFIX . "language"); 
+$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language`"); 
 
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;
@@ -124,7 +126,7 @@ $config->set('config_language_id', $languages[$config->get('config_admin_languag
 // Language	
 $language = new Language($languages[$config->get('config_admin_language')]['directory']);
 $language->load($languages[$config->get('config_admin_language')]['filename']);	
-$registry->set('language', $language); 		
+$registry->set('language', $language);
 
 // Document
 $registry->set('document', new Document()); 		
