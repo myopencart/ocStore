@@ -34,7 +34,9 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_currency'] = $this->language->get('text_currency');			
 		$this->data['text_customer'] = $this->language->get('text_customer');
 		$this->data['text_customer_group'] = $this->language->get('text_customer_group');
-		$this->data['text_customer_blacklist'] = $this->language->get('text_customer_blacklist');
+		$this->data['text_customer_field'] = $this->language->get('text_customer_field');
+		$this->data['text_customer_ban_ip'] = $this->language->get('text_customer_ban_ip');
+		$this->data['text_custom_field'] = $this->language->get('text_custom_field');
 		$this->data['text_sale'] = $this->language->get('text_sale');
 		$this->data['text_design'] = $this->language->get('text_design');
 		$this->data['text_documentation'] = $this->language->get('text_documentation');
@@ -42,6 +44,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_error_log'] = $this->language->get('text_error_log');
 		$this->data['text_extension'] = $this->language->get('text_extension');
 		$this->data['text_feed'] = $this->language->get('text_feed');
+		$this->data['text_filter'] = $this->language->get('text_filter');
 		$this->data['text_front'] = $this->language->get('text_front');
 		$this->data['text_geo_zone'] = $this->language->get('text_geo_zone');
 		$this->data['text_dashboard'] = $this->language->get('text_dashboard');
@@ -52,6 +55,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_localisation'] = $this->language->get('text_localisation');
 		$this->data['text_logout'] = $this->language->get('text_logout');
 		$this->data['text_contact'] = $this->language->get('text_contact');
+		$this->data['text_manager'] = $this->language->get('text_manager');
 		$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
 		$this->data['text_module'] = $this->language->get('text_module');
 		$this->data['text_option'] = $this->language->get('text_option');
@@ -74,7 +78,6 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_report_customer_credit'] = $this->language->get('text_report_customer_credit');
 		$this->data['text_report_affiliate_commission'] = $this->language->get('text_report_affiliate_commission');
 		$this->data['text_report_sale_return'] = $this->language->get('text_report_sale_return');
-		$this->data['text_report_product_purchased'] = $this->language->get('text_report_product_purchased');
 		$this->data['text_report_product_viewed'] = $this->language->get('text_report_product_viewed');
 		$this->data['text_report_customer_order'] = $this->language->get('text_report_customer_order');
 		$this->data['text_review'] = $this->language->get('text_review');
@@ -118,17 +121,21 @@ class ControllerCommonHeader extends Controller {
 			$this->data['coupon'] = $this->url->link('sale/coupon', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['currency'] = $this->url->link('localisation/currency', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['customer'] = $this->url->link('sale/customer', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['customer_fields'] = $this->url->link('sale/customer_field', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['customer_group'] = $this->url->link('sale/customer_group', 'token=' . $this->session->data['token'], 'SSL');
-			$this->data['customer_blacklist'] = $this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['customer_ban_ip'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['custom_field'] = $this->url->link('design/custom_field', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['download'] = $this->url->link('catalog/download', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['error_log'] = $this->url->link('tool/error_log', 'token=' . $this->session->data['token'], 'SSL');
-			$this->data['feed'] = $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL');			
+			$this->data['feed'] = $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL');	
+			$this->data['filter'] = $this->url->link('catalog/filter', 'token=' . $this->session->data['token'], 'SSL');			
 			$this->data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['information'] = $this->url->link('catalog/information', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['language'] = $this->url->link('localisation/language', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['layout'] = $this->url->link('design/layout', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['logout'] = $this->url->link('common/logout', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['contact'] = $this->url->link('sale/contact', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['manager'] = $this->url->link('extension/manager', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['manufacturer'] = $this->url->link('catalog/manufacturer', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['module'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['option'] = $this->url->link('catalog/option', 'token=' . $this->session->data['token'], 'SSL');

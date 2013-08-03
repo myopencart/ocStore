@@ -24,7 +24,7 @@ class ControllerCommonFileManager extends Controller {
 		$this->data['button_copy'] = $this->language->get('button_copy');
 		$this->data['button_rename'] = $this->language->get('button_rename');
 		$this->data['button_upload'] = $this->language->get('button_upload');
-		$this->data['button_refresh'] = $this->language->get('button_refresh'); 
+		$this->data['button_refresh'] = $this->language->get('button_refresh');
 		$this->data['button_submit'] = $this->language->get('button_submit'); 
 		
 		$this->data['error_select'] = $this->language->get('error_select');
@@ -32,8 +32,8 @@ class ControllerCommonFileManager extends Controller {
 		
 		$this->data['token'] = $this->session->data['token'];
 		
-		$this->data['directory'] = HTTP_IMAGE . 'data/';
-		
+		$this->data['directory'] = HTTP_CATALOG . 'image/data/';
+				
 		$this->load->model('tool/image');
 
 		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
@@ -93,8 +93,6 @@ class ControllerCommonFileManager extends Controller {
 	public function files() {
 		$json = array();
 		
-		$this->load->model('tool/image');
-		
 		if (!empty($this->request->post['directory'])) {
 			$directory = DIR_IMAGE . 'data/' . str_replace('../', '', $this->request->post['directory']);
 		} else {
@@ -111,7 +109,6 @@ class ControllerCommonFileManager extends Controller {
 		$files = glob(rtrim($directory, '/') . '/*');
 		
 		if ($files) {
-			ob_start();
 			foreach ($files as $file) {
 				if (is_file($file)) {
 					$ext = strrchr($file, '.');
@@ -144,12 +141,10 @@ class ControllerCommonFileManager extends Controller {
 					$json[] = array(
 						'filename' => basename($file),
 						'file'     => utf8_substr($file, utf8_strlen(DIR_IMAGE . 'data/')),
-						'thumb'    => $this->model_tool_image->resize(utf8_substr($file, utf8_strlen(DIR_IMAGE)), 100, 100),
 						'size'     => round(utf8_substr($size, 0, utf8_strpos($size, '.') + 4), 2) . $suffix[$i]
 					);
 				}
 			}
-			ob_end_clean();
 		}
 		
 		$this->response->setOutput(json_encode($json));	
@@ -218,39 +213,37 @@ class ControllerCommonFileManager extends Controller {
 			if (is_file($path)) {
 				unlink($path);
 			} elseif (is_dir($path)) {
-				$this->recursiveDelete($path);
+				$files = array();
+				
+				$path = array($path . '*');
+				
+				while(count($path) != 0) {
+					$next = array_shift($path);
+			
+					foreach(glob($next) as $file) {
+						if (is_dir($file)) {
+							$path[] = $file . '/*';
+						}
+						
+						$files[] = $file;
+					}
+				}
+				
+				rsort($files);
+				
+				foreach ($files as $file) {
+					if (is_file($file)) {
+						unlink($file);
+					} elseif(is_dir($file)) {
+						rmdir($file);	
+					} 
+				}				
 			}
 			
 			$json['success'] = $this->language->get('text_delete');
 		}				
 		
 		$this->response->setOutput(json_encode($json));
-	}
-
-	protected function recursiveDelete($directory) {
-		if (is_dir($directory)) {
-			$handle = opendir($directory);
-		}
-		
-		if (!$handle) {
-			return false;
-		}
-		
-		while (false !== ($file = readdir($handle))) {
-			if ($file != '.' && $file != '..') {
-				if (!is_dir($directory . '/' . $file)) {
-					unlink($directory . '/' . $file);
-				} else {
-					$this->recursiveDelete($directory . '/' . $file);
-				}
-			}
-		}
-		
-		closedir($handle);
-		
-		rmdir($directory);
-		
-		return true;
 	}
 
 	public function move() {

@@ -7,6 +7,10 @@ class ControllerCommonReset extends Controller {
 			$this->redirect($this->url->link('common/home', '', 'SSL'));
 		}
 				
+		if (!$this->config->get('config_password')) {
+			$this->redirect($this->url->link('common/login', '', 'SSL'));
+		}
+						
 		if (isset($this->request->get['code'])) {
 			$code = $this->request->get['code'];
 		} else {
@@ -88,11 +92,13 @@ class ControllerCommonReset extends Controller {
 									
 			$this->response->setOutput($this->render());						
 		} else {
+			$this->model_setting_setting->editSettingValue('config', 'config_password', '0');
+			
 			return $this->forward('common/login');
 		}
 	}
 
-	private function validate() {
+	protected function validate() {
     	if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
       		$this->error['password'] = $this->language->get('error_password');
     	}
