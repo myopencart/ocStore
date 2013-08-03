@@ -1,16 +1,16 @@
 <?php
-class ControllerModuleCarousel extends Controller {
+class ControllerModulefilter extends Controller {
 	private $error = array(); 
 	
 	public function index() {   
-		$this->language->load('module/carousel');
+		$this->language->load('module/filter');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('carousel', $this->request->post);		
+			$this->model_setting_setting->editSetting('filter', $this->request->post);		
 					
 			$this->session->data['success'] = $this->language->get('text_success');
 						
@@ -26,10 +26,6 @@ class ControllerModuleCarousel extends Controller {
 		$this->data['text_column_left'] = $this->language->get('text_column_left');
 		$this->data['text_column_right'] = $this->language->get('text_column_right');
 		
-		$this->data['entry_banner'] = $this->language->get('entry_banner');
-		$this->data['entry_limit'] = $this->language->get('entry_limit');
-		$this->data['entry_scroll'] = $this->language->get('entry_scroll');
-		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');
 		$this->data['entry_position'] = $this->language->get('entry_position');
 		$this->data['entry_status'] = $this->language->get('entry_status');
@@ -45,13 +41,7 @@ class ControllerModuleCarousel extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}
-		
-		if (isset($this->error['image'])) {
-			$this->data['error_image'] = $this->error['image'];
-		} else {
-			$this->data['error_image'] = array();
-		}
-		
+
   		$this->data['breadcrumbs'] = array();
 
    		$this->data['breadcrumbs'][] = array(
@@ -68,31 +58,27 @@ class ControllerModuleCarousel extends Controller {
 		
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('module/carousel', 'token=' . $this->session->data['token'], 'SSL'),
+			'href'      => $this->url->link('module/filter', 'token=' . $this->session->data['token'], 'SSL'),
       		'separator' => ' :: '
    		);
 		
-		$this->data['action'] = $this->url->link('module/carousel', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['action'] = $this->url->link('module/filter', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
-
+		
 		$this->data['modules'] = array();
 		
-		if (isset($this->request->post['carousel_module'])) {
-			$this->data['modules'] = $this->request->post['carousel_module'];
-		} elseif ($this->config->get('carousel_module')) { 
-			$this->data['modules'] = $this->config->get('carousel_module');
-		}
-						
+		if (isset($this->request->post['filter_module'])) {
+			$this->data['modules'] = $this->request->post['filter_module'];
+		} elseif ($this->config->get('filter_module')) { 
+			$this->data['modules'] = $this->config->get('filter_module');
+		}	
+				
 		$this->load->model('design/layout');
 		
 		$this->data['layouts'] = $this->model_design_layout->getLayouts();
-		
-		$this->load->model('design/banner');
-		
-		$this->data['banners'] = $this->model_design_banner->getBanners();
-						
-		$this->template = 'module/carousel.tpl';
+
+		$this->template = 'module/filter.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -102,18 +88,10 @@ class ControllerModuleCarousel extends Controller {
 	}
 	
 	protected function validate() {
-		if (!$this->user->hasPermission('modify', 'module/carousel')) {
+		if (!$this->user->hasPermission('modify', 'module/filter')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 		
-		if (isset($this->request->post['carousel_module'])) {
-			foreach ($this->request->post['carousel_module'] as $key => $value) {				
-				if (!$value['width'] || !$value['height']) {
-					$this->error['image'][$key] = $this->language->get('error_image');
-				}
-			}
-		}	
-				
 		if (!$this->error) {
 			return true;
 		} else {

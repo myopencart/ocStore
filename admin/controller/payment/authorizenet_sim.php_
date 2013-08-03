@@ -3,7 +3,7 @@ class ControllerPaymentAuthorizeNet extends Controller {
 	private $error = array(); 
 
 	public function index() {
-		$this->language->load('payment/authorizenet');
+		$this->load->language('payment/authorizenet');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -142,7 +142,7 @@ class ControllerPaymentAuthorizeNet extends Controller {
  		$this->response->setOutput($this->render());
 	}
 
-	private function validate() {
+	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'payment/authorizenet')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
