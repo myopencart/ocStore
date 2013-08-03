@@ -1412,25 +1412,5 @@ class ControllerCatalogProduct extends Controller {
 
 		$this->response->setOutput(json_encode($json));
 	}
-	private function getAllCategories($categories, $parent_id = 0, $parent_name = '') {
-		$output = array();
-
-		if (array_key_exists($parent_id, $categories)) {
-			if ($parent_name != '') {
-				$parent_name .= $this->language->get('text_separator');
-			}
-
-			foreach ($categories[$parent_id] as $category) {
-				$output[$category['category_id']] = array(
-					'category_id' => $category['category_id'],
-					'name'        => $parent_name . $category['name']
-				);
-
-				$output += $this->getAllCategories($categories, $category['category_id'], $parent_name . $category['name']);
-			}
-		}
-
-		return $output;
-	}
 }
 ?>
