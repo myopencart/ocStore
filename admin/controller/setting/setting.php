@@ -1019,7 +1019,12 @@ class ControllerSettingSetting extends Controller {
 		$this->data['seo_types'][] = array('type' => 'seo_url', 'name' => $this->language->get('text_seo_url'));
 		$this->data['seo_types'][] = array('type' => 'seo_pro', 'name' => $this->language->get('text_seo_pro'));
 
-
+		if (isset($this->request->post['config_seo_url_include_path'])) {
+			$this->data['config_seo_url_include_path'] = $this->request->post['config_seo_url_include_path'];
+		} else {
+			$this->data['config_seo_url_include_path'] = $this->config->get('config_seo_url_include_path');
+		}
+		
 		if (isset($this->request->post['config_file_extension_allowed'])) {
 			$this->data['config_file_extension_allowed'] = $this->request->post['config_file_extension_allowed'];
 		} else {

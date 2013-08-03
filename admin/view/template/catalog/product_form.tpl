@@ -11,7 +11,7 @@
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
+      <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
       <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-attribute"><?php echo $tab_attribute; ?></a><a href="#tab-option"><?php echo $tab_option; ?></a><a href="#tab-discount"><?php echo $tab_discount; ?></a><a href="#tab-special"><?php echo $tab_special; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-reward"><?php echo $tab_reward; ?></a><a href="#tab-design"><?php echo $tab_design; ?></a></div>
@@ -33,6 +33,8 @@
                   <?php } ?></td>
               </tr>
               <tr>
+
+
                 <td><?php echo $entry_seo_h1; ?></td>
                 <td><input type="text" name="product_description[<?php echo $language['language_id']; ?>][seo_h1]" maxlength="255" size="100" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['seo_h1'] : ''; ?>" /></td>
               </tr>
@@ -230,6 +232,8 @@
           <table class="form">
             <tr>
               <td><?php echo $entry_manufacturer; ?></td>
+
+
               <td><select name="manufacturer_id">
                   <option value="0" selected="selected"><?php echo $text_none; ?></option>
                   <?php foreach ($manufacturers as $manufacturer) { ?>
@@ -242,26 +246,35 @@
                 </select></td>
             </tr>
             <tr>
+
+
+
+
               <td><?php echo $entry_main_category; ?></td>
               <td><select name="main_category_id">
                 <option value="0" selected="selected"><?php echo $text_none; ?></option>
-                <?php foreach ($categories as $category) { ?>
-                <?php if ($category['category_id'] == $main_category_id) { ?>
-                <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
+                <?php foreach ($product_categories as $product_categories) { ?>
+                <?php if ($product_categories['category_id'] == $main_category_id) { ?>
+                <option value="<?php echo $product_categories['category_id']; ?>" selected="selected"><?php echo $product_categories['name']; ?></option>
                 <?php } else { ?>
-                <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
+                <option value="<?php echo $product_categories['category_id']; ?>"><?php echo $product_categories['name']; ?></option>
                 <?php } ?>
                 <?php } ?>
               </select></td>
             </tr>
-            <tr>
+
+
+
+
+			 <tr>
               <td><?php echo $entry_category; ?></td>
               <td><div class="scrollbox">
                   <?php $class = 'odd'; ?>
                   <?php foreach ($categories as $category) { ?>
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
+
                   <div class="<?php echo $class; ?>">
-                    <?php if (in_array($category['category_id'], $product_category)) { ?>
+                    <?php if (in_array($category['category_id'], $product_categories)) { ?>
                     <input type="checkbox" name="product_category[]" value="<?php echo $category['category_id']; ?>" checked="checked" />
                     <?php echo $category['name']; ?>
                     <?php } else { ?>
@@ -273,6 +286,22 @@
                 </div>
                 <a onclick="$(this).parent().find(':checkbox').attr('checked', true);"><?php echo $text_select_all; ?></a> / <a onclick="$(this).parent().find(':checkbox').attr('checked', false);"><?php echo $text_unselect_all; ?></a></td>
             </tr>
+            <tr>
+              <td><?php echo $entry_filter; ?></td>
+              <td><input type="text" name="filter" value="" /></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><div id="product-filter" class="scrollbox">
+                  <?php $class = 'odd'; ?>
+                  <?php foreach ($product_filters as $product_filter) { ?>
+                  <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
+                  <div id="product-filter<?php echo $product_filter['filter_id']; ?>" class="<?php echo $class; ?>"><?php echo $product_filter['name']; ?><img src="view/image/delete.png" alt="" />
+                    <input type="hidden" name="product_filter[]" value="<?php echo $product_filter['filter_id']; ?>" />
+                  </div>
+                  <?php } ?>
+                </div></td>
+            </tr>                       
             <tr>
               <td><?php echo $entry_store; ?></td>
               <td><div class="scrollbox">
@@ -302,18 +331,16 @@
             </tr>
             <tr>
               <td><?php echo $entry_download; ?></td>
-              <td><div class="scrollbox">
+              <td><input type="text" name="download" value="" /></td>
+            </tr>			
+            <tr>
+              <td>&nbsp;</td>
+              <td><div id="product-download" class="scrollbox">
                   <?php $class = 'odd'; ?>
-                  <?php foreach ($downloads as $download) { ?>
+                  <?php foreach ($product_downloads as $product_download) { ?>
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-                  <div class="<?php echo $class; ?>">
-                    <?php if (in_array($download['download_id'], $product_download)) { ?>
-                    <input type="checkbox" name="product_download[]" value="<?php echo $download['download_id']; ?>" checked="checked" />
-                    <?php echo $download['name']; ?>
-                    <?php } else { ?>
-                    <input type="checkbox" name="product_download[]" value="<?php echo $download['download_id']; ?>" />
-                    <?php echo $download['name']; ?>
-                    <?php } ?>
+                  <div id="product-download<?php echo $product_download['download_id']; ?>" class="<?php echo $class; ?>"> <?php echo $product_download['name']; ?><img src="view/image/delete.png" alt="" />
+                    <input type="checkbox" name="product_download[]" value="<?php echo $product_download['download_id']; ?>" />
                   </div>
                   <?php } ?>
                 </div></td>
@@ -328,7 +355,7 @@
                   <?php $class = 'odd'; ?>
                   <?php foreach ($product_related as $product_related) { ?>
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-                  <div id="product-related<?php echo $product_related['product_id']; ?>" class="<?php echo $class; ?>"> <?php echo $product_related['name']; ?><img src="view/image/delete.png" />
+                  <div id="product-related<?php echo $product_related['product_id']; ?>" class="<?php echo $class; ?>"> <?php echo $product_related['name']; ?><img src="view/image/delete.png" alt="" />
                     <input type="hidden" name="product_related[]" value="<?php echo $product_related['product_id']; ?>" />
                   </div>
                   <?php } ?>
@@ -372,7 +399,7 @@
           <div id="vtab-option" class="vtabs">
             <?php $option_row = 0; ?>
             <?php foreach ($product_options as $product_option) { ?>
-            <a href="#tab-option-<?php echo $option_row; ?>" id="option-<?php echo $option_row; ?>"><?php echo $product_option['name']; ?>&nbsp;<img src="view/image/delete.png" alt="" onclick="$('#vtabs a:first').trigger('click'); $('#option-<?php echo $option_row; ?>').remove(); $('#tab-option-<?php echo $option_row; ?>').remove(); return false;" /></a>
+            <a href="#tab-option-<?php echo $option_row; ?>" id="option-<?php echo $option_row; ?>"><?php echo $product_option['name']; ?>&nbsp;<img src="view/image/delete.png" alt="" onclick="$('#option-<?php echo $option_row; ?>').remove(); $('#tab-option-<?php echo $option_row; ?>').remove(); $('#vtabs a:first').trigger('click'); return false;" /></a>
             <?php $option_row++; ?>
             <?php } ?>
             <span id="option-add">
@@ -738,8 +765,110 @@ CKEDITOR.replace('description<?php echo $language['language_id']; ?>', {
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--
+$.widget('custom.catcomplete', $.ui.autocomplete, {
+	_renderMenu: function(ul, items) {
+		var self = this, currentCategory = '';
+		
+		$.each(items, function(index, item) {
+			if (item.category != currentCategory) {
+				ul.append('<li class="ui-autocomplete-category">' + item.category + '</li>');
+				
+				currentCategory = item.category;
+			}
+			
+			self._renderItem(ul, item);
+		});
+	}
+});
+
+$('#product-category div img').live('click', function() {
+	$(this).parent().remove();
+	
+	$('#product-category div:odd').attr('class', 'odd');
+	$('#product-category div:even').attr('class', 'even');	
+});
+
+// Filter
+$('input[name=\'filter\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.filter_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('#product-filter' + ui.item.value).remove();
+		
+		$('#product-filter').append('<div id="product-filter' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_filter[]" value="' + ui.item.value + '" /></div>');
+
+		$('#product-filter div:odd').attr('class', 'odd');
+		$('#product-filter div:even').attr('class', 'even');
+				
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
+$('#product-filter div img').live('click', function() {
+	$(this).parent().remove();
+	
+	$('#product-filter div:odd').attr('class', 'odd');
+	$('#product-filter div:even').attr('class', 'even');	
+});
+
+// Downloads
+$('input[name=\'download\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/download/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.download_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('#product-download' + ui.item.value).remove();
+		
+		$('#product-download').append('<div id="product-download' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_download[]" value="' + ui.item.value + '" /></div>');
+
+		$('#product-download div:odd').attr('class', 'odd');
+		$('#product-download div:even').attr('class', 'even');
+				
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
+$('#product-download div img').live('click', function() {
+	$(this).parent().remove();
+	
+	$('#product-download div:odd').attr('class', 'odd');
+	$('#product-download div:even').attr('class', 'even');	
+});
+
+// Related
 $('input[name=\'related\']').autocomplete({
-	delay: 0,
+	delay: 500,
 	source: function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
@@ -753,12 +882,11 @@ $('input[name=\'related\']').autocomplete({
 				}));
 			}
 		});
-		
 	}, 
 	select: function(event, ui) {
 		$('#product-related' + ui.item.value).remove();
 		
-		$('#product-related').append('<div id="product-related' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" /><input type="hidden" name="product_related[]" value="' + ui.item.value + '" /></div>');
+		$('#product-related').append('<div id="product-related' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_related[]" value="' + ui.item.value + '" /></div>');
 
 		$('#product-related div:odd').attr('class', 'odd');
 		$('#product-related div:even').attr('class', 'even');
@@ -767,7 +895,7 @@ $('input[name=\'related\']').autocomplete({
 	},
 	focus: function(event, ui) {
       return false;
-	}
+   }
 });
 
 $('#product-related div img').live('click', function() {
@@ -800,25 +928,9 @@ function addAttribute() {
 	attribute_row++;
 }
 
-$.widget('custom.catcomplete', $.ui.autocomplete, {
-	_renderMenu: function(ul, items) {
-		var self = this, currentCategory = '';
-		
-		$.each(items, function(index, item) {
-			if (item.category != currentCategory) {
-				ul.append('<li class="ui-autocomplete-category">' + item.category + '</li>');
-				
-				currentCategory = item.category;
-			}
-			
-			self._renderItem(ul, item);
-		});
-	}
-});
-
 function attributeautocomplete(attribute_row) {
 	$('input[name=\'product_attribute[' + attribute_row + '][name]\']').catcomplete({
-		delay: 0,
+		delay: 500,
 		source: function(request, response) {
 			$.ajax({
 				url: 'index.php?route=catalog/attribute/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
@@ -854,7 +966,7 @@ $('#attribute tbody').each(function(index, element) {
 var option_row = <?php echo $option_row; ?>;
 
 $('input[name=\'option\']').catcomplete({
-	delay: 0,
+	delay: 500,
 	source: function(request, response) {
 		$.ajax({
 			url: 'index.php?route=catalog/option/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
@@ -963,7 +1075,7 @@ $('input[name=\'option\']').catcomplete({
 		
 		$('#tab-option').append(html);
 		
-		$('#option-add').before('<a href="#tab-option-' + option_row + '" id="option-' + option_row + '">' + ui.item.label + '&nbsp;<img src="view/image/delete.png" alt="" onclick="$(\'#vtab-option a:first\').trigger(\'click\'); $(\'#option-' + option_row + '\').remove(); $(\'#tab-option-' + option_row + '\').remove(); return false;" /></a>');
+		$('#option-add').before('<a href="#tab-option-' + option_row + '" id="option-' + option_row + '">' + ui.item.label + '&nbsp;<img src="view/image/delete.png" alt="" onclick="$(\'#option-' + option_row + '\').remove(); $(\'#tab-option-' + option_row + '\').remove(); $(\'#vtab-option a:first\').trigger(\'click\'); return false;" /></a>');
 		
 		$('#vtab-option a').tabs();
 		
@@ -983,7 +1095,7 @@ $('input[name=\'option\']').catcomplete({
 	},
 	focus: function(event, ui) {
       return false;
-	}
+   }
 });
 //--></script> 
 <script type="text/javascript"><!--		

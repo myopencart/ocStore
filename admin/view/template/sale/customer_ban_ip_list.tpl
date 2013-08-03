@@ -14,7 +14,7 @@
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/customer.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a onclick="location = '<?php echo $insert; ?>'" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
+      <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
@@ -32,21 +32,21 @@
             </tr>
           </thead>
           <tbody>
-            <?php if ($customer_blacklists) { ?>
-            <?php foreach ($customer_blacklists as $customer_blacklist) { ?>
+            <?php if ($customer_ban_ips) { ?>
+            <?php foreach ($customer_ban_ips as $customer_ban_ip) { ?>
             <tr>
-              <td style="text-align: center;"><?php if ($customer_blacklist['selected']) { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $customer_blacklist['customer_ip_blacklist_id']; ?>" checked="checked" />
+              <td style="text-align: center;"><?php if ($customer_ban_ip['selected']) { ?>
+                <input type="checkbox" name="selected[]" value="<?php echo $customer_ban_ip['customer_ban_ip_id']; ?>" checked="checked" />
                 <?php } else { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $customer_blacklist['customer_ip_blacklist_id']; ?>" />
+                <input type="checkbox" name="selected[]" value="<?php echo $customer_ban_ip['customer_ban_ip_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $customer_blacklist['ip']; ?></td>
-              <td class="right"><?php if ($customer_blacklist['total']) { ?>
-                <a href="<?php echo $customer_blacklist['customer']; ?>"><?php echo $customer_blacklist['total']; ?></a>
+              <td class="left"><?php echo $customer_ban_ip['ip']; ?></td>
+              <td class="right"><?php if ($customer_ban_ip['total']) { ?>
+                <a href="<?php echo $customer_ban_ip['customer']; ?>"><?php echo $customer_ban_ip['total']; ?></a>
                 <?php } else { ?>
-                <?php echo $customer_blacklist['total']; ?>
+                <?php echo $customer_ban_ip['total']; ?>
                 <?php } ?></td>
-              <td class="right"><?php foreach ($customer_blacklist['action'] as $action) { ?>
+              <td class="right"><?php foreach ($customer_ban_ip['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
             </tr>

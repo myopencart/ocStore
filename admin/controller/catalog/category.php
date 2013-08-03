@@ -325,6 +325,10 @@ class ControllerCatalogCategory extends Controller {
 		} else {
 			$this->data['parent_id'] = 0;
 		}
+		
+		// Categories
+		$this->load->model('catalog/category');
+		$this->data['categories'] = $this->model_catalog_category->getCategories(0);
 
 		$this->load->model('catalog/filter');
 		

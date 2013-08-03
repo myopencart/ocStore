@@ -11,7 +11,7 @@
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/shipping.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a onclick="location = '<?php echo $cancel; ?>';" class="button"><?php echo $button_cancel; ?></a></div>
+      <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
@@ -661,7 +661,7 @@
             <td><span class="required">*</span> <?php echo $entry_dimension; ?></td>
             <td><input type="text" name="ups_length" value="<?php echo $ups_length; ?>" size="4" />
               <input type="text" name="ups_width" value="<?php echo $ups_width; ?>" size="4" />
-              <input type="text" name="ups_height" value="<?php echo $ups_height; ?>" size="4" /></td>
+              <input type="text" name="ups_height" value="<?php echo $ups_height; ?>" size="4" />
 			  <?php if ($error_dimension) { ?>
               <span class="error"><?php echo $error_dimension; ?></span>
               <?php } ?></td>

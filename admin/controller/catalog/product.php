@@ -525,6 +525,8 @@ class ControllerCatalogProduct extends Controller {
     	$this->data['text_none'] = $this->language->get('text_none');
     	$this->data['text_yes'] = $this->language->get('text_yes');
     	$this->data['text_no'] = $this->language->get('text_no');
+		$this->data['text_select_all'] = $this->language->get('text_select_all');
+		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
 		$this->data['text_plus'] = $this->language->get('text_plus');
 		$this->data['text_minus'] = $this->language->get('text_minus');
 		$this->data['text_default'] = $this->language->get('text_default');
@@ -823,6 +825,9 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		}
+		$this->load->model('catalog/manufacturer');
+		
+    	$this->data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 		
     	if (isset($this->request->post['shipping'])) {
       		$this->data['shipping'] = $this->request->post['shipping'];
@@ -1002,7 +1007,7 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$categories = array();
 		}
-	
+		$this->data['categories'] = $this->model_catalog_category->getCategories(0);
 		$this->data['product_categories'] = array();
 		
 		foreach ($categories as $category_id) {
@@ -1406,6 +1411,26 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$this->response->setOutput(json_encode($json));
+	}
+	private function getAllCategories($categories, $parent_id = 0, $parent_name = '') {
+		$output = array();
+
+		if (array_key_exists($parent_id, $categories)) {
+			if ($parent_name != '') {
+				$parent_name .= $this->language->get('text_separator');
+			}
+
+			foreach ($categories[$parent_id] as $category) {
+				$output[$category['category_id']] = array(
+					'category_id' => $category['category_id'],
+					'name'        => $parent_name . $category['name']
+				);
+
+				$output += $this->getAllCategories($categories, $category['category_id'], $parent_name . $category['name']);
+			}
+		}
+
+		return $output;
 	}
 }
 ?>

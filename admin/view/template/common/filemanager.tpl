@@ -5,7 +5,6 @@
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
 <script type="text/javascript" src="view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="view/javascript/jquery/lazyload/jquery.lazyload.min.js"></script>
 <script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
 <script type="text/javascript" src="view/javascript/jquery/ui/external/jquery.bgiframe-2.1.2.js"></script>
@@ -102,6 +101,88 @@ img {
 </div>
 <script type="text/javascript"><!--
 $(document).ready(function() { 
+	(function(){
+		var special = jQuery.event.special,
+			uid1 = 'D' + (+new Date()),
+			uid2 = 'D' + (+new Date() + 1);
+	 
+		special.scrollstart = {
+			setup: function() {
+				var timer,
+					handler =  function(evt) {
+						var _self = this,
+							_args = arguments;
+	 
+						if (timer) {
+							clearTimeout(timer);
+						} else {
+							evt.type = 'scrollstart';
+							jQuery.event.handle.apply(_self, _args);
+						}
+	 
+						timer = setTimeout( function(){
+							timer = null;
+						}, special.scrollstop.latency);
+	 
+					};
+	 
+				jQuery(this).bind('scroll', handler).data(uid1, handler);
+			},
+			teardown: function(){
+				jQuery(this).unbind( 'scroll', jQuery(this).data(uid1) );
+			}
+		};
+	 
+		special.scrollstop = {
+			latency: 300,
+			setup: function() {
+	 
+				var timer,
+						handler = function(evt) {
+	 
+						var _self = this,
+							_args = arguments;
+	 
+						if (timer) {
+							clearTimeout(timer);
+						}
+	 
+						timer = setTimeout( function(){
+	 
+							timer = null;
+							evt.type = 'scrollstop';
+							jQuery.event.handle.apply(_self, _args);
+	 
+						}, special.scrollstop.latency);
+	 
+					};
+	 
+				jQuery(this).bind('scroll', handler).data(uid2, handler);
+	 
+			},
+			teardown: function() {
+				jQuery(this).unbind('scroll', jQuery(this).data(uid2));
+			}
+		};
+	})();
+	
+	$('#column-right').bind('scrollstop', function() {
+		$('#column-right a').each(function(index, element) {
+			var height = $('#column-right').height();
+			var offset = $(element).offset();
+						
+			if ((offset.top > 0) && (offset.top < height) && $(element).find('img').attr('src') == '<?php echo $no_image; ?>') {
+				$.ajax({
+					url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + encodeURIComponent('data/' + $(element).find('input[name=\'image\']').attr('value')),
+					dataType: 'html',
+					success: function(html) {
+						$(element).find('img').replaceWith('<img src="' + html + '" alt="" title="" />');
+					}
+				});
+			}
+		});
+	});
+	
 	$('#column-left').tree({
 		data: { 
 			type: 'json',
@@ -160,17 +241,7 @@ $(document).ready(function() {
 						
 						if (json) {
 							for (i = 0; i < json.length; i++) {
-								name = '';
-								
-								filename = json[i]['filename'];
-								
-								for (j = 0; j < filename.length; j = j + 15) {
-									name += filename.substr(j, 15) + '<br />';
-								}
-								
-								name += json[i]['size'];
-								
-								html += '<a file="' + json[i]['file'] + '"><img src="<?php echo $no_image; ?>" data-original="' + json[i]['thumb'] + '" width="100" height="100" /><br />' + name + '</a>';
+								html += '<a><img src="<?php echo $no_image; ?>" alt="" title="" /><br />' + ((json[i]['filename'].length > 15) ? (json[i]['filename'].substr(0, 15) + '..') : json[i]['filename']) + '<br />' + json[i]['size'] + '<input type="hidden" name="image" value="' + json[i]['file'] + '" /></a>';
 							}
 						}
 						
@@ -178,7 +249,7 @@ $(document).ready(function() {
 						
 						$('#column-right').html(html);
 
-						$('#column-right img').lazyload({ container: $('#column-right') });
+						$('#column-right').trigger('scrollstop');	
 					},
 					error: function(xhr, ajaxOptions, thrownError) {
 						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -187,7 +258,7 @@ $(document).ready(function() {
 			}
 		}
 	});	
-	
+
 	$('#column-right a').live('click', function() {
 		if ($(this).attr('class') == 'selected') {
 			$(this).removeAttr('class');
@@ -200,11 +271,11 @@ $(document).ready(function() {
 	
 	$('#column-right a').live('dblclick', function() {
 		<?php if ($fckeditor) { ?>
-		window.opener.CKEDITOR.tools.callFunction(<?php echo $fckeditor; ?>, '<?php echo $directory; ?>' + $(this).attr('file'));
+		window.opener.CKEDITOR.tools.callFunction(<?php echo $fckeditor; ?>, '<?php echo $directory; ?>' + $(this).find('input[name=\'image\']').attr('value'));
 		
 		self.close();	
 		<?php } else { ?>
-		parent.$('#<?php echo $field; ?>').attr('value', 'data/' + $(this).attr('file'));
+		parent.$('#<?php echo $field; ?>').attr('value', 'data/' + $(this).find('input[name=\'image\']').attr('value'));
 		parent.$('#dialog').dialog('close');
 		
 		parent.$('#dialog').remove();	
@@ -256,7 +327,7 @@ $(document).ready(function() {
 	});
 	
 	$('#delete').bind('click', function() {
-		path = $('#column-right a.selected').attr('file');
+		path = $('#column-right a.selected').find('input[name=\'image\']').attr('value');
 							 
 		if (path) {
 			$.ajax({
@@ -330,7 +401,7 @@ $(document).ready(function() {
 		$('#dialog select[name=\'to\']').load('index.php?route=common/filemanager/folders&token=<?php echo $token; ?>');
 		
 		$('#dialog input[type=\'button\']').bind('click', function() {
-			path = $('#column-right a.selected').attr('file');
+			path = $('#column-right a.selected').find('input[name=\'image\']').attr('value');
 							 
 			if (path) {																
 				$.ajax({
@@ -405,7 +476,7 @@ $(document).ready(function() {
 		$('#dialog select[name=\'to\']').load('index.php?route=common/filemanager/folders&token=<?php echo $token; ?>');
 		
 		$('#dialog input[type=\'button\']').bind('click', function() {
-			path = $('#column-right a.selected').attr('file');
+			path = $('#column-right a.selected').find('input[name=\'image\']').attr('value');
 							 
 			if (path) {																
 				$.ajax({
@@ -478,7 +549,7 @@ $(document).ready(function() {
 		});
 		
 		$('#dialog input[type=\'button\']').bind('click', function() {
-			path = $('#column-right a.selected').attr('file');
+			path = $('#column-right a.selected').find('input[name=\'image\']').attr('value');
 							 
 			if (path) {		
 				$.ajax({
