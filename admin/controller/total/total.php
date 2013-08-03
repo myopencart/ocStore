@@ -9,7 +9,7 @@ class ControllerTotalTotal extends Controller {
 		
 		$this->load->model('setting/setting');
 		
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate())) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('total', $this->request->post);
 		
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -79,7 +79,7 @@ class ControllerTotalTotal extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	private function validate() {
+	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'total/total')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
