@@ -110,7 +110,7 @@ class ControllerCatalogOption extends Controller {
 		$this->getList();
 	}
 
-	private function getList() {
+	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -261,7 +261,7 @@ class ControllerCatalogOption extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	private function getForm() {
+	protected function getForm() {
 		$this->data['heading_title'] = $this->language->get('heading_title');
 		
 		$this->data['text_choose'] = $this->language->get('text_choose');
@@ -282,7 +282,7 @@ class ControllerCatalogOption extends Controller {
 		
 		$this->data['entry_name'] = $this->language->get('entry_name');
 		$this->data['entry_type'] = $this->language->get('entry_type');
-		$this->data['entry_value'] = $this->language->get('entry_value');
+		$this->data['entry_option_value'] = $this->language->get('entry_option_value');
 		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
@@ -290,8 +290,6 @@ class ControllerCatalogOption extends Controller {
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
 		$this->data['button_add_option_value'] = $this->language->get('button_add_option_value');
 		$this->data['button_remove'] = $this->language->get('button_remove');
-
-		$this->data['tab_general'] = $this->language->get('tab_general');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -420,7 +418,7 @@ class ControllerCatalogOption extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	private function validateForm() {
+	protected function validateForm() {
 		if (!$this->user->hasPermission('modify', 'catalog/option')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
@@ -452,7 +450,7 @@ class ControllerCatalogOption extends Controller {
 		}
 	}
 
-	private function validateDelete() {
+	protected function validateDelete() {
 		if (!$this->user->hasPermission('modify', 'catalog/option')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
