@@ -1,26 +1,26 @@
 <?php    
-class ControllerSaleCustomerBlacklist extends Controller { 
+class ControllerSaleCustomerBanIp extends Controller { 
 	private $error = array();
   
   	public function index() {
-		$this->language->load('sale/customer_blacklist');
+		$this->language->load('sale/customer_ban_ip');
 		 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('sale/customer_blacklist');
+		$this->load->model('sale/customer_ban_ip');
 		
     	$this->getList();
   	}
   
   	public function insert() {
-		$this->language->load('sale/customer_blacklist');
+		$this->language->load('sale/customer_ban_ip');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('sale/customer_blacklist');
+		$this->load->model('sale/customer_ban_ip');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-      	  	$this->model_sale_customer_blacklist->addCustomerBlacklist($this->request->post);
+      	  	$this->model_sale_customer_ban_ip->addCustomerBanIp($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 		  
@@ -38,21 +38,21 @@ class ControllerSaleCustomerBlacklist extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
     	
     	$this->getForm();
   	} 
    
   	public function update() {
-		$this->language->load('sale/customer_blacklist');
+		$this->language->load('sale/customer_ban_ip');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('sale/customer_blacklist');
+		$this->load->model('sale/customer_ban_ip');
 		
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_sale_customer_blacklist->editCustomerBlacklist($this->request->get['customer_ip_blacklist_id'], $this->request->post);
+			$this->model_sale_customer_ban_ip->editCustomerBanIp($this->request->get['customer_ban_ip_id'], $this->request->post);
 	  		
 			$this->session->data['success'] = $this->language->get('text_success');
 	  
@@ -70,22 +70,22 @@ class ControllerSaleCustomerBlacklist extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
     
     	$this->getForm();
   	}   
 
   	public function delete() {
-		$this->language->load('sale/customer_blacklist');
+		$this->language->load('sale/customer_ban_ip');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('sale/customer_blacklist');
+		$this->load->model('sale/customer_ban_ip');
 			
     	if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $customer_ip_blacklist_id) {
-				$this->model_sale_customer_blacklist->deleteCustomerBlacklist($customer_ip_blacklist_id);
+			foreach ($this->request->post['selected'] as $customer_ban_ip_id) {
+				$this->model_sale_customer_ban_ip->deleteCustomerBanIp($customer_ban_ip_id);
 			}
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -104,7 +104,7 @@ class ControllerSaleCustomerBlacklist extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'));
     	}
     
     	$this->getList();
@@ -153,14 +153,14 @@ class ControllerSaleCustomerBlacklist extends Controller {
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+			'href'      => $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);
 		
-		$this->data['insert'] = $this->url->link('sale/customer_blacklist/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('sale/customer_blacklist/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['insert'] = $this->url->link('sale/customer_ban_ip/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['delete'] = $this->url->link('sale/customer_ban_ip/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-		$this->data['customer_blacklists'] = array();
+		$this->data['customer_ban_ips'] = array();
 
 		$data = array(
 			'sort'  => $sort,
@@ -169,25 +169,25 @@ class ControllerSaleCustomerBlacklist extends Controller {
 			'limit' => $this->config->get('config_admin_limit')
 		);
 		
-		$customer_blacklist_total = $this->model_sale_customer_blacklist->getTotalCustomerBlacklists($data);
+		$customer_ban_ip_total = $this->model_sale_customer_ban_ip->getTotalCustomerBanIps($data);
 	
-		$results = $this->model_sale_customer_blacklist->getCustomerBlacklists($data);
+		$results = $this->model_sale_customer_ban_ip->getCustomerBanIps($data);
  
     	foreach ($results as $result) {
 			$action = array();
 		
 			$action[] = array(
 				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('sale/customer_blacklist/update', 'token=' . $this->session->data['token'] . '&customer_ip_blacklist_id=' . $result['customer_ip_blacklist_id'] . $url, 'SSL')
+				'href' => $this->url->link('sale/customer_ban_ip/update', 'token=' . $this->session->data['token'] . '&customer_ban_ip_id=' . $result['customer_ban_ip_id'] . $url, 'SSL')
 			);
 			
-			$this->data['customer_blacklists'][] = array(
-				'customer_ip_blacklist_id' => $result['customer_ip_blacklist_id'],
-				'ip'                       => $result['ip'],
-				'total'                    => $result['total'],
-				'customer'                 => $this->url->link('sale/customer', 'token=' . $this->session->data['token'] . '&filter_ip=' . $result['ip'], 'SSL'),
-				'selected'                 => isset($this->request->post['selected']) && in_array($result['customer_ip_blacklist_id'], $this->request->post['selected']),
-				'action'                   => $action
+			$this->data['customer_ban_ips'][] = array(
+				'customer_ban_ip_id' => $result['customer_ban_ip_id'],
+				'ip'                 => $result['ip'],
+				'total'              => $result['total'],
+				'customer'           => $this->url->link('sale/customer', 'token=' . $this->session->data['token'] . '&filter_ip=' . $result['ip'], 'SSL'),
+				'selected'           => isset($this->request->post['selected']) && in_array($result['customer_ban_ip_id'], $this->request->post['selected']),
+				'action'             => $action
 			);
 		}	
 					
@@ -228,7 +228,7 @@ class ControllerSaleCustomerBlacklist extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 		
-		$this->data['sort_ip'] = $this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . '&sort=ip' . $url, 'SSL');
+		$this->data['sort_ip'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . '&sort=ip' . $url, 'SSL');
 		
 		$url = '';
 			
@@ -241,18 +241,18 @@ class ControllerSaleCustomerBlacklist extends Controller {
 		}
 
 		$pagination = new Pagination();
-		$pagination->total = $customer_blacklist_total;
+		$pagination->total = $customer_ban_ip_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_admin_limit');
 		$pagination->text = $this->language->get('text_pagination');
-		$pagination->url = $this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+		$pagination->url = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
 		$this->data['pagination'] = $pagination->render();
 				
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;
 		
-		$this->template = 'sale/customer_blacklist_list.tpl';
+		$this->template = 'sale/customer_ban_ip_list.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -305,31 +305,31 @@ class ControllerSaleCustomerBlacklist extends Controller {
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+			'href'      => $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);
 
-		if (!isset($this->request->get['customer_ip_blacklist_id'])) {
-			$this->data['action'] = $this->url->link('sale/customer_blacklist/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		if (!isset($this->request->get['customer_ban_ip_id'])) {
+			$this->data['action'] = $this->url->link('sale/customer_ban_ip/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('sale/customer_blacklist/update', 'token=' . $this->session->data['token'] . '&customer_ip_blacklist_id=' . $this->request->get['customer_ip_blacklist_id'] . $url, 'SSL');
+			$this->data['action'] = $this->url->link('sale/customer_ban_ip/update', 'token=' . $this->session->data['token'] . '&customer_ban_ip_id=' . $this->request->get['customer_ban_ip_id'] . $url, 'SSL');
 		}
 		  
-    	$this->data['cancel'] = $this->url->link('sale/customer_blacklist', 'token=' . $this->session->data['token'] . $url, 'SSL');
+    	$this->data['cancel'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-    	if (isset($this->request->get['customer_ip_blacklist_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-      		$customer_blacklist_info = $this->model_sale_customer_blacklist->getCustomerBlacklist($this->request->get['customer_ip_blacklist_id']);
+    	if (isset($this->request->get['customer_ban_ip_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+      		$customer_ban_ip_info = $this->model_sale_customer_ban_ip->getCustomerBanIp($this->request->get['customer_ban_ip_id']);
     	}
 			
     	if (isset($this->request->post['ip'])) {
       		$this->data['ip'] = $this->request->post['ip'];
-		} elseif (!empty($customer_blacklist_info)) { 
-			$this->data['ip'] = $customer_blacklist_info['ip'];
+		} elseif (!empty($customer_ban_ip_info)) { 
+			$this->data['ip'] = $customer_ban_ip_info['ip'];
 		} else {
       		$this->data['ip'] = '';
     	}
 		
-		$this->template = 'sale/customer_blacklist_form.tpl';
+		$this->template = 'sale/customer_ban_ip_form.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -339,7 +339,7 @@ class ControllerSaleCustomerBlacklist extends Controller {
 	}
 			 
   	protected function validateForm() {
-    	if (!$this->user->hasPermission('modify', 'sale/customer_blacklist')) {
+    	if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}
 
@@ -355,7 +355,7 @@ class ControllerSaleCustomerBlacklist extends Controller {
   	}    
 
   	protected function validateDelete() {
-    	if (!$this->user->hasPermission('modify', 'sale/customer_blacklist')) {
+    	if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}	
 	  	 
