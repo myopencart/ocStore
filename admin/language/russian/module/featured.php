@@ -12,14 +12,14 @@ $_['text_column_right']   = 'Правая колонка';
 
 // Entry
 $_['entry_product']       = 'Товары:';
-$_['entry_limit']         = 'Граница:';
-$_['entry_image']         = 'Изображение (Ширина x Высота):';
-$_['entry_layout']        = 'Схема:';
+$_['entry_limit']         = 'Лимит:';
+$_['entry_image']         = 'Изображение (Ш x В):';
+$_['entry_layout']        = 'Макет:';
 $_['entry_position']      = 'Расположение:';
 $_['entry_status']        = 'Статус:';
 $_['entry_sort_order']    = 'Порядок сортировки:';
 
-// Error 
+// Error
 $_['error_permission']    = 'У Вас нет прав для управления этим модулем!';
-$_['error_image']         = 'Введите рамеры изображения!';
+$_['error_image']         = 'Необходимо указать размеры изображения!';
 ?>

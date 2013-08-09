@@ -1,21 +1,21 @@
 <?php
 // Heading
-$_['heading_title']       = 'Filter'; 
+$_['heading_title']       = 'Фильтр';
 
 // Text
-$_['text_module']         = 'Modules';
-$_['text_success']        = 'Success: You have modified module filter!';
-$_['text_content_top']    = 'Content Top';
-$_['text_content_bottom'] = 'Content Bottom';
-$_['text_column_left']    = 'Column Left';
-$_['text_column_right']   = 'Column Right';
+$_['text_module']         = 'Модули';
+$_['text_success']        = 'Настройки модуля обновлены!';
+$_['text_content_top']    = 'Верх страницы';
+$_['text_content_bottom'] = 'Низ страницы';
+$_['text_column_left']    = 'Левая колонка';
+$_['text_column_right']   = 'Правая колонка';
 
 // Entry
-$_['entry_layout']        = 'Layout:';
-$_['entry_position']      = 'Position:';
-$_['entry_status']        = 'Status:';
-$_['entry_sort_order']    = 'Sort Order:';
+$_['entry_layout']        = 'Макет:';
+$_['entry_position']      = 'Расположение:';
+$_['entry_status']        = 'Статус:';
+$_['entry_sort_order']    = 'Порядок сортировки:';
 
 // Error
-$_['error_permission']    = 'Warning: You do not have permission to modify module filter!';
+$_['error_permission']    = 'У Вас нет прав для управления этим модулем!';
 ?>

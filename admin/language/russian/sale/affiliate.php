@@ -33,8 +33,8 @@ $_['entry_status']              = 'Статус:';
 $_['entry_password']            = 'Пароль:';
 $_['entry_confirm']             = 'Подтвердите пароль:';
 $_['entry_company']             = 'Компания:';
-$_['entry_address_1']           = 'Адрес 1:';
-$_['entry_address_2']           = 'Адрес 2:';
+$_['entry_address_1']           = 'Адрес:';
+$_['entry_address_2']           = 'Адрес (продолжение):';
 $_['entry_city']                = 'Город:';
 $_['entry_postcode']            = 'Индекс:';
 $_['entry_country']             = 'Город:';
@@ -44,9 +44,9 @@ $_['entry_commission']          = 'Вознаграждение (%):<span class=
 $_['entry_tax']                 = 'ИНН:';
 $_['entry_payment']             = 'Способ оплаты:';
 $_['entry_cheque']              = 'Имя получателся чека:';
-$_['entry_paypal']              = 'Email PayPal аккаунта:';
+$_['entry_paypal']              = 'PayPal E-Mail аккаунта:';
 $_['entry_bank_name']           = 'Название банка:';
-$_['entry_bank_branch_number']  = 'ABA/BSB номер (Номер отделения):';
+$_['entry_bank_branch_number']  = 'ABA/BSB (Номер отделения):';
 $_['entry_bank_swift_code']     = 'SWIFT Код:';
 $_['entry_bank_account_name']   = 'Имя счета:';
 $_['entry_bank_account_number'] = 'Номер счета:';
@@ -55,10 +55,10 @@ $_['entry_description']         = 'Описание:';
 
 // Error
 $_['error_permission']          = 'У Вас нет прав для управления партнерами!';
-$_['error_exists']              = 'Ошибка: E-Mail уже зарегистрирован!';
+$_['error_exists']              = 'E-Mail адрес уже зарегистрирован!';
 $_['error_firstname']           = 'Имя должно быть от 1 до 32 символов!';
 $_['error_lastname']            = 'Фамилия должна быть от 1 до 32 символов!';
-$_['error_email']               = 'E-Mail введен неверно!';
+$_['error_email']               = 'E-Mail адрес введен неверно!';
 $_['error_telephone']           = 'Номер телефона должен быть от 3 до 32 символов!';
 $_['error_password']            = 'Пароль должен быть от 4 до 20 символов!';
 $_['error_confirm']             = 'Пароли не совпадают!';

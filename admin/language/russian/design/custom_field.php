@@ -1,46 +1,46 @@
 <?php
 // Heading
-$_['heading_title']         = 'Custom Fields';
+$_['heading_title']         = 'Поля ввода';
 
 // Text
-$_['text_success']          = 'Success: You have modified custom fields!';
-$_['text_choose']           = 'Choose';
-$_['text_select']           = 'Select';
-$_['text_radio']            = 'Radio';
-$_['text_checkbox']         = 'Checkbox';
-$_['text_input']            = 'Input';
-$_['text_text']             = 'Text';
-$_['text_textarea']         = 'Textarea';
-$_['text_file']             = 'File';
-$_['text_date']             = 'Date';
-$_['text_datetime']         = 'Date &amp; Time';
-$_['text_time']             = 'Time';
-$_['text_customer']         = 'Customer';
-$_['text_address']          = 'Address';
-$_['text_payment_address']  = 'Payment Address';
-$_['text_shipping_address'] = 'Shipping Address';
+$_['text_success']          = 'Поля ввода успешно обновлены!';
+$_['text_choose']           = 'Выбор';
+$_['text_select']           = 'Список';
+$_['text_radio']            = 'Переключатель';
+$_['text_checkbox']         = 'Флажок';
+$_['text_input']            = 'Поле ввода';
+$_['text_text']             = 'Текст';
+$_['text_textarea']         = 'Текстовая область';
+$_['text_file']             = 'Файл';
+$_['text_date']             = 'Дата';
+$_['text_datetime']         = 'Дата и время';
+$_['text_time']             = 'Время';
+$_['text_customer']         = 'Покупатель';
+$_['text_address']          = 'Адрес';
+$_['text_payment_address']  = 'Адрес оплаты';
+$_['text_shipping_address'] = 'Адрес доставки';
 
 // Column
-$_['column_name']           = 'Custom Field Name';
-$_['column_type']           = 'Type';
-$_['column_location']       = 'Location';
-$_['column_sort_order']     = 'Sort Order';
-$_['column_action']         = 'Action';
+$_['column_name']           = 'Название поля ввода';
+$_['column_type']           = 'Тип';
+$_['column_location']       = 'Расположение';
+$_['column_sort_order']     = 'Порядок сортировки';
+$_['column_action']         = 'Действие';
 
 // Entry
-$_['entry_name']           = 'Custom Field Name:';
-$_['entry_type']           = 'Type:';
-$_['entry_value']          = 'Value:';
-$_['entry_custom_value']   = 'Custom Field Value Name:';
-$_['entry_required']       = 'Required:';
-$_['entry_location']       = 'Location:';
-$_['entry_position']       = 'Position:';
-$_['entry_sort_order']     = 'Sort Order:';
+$_['entry_name']           = 'Название поля ввода:';
+$_['entry_type']           = 'Тип:';
+$_['entry_value']          = 'Значение:';
+$_['entry_custom_value']   = 'Название значения:';
+$_['entry_required']       = 'Требуется:';
+$_['entry_location']       = 'Расположение:';
+$_['entry_position']       = 'Позиция:';
+$_['entry_sort_order']     = 'Порядок сортировки:';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify custom fields!';
-$_['error_name']           = 'Option Name must be between 1 and 128 characters!';
-$_['error_type']           = 'Warning: Option Values required!';
-$_['error_custom_value']   = 'Custom Value Name must be between 1 and 128 characters!';
-$_['error_product']        = 'Warning: This custom cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']     = 'У Вас нет прав для изменения полей ввода!';
+$_['error_name']           = 'Имя опции должно быть от 1 до 128 символов!';
+$_['error_type']           = 'Не указано значение опции!';
+$_['error_custom_value']   = 'Значение поля ввода должно быть от 1 до 128 символов!';
+$_['error_product']        = 'Это поле ввода не может быть удалено, поскольку оно присвоено %s товарам!';
 ?>

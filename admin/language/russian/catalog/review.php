@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']     = 'Отзывы';
+$_['heading_title']       = 'Отзывы';
 
 // Text
 $_['text_success']      = 'Список отзывов обновлен!';
@@ -14,7 +14,7 @@ $_['column_date_added'] = 'Добавлено';
 $_['column_action']     = 'Действие';
 
 // Entry
-$_['entry_product']     = 'Товар:';
+$_['entry_product']     = 'Товар:<br /><span class="help">(Автодополнение)</span>';
 $_['entry_author']      = 'Автор:';
 $_['entry_rating']      = 'Рейтинг:';
 $_['entry_status']      = 'Статус:';

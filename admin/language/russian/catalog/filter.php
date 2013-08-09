@@ -1,22 +1,22 @@
 <?php
 // Heading
-$_['heading_title']     = 'Filters';
+$_['heading_title']     = 'Фильтры';
 
 // Text
-$_['text_success']      = 'Success: You have modified filters!';
+$_['text_success']      = 'Фильтры успешно обновлены!';
 
 // Column
-$_['column_group']      = 'Filter Group';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_group']      = 'Группа фильтров';
+$_['column_sort_order'] = 'Порядок сортировки';
+$_['column_action']     = 'Действие';
 
 // Entry
-$_['entry_group']       = 'Filter Group Name:';
-$_['entry_name']        = 'Filter Name:';
-$_['entry_sort_order']  = 'Sort Order:';
+$_['entry_group']       = 'Название группы фильтров:';
+$_['entry_name']        = 'Название фильтра:';
+$_['entry_sort_order']  = 'Порядок сортировки:';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify filters!';
-$_['error_group']       = 'Filter Group Name must be between 1 and 64 characters!';
-$_['error_name']        = 'Filter Name must be between 1 and 64 characters!';
+$_['error_permission']  = 'У Вас нет прав для изменения фильтров!';
+$_['error_group']       = 'Название группы фильтров должно быть от 1 до 64 символов!';
+$_['error_name']        = 'Название фильтра должно быть от 1 до 64 символов!';
 ?>
