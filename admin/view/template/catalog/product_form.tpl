@@ -72,7 +72,7 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><a class="hidelink">Show / Hide more</a> </td>
+              <td><a class="hidelink"><?php echo $text_hidelink; ?></a> </td>
 			  <td></td>
             </tr>
             <tr class="hide">

@@ -14,6 +14,7 @@ $_['text_option']            = 'Опция';
 $_['text_option_value']      = 'Значение опции';
 $_['text_percent']           = 'Процент';
 $_['text_amount']            = 'Фиксированная сумма';
+$_['text_hidelink']          = 'Показать / Скрыть';
 
 // Column
 $_['column_name']            = 'Название товара';
