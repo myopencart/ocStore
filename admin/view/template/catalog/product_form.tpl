@@ -66,13 +66,14 @@
           <table class="form">
             <tr>
               <td><span class="required">*</span> <?php echo $entry_model; ?></td>
-              <td><input type="text" name="model" value="<?php echo $model; ?> " />
+              <td><input type="text" name="model" value="<?php echo $model; ?>" />
                 <?php if ($error_model) { ?>
                 <span class="error"><?php echo $error_model; ?></span>
                 <?php } ?></td>
             </tr>
             <tr>
               <td><a class="hidelink">Show / Hide more</a> </td>
+			  <td></td>
             </tr>
             <tr class="hide">
               <td><?php echo $entry_sku; ?></td>
