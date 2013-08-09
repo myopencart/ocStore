@@ -66,32 +66,35 @@
           <table class="form">
             <tr>
               <td><span class="required">*</span> <?php echo $entry_model; ?></td>
-              <td><input type="text" name="model" value="<?php echo $model; ?>" />
+              <td><input type="text" name="model" value="<?php echo $model; ?> " />
                 <?php if ($error_model) { ?>
                 <span class="error"><?php echo $error_model; ?></span>
                 <?php } ?></td>
             </tr>
             <tr>
+              <td><a class="hidelink">Show / Hide more</a> </td>
+            </tr>
+            <tr class="hide">
               <td><?php echo $entry_sku; ?></td>
               <td><input type="text" name="sku" value="<?php echo $sku; ?>" /></td>
-            </tr>
-            <tr>
+         	</tr>
+			<tr class="hide">
               <td><?php echo $entry_upc; ?></td>
               <td><input type="text" name="upc" value="<?php echo $upc; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_ean; ?></td>
               <td><input type="text" name="ean" value="<?php echo $ean; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_jan; ?></td>
               <td><input type="text" name="jan" value="<?php echo $jan; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_isbn; ?></td>
               <td><input type="text" name="isbn" value="<?php echo $isbn; ?>" /></td>
             </tr>
-            <tr>
+            <tr class="hide">
               <td><?php echo $entry_mpn; ?></td>
               <td><input type="text" name="mpn" value="<?php echo $mpn; ?>" /></td>
             </tr>
@@ -1247,4 +1250,13 @@ $('#tabs a').tabs();
 $('#languages a').tabs(); 
 $('#vtab-option a').tabs();
 //--></script> 
+<script type="text/javascript"><!--
+ $(document).ready(function(){
+    $(".hide").hide();
+	$("a.hidelink").click(function () {
+      $(".hide").toggle("slow");
+    });    
+  });
+//--></script> 
+
 <?php echo $footer; ?>
