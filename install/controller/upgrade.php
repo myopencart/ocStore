@@ -7,16 +7,16 @@ class ControllerUpgrade extends Controller {
 			$this->load->model('upgrade');
 
 			$this->model_upgrade->mysql();
-			
+
 			$this->redirect($this->url->link('upgrade/success'));
-		}		
-		
+		}
+
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
-		
+
 		$this->data['action'] = $this->url->link('upgrade');
 
 		$this->template = 'upgrade.tpl';
@@ -39,14 +39,14 @@ class ControllerUpgrade extends Controller {
 	}
 
 	private function validate() {
-		if (DB_DRIVER == 'mysql') {		
+		if (DB_DRIVER == 'mysql') {
 			if (!$connection = @mysql_connect(DB_HOSTNAME, DB_USERNAME, DB_PASSWORD)) {
-				$this->error['warning'] = 'Error: Could not connect to the database please make sure the database server, username and password is correct in the config.php file!';
+				$this->error['warning'] = 'Ошибка: Невозможно соединиться с базой данных. Пожалуйста, укажите корректный сервер БД, пользователя и пароль в файле config.php!';
 			} else {
 				if (!mysql_select_db(DB_DATABASE, $connection)) {
-					$this->error['warning'] = 'Error: Database "'. DB_DATABASE . '" does not exist!';
+					$this->error['warning'] = 'Ошибка: База данных "'. DB_DATABASE . '" не существует!';
 				}
-	
+
 				mysql_close($connection);
 			}
 		}

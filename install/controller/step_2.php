@@ -1,7 +1,7 @@
 <?php
 class ControllerStep2 extends Controller {
 	private $error = array();
-	
+
 	public function index() {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->redirect($this->url->link('step_3'));
@@ -10,100 +10,100 @@ class ControllerStep2 extends Controller {
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
-			$this->data['error_warning'] = '';	
+			$this->data['error_warning'] = '';
 		}
-		
+
 		$this->data['action'] = $this->url->link('step_2');
 
 		$this->data['config_catalog'] = DIR_OPENCART . 'config.php';
 		$this->data['config_admin'] = DIR_OPENCART . 'admin/config.php';
-		
+
 		$this->data['cache'] = DIR_SYSTEM . 'cache';
 		$this->data['logs'] = DIR_SYSTEM . 'logs';
 		$this->data['image'] = DIR_OPENCART . 'image';
 		$this->data['image_cache'] = DIR_OPENCART . 'image/cache';
 		$this->data['image_data'] = DIR_OPENCART . 'image/data';
 		$this->data['download'] = DIR_OPENCART . 'download';
-		
+
 		$this->data['back'] = $this->url->link('step_1');
-		
+
 		$this->template = 'step_2.tpl';
 		$this->children = array(
 			'header',
 			'footer'
-		);		
-		
+		);
+
 		$this->response->setOutput($this->render());
 	}
-	
+
 	private function validate() {
 		if (phpversion() < '5.2') {
-			$this->error['warning'] = 'Warning: You need to use PHP5.2 or above for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart нужен PHP5.2 или выше!';
 		}
 
 		if (!ini_get('file_uploads')) {
-			$this->error['warning'] = 'Warning: file_uploads needs to be enabled!';
+			$this->error['warning'] = 'Внимание: file_uploads должно быть включено!';
 		}
-	
+
 		if (ini_get('session.auto_start')) {
-			$this->error['warning'] = 'Warning: OpenCart will not work with session.auto_start enabled!';
+			$this->error['warning'] = 'Внимание: Для работы OpenCart необходимо отключить директиву session.auto_start в файле php.ini!';
 		}
-		
+
 		if (!extension_loaded('mysql')) {
-			$this->error['warning'] = 'Warning: MySQL extension needs to be loaded for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка MySQL!';
 		}
-				
+
 		if (!extension_loaded('gd')) {
-			$this->error['warning'] = 'Warning: GD extension needs to be loaded for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка GD!';
 		}
 
 		if (!extension_loaded('curl')) {
-			$this->error['warning'] = 'Warning: CURL extension needs to be loaded for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка CURL!';
 		}
 
 		if (!function_exists('mcrypt_encrypt')) {
-			$this->error['warning'] = 'Warning: mCrypt extension needs to be loaded for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка mCrypt!';
 		}
-				
+
 		if (!extension_loaded('zlib')) {
-			$this->error['warning'] = 'Warning: ZLIB extension needs to be loaded for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка ZLIB!';
 		}
-		
+
 		if (!file_exists(DIR_OPENCART . 'config.php')) {
-			$this->error['warning'] = 'Warning: config.php does not exist. You need to rename config-dist.php to config.php!';
+			$this->error['warning'] = 'Внимание: config.php не найден. Необходимо переименовать config-dist.php в config.php!';
 		} elseif (!is_writable(DIR_OPENCART . 'config.php')) {
-			$this->error['warning'] = 'Warning: config.php needs to be writable for OpenCart to be installed!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись файла config.php!';
 		}
-		
+
 		if (!file_exists(DIR_OPENCART . 'admin/config.php')) {
-			$this->error['warning'] = 'Warning: admin/config.php does not exist. You need to rename admin/config-dist.php to admin/config.php!';
+			$this->error['warning'] = 'Внимание: admin/config.php не найден. Необходимо переименовать admin/config-dist.php в admin/config.php!';
 		} elseif (!is_writable(DIR_OPENCART . 'admin/config.php')) {
-			$this->error['warning'] = 'Warning: admin/config.php needs to be writable for OpenCart to be installed!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись файла admin/config.php!';
 		}
 		if (!is_writable(DIR_SYSTEM . 'cache')) {
-			$this->error['warning'] = 'Warning: Cache directory needs to be writable for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись в директорию Cache!';
 		}
-		
+
 		if (!is_writable(DIR_SYSTEM . 'logs')) {
-			$this->error['warning'] = 'Warning: Logs directory needs to be writable for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись в директорию Logs!';
 		}
-		
+
 		if (!is_writable(DIR_OPENCART . 'image')) {
-			$this->error['warning'] = 'Warning: Image directory needs to be writable for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись в директорию Image!';
 		}
 
 		if (!is_writable(DIR_OPENCART . 'image/cache')) {
-			$this->error['warning'] = 'Warning: Image cache directory needs to be writable for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись в директорию Image/cache!';
 		}
-		
+
 		if (!is_writable(DIR_OPENCART . 'image/data')) {
-			$this->error['warning'] = 'Warning: Image data directory needs to be writable for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись в директорию Image/data!';
 		}
-		
+
 		if (!is_writable(DIR_OPENCART . 'download')) {
-			$this->error['warning'] = 'Warning: Download directory needs to be writable for OpenCart to work!';
+			$this->error['warning'] = 'Внимание: Необходимо разрешение на запись в директорию Download!';
 		}
-		
+
     	if (!$this->error) {
       		return true;
     	} else {
