@@ -1,5 +1,5 @@
 <?php
-// Heading 
+// Heading
 $_['heading_title']   = 'Забыли пароль?';
 
 // Text
@@ -13,5 +13,5 @@ $_['text_success']    = 'Новый пароль был выслан на Ваш
 $_['entry_email']     = 'E-Mail:';
 
 // Error
-$_['error_email']     = 'Такой E-Mail не найден, попробуйте снова!';
+$_['error_email']     = 'Такой E-Mail адрес не найден, попробуйте снова!';
 ?>

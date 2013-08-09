@@ -17,7 +17,7 @@ $_['text_new_ip']  				= 'IP адрес:';
 $_['text_new_payment_address']  = 'Адрес плательщика';
 $_['text_new_shipping_address'] = 'Адрес доставки';
 $_['text_new_products']         = 'Товары:';
-$_['text_new_product']          = 'Товар:';
+$_['text_new_product']          = 'Наименование:';
 $_['text_new_model']            = 'Модель';
 $_['text_new_quantity']         = 'Количество';
 $_['text_new_price']            = 'Цена';
@@ -32,6 +32,6 @@ $_['text_update_order']         = '№ заказа';
 $_['text_update_date_added']    = 'Дата заказа:';
 $_['text_update_order_status']  = 'Ваш Заказ обновлен со следующим статусом:';
 $_['text_update_comment']       = 'Комментарий к Вашему заказу:';
-$_['text_update_link']          = 'Для просмотра заказа нажмите по ссылке ниже:';
+$_['text_update_link']          = 'Для просмотра заказа перейдите по ссылке:';
 $_['text_update_footer']        = 'Если у Вас есть какие-либо вопросы, ответьте на это сообщение.';
 ?>
