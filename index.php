@@ -212,6 +212,8 @@ $registry->set('length', new Length($registry));
 // Cart
 $registry->set('cart', new Cart($registry));
 
+// ocStore features
+$registry->set('ocstore', new ocStore($registry));
 //  Encryption
 $registry->set('encryption', new Encryption($config->get('config_encryption')));
 		
