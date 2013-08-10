@@ -869,8 +869,11 @@ ul.box-filter > li ul {
 	margin-bottom: 15px;
 }
 .product-list .right {
+	height: 130px;
 	float: right;
-	margin-left: 15px;
+	padding-left: 18px;
+	border-left: 1px solid #EEEEEE;
+	
 }
 .product-list > div + div {
 	border-top: 1px solid #EEEEEE;
@@ -902,11 +905,14 @@ ul.box-filter > li ul {
 }
 .product-list .price {
 	float: right;
-	height: 50px;
+	height: 130px;
+	width: 100px;
 	margin-left: 8px;
-	text-align: right;
+	text-align: center;
 	color: #333333;
 	font-size: 12px;
+	border-left: 1px solid #EEEEEE;
+	
 }
 .product-list .price-old {
 	color: #F00;
