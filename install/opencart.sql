@@ -3419,6 +3419,7 @@ CREATE TABLE `oc_url_alias` (
 -- 
 
 INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
+(774, 'common/home', ''),
 (704, 'product_id=48', 'ipod_classic'),
 (773, 'category_id=20', 'desktops'),
 (503, 'category_id=26', 'pc'),
