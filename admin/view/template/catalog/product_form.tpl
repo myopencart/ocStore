@@ -78,7 +78,7 @@
             <tr class="hide">
               <td><?php echo $entry_sku; ?></td>
               <td><input type="text" name="sku" value="<?php echo $sku; ?>" /></td>
-         	</tr>
+            </tr>
 			<tr class="hide">
               <td><?php echo $entry_upc; ?></td>
               <td><input type="text" name="upc" value="<?php echo $upc; ?>" /></td>
@@ -250,10 +250,6 @@
                 </select></td>
             </tr>
             <tr>
-
-
-
-
               <td><?php echo $entry_main_category; ?></td>
               <td><select name="main_category_id">
                 <option value="0" selected="selected"><?php echo $text_none; ?></option>
@@ -266,11 +262,7 @@
                 <?php } ?>
               </select></td>
             </tr>
-
-
-
-
-			 <tr>
+            <tr>
               <td><?php echo $entry_category; ?></td>
               <td><div class="scrollbox">
                   <?php $class = 'odd'; ?>
@@ -289,7 +281,7 @@
                   <?php } ?>
                 </div>
                 <a onclick="$(this).parent().find(':checkbox').attr('checked', true);"><?php echo $text_select_all; ?></a> / <a onclick="$(this).parent().find(':checkbox').attr('checked', false);"><?php echo $text_unselect_all; ?></a></td>
-            </tr>
+            </tr> 
             <tr>
               <td><?php echo $entry_filter; ?></td>
               <td><input type="text" name="filter" value="" /></td>
@@ -344,7 +336,7 @@
                   <?php foreach ($product_downloads as $product_download) { ?>
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
                   <div id="product-download<?php echo $product_download['download_id']; ?>" class="<?php echo $class; ?>"> <?php echo $product_download['name']; ?><img src="view/image/delete.png" alt="" />
-                    <input type="checkbox" name="product_download[]" value="<?php echo $product_download['download_id']; ?>" />
+                    <input type="hidden" name="product_download[]" value="<?php echo $product_download['download_id']; ?>" />
                   </div>
                   <?php } ?>
                 </div></td>
@@ -785,6 +777,66 @@ $.widget('custom.catcomplete', $.ui.autocomplete, {
 	}
 });
 
+// Manufacturer
+$('input[name=\'manufacturer\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.manufacturer_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('input[name=\'manufacturer\']').attr('value', ui.item.label);
+		$('input[name=\'manufacturer_id\']').attr('value', ui.item.value);
+	
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
+// Category
+$('input[name=\'category\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.category_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('#product-category' + ui.item.value).remove();
+		
+		$('#product-category').append('<div id="product-category' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_category[]" value="' + ui.item.value + '" /></div>');
+
+		$('#product-category div:odd').attr('class', 'odd');
+		$('#product-category div:even').attr('class', 'even');
+				
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
 $('#product-category div img').live('click', function() {
 	$(this).parent().remove();
 	
@@ -958,7 +1010,7 @@ function attributeautocomplete(attribute_row) {
 		},
 		focus: function(event, ui) {
       		return false;
-		}
+   		}
 	});
 }
 
@@ -1256,8 +1308,8 @@ $('#vtab-option a').tabs();
     $(".hide").hide();
 	$("a.hidelink").click(function () {
       $(".hide").toggle("slow");
-    });    
+    });
   });
-//--></script> 
+//--></script>
 
 <?php echo $footer; ?>

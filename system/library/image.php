@@ -51,8 +51,8 @@ class Image {
 			   
 			imagedestroy($this->image);
 		}
-    }	    
-	
+    }
+
 	/**
 	*	
 	*	@param width 
@@ -73,7 +73,6 @@ class Image {
 		$scale = 1;
 
 		$scale_w = $width / $this->info['width'];
-		
 		$scale_h = $height / $this->info['height'];
 
 		if ($default == 'w') {
@@ -87,7 +86,7 @@ class Image {
 		if ($scale == 1 && $scale_h == $scale_w && $this->info['mime'] != 'image/png') {
 			return;
 		}
-		
+
 		$new_width = (int)($this->info['width'] * $scale);
 		$new_height = (int)($this->info['height'] * $scale);			
     	$xpos = (int)(($width - $new_width) / 2);

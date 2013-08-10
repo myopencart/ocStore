@@ -39,8 +39,7 @@ class ControllerProductProduct extends Controller {
 					);
 				}
 			}
-
-						
+			
 			// Set the last category breadcrumb
 			$category_info = $this->model_catalog_category->getCategory($category_id);
 				
@@ -98,7 +97,6 @@ class ControllerProductProduct extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 							
-				
 			$manufacturer_info = $this->model_catalog_manufacturer->getManufacturer($this->request->get['manufacturer_id']);
 
 			if ($manufacturer_info) {	
@@ -148,8 +146,7 @@ class ControllerProductProduct extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-
-			
+												
 			$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_search'),
 				'href'      => $this->url->link('product/search', $url),
@@ -178,7 +175,6 @@ class ControllerProductProduct extends Controller {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}
 						
-			
 			if (isset($this->request->get['manufacturer_id'])) {
 				$url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
 			}			
@@ -218,8 +214,7 @@ class ControllerProductProduct extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-
-												
+																		
 			$this->data['breadcrumbs'][] = array(
 				'text'      => $product_info['name'],
 				'href'      => $this->url->link('product/product', $url . '&product_id=' . $this->request->get['product_id']),
@@ -229,7 +224,7 @@ class ControllerProductProduct extends Controller {
 			if ($product_info['seo_title']) {
 				$this->document->setTitle($product_info['seo_title']);
 			} else {
-				$this->document->setTitle($product_info['name']);
+			    $this->document->setTitle($product_info['name']);
 			}
 
 			$this->document->setDescription($product_info['meta_description']);
@@ -242,9 +237,9 @@ class ControllerProductProduct extends Controller {
 			if ($product_info['seo_h1']) {
 				$this->data['heading_title'] = $product_info['seo_h1'];
 			} else {
-				$this->data['heading_title'] = $product_info['name'];
+			    $this->data['heading_title'] = $product_info['name'];
 			}
-			
+
 			$this->data['text_select'] = $this->language->get('text_select');
 			$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
 			$this->data['text_model'] = $this->language->get('text_model');
@@ -494,26 +489,24 @@ class ControllerProductProduct extends Controller {
 			if (isset($this->request->get['filter'])) {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}	
-
-		
-			
+						
 			if (isset($this->request->get['manufacturer_id'])) {
 				$url .= '&manufacturer_id=' . $this->request->get['manufacturer_id'];
 			}			
 
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . $this->request->get['filter_name'];
+			if (isset($this->request->get['search'])) {
+				$url .= '&search=' . $this->request->get['search'];
 			}	
 					
-			if (isset($this->request->get['filter_tag'])) {
-				$url .= '&filter_tag=' . $this->request->get['filter_tag'];
+			if (isset($this->request->get['tag'])) {
+				$url .= '&tag=' . $this->request->get['tag'];
 			}
 							
-			if (isset($this->request->get['filter_description'])) {
-				$url .= '&filter_description=' . $this->request->get['filter_description'];
+			if (isset($this->request->get['description'])) {
+				$url .= '&description=' . $this->request->get['description'];
 			}
 					
-			if (isset($this->request->get['filter_category_id'])) {
+			if (isset($this->request->get['category_id'])) {
 				$url .= '&category_id=' . $this->request->get['category_id'];
 			}
 			
@@ -536,8 +529,7 @@ class ControllerProductProduct extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-
-								
+														
       		$this->data['breadcrumbs'][] = array(
         		'text'      => $this->language->get('text_error'),
 				'href'      => $this->url->link('product/product', $url . '&product_id=' . $product_id),

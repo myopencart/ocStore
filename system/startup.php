@@ -3,8 +3,8 @@
 error_reporting(E_ALL);
 
 // Check Version
-if (version_compare(phpversion(), '5.2.0', '<') == true) {
-	exit('PHP5.2+ Required');
+if (version_compare(phpversion(), '5.1.0', '<') == true) {
+	exit('PHP5.1+ Required');
 }
 
 // Register Globals
@@ -72,6 +72,7 @@ if (!isset($_SERVER['REQUEST_URI'])) {
 if (!isset($_SERVER['HTTP_HOST'])) {
 	$_SERVER['HTTP_HOST'] = getenv('HTTP_HOST');
 }
+
 // Helper
 require_once(DIR_SYSTEM . 'helper/json.php'); 
 require_once(DIR_SYSTEM . 'helper/utf8.php'); 

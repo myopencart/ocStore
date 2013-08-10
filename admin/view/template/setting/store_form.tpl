@@ -474,7 +474,7 @@
         <div id="tab-server">
           <table class="form">
             <tr>
-             <td><?php echo $entry_secure; ?></td>
+              <td><?php echo $entry_secure; ?></td>
               <td><?php if ($config_secure) { ?>
                 <input type="radio" name="config_secure" value="1" checked="checked" />
                 <?php echo $text_yes; ?>
@@ -484,6 +484,7 @@
                 <input type="radio" name="config_secure" value="1" />
                 <?php echo $text_yes; ?>
                 <input type="radio" name="config_secure" value="0" checked="checked" />
+                <?php echo $text_no; ?>
                 <?php } ?></td>
             </tr>
           </table>
@@ -526,7 +527,7 @@ $('select[name=\'config_country_id\']').bind('change', function() {
 	    			html += '>' + json['zone'][i]['name'] + '</option>';
 				}
 			} else {
-				html += '<option value="0" selected="selected><?php echo $text_none; ?></option>';
+				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
 			}
 			
 			$('select[name=\'config_zone_id\']').html(html);

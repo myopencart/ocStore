@@ -486,9 +486,9 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/customer');
 				
 		$this->data['heading_title'] = $this->language->get('heading_title');
+		
 
-		 
-		$this->data['text_no_results'] = $this->language->get('text_no_results');  
+		$this->data['text_no_results'] = $this->language->get('text_no_results');
 		$this->data['text_default'] = $this->language->get('text_default');
 		$this->data['text_select'] = $this->language->get('text_select');
 		$this->data['text_none'] = $this->language->get('text_none');
@@ -882,8 +882,8 @@ class ControllerSaleOrder extends Controller {
 		} else {
       		$this->data['comment'] = '';
     	}	
+				
 
-		
 		$this->load->model('sale/customer');
 
 		if (isset($this->request->post['customer_id'])) {
@@ -1120,8 +1120,8 @@ class ControllerSaleOrder extends Controller {
 			} else {
 				$order_download = array();
 			}
+							
 
-											
 			$this->data['order_products'][] = array(
 				'order_product_id' => $order_product['order_product_id'],
 				'product_id'       => $order_product['product_id'],
@@ -1215,7 +1215,7 @@ class ControllerSaleOrder extends Controller {
 			// VAT Validation
 			$this->load->helper('vat');
 			
-			if ($this->config->get('config_vat') && $this->request->post['payment_tax_id'] && (vat_validation($country_info['iso_code_2'], $this->request->post['payment_tax_id']) != 'invalid')) {
+			if ($this->config->get('config_vat') && $this->request->post['payment_tax_id'] && (vat_validation($country_info['iso_code_2'], $this->request->post['payment_tax_id']) == 'invalid')) {
 				$this->error['payment_tax_id'] = $this->language->get('error_vat');
 			}				
 		}

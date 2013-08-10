@@ -54,11 +54,6 @@ class Document {
 	public function getStyles() {
 		return $this->styles;
 	}	
-
-
-
-
-
 	
 	public function addScript($script) {
 		$this->scripts[md5($script)] = $script;			
@@ -67,11 +62,11 @@ class Document {
 	public function getScripts() {
 		return $this->scripts;
 	}
-	
+
 	public function setOgImage($image) {
 		$this->og_image = $image;
-	}
-	
+}
+
 	public function getOgImage() {
 		return $this->og_image;
 	}

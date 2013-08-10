@@ -178,6 +178,8 @@ class ControllerAccountDownload extends Controller {
 					header('Pragma: public');
 					header('Content-Length: ' . filesize($file));
 					
+					if (ob_get_level()) ob_end_clean();
+					
 					readfile($file, 'rb');
 					
 					$this->model_account_download->updateRemaining($this->request->get['order_download_id']);

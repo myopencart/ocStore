@@ -5,7 +5,6 @@ final class MySQL {
 	public function __construct($hostname, $username, $password, $database) {
 		if (!$this->link = mysql_connect($hostname, $username, $password)) {
       		trigger_error('Error: Could not make a database link using ' . $username . '@' . $hostname);
-
 		}
 
     	if (!mysql_select_db($database, $this->link)) {
@@ -21,7 +20,7 @@ final class MySQL {
   	public function query($sql) {
 		if ($this->link) {
 			$resource = mysql_query($sql, $this->link);
-
+	
 			if ($resource) {
 				if (is_resource($resource)) {
 					$i = 0;
@@ -62,16 +61,20 @@ final class MySQL {
 	
   	public function countAffected() {
 		if ($this->link) {
-			return mysql_affected_rows($this->link);
+    		return mysql_affected_rows($this->link);
 		}
   	}
 
   	public function getLastId() {
-    	return mysql_insert_id($this->link);
+		if ($this->link) {
+    		return mysql_insert_id($this->link);
+		}
   	}	
 	
 	public function __destruct() {
-		mysql_close($this->link);
+		if ($this->link) {
+			mysql_close($this->link);
+		}
 	}
 }
 ?>
