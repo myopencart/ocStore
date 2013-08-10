@@ -683,6 +683,12 @@ a.button:hover, input.button:hover {
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
+
+#column-left   .box-product > div , #column-right .box-product > div{
+	width: 155px;
+	margin-right: 0px;
+}
+
 #column-left + #column-right + #content .box-product > div {
 	width: 119px;
 }
