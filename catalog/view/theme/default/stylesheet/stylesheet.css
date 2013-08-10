@@ -398,9 +398,23 @@ label {
 	color: #FFFFFF;
 }
 .breadcrumb {
+	background: url('../image/background.png') repeat-x transparent;
+	border: 1px solid #DBDEE1;
+	-webkit-border-radius: 7px 7px 0px 0px;
+	-moz-border-radius: 7px 7px 0px 0px;
+	-khtml-border-radius: 7px 7px 0px 0px;
+	border-radius: 7px 7px 0px 0px;
 	color: #CCCCCC;
+	height: 30px;
+	line-height: 30px;
 	margin-bottom: 10px;
+	padding-left: 10px;
 }
+.breadcrumb a {
+color:#000;
+}
+
+
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;
 	margin-bottom: 15px;
