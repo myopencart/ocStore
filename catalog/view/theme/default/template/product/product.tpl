@@ -5,7 +5,6 @@
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
   </div>
-  <h1><?php echo $heading_title; ?></h1>
   <div class="product-info">
     <?php if ($thumb || $images) { ?>
     <div class="left">
@@ -22,6 +21,7 @@
     </div>
     <?php } ?>
     <div class="right">
+	<h1><?php echo $heading_title; ?></h1>
       <div class="description">
         <?php if ($manufacturer) { ?>
         <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
