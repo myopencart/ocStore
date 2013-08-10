@@ -1,8 +1,6 @@
 <?php
 class ControllerCommonSeoPro extends Controller {
 	private $cache_data = null;
-	private $languages = array();
-	private $config_language;
 
 	public function __construct($registry) {
 		parent::__construct($registry);
@@ -16,52 +14,9 @@ class ControllerCommonSeoPro extends Controller {
 			}
 			$this->cache->set('seo_pro', $this->cache_data);
 		}
-
-		$query = $this->db->query("SELECT `value` FROM `" . DB_PREFIX . "setting` WHERE `key` = 'config_language'");
-		$this->config_language = $query->row['value'];
-
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "language WHERE status = '1'");
-
-		foreach ($query->rows as $result) {
-			$this->languages[$result['code']] = $result;
-		}
-
 	}
 
 	public function index() {
-
-// language
-		$code = $this->config_language;
-
-		if(isset($this->request->get['_route_'])) {
-			$tokens = explode('/', $this->request->get['_route_']);
-
-			if(array_key_exists($tokens[0], $this->languages)) {
-				$code = $tokens[0];
-				$this->request->get['_route_'] = substr($this->request->get['_route_'], strlen($code) + 1);
-			}
-
-			if(trim($this->request->get['_route_']) == '' || trim($this->request->get['_route_']) == 'index.php') {
-				unset($this->request->get['_route_']);
-			}
-		}
-
-
-		if(!isset($this->session->data['language']) || $this->session->data['language'] != $code) {
-			$this->session->data['language'] = $code;
-		}
-
-		if(!isset($this->request->cookie['language']) || $this->request->cookie['language'] != $code) {
-			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
-		}
-
-		$this->config->set('config_language_id', $this->languages[$code]['language_id']);
-		$this->config->set('config_language', $this->languages[$code]['code']);
-
-		$language = new Language($this->languages[$code]['directory']);
-		$language->load($this->languages[$code]['filename']);
-		$this->registry->set('language', $language);
-
 
 		// Add rewrite to url class
 		if ($this->config->get('config_seo_url')) {
@@ -138,10 +93,7 @@ class ControllerCommonSeoPro extends Controller {
 		}
 	}
 
-	public function rewrite($link, $code = '') {
-		if(!$code) {
-			$code = $this->session->data['language'];
-		}
+	public function rewrite($link) {
 		if (!$this->config->get('config_seo_url')) return $link;
 
 		$seo_url = '';
@@ -194,11 +146,7 @@ class ControllerCommonSeoPro extends Controller {
 			$link = $this->config->get('config_url');
 		}
 
-		if ($code != $this->config_language){
-			$link .= $code . '/index.php?route=' . $route;
-		} else{
-			$link .= 'index.php?route=' . $route;
-		}
+		$link .= 'index.php?route=' . $route;
 
 		if (count($data)) {
 			$link .= '&amp;' . urldecode(http_build_query($data, '', '&amp;'));
@@ -252,11 +200,7 @@ class ControllerCommonSeoPro extends Controller {
 
 		if ($seo_url == '') return $link;
 
-		if($code != $this->config_language) {
-			$seo_url = $code . '/' . trim($seo_url, '/');
-		} else {
-			$seo_url = trim($seo_url, '/');
-		}
+		$seo_url = trim($seo_url, '/');
 
 		if ($component['scheme'] == 'https') {
 			$seo_url = $this->config->get('config_ssl') . $seo_url;
