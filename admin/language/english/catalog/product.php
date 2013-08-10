@@ -41,7 +41,7 @@ $_['entry_isbn']             = 'ISBN:<br/><span class="help">International Stand
 $_['entry_mpn']              = 'MPN:<br/><span class="help">Manufacturer Part Number</span>';
 $_['entry_location']         = 'Location:';
 $_['entry_shipping']         = 'Requires Shipping:'; 
-$_['entry_manufacturer']     = 'Manufacturer:<br /><span class="help">(Autocomplete)</span>';
+$_['entry_manufacturer']     = 'Manufacturer:';
 $_['entry_date_available']   = 'Date Available:';
 $_['entry_quantity']         = 'Quantity:';
 $_['entry_minimum']          = 'Minimum Quantity:<br/><span class="help">Force a minimum ordered amount</span>';
@@ -68,7 +68,7 @@ $_['entry_option_value']     = 'Option Value:';
 $_['entry_required']         = 'Required:';
 $_['entry_status']           = 'Status:';
 $_['entry_sort_order']       = 'Sort Order:';
-$_['entry_category']         = 'Categories:<br /><span class="help">(Autocomplete)</span>';
+$_['entry_category']         = 'Categories:';
 $_['entry_filter']           = 'Filters:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_download']         = 'Downloads:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_related']          = 'Related Products:<br /><span class="help">(Autocomplete)</span>';
