@@ -2464,7 +2464,7 @@ CREATE TABLE `oc_product_description` (
   `seo_h1` varchar(255) NOT NULL,
   `tag` text NOT NULL,
   PRIMARY KEY  (`product_id`,`language_id`),
-  KEY `name` (`name`),
+  KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- 
