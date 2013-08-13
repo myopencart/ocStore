@@ -398,9 +398,23 @@ label {
 	color: #FFFFFF;
 }
 .breadcrumb {
+	background: url('../image/background.png') repeat-x transparent;
+	border: 1px solid #DBDEE1;
+	-webkit-border-radius: 7px 7px 0px 0px;
+	-moz-border-radius: 7px 7px 0px 0px;
+	-khtml-border-radius: 7px 7px 0px 0px;
+	border-radius: 7px 7px 0px 0px;
 	color: #CCCCCC;
+	height: 30px;
+	line-height: 30px;
 	margin-bottom: 10px;
+	padding-left: 10px;
 }
+.breadcrumb a {
+color:#000;
+}
+
+
 .success, .warning, .attention, .information {
 	padding: 10px 10px 10px 33px;
 	margin-bottom: 15px;
@@ -677,12 +691,18 @@ a.button:hover, input.button:hover {
 	overflow: auto;
 }
 .box-product > div {
-	width: 130px;
+	width: 168px;
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
+
+#column-left   .box-product > div , #column-right .box-product > div{
+	width: 155px;
+	margin-right: 0px;
+}
+
 #column-left + #column-right + #content .box-product > div {
 	width: 119px;
 }
@@ -869,8 +889,11 @@ ul.box-filter > li ul {
 	margin-bottom: 15px;
 }
 .product-list .right {
+	height: 130px;
 	float: right;
-	margin-left: 15px;
+	padding-left: 18px;
+	border-left: 1px solid #EEEEEE;
+	
 }
 .product-list > div + div {
 	border-top: 1px solid #EEEEEE;
@@ -902,11 +925,14 @@ ul.box-filter > li ul {
 }
 .product-list .price {
 	float: right;
-	height: 50px;
+	height: 130px;
+	width: 100px;
 	margin-left: 8px;
-	text-align: right;
+	text-align: center;
 	color: #333333;
 	font-size: 12px;
+	border-left: 1px solid #EEEEEE;
+	
 }
 .product-list .price-old {
 	color: #F00;
