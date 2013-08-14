@@ -3419,7 +3419,7 @@ CREATE TABLE `oc_url_alias` (
 -- 
 
 INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
-(809, 'account/voucher', 'vouchers'),
+(810, 'account/voucher', 'vouchers'),
 (809, 'account/wishlist', 'wishlist'),
 (808, 'account/account', 'my-account'),
 (807, 'checkout/cart', 'cart'),
