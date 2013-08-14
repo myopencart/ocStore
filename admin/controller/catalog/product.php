@@ -933,6 +933,11 @@ class ControllerCatalogProduct extends Controller {
 			$this->data['product_description'] = array();
 		}
 		
+		$language_id = $this->config->get('config_language_id');
+		if (isset($this->data['product_description'][$language_id]['name'])) {
+		$this->data['heading_title'] = $this->data['product_description'][$language_id]['name'];
+		}
+		
 		if (isset($this->request->post['model'])) {
       		$this->data['model'] = $this->request->post['model'];
     	} elseif (!empty($product_info)) {
