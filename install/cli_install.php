@@ -136,7 +136,7 @@ function install($options) {
 function check_requirements() {
     $error = null;
     if (phpversion() < '5.0') {
-        $error = 'Warning: You need to use PHP5 or above for OpenCart to work!';
+        $error = 'Warning: You need to use PHP5 or above for ocStore to work!';
     }
 
     if (!ini_get('file_uploads')) {
@@ -144,59 +144,59 @@ function check_requirements() {
     }
 
     if (ini_get('session.auto_start')) {
-        $error = 'Warning: OpenCart will not work with session.auto_start enabled!';
+        $error = 'Warning: ocStore will not work with session.auto_start enabled!';
     }
 
     if (!extension_loaded('mysql')) {
-        $error = 'Warning: MySQL extension needs to be loaded for OpenCart to work!';
+        $error = 'Warning: MySQL extension needs to be loaded for ocStore to work!';
     }
 
     if (!extension_loaded('gd')) {
-        $error = 'Warning: GD extension needs to be loaded for OpenCart to work!';
+        $error = 'Warning: GD extension needs to be loaded for ocStore to work!';
     }
 
     if (!extension_loaded('curl')) {
-        $error = 'Warning: CURL extension needs to be loaded for OpenCart to work!';
+        $error = 'Warning: CURL extension needs to be loaded for ocStore to work!';
     }
 
     if (!function_exists('mcrypt_encrypt')) {
-        $error = 'Warning: mCrypt extension needs to be loaded for OpenCart to work!';
+        $error = 'Warning: mCrypt extension needs to be loaded for ocStore to work!';
     }
 
     if (!extension_loaded('zlib')) {
-        $error = 'Warning: ZLIB extension needs to be loaded for OpenCart to work!';
+        $error = 'Warning: ZLIB extension needs to be loaded for ocStore to work!';
     }
 
     if (!is_writable(DIR_OPENCART . 'config.php')) {
-        $error = 'Warning: config.php needs to be writable for OpenCart to be installed!';
+        $error = 'Warning: config.php needs to be writable for ocStore to be installed!';
     }
 
     if (!is_writable(DIR_OPENCART . 'admin/config.php')) {
-        $error = 'Warning: admin/config.php needs to be writable for OpenCart to be installed!';
+        $error = 'Warning: admin/config.php needs to be writable for ocStore to be installed!';
     }
 
     if (!is_writable(DIR_SYSTEM . 'cache')) {
-        $error = 'Warning: Cache directory needs to be writable for OpenCart to work!';
+        $error = 'Warning: Cache directory needs to be writable for ocStore to work!';
     }
 
     if (!is_writable(DIR_SYSTEM . 'logs')) {
-        $error = 'Warning: Logs directory needs to be writable for OpenCart to work!';
+        $error = 'Warning: Logs directory needs to be writable for ocStore to work!';
     }
 
     if (!is_writable(DIR_OPENCART . 'image')) {
-        $error = 'Warning: Image directory needs to be writable for OpenCart to work!';
+        $error = 'Warning: Image directory needs to be writable for ocStore to work!';
     }
 
     if (!is_writable(DIR_OPENCART . 'image/cache')) {
-        $error = 'Warning: Image cache directory needs to be writable for OpenCart to work!';
+        $error = 'Warning: Image cache directory needs to be writable for ocStore to work!';
     }
 
     if (!is_writable(DIR_OPENCART . 'image/data')) {
-        $error = 'Warning: Image data directory needs to be writable for OpenCart to work!';
+        $error = 'Warning: Image data directory needs to be writable for ocStore to work!';
     }
 
     if (!is_writable(DIR_OPENCART . 'download')) {
-        $error = 'Warning: Download directory needs to be writable for OpenCart to work!';
+        $error = 'Warning: Download directory needs to be writable for ocStore to work!';
     }
 
     return array($error === null, $error);

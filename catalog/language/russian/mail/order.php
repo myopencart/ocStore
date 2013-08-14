@@ -26,7 +26,7 @@ $_['text_new_total']            = 'Итого:';
 $_['text_new_download']         = 'После подтверждения оплаты, чтобы скачать товар, щелкните:';
 $_['text_new_comment']          = 'Комментарий к Вашему заказу:';
 $_['text_new_footer']           = 'Если у Вас есть какие-либо вопросы, ответьте на это сообщение.';
-$_['text_new_powered']			= 'Работает на <a href="http://myopencart.ru">OpenCart</a>.';
+$_['text_new_powered']			= 'Работает на <a href="http://myopencart.ru">ocStore</a>.';
 $_['text_update_subject']       = '%s - Заказ изменен %s';
 $_['text_update_order']         = '№ заказа';
 $_['text_update_date_added']    = 'Дата заказа:';
