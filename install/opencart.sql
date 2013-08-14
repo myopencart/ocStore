@@ -3432,7 +3432,7 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (800, 'affiliate/account', 'affiliates'),
 (799, 'checkout/voucher', 'gift-vouchers'),
 (798, 'product/manufacturer', 'brands'),
-(798, 'information/contact', 'contact-us'),
+(797, 'information/contact', 'contact-us'),
 (796, 'account/return/insert', 'request-return'),
 (795, 'information/sitemap', 'sitemap'),
 (794, 'account/forgotten', 'forgot-password'),
