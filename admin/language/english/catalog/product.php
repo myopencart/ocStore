@@ -24,6 +24,8 @@ $_['column_price']           = 'Price';
 $_['column_quantity']        = 'Quantity';
 $_['column_status']          = 'Status';
 $_['column_action']          = 'Action';
+$_['column_category']        = 'Category';
+$_['column_manufacturer']    = 'Manufacturer';
 
 // Entry
 $_['entry_name']             = 'Product Name:';
