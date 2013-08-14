@@ -38,7 +38,7 @@ class ControllerStep2 extends Controller {
 
 	private function validate() {
 		if (phpversion() < '5.2') {
-			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart нужен PHP5.2 или выше!';
+			$this->error['warning'] = 'Внимание: Для корректной работы ocStore нужен PHP5.2 или выше!';
 		}
 
 		if (!ini_get('file_uploads')) {
@@ -46,27 +46,27 @@ class ControllerStep2 extends Controller {
 		}
 
 		if (ini_get('session.auto_start')) {
-			$this->error['warning'] = 'Внимание: Для работы OpenCart необходимо отключить директиву session.auto_start в файле php.ini!';
+			$this->error['warning'] = 'Внимание: Для работы ocStore необходимо отключить директиву session.auto_start в файле php.ini!';
 		}
 
 		if (!extension_loaded('mysql')) {
-			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка MySQL!';
+			$this->error['warning'] = 'Внимание: Для корректной работы ocStore необходима поддержка MySQL!';
 		}
 
 		if (!extension_loaded('gd')) {
-			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка GD!';
+			$this->error['warning'] = 'Внимание: Для корректной работы ocStore необходима поддержка GD!';
 		}
 
 		if (!extension_loaded('curl')) {
-			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка CURL!';
+			$this->error['warning'] = 'Внимание: Для корректной работы ocStore необходима поддержка CURL!';
 		}
 
 		if (!function_exists('mcrypt_encrypt')) {
-			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка mCrypt!';
+			$this->error['warning'] = 'Внимание: Для корректной работы ocStore необходима поддержка mCrypt!';
 		}
 
 		if (!extension_loaded('zlib')) {
-			$this->error['warning'] = 'Внимание: Для корректной работы OpenCart необходима поддержка ZLIB!';
+			$this->error['warning'] = 'Внимание: Для корректной работы ocStore необходима поддержка ZLIB!';
 		}
 
 		if (!file_exists(DIR_OPENCART . 'config.php')) {

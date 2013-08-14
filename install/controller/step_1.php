@@ -26,7 +26,7 @@ class ControllerStep1 extends Controller {
 	
 	private function validate() {
 		if (!isset($this->request->post['agree'])) {
-			$this->error['warning'] = 'Необходимо согласиться с лицензией до установки OpenCart!';
+			$this->error['warning'] = 'Необходимо согласиться с лицензией до установки ocStore!';
 		}
 		
     	if (!$this->error) {
