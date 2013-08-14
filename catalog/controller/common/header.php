@@ -34,7 +34,7 @@ class ControllerCommonHeader extends Controller {
 		}		
 		
 		$this->language->load('common/header');
-		$this->data['og_url'] = (isset($this->request->server['HTTPS']) ? HTTPS_SERVER : HTTP_SERVER) . $this->request->server['REQUEST_URI'];
+		$this->data['og_url'] = (isset($this->request->server['HTTPS']) ? HTTPS_SERVER : HTTP_SERVER) . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
 		$this->data['og_image'] = $this->document->getOgImage();
 		
 		$this->data['text_home'] = $this->language->get('text_home');
