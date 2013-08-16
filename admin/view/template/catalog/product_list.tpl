@@ -68,14 +68,14 @@
                   <option value="*"></option>
 		  <option value="null">-</option>
 		  <?php foreach($categories as $category) { ?>
-			  <option value="<?php echo $category['category_id'] ?>"><?php echo $category['name'] ?></option>
+			  <option value="<?php echo $category['category_id'] ?>" <?php if($filter_category_id == $category['category_id']) echo 'selected="selected"'; ?>><?php echo $category['name'] ?></option>
 		  <?php }?>
                 </select></td>
               <td><select name="filter_manufacturer_id">
                   <option value="*"></option>
                   <option value="null">-</option>
 		  <?php foreach($manufacturers as $manufacturer) { ?>
-			  <option value="<?php echo $manufacturer['manufacturer_id'] ?>"><?php echo $manufacturer['name'] ?></option>
+			  <option value="<?php echo $manufacturer['manufacturer_id'] ?>"<?php if($filter_manufacturer_id == $manufacturer['manufacturer_id']) echo 'selected="selected"'; ?>><?php echo $manufacturer['name'] ?></option>
 		  <?php }?>
 
                 </select></td>
@@ -98,7 +98,7 @@
                   <option value="0"><?php echo $text_disabled; ?></option>
                   <?php } ?>
                 </select></td>
-              <td align="right"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
+              <td align="right"><a onclick="clear_filter();" class="button"><?php echo $button_clear; ?></a></td>
             </tr>
             <?php if ($products) { ?>
             <?php foreach ($products as $product) { ?>
@@ -310,6 +310,12 @@ $('#head a').live("click", function() {
 	filter();
 	return false;
 });
+function clear_filter() {
+	$('tr.filter select option:selected').prop('selected', false);
+	$('tr.filter input').val('');
+	filter();
+	return false;
+}
 //--></script> 
 <script type="text/javascript"><!--
 $('.filter input').autocomplete({
