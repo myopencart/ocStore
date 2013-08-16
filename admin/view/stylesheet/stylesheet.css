@@ -320,7 +320,6 @@ a.button, .list a.button {
 .list tbody td {
 	vertical-align: middle;
 	padding: 0px 5px;
-	background: #FFFFFF;
 }
 .list tbody tr:hover td {
 	background-color: #FFFFCB;
