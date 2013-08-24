@@ -857,6 +857,7 @@ ul.box-filter > li ul {
 	border-bottom: 1px solid #EEEEEE;
 	padding: 5px;
 	overflow: auto;
+	margin-bottom:25px;
 }
 .product-filter .display {
 	margin-right: 15px;
@@ -877,9 +878,11 @@ ul.box-filter > li ul {
 	color: #333;
 }
 .product-compare {
-	padding-top: 6px;
-	margin-bottom: 25px;
+	float:left;
+	padding-top: 5px;
+	margin-left: 50px;
 	font-weight: bold;
+	
 }
 .product-compare a {
 	text-decoration: none;
