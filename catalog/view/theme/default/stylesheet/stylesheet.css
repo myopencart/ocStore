@@ -89,6 +89,13 @@ label {
 	margin-right: 195px;
 }
 /* header */
+#top {
+	height: 30px;
+	border-top: 1px solid #DBDEE1;
+	border-bottom: 1px solid #DBDEE1;
+	background: #F8F8F8;
+}
+
 #header {
 	height: 90px;
 	margin-bottom: 7px;
@@ -98,33 +105,33 @@ label {
 }
 #header #logo {
 	position: absolute;
-	top: 25px;
+	top: 33px;
 	left: 15px;
 }
 #language {
 	position: absolute;
-	top: 15px;
-	left: 320px;
-	width: 80px;
+	top: 59px;
+	left: 360px;
+	width: 108px;
 	color: #999;
 	line-height: 17px;
 }
 #language img {
 	cursor: pointer;
 	margin-right: 5px;
+	padding-left:5px;
 }
 #currency {
-	width: 75px;
+	width: 120px;
 	position: absolute;
-	top: 15px;
-	left: 425px;
+	top: 56px;
+	left: 500px;
 	color: #999;
 	line-height: 17px;
 }
 #currency a {
 	display: inline-block;
 	padding: 2px 4px;
-	border: 1px solid #CCC;
 	color: #999;
 	text-decoration: none;
 	margin-right: 2px;
@@ -137,20 +144,17 @@ label {
 #header #cart {
 	position: absolute;
 	top: 0px;
-	right: 145px;
+	right: 0px;
 	z-index: 9;
 	min-width: 300px;
 }
 #header #cart .heading {
 	float: right;
-	margin-right: 172px;
-	margin-top: 15px;
+	margin-right: 2px;
+	height: 30px;
 	padding-left: 14px;
 	padding-right: 14px;
-	border-top: 1px solid #FFFFFF;
-	border-left: 1px solid #FFFFFF;
-	border-right: 1px solid #EEEEEE;
-	background: #FFF;
+	background: url('../image/cart.png') 0% 50% no-repeat;
 	position: relative;
 	z-index: 1;
 }
@@ -164,42 +168,36 @@ label {
 #header #cart .heading a {
 	color: #38B0E3;
 	text-decoration: none;
+	display: block;
 }
 #header #cart .heading a span {
-	background: #FFFFFF url('../image/arrow-down.png') 100% 50% no-repeat;
+	background: url('../image/arrow-down.png') 100% 50% no-repeat;
 	padding-right: 15px;
+	margin-left:30px;
+	line-height: 30px;
 }
 #header #cart .content {
 	clear: both;
 	display: none;
 	position: relative;
-	top: -1px;
+	top: 2px;
 	padding: 8px;
 	min-height: 150px;
 	border-top: 1px solid #EEEEEE;
 	border-left: 1px solid #EEEEEE;
 	border-right: 1px solid #EEEEEE;
 	border-bottom: 1px solid #EEEEEE;
-	-webkit-border-radius: 0px 7px 7px 7px;
-	-moz-border-radius: 0px 7px 7px 7px;
-	-khtml-border-radius: 0px 7px 7px 7px;
-	border-radius: 0px 7px 7px 7px;
+	-webkit-border-radius: 0px 0px 7px 7px;
+	-moz-border-radius: 0px 0px 7px 7px;
+	-khtml-border-radius: 0px 0px 7px 7px;
+	border-radius: 0px 0px 7px 7px;
 	-webkit-box-shadow: 0px 2px 2px #DDDDDD;
 	-moz-box-shadow: 0px 2px 2px #DDDDDD;
 	box-shadow: 0px 2px 2px #DDDDDD;
 	background: #FFF;
 }
 #header #cart.active .heading {
-	margin-top: 5px;
-	padding-top: 10px;
-	padding-bottom: 6px;
-	border-top: 1px solid #EEEEEE;
-	border-left: 1px solid #EEEEEE;
-	border-right: 1px solid #EEEEEE;
-	-webkit-border-radius: 7px 7px 0px 0px;
-	-moz-border-radius: 7px 7px 0px 0px;
-	-khtml-border-radius: 7px 7px 0px 0px;
-	border-radius: 7px 7px 0px 0px;
+font-weight:700;	
 }
 #header #cart.active .content {
 	display: block;
@@ -259,10 +257,10 @@ label {
 }
 #header #search {
 	position: absolute;
-	top: 15px;
+	top: 55px;
 	right: 0px;
 	width: 298px;
-	z-index: 15;
+	z-index: 7;
 }
 #header .button-search {
 	position: absolute;
@@ -289,27 +287,31 @@ label {
 }
 #header #welcome {
 	position: absolute;
-	top: 47px;
-	right: 0px;
+	top: 7px;
+	left: 7px;
 	z-index: 5;
 	width: 298px;
-	text-align: right;
+	text-align: left;
 	color: #999999;
 }
 #header .links {
 	position: absolute;
-	right: 0px;
-	bottom: 3px;
+	left: 290px;
+	top: 8px;
 	font-size: 10px;
 	padding-right: 10px;
+	z-index:11;
 }
 #header .links a {
 	float: left;
 	display: block;
 	padding: 0px 0px 0px 7px;
 	color: #38B0E3;
-	text-decoration: none;
+	text-decoration: underline;
 	font-size: 12px;
+}
+#header .links a:hover {
+	text-decoration: none;
 }
 #header .links a + a {
 	margin-left: 8px;
