@@ -166,7 +166,7 @@ label {
 	margin-bottom: 3px;
 }
 #header #cart .heading a {
-	color: #38B0E3;
+	color: #000;
 	text-decoration: none;
 	display: block;
 }
@@ -294,6 +294,9 @@ font-weight:700;
 	text-align: left;
 	color: #999999;
 }
+#header #welcome a{
+	color: #000;
+}
 #header .links {
 	position: absolute;
 	left: 290px;
@@ -306,7 +309,7 @@ font-weight:700;
 	float: left;
 	display: block;
 	padding: 0px 0px 0px 7px;
-	color: #38B0E3;
+	color: #000;
 	text-decoration: underline;
 	font-size: 12px;
 }
