@@ -853,8 +853,9 @@ ul.box-filter > li ul {
 }
 /* product */
 .product-filter {
+	background: #F5F5F5;
 	border-bottom: 1px solid #EEEEEE;
-	padding-bottom: 5px;
+	padding: 5px;
 	overflow: auto;
 }
 .product-filter .display {
