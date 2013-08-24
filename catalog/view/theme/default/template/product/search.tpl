@@ -10,9 +10,9 @@
   <div class="content">
     <p><?php echo $entry_search; ?>
       <?php if ($search) { ?>
-      <input type="text" name="search" value="<?php echo $search; ?>" />
+      <input type="text" name="search" size="50" value="<?php echo $search; ?>" />
       <?php } else { ?>
-      <input type="text" name="search" value="<?php echo $search; ?>" onclick="this.value = '';" onkeydown="this.style.color = '000000'" style="color: #999;" />
+      <input type="text" name="search" size="50" value="<?php echo $search; ?>" onclick="this.value = '';" onkeydown="this.style.color = '000000'" style="color: #999;" />
       <?php } ?>
       <select name="category_id">
         <option value="0"><?php echo $text_category; ?></option>
@@ -53,13 +53,14 @@
     <label for="description"><?php echo $entry_description; ?></label>
   </div>
   <div class="buttons">
-    <div class="right"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="button" /></div>
+    <div class="center"><input type="button" value="<?php echo $button_search; ?>" id="button-search" class="button" /></div>
   </div>
   <h2><?php echo $text_search; ?></h2>
   <?php if ($products) { ?>
   <div class="product-filter">
     <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
-    <div class="limit"><?php echo $text_limit; ?>
+      <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
+	<div class="limit"><?php echo $text_limit; ?>
       <select onchange="location = this.value;">
         <?php foreach ($limits as $limits) { ?>
         <?php if ($limits['value'] == $limit) { ?>
@@ -82,7 +83,6 @@
       </select>
     </div>
   </div>
-  <div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
   <div class="product-list">
     <?php foreach ($products as $product) { ?>
     <div>
