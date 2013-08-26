@@ -307,7 +307,7 @@ class ControllerProductProduct extends Controller {
 				$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
 				$this->document->setOgImage($this->data['thumb']);
 			} else {
-				$this->data['thumb'] = '';
+				$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', $this->config->get('config_image_thumb_width'), $this->config->get('config_image_thumb_height'));
 			}
 			
 			$this->data['images'] = array();
