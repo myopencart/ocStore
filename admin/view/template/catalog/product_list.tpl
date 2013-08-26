@@ -64,14 +64,14 @@
             <tr class="filter">
               <td></td>
               <td></td>
-              <td><select name="filter_category_id">
+              <td><select name="filter_category_id" style="width: 100px;">
                   <option value="*"></option>
 		  <option value="null">-</option>
 		  <?php foreach($categories as $category) { ?>
 			  <option value="<?php echo $category['category_id'] ?>" <?php if($filter_category_id == $category['category_id']) echo 'selected="selected"'; ?>><?php echo $category['name'] ?></option>
 		  <?php }?>
                 </select></td>
-              <td><select name="filter_manufacturer_id">
+              <td><select name="filter_manufacturer_id" style="width: 100px;">
                   <option value="*"></option>
                   <option value="null">-</option>
 		  <?php foreach($manufacturers as $manufacturer) { ?>
@@ -84,7 +84,7 @@
               <td><input type="text" name="filter_name" value="<?php echo $filter_name; ?>" /></td>
               <td><input type="text" name="filter_model" value="<?php echo $filter_model; ?>" /></td>
               <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" size="8"/></td>
-              <td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" style="text-align: right;" /></td>
+              <td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" size="8" style="text-align: right;" /></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
