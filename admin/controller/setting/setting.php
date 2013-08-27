@@ -1250,7 +1250,7 @@ class ControllerSettingSetting extends Controller {
 			}											
 		}
 	
-		if (!$this->request->post['config_error_filename']) {
+		if  ( (!$this->request->post['config_error_filename'])|| (strpos($this->request->post['config_error_filename'],'php')) ) {
 			$this->error['error_filename'] = $this->language->get('error_error_filename');
 		}
 		
