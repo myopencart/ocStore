@@ -20,6 +20,18 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/order');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			//++++ Don't escape html tags in shipping methods ++++
+			if (isset($this->request->post['shipping_method'])) {
+				$this->request->post['shipping_method'] = html_entity_decode($this->request->post['shipping_method'], ENT_QUOTES, 'UTF-8');
+			}
+			if (isset($this->request->post['order_total'])) {
+	      		foreach ($this->request->post['order_total'] as $i=>$order_total) {
+					$this->request->post['order_total'][$i]['title'] = html_entity_decode($order_total['title'], ENT_QUOTES, 'UTF-8');
+					$this->request->post['order_total'][$i]['text'] = html_entity_decode($order_total['text'], ENT_QUOTES, 'UTF-8');
+				}
+			}
+			//---- Don't escape html tags in shipping methods ----
+			
       	  	$this->model_sale_order->addOrder($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -76,6 +88,18 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/order');
     	
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			//++++ Don't escape html tags in shipping methods ++++
+			if (isset($this->request->post['shipping_method'])) {
+				$this->request->post['shipping_method'] = html_entity_decode($this->request->post['shipping_method'], ENT_QUOTES, 'UTF-8');
+			}
+			if (isset($this->request->post['order_total'])) {
+	      		foreach ($this->request->post['order_total'] as $i=>$order_total) {
+					$this->request->post['order_total'][$i]['title'] = html_entity_decode($order_total['title'], ENT_QUOTES, 'UTF-8');
+					$this->request->post['order_total'][$i]['text'] = html_entity_decode($order_total['text'], ENT_QUOTES, 'UTF-8');
+				}
+			}
+			//---- Don't escape html tags in shipping methods ----
+
 			$this->model_sale_order->editOrder($this->request->get['order_id'], $this->request->post);
 	  		
 			$this->session->data['success'] = $this->language->get('text_success');

@@ -1531,17 +1531,20 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 			// Shipping Methods
 			if (json['shipping_method']) {
 				html = '<option value=""><?php echo $text_select; ?></option>';
+				var shipping_methods = {};
+				var regex = /(<([^>]+)>)/ig
 
 				for (i in json['shipping_method']) {
-					html += '<optgroup label="' + json['shipping_method'][i]['title'] + '">';
+					html += '<optgroup label="' + json['shipping_method'][i]['title'].replace(regex, '') + '">';
 				
 					if (!json['shipping_method'][i]['error']) {
 						for (j in json['shipping_method'][i]['quote']) {
 							if (json['shipping_method'][i]['quote'][j]['code'] == $('input[name=\'shipping_code\']').attr('value')) {
-								html += '<option value="' + json['shipping_method'][i]['quote'][j]['code'] + '" selected="selected">' + json['shipping_method'][i]['quote'][j]['title'] + '</option>';
+								html += '<option value="' + json['shipping_method'][i]['quote'][j]['code'] + '" selected="selected">' + json['shipping_method'][i]['quote'][j]['title'].replace(regex, '') + '</option>';
 							} else {
-								html += '<option value="' + json['shipping_method'][i]['quote'][j]['code'] + '">' + json['shipping_method'][i]['quote'][j]['title'] + '</option>';
+								html += '<option value="' + json['shipping_method'][i]['quote'][j]['code'] + '">' + json['shipping_method'][i]['quote'][j]['title'].replace(regex, '') + '</option>';
 							}
+							shipping_methods[json['shipping_method'][i]['quote'][j]['code']] = json['shipping_method'][i]['quote'][j]['title'];
 						}		
 					} else {
 						html += '<option value="" style="color: #F00;" disabled="disabled">' + json['shipping_method'][i]['error'] + '</option>';
@@ -1553,12 +1556,12 @@ $('#button-product, #button-voucher, #button-update').live('click', function() {
 				$('select[name=\'shipping\']').html(html);	
 				
 				if ($('select[name=\'shipping\'] option:selected').attr('value')) {
-					$('input[name=\'shipping_method\']').attr('value', $('select[name=\'shipping\'] option:selected').text());
+					$('input[name=\'shipping_method\']').val(shipping_methods[$('select[name=\'shipping\']').val()]);
 				} else {
-					$('input[name=\'shipping_method\']').attr('value', '');
+					$('input[name=\'shipping_method\']').val('');
 				}
 				
-				$('input[name=\'shipping_code\']').attr('value', $('select[name=\'shipping\'] option:selected').attr('value'));	
+				$('input[name=\'shipping_code\']').val($('select[name=\'shipping\']').val());	
 			}
 						
 			// Payment Methods
