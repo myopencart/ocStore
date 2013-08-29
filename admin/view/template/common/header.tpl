@@ -190,6 +190,11 @@ $(document).ready(function(){
           </li>
         </ul>
       </li>
+      <li id="octeam"><a class="top"><?php echo $text_octeam; ?></a>
+        <ul>
+          <li><a href="<?php echo $octeam_toolset; ?>"><?php echo $text_octeam_toolset; ?></a></li>
+        </ul>
+      </li>
       <li id="help"><a class="top"><?php echo $text_help; ?></a>
         <ul>
           <li><a onClick="window.open('http://myopencart.ru');"><?php echo $text_opencart; ?></a></li>

@@ -103,6 +103,10 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_length_class'] = $this->language->get('text_length_class');
 		$this->data['text_zone'] = $this->language->get('text_zone');
 		
+		/* octeam */
+		$this->data['text_octeam'] = $this->language->get('text_octeam');
+		$this->data['text_octeam_toolset'] = $this->language->get('text_octeam_toolset');
+		
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
 			
@@ -174,6 +178,10 @@ class ControllerCommonHeader extends Controller {
 			$this->data['weight_class'] = $this->url->link('localisation/weight_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['length_class'] = $this->url->link('localisation/length_class', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], 'SSL');
+			
+			/* octeam */
+			$this->data['octeam_toolset'] = $this->url->link('octeam/toolset', 'token=' . $this->session->data['token'], 'SSL');
+			
 			
 			$this->data['stores'] = array();
 			
