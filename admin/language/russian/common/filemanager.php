@@ -36,11 +36,11 @@ $_['error_uploaded']   = 'Файл не загружается по непоня
 $_['error_permission'] = 'У вас нет прав доступа!';
 
 // Button
-$_['button_folder']    = 'Нов.папка';
+$_['button_folder']    = 'Новая директория';
 $_['button_delete']    = 'Удалить';
-$_['button_move']      = 'Перемести.';
-$_['button_copy']      = 'Копиров.';
-$_['button_rename']    = 'Переименов.';
+$_['button_move']      = 'Переместить';
+$_['button_copy']      = 'Копировать';
+$_['button_rename']    = 'Переименовать';
 $_['button_upload']    = 'Загрузить';
 $_['button_refresh']   = 'Обновить';
 ?>
