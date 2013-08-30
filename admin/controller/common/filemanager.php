@@ -93,6 +93,8 @@ class ControllerCommonFileManager extends Controller {
 	public function files() {
 		$json = array();
 		
+		$this->load->model('tool/image');
+		
 		if (!empty($this->request->post['directory'])) {
 			$directory = DIR_IMAGE . 'data/' . str_replace('../', '', $this->request->post['directory']);
 		} else {
@@ -109,6 +111,7 @@ class ControllerCommonFileManager extends Controller {
 		$files = glob(rtrim($directory, '/') . '/*');
 		
 		if ($files) {
+			ob_start();
 			foreach ($files as $file) {
 				if (is_file($file)) {
 					$ext = strrchr($file, '.');
@@ -141,10 +144,12 @@ class ControllerCommonFileManager extends Controller {
 					$json[] = array(
 						'filename' => basename($file),
 						'file'     => utf8_substr($file, utf8_strlen(DIR_IMAGE . 'data/')),
+						'thumb'    => $this->model_tool_image->resize(utf8_substr($file, utf8_strlen(DIR_IMAGE)), 100, 100),
 						'size'     => round(utf8_substr($size, 0, utf8_strpos($size, '.') + 4), 2) . $suffix[$i]
 					);
 				}
 			}
+			ob_end_clean();
 		}
 		
 		$this->response->setOutput(json_encode($json));	

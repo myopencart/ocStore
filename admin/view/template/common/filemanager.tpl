@@ -95,7 +95,15 @@ img {
 </head>
 <body>
 <div id="container">
-  <div id="menu"><a id="create" class="button" style="background-image: url('view/image/filemanager/folder.png');"><?php echo $button_folder; ?></a><a id="delete" class="button" style="background-image: url('view/image/filemanager/edit-delete.png');"><?php echo $button_delete; ?></a><a id="move" class="button" style="background-image: url('view/image/filemanager/edit-cut.png');"><?php echo $button_move; ?></a><a id="copy" class="button" style="background-image: url('view/image/filemanager/edit-copy.png');"><?php echo $button_copy; ?></a><a id="rename" class="button" style="background-image: url('view/image/filemanager/edit-rename.png');"><?php echo $button_rename; ?></a><a id="upload" class="button" style="background-image: url('view/image/filemanager/upload.png');"><?php echo $button_upload; ?></a><a id="refresh" class="button" style="background-image: url('view/image/filemanager/refresh.png');"><?php echo $button_refresh; ?></a></div>
+  <div id="menu">
+	<a id="create" class="button" style="background-image: url('view/image/filemanager/folder.png'); height:13px;" title="<?php echo $button_folder; ?>"></a>
+	<a id="delete" class="button" style="background-image: url('view/image/filemanager/edit-delete.png'); height:13px;" title="<?php echo $button_delete; ?>"></a>
+	<a id="move" class="button" style="background-image: url('view/image/filemanager/edit-cut.png'); height:13px;" title="<?php echo $button_move; ?>"></a>
+	<a id="copy" class="button" style="background-image: url('view/image/filemanager/edit-copy.png'); height:13px;" title="<?php echo $button_copy; ?>"></a>
+	<a id="rename" class="button" style="background-image: url('view/image/filemanager/edit-rename.png'); height:13px;" title="<?php echo $button_rename; ?>"></a>
+	<a id="upload" class="button" style="background-image: url('view/image/filemanager/upload.png'); height:13px;" title="<?php echo $button_upload; ?>"></a>
+	<a id="refresh" class="button" style="background-image: url('view/image/filemanager/refresh.png'); height:13px;" title="<?php echo $button_refresh; ?>"></a>
+  </div>
   <div id="column-left"></div>
   <div id="column-right"></div>
 </div>
@@ -241,7 +249,7 @@ $(document).ready(function() {
 						
 						if (json) {
 							for (i = 0; i < json.length; i++) {
-								html += '<a><img src="<?php echo $no_image; ?>" alt="" title="" /><br />' + ((json[i]['filename'].length > 15) ? (json[i]['filename'].substr(0, 15) + '..') : json[i]['filename']) + '<br />' + json[i]['size'] + '<input type="hidden" name="image" value="' + json[i]['file'] + '" /></a>';
+								html += '<a><img src="' + json[i]['thumb'] + '" data-original="' + json[i]['thumb'] + '" alt="" title="" /><br />' + ((json[i]['filename'].length > 15) ? (json[i]['filename'].substr(0, 15) + '..') : json[i]['filename']) + '<br />' + json[i]['size'] + '<input type="hidden" name="image" value="' + json[i]['file'] + '" /></a>';
 							}
 						}
 						
