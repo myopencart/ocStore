@@ -122,11 +122,11 @@
             </tr>
             <tr>
               <td><?php echo $entry_quantity; ?></td>
-              <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="2" /></td>
+              <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="5" /></td>
             </tr>
             <tr>
               <td><?php echo $entry_minimum; ?></td>
-              <td><input type="text" name="minimum" value="<?php echo $minimum; ?>" size="2" /></td>
+              <td><input type="text" name="minimum" value="<?php echo $minimum; ?>" size="4" /></td>
             </tr>
             <tr>
               <td><?php echo $entry_subtract; ?></td>
