@@ -4,9 +4,10 @@
 <meta charset="UTF-8" />
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
-<script type="text/javascript" src="view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-<link rel="stylesheet" type="text/css" href="view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<script type="text/javascript" src="view/javascript/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-1.10.3.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.10.3.custom.min.css" />
 <script type="text/javascript" src="view/javascript/jquery/ui/external/jquery.bgiframe-2.1.2.js"></script>
 <script type="text/javascript" src="view/javascript/jquery/jstree/jquery.tree.min.js"></script>
 <script type="text/javascript" src="view/javascript/jquery/ajaxupload.js"></script>
@@ -191,6 +192,10 @@ $(document).ready(function() {
 		});
 	});
 	
+	$.curCSS = function (element, attrib, val) {
+		$(element).css(attrib, val);
+	};
+
 	$('#column-left').tree({
 		data: { 
 			type: 'json',
