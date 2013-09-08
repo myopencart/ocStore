@@ -1490,7 +1490,15 @@ class ControllerCatalogProduct extends Controller {
 			$this->data['main_category_id'] = $this->model_catalog_product->getProductMainCategoryId($this->request->get['product_id']);
 		} else {
 			$this->data['main_category_id'] = 0;
-		}	
+		}
+		
+		if (isset($this->request->post['product_category'])) {
+			$this->data['product_category'] = $this->request->post['product_category'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$this->data['product_category'] = $this->model_catalog_product->getProductCategories($this->request->get['product_id']);
+		} else {
+			$this->data['product_category'] = array();
+		}		
 		
 		if (isset($this->request->post['product_related'])) {
 			$products = $this->request->post['product_related'];
