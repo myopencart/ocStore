@@ -29,7 +29,7 @@ class ControllerCommonSeoPro extends Controller {
 		if (!isset($this->request->get['_route_'])) {
 			$this->validate();
 		} else {
-			$route = $this->request->get['_route_'];
+			$route_ = $route = $this->request->get['_route_'];
 			unset($this->request->get['_route_']);
 			$parts = explode('/', trim(utf8_strtolower($route), '/'));
 			list($last_part) = explode('.', array_pop($parts));
@@ -78,6 +78,9 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'product/manufacturer/info';
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
+			} elseif(isset($this->cache_data['queries'][$route_])) {
+					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
+					$this->response->redirect($this->cache_data['queries'][$route_]);
 			} else {
 				if (isset($queries[$parts[0]])) {
 					$this->request->get['route'] = $queries[$parts[0]];
