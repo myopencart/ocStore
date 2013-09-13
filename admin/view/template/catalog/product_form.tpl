@@ -253,7 +253,7 @@
               <td><?php echo $entry_main_category; ?></td>
               <td><select name="main_category_id">
                 <option value="0" selected="selected"><?php echo $text_none; ?></option>
-                <?php foreach ($product_categories as $product_categories) { ?>
+                <?php foreach ($categories as $product_categories) { ?>
                 <?php if ($product_categories['category_id'] == $main_category_id) { ?>
                 <option value="<?php echo $product_categories['category_id']; ?>" selected="selected"><?php echo $product_categories['name']; ?></option>
                 <?php } else { ?>
@@ -270,7 +270,7 @@
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
 
                   <div class="<?php echo $class; ?>">
-                    <?php if (in_array($category['category_id'], $product_categories)) { ?>
+                    <?php if (in_array($category['category_id'], $product_category)) { ?>
                     <input type="checkbox" name="product_category[]" value="<?php echo $category['category_id']; ?>" checked="checked" />
                     <?php echo $category['name']; ?>
                     <?php } else { ?>
