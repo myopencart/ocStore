@@ -36,8 +36,12 @@ class ControllerModuleCategory extends Controller {
 
 		foreach ($categories as $category) {
 			//Будем вычислять кол-во товаров в категориях только если это кол-во надо показывать
+			$PIDs=array();
 			if ($show_product_count) {
-				$total = $this->model_catalog_product->getTotalProducts(array('filter_category_id' => $category['category_id']));
+				$res = $this->model_catalog_product->getTotalProductsID(array('filter_category_id' => $category['category_id']));
+				foreach ($res as $key=>$value) {
+					$PIDs[$value['product_id']]=$value['product_id'];
+				}
 			}
 
 			$children_data = array();
@@ -52,9 +56,13 @@ class ControllerModuleCategory extends Controller {
 						'filter_sub_category' => true
 					);
 
-					$product_total = $this->model_catalog_product->getTotalProducts($data);
+					$res = $this->model_catalog_product->getTotalProductsID($data);
+					$product_total=count($res);
+					foreach ($res as $key=>$value) {
+						$PIDs[$value['product_id']]=$value['product_id'];
+					}
 
-					$total += $product_total;
+//					$total += count($PIDs);
 				}
 
 				$children_data[] = array(
@@ -63,6 +71,8 @@ class ControllerModuleCategory extends Controller {
 					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])	
 				);		
 			}
+
+			$total = count($PIDs);
 
 			$this->data['categories'][] = array(
 				'category_id' => $category['category_id'],
