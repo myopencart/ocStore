@@ -3484,7 +3484,7 @@ CREATE TABLE `oc_user` (
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
   `email` varchar(96) NOT NULL,
-  `code` varchar(32) NOT NULL,
+  `code` varchar(40) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL default '0000-00-00 00:00:00',
