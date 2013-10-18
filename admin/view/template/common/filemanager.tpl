@@ -10,6 +10,9 @@
 <script type="text/javascript" src="view/javascript/jquery/ui/external/jquery.bgiframe-2.1.2.js"></script>
 <script type="text/javascript" src="view/javascript/jquery/jstree/jquery.tree.min.js"></script>
 <script type="text/javascript" src="view/javascript/jquery/ajaxupload.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/jstree/lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/jstree/plugins/jquery.tree.cookie.js"></script>
+
 <style type="text/css">
 body {
 	padding: 0;
@@ -192,6 +195,7 @@ $(document).ready(function() {
 	});
 	
 	$('#column-left').tree({
+		plugins : {cookie : {}},
 		data: { 
 			type: 'json',
 			async: true, 
@@ -203,7 +207,7 @@ $(document).ready(function() {
 		selected: 'top',
 		ui: {		
 			theme_name: 'classic',
-			animation: 700
+			animation: 400
 		},	
 		types: { 
 			'default': {
@@ -263,6 +267,21 @@ $(document).ready(function() {
 						alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 					}
 				});
+			},
+			onopen: function(TREE_OBJ) {
+				var tr = $('#column-left li#top li[directory]');
+
+				tr.each(function(index, domEle) {
+					dd = $(domEle).attr('directory');
+					dd = dd.replace(/\//g, "");
+					dd = dd.replace(/\s/g, "");
+					$(domEle).attr('id', dd);
+				});
+
+				var myTree = $.tree.reference('#column-left');
+				var cc = $.cookie('selected');
+				var bb = '#' + cc;
+				myTree.select_branch(bb);
 			}
 		}
 	});	
