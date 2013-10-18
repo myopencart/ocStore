@@ -96,13 +96,13 @@ img {
 <body>
 <div id="container">
   <div id="menu">
-	<a id="create" class="button" style="background-image: url('view/image/filemanager/folder.png'); height:13px;" title="<?php echo $button_folder; ?>"></a>
-	<a id="delete" class="button" style="background-image: url('view/image/filemanager/edit-delete.png'); height:13px;" title="<?php echo $button_delete; ?>"></a>
-	<a id="move" class="button" style="background-image: url('view/image/filemanager/edit-cut.png'); height:13px;" title="<?php echo $button_move; ?>"></a>
-	<a id="copy" class="button" style="background-image: url('view/image/filemanager/edit-copy.png'); height:13px;" title="<?php echo $button_copy; ?>"></a>
-	<a id="rename" class="button" style="background-image: url('view/image/filemanager/edit-rename.png'); height:13px;" title="<?php echo $button_rename; ?>"></a>
-	<a id="upload" class="button" style="background-image: url('view/image/filemanager/upload.png'); height:13px;" title="<?php echo $button_upload; ?>"></a>
-	<a id="refresh" class="button" style="background-image: url('view/image/filemanager/refresh.png'); height:13px;" title="<?php echo $button_refresh; ?>"></a>
+	<a id="create" class="button" style="background-image: url('view/image/filemanager/folder.png'); height:13px;" title="<?php echo $button_folder; ?>"><?php echo $button_folder; ?></a>
+	<a id="delete" class="button" style="background-image: url('view/image/filemanager/edit-delete.png'); height:13px;" title="<?php echo $button_delete; ?>"><?php echo $button_delete; ?></a>
+	<a id="move" class="button" style="background-image: url('view/image/filemanager/edit-cut.png'); height:13px;" title="<?php echo $button_move; ?>"><?php echo $button_move; ?></a>
+	<a id="copy" class="button" style="background-image: url('view/image/filemanager/edit-copy.png'); height:13px;" title="<?php echo $button_copy; ?>"><?php echo $button_copy; ?></a>
+	<a id="rename" class="button" style="background-image: url('view/image/filemanager/edit-rename.png'); height:13px;" title="<?php echo $button_rename; ?>"><?php echo $button_rename; ?></a>
+	<a id="upload" class="button" style="background-image: url('view/image/filemanager/upload.png'); height:13px;" title="<?php echo $button_upload; ?>"><?php echo $button_upload; ?></a>
+	<a id="refresh" class="button" style="background-image: url('view/image/filemanager/refresh.png'); height:13px;" title="<?php echo $button_refresh; ?>"><?php echo $button_refresh; ?></a>
   </div>
   <div id="column-left"></div>
   <div id="column-right"></div>
