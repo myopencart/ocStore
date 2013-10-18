@@ -64,7 +64,7 @@
     <fieldset>
       <table class="form">
         <tr>
-          <td><span class="required">*</span> Пароль:</td>
+          <td><span class="required">*</span> Логин:</td>
           <td><input type="text" name="username" value="<?php echo $username; ?>" />
             <br />
             <?php if ($error_username) { ?>
