@@ -80,6 +80,7 @@ class ControllerAccountOrder extends Controller {
 		$this->data['text_date_added'] = $this->language->get('text_date_added');
 		$this->data['text_customer'] = $this->language->get('text_customer');
 		$this->data['text_products'] = $this->language->get('text_products');
+		$this->data['text_products_count'] = $this->language->get('text_products_count');
 		$this->data['text_total'] = $this->language->get('text_total');
 		$this->data['text_empty'] = $this->language->get('text_empty');
 
@@ -102,6 +103,7 @@ class ControllerAccountOrder extends Controller {
 		foreach ($results as $result) {
 			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
 			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
+			$product_count = $this->model_account_order->getTotalOrderProductsCountByOrderId($result['order_id']);
 
 			$this->data['orders'][] = array(
 				'order_id'   => $result['order_id'],
@@ -109,6 +111,7 @@ class ControllerAccountOrder extends Controller {
 				'status'     => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'products'   => ($product_total + $voucher_total),
+				'products_count'   => ($product_count + $voucher_total),
 				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
 				'href'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], 'SSL'),
 				'reorder'    => $this->url->link('account/order', 'order_id=' . $result['order_id'], 'SSL')
