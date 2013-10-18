@@ -359,7 +359,7 @@ font-weight:700;
 	z-index: 6;
 	position: relative;
 }
-#menu > ul > li:hover > a {
+#menu > ul > li:hover > a, #menu > ul > li > a.active {
 	background: #000000;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
