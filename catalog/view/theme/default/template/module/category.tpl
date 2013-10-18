@@ -9,7 +9,7 @@
         <?php } else { ?>
         <a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
         <?php } ?>
-        <?php if ($category['children']) { ?>
+        <?php if (($category['children']) && ($category['category_id'] == $category_id)) { ?>
         <ul>
           <?php foreach ($category['children'] as $child) { ?>
           <li>
