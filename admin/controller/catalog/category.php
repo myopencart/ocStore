@@ -261,7 +261,34 @@ class ControllerCatalogCategory extends Controller {
 		} else {
 			$this->data['parent_id'] = 0;
 		}
-						
+
+		// Categories
+		$this->load->model('catalog/category');
+		$this->data['categories'] = $this->model_catalog_category->getCategories(0);
+
+		$this->load->model('catalog/filter');
+
+		if (isset($this->request->post['category_filter'])) {
+			$filters = $this->request->post['category_filter'];
+		} elseif (isset($this->request->get['category_id'])) {
+			$filters = $this->model_catalog_category->getCategoryFilters($this->request->get['category_id']);
+		} else {
+			$filters = array();
+		}
+
+		$this->data['category_filters'] = array();
+
+		foreach ($filters as $filter_id) {
+			$filter_info = $this->model_catalog_filter->getFilter($filter_id);
+
+			if ($filter_info) {
+				$this->data['category_filters'][] = array(
+					'filter_id' => $filter_info['filter_id'],
+					'name'      => $filter_info['group'] . ' &gt; ' . $filter_info['name']
+				);
+			}
+		}
+
 		$this->load->model('setting/store');
 		
 		$this->data['stores'] = $this->model_setting_store->getStores();
