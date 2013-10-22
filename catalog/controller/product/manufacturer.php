@@ -167,9 +167,11 @@ class ControllerProductManufacturer extends Controller {
 				$this->data['heading_title'] = $manufacturer_info['name'];
 			}
 
-			$this->data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
-		
-
+			if ($page == 1) {
+				$this->data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
+			} else {
+				$this->data['description'] = '';
+			}		
 			
 			$this->data['text_empty'] = $this->language->get('text_empty');
 			$this->data['text_quantity'] = $this->language->get('text_quantity');
