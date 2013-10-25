@@ -34,8 +34,14 @@ class Pagination {
 		$output = '';
 		
 		if ($page > 1) {
-			$output .= ' <a href="' . str_replace('{page}', 1, $this->url) . '">' . $this->text_first . '</a> <a href="' . str_replace('{page}', $page - 1, $this->url) . '">' . $this->text_prev . '</a> ';
-    	}
+			$tmp_url = str_replace('&amp;', '&', $this->url);
+			$output .= ' <a href="' . str_replace('&', '&amp;', rtrim( str_replace('page={page}', '', $tmp_url), '?&')) . '">' . $this->text_first . '</a>';
+			if ($page == 2){
+				$output .= '<a href="' . str_replace('&', '&amp;', rtrim( str_replace('page={page}', '', $tmp_url), '?&')) . '">' . $this->text_prev . '</a> ';
+			}else{
+				$output .= '<a href="' . str_replace('{page}', $page - 1, $this->url) . '">' . $this->text_prev . '</a> ';
+			}
+		}
 
 		if ($num_pages > 1) {
 			if ($num_pages <= $num_links) {
@@ -63,9 +69,11 @@ class Pagination {
 			for ($i = $start; $i <= $end; $i++) {
 				if ($page == $i) {
 					$output .= ' <b>' . $i . '</b> ';
+				} elseif($i == 1) {
+					$output .= ' <a href="' . str_replace('&', '&amp;', rtrim( str_replace('page={page}', '', $tmp_url), '?&')) . '">' . $i . '</a> ';
 				} else {
 					$output .= ' <a href="' . str_replace('{page}', $i, $this->url) . '">' . $i . '</a> ';
-				}	
+				}
 			}
 							
 			if ($end < $num_pages) {
