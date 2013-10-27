@@ -109,6 +109,17 @@ class ControllerCommonFileManager extends Controller {
 		);
 		
 		$files = glob(rtrim($directory, '/') . '/*');
+
+			function sort_by_mtime($file1,$file2) {
+			    $time1 = filemtime($file1);
+			    $time2 = filemtime($file2);
+				    if ($time1 == $time2) {
+				        return 0;
+				    }
+				return ($time1 < $time2) ? 1 : -1;
+			}
+			usort($files,"sort_by_mtime");
+			//$html_array is now ordered by the time it was last modified
 		
 		if ($files) {
 			ob_start();
@@ -438,7 +449,7 @@ class ControllerCommonFileManager extends Controller {
 					$json['error'] = $this->language->get('error_directory');
 				}
 				
-				if ($this->request->files['image']['size'] > 300000) {
+				if ($this->request->files['image']['size'] > 3200000) {
 					$json['error'] = $this->language->get('error_file_size');
 				}
 				
