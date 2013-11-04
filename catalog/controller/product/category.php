@@ -354,7 +354,6 @@ class ControllerProductCategory extends Controller {
 			
 			$this->data['limits'] = array();
 			
-	
 			$limits = array_unique(array($this->config->get('config_catalog_limit'), 25, 50, 75, 100));
 			
 			sort($limits);
@@ -374,7 +373,6 @@ class ControllerProductCategory extends Controller {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}
 
-			
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
 			}	
