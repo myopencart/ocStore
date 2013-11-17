@@ -21,7 +21,7 @@ class ModelToolImage extends Model {
 		$extension = $info['extension'];
 		
 		$old_image = $filename;
-		$new_image = 'cache/' . $this->slugify(utf8_substr($filename, 0, utf8_strrpos($filename, '.')) . '-' . $width . 'x' . $height . $type .'.' . $extension);
+		$new_image = 'cache/' . utf8_substr($filename, 0, utf8_strrpos($filename, '.')) . '-' . $width . 'x' . $height . $type .'.' . $extension;
 		
 		if (!file_exists(DIR_IMAGE . $new_image) || (filemtime(DIR_IMAGE . $old_image) > filemtime(DIR_IMAGE . $new_image))) {
 			$path = '';
@@ -52,14 +52,6 @@ class ModelToolImage extends Model {
 		} else {
 			return $this->config->get('config_url') . 'image/' . $new_image;
 		}	
-	}
-	
-	/**
-	 * Slugify string.
-	 * Used to make filename without rusian letters, spaces, etc.
-	 */
-	public function slugify($string) {
-		return strtolower(trim(preg_replace('~[^0-9a-z\.]+~i', '-', html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($string, ENT_QUOTES, 'UTF-8')), ENT_QUOTES, 'UTF-8')), '-'));
 	}
 }
 ?>
