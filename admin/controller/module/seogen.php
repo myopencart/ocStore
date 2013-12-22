@@ -1,5 +1,6 @@
 <?php
 class ControllerModuleSeogen extends Controller {
+
 	private $error = array();
 
 	public function index() {
@@ -11,6 +12,12 @@ class ControllerModuleSeogen extends Controller {
 		$this->load->model('setting/setting');
 
 		if(($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			if (!isset($this->request->post['seogen']['seogen_status'])){
+				$this->request->post['seogen']['seogen_status'] = 0;
+			}
+			if (!isset($this->request->post['seogen']['seogen_overwrite'])){
+				$this->request->post['seogen']['seogen_overwrite'] = 0;
+			}
 			$this->model_setting_setting->editSetting('seogen', $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -70,42 +77,87 @@ class ControllerModuleSeogen extends Controller {
 	public function install() {
 		$this->load->language('module/seogen');
 		$this->load->model('setting/setting');
-		$this->model_setting_setting->editSetting('seogen', array('seogen' => array('categories_template' => $this->language->get('text_categories_tags'),
-																					'products_template' => $this->language->get('text_products_tags'),
-																					'manufacturers_template' => $this->language->get('text_manufacturers_tags')
-														  )));
+		$seogen = array('seogen' => array(
+			'seogen_status' => 1,
+			'seogen_overwrite' => 1,
+			'categories_template' => $this->language->get('text_categories_tags'),
+			'products_template' => $this->language->get('text_products_tags'),
+			'manufacturers_template' => $this->language->get('text_manufacturers_tags'),
+		));
+		$query = $this->db->query("DESC `" . DB_PREFIX . "category_description`");
+		foreach($query->rows as $row) {
+			if($row['Field'] == "seo_title") {
+				$seogen['seogen']['categories_title_template'] = $this->language->get('text_categories_title_tags');
+			} elseif($row['Field'] == "seo_h1") {
+				$seogen['seogen']['categories_h1_template'] = $this->language->get('text_categories_h1_tags');
+			} elseif($row['Field'] == "meta_description") {
+				$seogen['seogen']['categories_meta_keyword_template'] = $this->language->get('text_categories_meta_keyword_tags');
+			} elseif($row['Field'] == "meta_keyword") {
+				$seogen['seogen']['categories_meta_description_template'] = $this->language->get('text_categories_meta_description_tags');
+			}
+		}
+
+		$query = $this->db->query("DESC `" . DB_PREFIX . "product_description`");
+		foreach($query->rows as $row) {
+			if($row['Field'] == "seo_title") {
+				$seogen['seogen']['products_title_template'] = $this->language->get('text_products_title_tags');
+			} elseif($row['Field'] == "seo_h1") {
+				$seogen['seogen']['products_h1_template'] = $this->language->get('text_products_h1_tags');
+			} elseif($row['Field'] == "meta_description") {
+				$seogen['seogen']['products_meta_keyword_template'] = $this->language->get('text_products_meta_keyword_tags');
+			} elseif($row['Field'] == "meta_keyword") {
+				$seogen['seogen']['products_meta_description_template'] = $this->language->get('text_products_meta_description_tags');
+			}
+		}
+
+		$query = $this->db->query("SHOW TABLES LIKE '" . DB_PREFIX . "manufacturer_description'");
+		if($query->num_rows) {
+			$query = $this->db->query("DESC `" . DB_PREFIX . "manufacturer_description`");
+			foreach($query->rows as $row) {
+				if($row['Field'] == "seo_title") {
+					$seogen['seogen']['manufacturers_title_template'] = $this->language->get('text_manufacturers_title_tags');
+				} elseif($row['Field'] == "seo_h1") {
+					$seogen['seogen']['manufacturers_h1_template'] = $this->language->get('text_manufacturers_h1_tags');
+				} elseif($row['Field'] == "meta_description") {
+					$seogen['seogen']['manufacturers_meta_keyword_template'] = $this->language->get('text_manufacturers_meta_keyword_tags');
+				} elseif($row['Field'] == "meta_keyword") {
+					$seogen['seogen']['manufacturers_meta_description_template'] = $this->language->get('text_manufacturers_meta_description_tags');
+				}
+			}
+		}
+
+		$this->model_setting_setting->editSetting('seogen', $seogen);
 	}
 
 	public function generate() {
 
-		if($this->request->server['REQUEST_METHOD'] == 'POST' && $this->validate()) {
+		if($this->request->server['REQUEST_METHOD'] == 'POST' && isset($this->request->post['name']) && $this->validate()) {
 			$this->load->language('module/seogen');
 			$this->load->model('module/seogen');
-
-			if(isset($this->request->post['seogen']['categories_template'])) {
-				$this->model_module_seogen->generateCategories($this->request->post['seogen']['categories_template']);
-				$this->saveSettings('categories_template');
-				$this->response->setOutput($this->language->get('text_success_categories'));
-			} elseif(isset($this->request->post['seogen']['products_template'])) {
-				$this->model_module_seogen->generateProducts($this->request->post['seogen']['products_template']);
-				$this->saveSettings('products_template');
-				$this->response->setOutput($this->language->get('text_success_products'));
-			} elseif(isset($this->request->post['seogen']['manufacturers_template'])) {
-				$this->model_module_seogen->generateManufacturers($this->request->post['seogen']['manufacturers_template']);
-				$this->saveSettings('manufacturers_template');
-				$this->response->setOutput($this->language->get('text_success_manufacturers'));
+			$name = $this->request->post['name'];
+		    if($name == 'categories') {
+				$this->model_module_seogen->generateCategories($this->request->post['seogen']);
+			} elseif($name == 'products') {
+				$this->model_module_seogen->generateProducts($this->request->post['seogen']);
+			} elseif($name == 'manufacturers') {
+				$this->model_module_seogen->generateManufacturers($this->request->post['seogen']);
 			}
+			$this->response->setOutput($this->language->get('text_success_generation'));
+			$this->saveSettings($this->request->post['seogen']);
 			$this->cache->delete("seo_pro");
 		}
 	}
 
-	private function saveSettings($var) {
+
+	private function saveSettings($data) {
 		$seogen = $this->config->get('seogen');
-		if(in_array($var, array_keys($seogen))) {
-			$seogen[$var] = $this->request->post['seogen'][$var];
-			$this->load->model('setting/setting');
-			$this->model_setting_setting->editSetting('seogen', array('seogen' => $seogen));
+		foreach($data as $key => $val) {
+			if(in_array($key, array_keys($seogen))) {
+				$seogen[$key] = $val;
+			}
 		}
+		$this->load->model('setting/setting');
+		$this->model_setting_setting->editSetting('seogen', array('seogen' => $seogen));
 	}
 
 	private function validate() {
