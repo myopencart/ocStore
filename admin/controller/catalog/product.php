@@ -1640,6 +1640,10 @@ class ControllerCatalogProduct extends Controller {
 				'limit'        => $limit
 			);
 			
+			if (isset($this->request->get['filter_category_id'])) {
+				$data['filter_category_id'] = $this->request->get['filter_category_id'];
+			}
+			
 			$results = $this->model_catalog_product->getProducts($data);
 			
 			foreach ($results as $result) {
