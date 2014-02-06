@@ -354,16 +354,15 @@ class ControllerProductCategory extends Controller {
 			
 			$this->data['limits'] = array();
 			
-	
 			$limits = array_unique(array($this->config->get('config_catalog_limit'), 25, 50, 75, 100));
 			
 			sort($limits);
 	
-			foreach($limits as $limits){
+			foreach($limits as $value){
 				$this->data['limits'][] = array(
-					'text'  => $limits,
-					'value' => $limits,
-					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&limit=' . $limits)
+					'text'  => $value,
+					'value' => $value,
+					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&limit=' . $value)
 				);
 			}
 			
@@ -374,7 +373,6 @@ class ControllerProductCategory extends Controller {
 				$url .= '&filter=' . $this->request->get['filter'];
 			}
 
-			
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
 			}	

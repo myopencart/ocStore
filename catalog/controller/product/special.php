@@ -220,18 +220,17 @@ class ControllerProductSpecial extends Controller {
 			$url .= '&order=' . $this->request->get['order'];
 		}
 
-									
 		$this->data['limits'] = array();
 
 		$limits = array_unique(array($this->config->get('config_catalog_limit'), 25, 50, 75, 100));
 		
 		sort($limits);
 
-		foreach($limits as $limit){
+		foreach($limits as $value){
 			$this->data['limits'][] = array(
-				'text'  => $limit,
-				'value' => $limit,
-				'href'  => $this->url->link('product/special', $url . '&limit=' . $limit)
+				'text'  => $value,
+				'value' => $value,
+				'href'  => $this->url->link('product/special', $url . '&limit=' . $value)
 			);
 		}
 			
