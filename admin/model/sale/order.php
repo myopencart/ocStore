@@ -750,27 +750,26 @@ class ModelSaleOrder extends Model {
 	
 	public function getEmailsByProductsOrdered($products, $start, $end) {
 		$implode = array();
-		
+
 		foreach ($products as $product_id) {
-			$implode[] = "op.product_id = '" . $product_id . "'";
+			$implode[] = "op.product_id = '" . (int)$product_id . "'";
 		}
-		
-		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0'");
-	
+
+		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0' AND o.email <> '' LIMIT " . (int)$start . "," . (int)$end);
+
 		return $query->rows;
 	}
-	
+
 	public function getTotalEmailsByProductsOrdered($products) {
 		$implode = array();
-		
-		foreach ($products as $product_id) {
-			$implode[] = "op.product_id = '" . $product_id . "'";
-		}
-				
-		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0' LIMIT " . $start . "," . $end);	
 
-		
-		return $query->row['total'];
+		foreach ($products as $product_id) {
+			$implode[] = "op.product_id = '" . (int)$product_id . "'";
+		}
+
+		$query = $this->db->query("SELECT DISTINCT email FROM `" . DB_PREFIX . "order` o LEFT JOIN " . DB_PREFIX . "order_product op ON (o.order_id = op.order_id) WHERE (" . implode(" OR ", $implode) . ") AND o.order_status_id <> '0' AND o.email <> ''");	
+
+		return $query->rows;
 	}	
 }
 ?>
