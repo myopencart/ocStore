@@ -218,10 +218,11 @@
       <?php if ($review_status) { ?>
       <div class="review">
         <div><img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a></div>
-        <div class="share"><!-- AddThis Button BEGIN -->
-          <script type="text/javascript" src="http://yraaa.ru/share/share_16x16.d3sn"></script>
-		  <style type="text/css">#hidden_tags {display:none}</style>
-          <!-- AddThis Button END --> 
+        <div class="share">
+		<!-- AddThis Button BEGIN -->
+			<div class="share42init" data-image="<?php echo $thumb; ?>"></div>
+			<script type="text/javascript" src="catalog/view/javascript/jquery/share42/share42.js"></script> 
+		<!-- AddThis Button END --> 
         </div>
       </div>
       <?php } ?>
