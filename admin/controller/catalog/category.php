@@ -270,6 +270,7 @@ class ControllerCatalogCategory extends Controller {
 			foreach ($this->data['categories'] as $key => $value) {
 				if ($value['category_id'] == $category_info['category_id']) {
 					unset($this->data['categories'][$key]);
+					break;
 				}
 			}
 		}
