@@ -1202,6 +1202,8 @@ height:30px;
 .product-info .review .share {
 	overflow: auto;
 	line-height: normal;
+	padding-bottom: 3px;
+	padding-top: 8px;
 }
 .product-info .review .share a {
 	text-decoration: none;
