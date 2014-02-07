@@ -195,7 +195,7 @@ class ControllerSaleContact extends Controller {
 						break;											
 					case 'product':
 						if (isset($this->request->post['product'])) {
-							$email_total = $this->model_sale_order->getTotalEmailsByProductsOrdered($this->request->post['product']);	
+							$email_total = count($this->model_sale_order->getTotalEmailsByProductsOrdered($this->request->post['product']));	
 							
 							$results = $this->model_sale_order->getEmailsByProductsOrdered($this->request->post['product'], ($page - 1) * 10, 10);
 													
