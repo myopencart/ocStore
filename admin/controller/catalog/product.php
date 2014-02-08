@@ -1105,6 +1105,7 @@ class ControllerCatalogProduct extends Controller {
 			$this->data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
 		} else {
 			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+			$this->data['image'] = 'no_image.jpg';
 		}
 		$this->load->model('catalog/manufacturer');
 		
