@@ -174,7 +174,7 @@
               <td><?php echo $entry_image; ?></td>
               <td><div class="image"><img src="<?php echo $thumb; ?>" alt="" id="thumb" /><br />
                   <input type="hidden" name="image" value="<?php echo $image; ?>" id="image" />
-                  <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
+                  <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', 'no_image.jpg');"><?php echo $text_clear; ?></a></div></td>
             </tr>
             <tr>
               <td><?php echo $entry_date_available; ?></td>
