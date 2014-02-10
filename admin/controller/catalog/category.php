@@ -246,6 +246,7 @@ class ControllerCatalogCategory extends Controller {
 			$this->data['category_description'] = array();
 		}
 
+		// Categories
 		$categories = $this->model_catalog_category->getAllCategories();
 
 		$this->data['categories'] = $this->getAllCategories($categories);
@@ -262,19 +263,6 @@ class ControllerCatalogCategory extends Controller {
 			$this->data['parent_id'] = 0;
 		}
 
-		// Categories
-		$this->load->model('catalog/category');
-		$this->data['categories'] = $this->model_catalog_category->getCategories(0);
-
-		if (isset($category_info)) {
-			foreach ($this->data['categories'] as $key => $value) {
-				if ($value['category_id'] == $category_info['category_id']) {
-					unset($this->data['categories'][$key]);
-					break;
-				}
-			}
-		}
-		
 		$this->load->model('catalog/filter');
 
 		if (isset($this->request->post['category_filter'])) {
