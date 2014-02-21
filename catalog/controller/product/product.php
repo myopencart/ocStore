@@ -230,7 +230,7 @@ class ControllerProductProduct extends Controller {
 			$this->document->setDescription($product_info['meta_description']);
 			$this->document->setKeywords($product_info['meta_keyword']);
 			
-			if ($this->config->get('config_seo_url')=='1') {
+			if ($this->config->get('config_seo_url')) {
 				if ($this->config->get('config_seo_url_type')!='seo_pro') {
 					$this->document->addLink($this->url->link('product/product', 'product_id=' . $this->request->get['product_id']), 'canonical');
 				}
