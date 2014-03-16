@@ -233,9 +233,9 @@ class ControllerCommonSeoPro extends Controller {
 		if ($product_id < 1) return false;
 
 		static $path = null;
-		if (!is_array($path)) {
+		if (!isset($path)) {
 			$path = $this->cache->get('product.seopath');
-			if (!is_array($path)) $path = array();
+			if (!isset($path)) $path = array();
 		}
 
 		if (!isset($path[$product_id])) {
@@ -254,9 +254,9 @@ class ControllerCommonSeoPro extends Controller {
 		if ($category_id < 1) return false;
 
 		static $path = null;
-		if (!is_array($path)) {
+		if (!isset($path)) {
 			$path = $this->cache->get('category.seopath');
-			if (!is_array($path)) $path = array();
+			if (!isset($path)) $path = array();
 		}
 
 		if (!isset($path[$category_id])) {
