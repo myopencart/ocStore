@@ -128,10 +128,10 @@ class ModelSaleOrder extends Model {
 		$affiliate_id = 0;
 		$commission = 0;
 		
-		if (!empty($this->request->post['affiliate_id'])) {
+		if (!empty($data['affiliate_id'])) {
 			$this->load->model('sale/affiliate');
 			
-			$affiliate_info = $this->model_sale_affiliate->getAffiliate($this->request->post['affiliate_id']);
+			$affiliate_info = $this->model_sale_affiliate->getAffiliate($data['affiliate_id']);
 			
 			if ($affiliate_info) {
 				$affiliate_id = $affiliate_info['affiliate_id']; 
@@ -259,10 +259,10 @@ class ModelSaleOrder extends Model {
 		$affiliate_id = 0;
 		$commission = 0;
 		
-		if (!empty($this->request->post['affiliate_id'])) {
+		if (!empty($data['affiliate_id'])) {
 			$this->load->model('sale/affiliate');
 			
-			$affiliate_info = $this->model_sale_affiliate->getAffiliate($this->request->post['affiliate_id']);
+			$affiliate_info = $this->model_sale_affiliate->getAffiliate($data['affiliate_id']);
 			
 			if ($affiliate_info) {
 				$affiliate_id = $affiliate_info['affiliate_id']; 
@@ -592,7 +592,7 @@ class ModelSaleOrder extends Model {
 		}
 		
 		if (!empty($data['filter_date_modified'])) {
-			$sql .= " AND DATE(o.date_modified) = DATE('" . $this->db->escape($data['filter_date_modified']) . "')";
+			$sql .= " AND DATE(date_modified) = DATE('" . $this->db->escape($data['filter_date_modified']) . "')";
 		}
 		
 		if (!empty($data['filter_total'])) {
