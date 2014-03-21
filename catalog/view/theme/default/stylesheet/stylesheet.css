@@ -876,6 +876,16 @@ height:30px;
 	list-style: none;
 	margin-bottom: 10px;
 }
+.manufacturer-info{
+	overflow: auto;
+	margin-bottom: 20px;
+}
+.manufacturer-info .image{
+	float: left;
+	padding: 5px;
+	margin-right: 15px;
+	border: 1px solid #E7E7E7;
+}
 /* product */
 .product-filter {
 	background: #F5F5F5;
