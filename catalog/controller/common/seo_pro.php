@@ -162,6 +162,7 @@ class ControllerCommonSeoPro extends Controller {
 				case 'manufacturer_id':
 				case 'category_id':
 				case 'information_id':
+				case 'order_id':
 					$queries[] = $key . '=' . $value;
 					unset($data[$key]);
 					$postfix = 1;
