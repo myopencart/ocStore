@@ -282,9 +282,8 @@ class ControllerCheckoutManual extends Controller {
 			
 			// Shipping
 			$json['shipping_method'] = array();
-			
-			if ($this->cart->hasShipping()) {		
-				$this->load->model('localisation/country');
+
+			if ($this->cart->hasShipping()) {
 				
 				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
 				
@@ -299,8 +298,6 @@ class ControllerCheckoutManual extends Controller {
 				if (!isset($this->request->post['shipping_zone_id']) || $this->request->post['shipping_zone_id'] == '') {
 					$json['error']['shipping']['zone'] = $this->language->get('error_zone');
 				}
-							
-				$this->load->model('localisation/country');
 				
 				$country_info = $this->model_localisation_country->getCountry($this->request->post['shipping_country_id']);
 				
