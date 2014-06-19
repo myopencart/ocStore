@@ -6,6 +6,16 @@
     <?php } ?>
   </div>
   <h1><?php echo $heading_title; ?></h1>
+  <?php if ($thumb || $description) { ?>
+  <div class="manufacturer-info">
+    <?php if ($thumb) { ?>
+    <div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
+    <?php } ?>
+    <?php if ($description) { ?>
+    <?php echo $description; ?>
+    <?php } ?>
+  </div>
+  <?php } ?>
   <?php if ($products) { ?>
   <div class="product-filter">
     <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
@@ -66,9 +76,6 @@
     <?php } ?>
   </div>
   <div class="pagination"><?php echo $pagination; ?></div>
-  <?php if ($description) { ?>
-  <div class="manufacturer-info"><?php echo $description; ?></div>
-  <?php } ?>
   <?php } else { ?>
   <div class="content"><?php echo $text_empty; ?></div>
   <div class="buttons">
