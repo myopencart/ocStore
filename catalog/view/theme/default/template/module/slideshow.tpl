@@ -13,4 +13,4 @@
 $(document).ready(function() {
 	$('#slideshow<?php echo $module; ?>').nivoSlider();
 });
---></script>
+//--></script>
