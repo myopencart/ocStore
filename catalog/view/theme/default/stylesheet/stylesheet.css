@@ -112,7 +112,7 @@ label {
 	position: absolute;
 	top: 59px;
 	left: 360px;
-	width: 108px;
+	width: 120px;
 	color: #999;
 	line-height: 17px;
 }
@@ -136,6 +136,7 @@ label {
 	text-decoration: none;
 	margin-right: 2px;
 	margin-bottom: 2px;
+	border: 1px solid #CCCCCC;
 }
 #currency a b {
 	color: #000;
