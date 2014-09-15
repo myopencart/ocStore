@@ -6,9 +6,13 @@ class ControllerCommonSeoPro extends Controller {
 		parent::__construct($registry);
 		$this->cache_data = $this->cache->get('seo_pro');
 		if (!$this->cache_data) {
-			$query = $this->db->query("SELECT LOWER(`keyword`) as 'keyword', `query` FROM " . DB_PREFIX . "url_alias");
+			$query = $this->db->query("SELECT LOWER(`keyword`) as 'keyword', `query` FROM " . DB_PREFIX . "url_alias ORDER BY url_alias_id");
 			$this->cache_data = array();
 			foreach ($query->rows as $row) {
+				if (isset($this->cache_data['keywords'][$row['keyword']])){
+					$this->cache_data['keywords'][$row['query']] = $this->cache_data['keywords'][$row['keyword']];
+					continue;
+				}
 				$this->cache_data['keywords'][$row['keyword']] = $row['query'];
 				$this->cache_data['queries'][$row['query']] = $row['keyword'];
 			}
@@ -40,6 +44,12 @@ class ControllerCommonSeoPro extends Controller {
 				if (isset($this->cache_data['keywords'][$keyword])) {
 					$rows[] = array('keyword' => $keyword, 'query' => $this->cache_data['keywords'][$keyword]);
 				}
+			}
+
+			if (isset($this->cache_data['keywords'][$route])){
+				$keyword = $route;
+				$parts = array($keyword);
+				$rows = array(array('keyword' => $keyword, 'query' => $this->cache_data['keywords'][$keyword]));
 			}
 
 			if (count($rows) == sizeof($parts)) {
