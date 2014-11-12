@@ -3,7 +3,7 @@
 define('VERSION', '1.5.5.1.2');
 
 //Generator
-define('GENEATOR', 'ocstore');
+define('GENERATOR', 'ocstore');
 
 // Configuration
 if (file_exists('config.php')) {
