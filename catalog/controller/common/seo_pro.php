@@ -60,6 +60,7 @@ class ControllerCommonSeoPro extends Controller {
 
 				reset($parts);
 				foreach ($parts as $part) {
+					if(!isset($queries[$part])) return false;
 					$url = explode('=', $queries[$part], 2);
 
 					if ($url[0] == 'category_id') {
