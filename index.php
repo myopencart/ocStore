@@ -2,6 +2,9 @@
 // Version
 define('VERSION', '1.5.5.1.2');
 
+//Generator
+define('GENERATOR', 'ocstore');
+
 // Configuration
 if (file_exists('config.php')) {
 	require_once('config.php');
