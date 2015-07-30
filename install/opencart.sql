@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `oc_category_description` (
 -- Dumping data for table `oc_category_description`
 --
 
-INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `seo_title`, `seo_h1`) VALUES
+INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `meta_title`, `meta_h1`) VALUES
 (28, 1, 'Мониторы', '', '', '', '', ''),
 (33, 1, 'Камеры', '', '', '', '', ''),
 (32, 1, 'Веб-камеры', '', '', '', '', ''),
