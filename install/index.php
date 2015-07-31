@@ -40,8 +40,8 @@ $response->addHeader('Content-Type: text/html; charset=UTF-8');
 $registry->set('response', $response);
 
 // Language
-$language = new Language('english');
-$language->load('english');
+$language = new Language('russian');
+$language->load('russian');
 $registry->set('language', $language);
 
 // Document
