@@ -69,8 +69,11 @@ $_['text_openbay']   		 = 'OpenBay Pro дает продавцам возмож�
 $_['text_maxmind']   		 = 'MaxMind даёт возможность продавцам быстро идентифицировать подозрительные сделки, уменьшая риск мошенничества с заказами и возвратами, давая оценку риска для каждого из них...';
 $_['text_more_info']   		 = 'Подробнее';
 $_['text_facebook']   		 = 'Поставьте нам лайк';
-$_['text_facebook_info']     = 'Поделитесь о нас с друзьями!';
+$_['text_facebook_info']     = 'Расскажите о нас друзьям!';
 $_['text_facebook_link']     = 'Посетить страницу на Facebook';
+$_['text_vkontakte']   		 = 'Поставьте мне нравится!';
+$_['text_vkontakte_info']     = 'Расскажите друзьям про ocStore!';
+$_['text_vkontakte_link']     = 'Посетить страницу Вконтакте';
 $_['text_forum']    	 	 = 'Форум техподдержки';
 $_['text_forum_info']    	 = 'Получите помощь от других пользователей';
 $_['text_forum_link']    	 = 'Посетить форум техподдержки';
@@ -134,7 +137,7 @@ $_['text_terms'] = '<h3>Универсальная общественная ли
                     <div>Версия 3, 29 июня 2007</div>
 
                     <p>Copyright © 2007 Free Software Foundation, Inc. &lt;<a href=
-                    "http://fsf.org/">http://fsf.org/</a>&gt;<br>
+                    "http://fsf.org/" target="_blank">http://fsf.org/</a>&gt;<br>
                     Каждый имеет право копировать и распространять дословные копии
                     этого документа, но изменение его запрещено.</p>
 
@@ -897,21 +900,21 @@ $_['text_terms'] = '<h3>Универсальная общественная ли
                     “авторское право” и пояснение, где найти полный текст
                     уведомления.</p>
                     <pre>
-                      &lt;Одна строчка для названия программы и краткого описания того, что она делает.&gt;
-                      Copyright (C) &lt;год&gt; &lt;имя автора&gt;
+&lt;Одна строчка для названия программы и краткого описания того, что она делает.&gt;
+Copyright (C) &lt;год&gt; &lt;имя автора&gt;
 
-                      This program is free software: you can redistribute it and/or modify
-                      it under the terms of the GNU General Public License as published by
-                      the Free Software Foundation, either version 3 of the License, or
-                      (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-                      This program is distributed in the hope that it will be useful,
-                      but WITHOUT ANY WARRANTY; without even the implied warranty of
-                      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-                      GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-                      You should have received a copy of the GNU General Public License
-                      along with this program.  If not, see http://www.gnu.org/licenses/
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/
                   </pre>
 
                     <p>Также добавьте информацию о том, как связаться с вами по
@@ -921,8 +924,8 @@ $_['text_terms'] = '<h3>Универсальная общественная ли
                     терминала, сделайте так, чтобы она выводила краткое сообщение
                     наподобие нижеследующего при запуске в интерактивном режиме:</p>
                     <pre>
-                      &lt;название программы&gt; Copyright (C) &lt;год&gt; &lt;имя автора&gt;
-                      This program comes with ABSOLUTELY NO WARRANTY; for details type "show w". This is free software, and you are welcome to redistribute it   under certain conditions; type "show c" for details.
+&lt;название программы&gt; Copyright (C) &lt;год&gt; &lt;имя автора&gt;
+This program comes with ABSOLUTELY NO WARRANTY; for details type "show w". This is free software, and you are welcome to redistribute it   under certain conditions; type "show c" for details.
                   </pre>
 
                     <p>Гипотетические команды \'show w\' и \'show c\' должны
