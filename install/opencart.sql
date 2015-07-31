@@ -333,7 +333,7 @@ INSERT INTO `oc_banner_image_description` (`banner_image_id`, `language_id`, `ba
 (95, 1, 8, 'RedBull'),
 (96, 1, 8, 'Sony'),
 (97, 1, 8, 'Starbucks'),
-(98, 2, 8, 'Nintendo'),
+(98, 1, 8, 'Nintendo'),
 (79, 2, 7, 'iPhone 6'),
 (87, 2, 6, 'HP Banner'),
 (93, 2, 8, 'Canon'),
@@ -425,10 +425,9 @@ CREATE TABLE IF NOT EXISTS `oc_category_description` (
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `meta_title` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
-  `meta_title` varchar(255) NOT NULL,
-  `meta_h1` varchar(255) NOT NULL,
   PRIMARY KEY (`category_id`,`language_id`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -437,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `oc_category_description` (
 -- Dumping data for table `oc_category_description`
 --
 
-INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `meta_title`, `meta_h1`) VALUES
+INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `description`, `meta_title`, `meta_h1`, `meta_description`, `meta_keyword`) VALUES
 (28, 1, 'Мониторы', '', '', '', '', ''),
 (33, 1, 'Камеры', '', '', '', '', ''),
 (32, 1, 'Веб-камеры', '', '', '', '', ''),
@@ -1520,10 +1519,9 @@ CREATE TABLE IF NOT EXISTS `oc_information_description` (
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `meta_title` varchar(255) NOT NULL,
+  `meta_h1` varchar(255) NOT NULL,
   `meta_description` varchar(255) NOT NULL,
   `meta_keyword` varchar(255) NOT NULL,
-  `meta_title` varchar(255) NOT NULL,
-  `meta_h1` varchar(255) NOT NULL,
   PRIMARY KEY (`information_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -1531,7 +1529,7 @@ CREATE TABLE IF NOT EXISTS `oc_information_description` (
 -- Dumping data for table `oc_information_description`
 --
 
-INSERT INTO `oc_information_description` (`information_id`, `language_id`, `title`, `description`, `meta_description`, `meta_keyword`, `meta_title`, `meta_h1`) VALUES
+INSERT INTO `oc_information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_h1`, `meta_description`, `meta_keyword`) VALUES
 (4, 1, 'О нас', '&lt;p&gt;\r\n	О нас&lt;/p&gt;\r\n', '', '', '', ''),
 (5, 1, 'Условия соглашения', '&lt;p&gt;\r\n	Условия соглашения&lt;/p&gt;\r\n', '', '', '', ''),
 (3, 1, 'Политика Безопасности', '&lt;p&gt;\r\n	Политика Безопасности&lt;/p&gt;\r\n', '', '', '', ''),
@@ -1630,7 +1628,7 @@ INSERT INTO `oc_layout` (`layout_id`, `name`) VALUES
 (8, 'Контакты'),
 (9, 'Карта сайта'),
 (10, 'Партнерская программа'),
-(11, 'Информация');,
+(11, 'Информация'),
 (12, 'Сравнение'),
 (13, 'Поиск');
 
@@ -3237,7 +3235,7 @@ CREATE TABLE IF NOT EXISTS `oc_tax_class` (
 --
 
 INSERT INTO `oc_tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `date_modified`) VALUES
-(9, 'Налоги', 'Облагаемые налогом', '2009-01-06 23:21:53', '2011-03-09 21:17:10');
+(9, 'Налоги', 'Облагаемые налогом', '2009-01-06 23:21:53', '2011-03-09 21:17:10'),
 (10, 'Цифровые товары', 'Цифровые', '2011-09-21 22:19:39', '2011-09-22 10:27:36');
 
 -- --------------------------------------------------------

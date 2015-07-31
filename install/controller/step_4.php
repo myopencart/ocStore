@@ -24,6 +24,9 @@ class ControllerStep4 extends Controller {
 		$data['text_facebook'] = $this->language->get('text_facebook');
 		$data['text_facebook_info'] = $this->language->get('text_facebook_info');
 		$data['text_facebook_link'] = $this->language->get('text_facebook_link');
+		$data['text_vkontakte'] = $this->language->get('text_vkontakte');
+		$data['text_vkontakte_info'] = $this->language->get('text_vkontakte_info');
+		$data['text_vkontakte_link'] = $this->language->get('text_vkontakte_link');
 		$data['text_forum'] = $this->language->get('text_forum');
 		$data['text_forum_info'] = $this->language->get('text_forum_info');
 		$data['text_forum_link'] = $this->language->get('text_forum_link');
@@ -85,7 +88,7 @@ class ControllerStep4 extends Controller {
 		$defaults = array(
 			CURLOPT_POST => 1,
 			CURLOPT_HEADER => 0,
-			CURLOPT_URL => 'http://www.opencart.com/index.php?route=extension/json/extensions',
+			CURLOPT_URL => 'http://myopencart.com/index.php?route=extension/json/extensions',
 			CURLOPT_USERAGENT => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
 			CURLOPT_FRESH_CONNECT => 1,
 			CURLOPT_RETURNTRANSFER => 1,
