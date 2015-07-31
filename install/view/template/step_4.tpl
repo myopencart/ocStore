@@ -31,7 +31,7 @@
     </div>
     <div class="row" id="modules" style="display:none;"></div>
     <div class="row">
-      <div class="col-sm-12 text-center"> <a class="btn btn-default" href="http://www.opencart.com/index.php?route=extension/extension&utm_source=opencart_install&utm_medium=store_link&utm_campaign=opencart_install" target="_BLANK"><?php echo $text_store; ?></a> </div>
+      <div class="col-sm-12 text-center"> <a class="btn btn-default" href="http://myopencart.com/extension/&utm_source=ocstore_install&utm_medium=store_link&utm_campaign=ocstore_install" target="_BLANK"><?php echo $text_store; ?></a> </div>
     </div>
   </div>
   <div class="mailing-list">
@@ -45,27 +45,27 @@
   <div class="core-modules">
     <div class="row">
       <div class="col-sm-6 text-center"> <img src="view/image/openbay_pro.gif">
-        <p><?php echo $text_openbay; ?> <a href="http://www.openbaypro.com/?utm_source=opencart_install&utm_medium=referral&utm_campaign=opencart_install"><?php echo $text_more_info; ?></a></p>
+        <p><?php echo $text_openbay; ?> <a href="http://www.openbaypro.com/?utm_source=ocstore_install&utm_medium=referral&utm_campaign=ocstore_install"><?php echo $text_more_info; ?></a></p>
         <a class="btn btn-primary" href="<?php echo $link_openbay; ?>"><?php echo $button_setup; ?></a> </div>
       <div class="col-sm-6 text-center"> <img src="view/image/maxmind.gif">
-        <p><?php echo $text_maxmind; ?> <a href="http://www.maxmind.com/?utm_source=opencart_install&utm_medium=referral&utm_campaign=opencart_install"><?php echo $text_more_info; ?></a></p>
+        <p><?php echo $text_maxmind; ?> <a href="http://www.maxmind.com/?utm_source=ocstore_install&utm_medium=referral&utm_campaign=ocstore_install"><?php echo $text_more_info; ?></a></p>
         <a class="btn btn-primary" href="<?php echo $link_maxmind; ?>"><?php echo $button_setup; ?></a> </div>
     </div>
   </div>
   <div class="support text-center">
     <div class="row">
-      <div class="col-sm-4"> <a href="https://www.facebook.com/pages/OpenCart/477182382328323" class="icon transition"> <i class="fa fa-facebook fa-4x"></i> </a>
+      <div class="col-sm-4"> <a target="_blank" href="https://www.facebook.com/ocstore" class="icon transition"> <i class="fa fa-facebook fa-4x"></i> </a>
         <h3><?php echo $text_facebook; ?></h3>
         <p><?php echo $text_facebook_info; ?></p>
-        <a href="https://www.facebook.com/pages/OpenCart/477182382328323"><?php echo $text_facebook_link; ?></a> </div>
-      <div class="col-sm-4"> <a href="http://forum.opencart.com/?utm_source=opencart_install&utm_medium=forum_link&utm_campaign=opencart_install" class="icon transition"> <i class="fa fa-comments fa-4x"></i> </a>
+        <a target="_blank" href="https://www.facebook.com/ocstore"><?php echo $text_facebook_link; ?></a> </div>
+      <div class="col-sm-4"> <a target="_blank" href="https://vk.com/myopencartcom" class="icon transition"> <i class="fa fa-vk fa-4x"></i> </a>
+        <h3><?php echo $text_vkontakte; ?></h3>
+        <p><?php echo $text_vkontakte_info; ?></p>
+        <a target="_blank" href="https://vk.com/myopencartcom"><?php echo $text_vkontakte_link; ?></a> </div>
+      <div class="col-sm-4"> <a target="_blank" href="https://opencartforum.com/?utm_source=ocstore_install&utm_medium=forum_link&utm_campaign=ocstore_install" class="icon transition"> <i class="fa fa-comments fa-4x"></i> </a>
         <h3><?php echo $text_forum; ?></h3>
         <p><?php echo $text_forum_info; ?></p>
-        <a href="http://forum.opencart.com/?utm_source=opencart_install&utm_medium=forum_link&utm_campaign=opencart_install"><?php echo $text_forum_link; ?></a> </div>
-      <div class="col-sm-4"> <a href="http://www.opencart.com/index.php?route=partner/partner&utm_source=opencart_install&utm_medium=partner_link&utm_campaign=opencart_install" class="icon transition"> <i class="fa fa-user fa-4x"></i> </a>
-        <h3><?php echo $text_commercial; ?></h3>
-        <p><?php echo $text_commercial_info; ?></p>
-        <a href="http://www.opencart.com/index.php?route=partner/partner&utm_source=opencart_install&utm_medium=partner_link&utm_campaign=opencart_install" target="_BLANK"><?php echo $text_commercial_link; ?></a> </div>
+        <a target="_blank" href="https://opencartforum.com/?utm_source=ocstore_install&utm_medium=forum_link&utm_campaign=ocstore_install"><?php echo $text_forum_link; ?></a> </div>
     </div>
   </div>
 </div>
