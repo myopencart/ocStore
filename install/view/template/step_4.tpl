@@ -39,7 +39,7 @@
       <div class="col-sm-12"> <img src="view/image/icon-mail.png">
         <h3><?php echo $text_mail_list; ?><br>
           <small><?php echo $text_mail_list_small; ?></small></h3>
-        <a class="btn btn-secondary" href="http://newsletter.opencart.com/h/r/B660EBBE4980C85C" target="_BLANK"><?php echo $button_join; ?></a> </div>
+        <a class="btn btn-secondary" href="http://myopencart.com/feed" target="_BLANK"><?php echo $button_join; ?></a> </div>
     </div>
   </div>
   <div class="core-modules">
