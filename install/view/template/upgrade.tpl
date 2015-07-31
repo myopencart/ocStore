@@ -2,7 +2,7 @@
 <div class="container">
   <header>
     <div class="row">
-      <div class="col-sm-12"><img src="view/image/logo.png" alt="OpenCart" title="OpenCart" /></div>
+      <div class="col-sm-12"><img src="view/image/logo.png" alt="ocStore" title="ocStore" /></div>
     </div>
   </header>
   <h1>Upgrade</h1>
@@ -15,27 +15,28 @@
       <?php } ?>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
         <fieldset>
-          <p><b>Follow these steps carefully!</b></p>
+          <p><b>После установки обновления, обязательно проделайте следующее:</b></p>
           <ol>
-            <li>Post any upgrade script errors problems in the forums</li>
-            <li>After upgrade, clear any cookies in your browser to avoid getting token errors.</li>
-            <li>Load the admin page & press Ctrl+F5 twice to force the browser to update the css changes.</li>
-            <li>Goto Admin -> Users -> User Groups and Edit the Top Adminstrator group. Check All boxes.</li>
-            <li>Goto Admin and Edit the main System Settings. Update all fields and click save, even if nothing changed.</li>
-            <li>Load the store front & press Ctrl+F5 twice to force the browser to update the css changes.</li>
+            <li>Очистите кеш браузера и удалите всё что нахадится в папках <b>system/cache</b> и <b>image/cache</b>.</li>
+            <li>Перейдите в панель Администратора и <i>(дважды)</i> нажмите Ctrl+F5 чтобы обновить CSS изменения.</li>
+            <li>Перейдите в Система -> Пользователи -> Группы пользователей и убедитесь что для Вас выставлены все права.</li>
+            <li>Перейдите в Система -> Настройки и обновив все поля - нажмите кнопку Сохранить, даже если ничего не изменилось!</li>
+            <li>Откройте Витрину магазина  и <i>(дважды)</i> нажмите Ctrl+F5 чтобы обновить CSS изменения.</li>
+            <li>Убедитесь, что в файле журнала ошибок, который хранится в папке <b>system/logs</b> - нет никаких записей!</li>
+            <li>Если у Вас, появились какие либо ошибки или проблемы, обязательно сообщите о них на форуме техподдержки!</li>
           </ol>
         </fieldset>
         <div class="buttons">
           <div class="text-right">
-            <input type="submit" value="Continue" class="button" />
+            <input type="submit" value="Продолжить" class="button" />
           </div>
         </div>
       </form>
     </div>
     <div class="col-sm-3">
       <ul class="list-group">
-        <li class="list-group-item"><b>Upgrade</b></li>
-        <li class="list-group-item">Finished</li>
+        <li class="list-group-item"><b>Обновление</b></li>
+        <li class="list-group-item">Завершение обновления</li>
       </ul>
     </div>
   </div>
