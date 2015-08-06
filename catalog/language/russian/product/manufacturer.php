@@ -1,27 +1,27 @@
 <?php
 // Heading
-$_['heading_title']     = 'Найди свой любимый бренд';
+$_['heading_title']     = 'Список производителей';
 
 // Text
-$_['text_brand']        = 'Бренд';
-$_['text_index']        = 'Индекс бренда:';
-$_['text_error']        = 'Бренд не найден!';
-$_['text_empty']        = 'Нет продуктов для списка.';
+$_['text_brand']        = 'Производители';
+$_['text_index']        = 'Алфавитный указатель:';
+$_['text_error']        = 'Производитель не найден!';
+$_['text_empty']        = 'There are no products to list.';
 $_['text_quantity']     = 'Кол-во:';
-$_['text_manufacturer'] = 'Торг. марка:';
+$_['text_manufacturer'] = 'Производитель:';
 $_['text_model']        = 'Код товара:';
-$_['text_points']       = 'Баллы вознаграждения:';
+$_['text_points']       = 'Reward Points:';
 $_['text_price']        = 'Цена:';
 $_['text_tax']          = 'Без налога:';
 $_['text_compare']      = 'Сравнение товаров (%s)';
-$_['text_sort']         = 'Сортировать по:';
+$_['text_sort']         = 'Сортировать:';
 $_['text_default']      = 'По умолчанию';
-$_['text_name_asc']     = 'Название (А - Я)';
-$_['text_name_desc']    = 'Название (Я - А)';
-$_['text_price_asc']    = 'Цена (по возрастанию)';
-$_['text_price_desc']   = 'Цена (по убыванию)';
-$_['text_rating_asc']   = 'Рейтинг (низкий)';
-$_['text_rating_desc']  = 'Рейтинг (высокий)';
-$_['text_model_asc']    = 'Модель (А - Я)';
-$_['text_model_desc']   = 'Модель (Я - А)';
-$_['text_limit']        = 'Показать:';
+$_['text_name_asc']     = 'По Имени (A - Я)';
+$_['text_name_desc']    = 'По Имени (Я - A)';
+$_['text_price_asc']    = 'По Цене (возростанию)';
+$_['text_price_desc']   = 'По Цене (убыванию)';
+$_['text_rating_asc']   = 'По Рейтингу (возростанию)';
+$_['text_rating_desc']  = 'По Рейтингу (убыванию)';
+$_['text_model_asc']    = 'По Модели (A - Z)';
+$_['text_model_desc']   = 'По Модели (Z - A)';
+$_['text_limit']        = 'Показывать:';
