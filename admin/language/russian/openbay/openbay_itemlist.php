@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] 					= 'Менеджер товаров';
+$_['heading_title'] 					= 'Управление объявлениями';
 
 // Text
 $_['text_markets']                  	= 'Markets';
@@ -33,7 +33,6 @@ $_['text_variations_stock'] 			= 'stock';
 $_['text_min']                      	= 'Min';
 $_['text_max']                      	= 'Max';
 $_['text_option']                   	= 'Option';
-$_['text_list']              			= 'Product List';
 
 // Entry
 $_['entry_title'] 						= 'Title';

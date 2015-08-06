@@ -3,8 +3,8 @@
 $_['heading_title']					= 'Search Transactions';
 
 // Column
-$_['tbl_column_date']				= 'Date';
-$_['tbl_column_type']				= 'Type';
+$_['tbl_column_date']				= 'Дата и время';
+$_['tbl_column_type']				= 'Тип';
 $_['tbl_column_email']				= 'Email';
 $_['tbl_column_name']				= 'Name';
 $_['tbl_column_transid']			= 'Transaction ID';

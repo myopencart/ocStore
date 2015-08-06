@@ -3,17 +3,17 @@
 $_['heading_title']					= 'Realex Remote';
 
 // Text
-$_['text_payment']					= 'Payment';
+$_['text_payment']					= 'Оплата';
 $_['text_success']					= 'Success: You have modified Realex account details!';
 $_['text_edit']                     = 'Edit Realex Remote';
-$_['text_card_type']				= 'Card type';
-$_['text_enabled']					= 'Enabled';
-$_['text_use_default']				= 'Use default';
-$_['text_merchant_id']				= 'Merchant ID';
-$_['text_subaccount']				= 'Sub Account';
+$_['text_card_type']				= 'Тип карты';
+$_['text_enabled']					= 'Включено';
+$_['text_use_default']				= 'Использовать по умолчанию';
+$_['text_merchant_id']				= 'ID Продавца';
+$_['text_subaccount']				= 'Дополнительная учетная запись';
 $_['text_secret']					= 'Shared secret';
 $_['text_card_visa']				= 'Visa';
-$_['text_card_master']				= 'Mastercard';
+$_['text_card_master']				= 'MasterCard';
 $_['text_card_amex']				= 'American Express';
 $_['text_card_switch']				= 'Switch/Maestro';
 $_['text_card_laser']				= 'Laser';
@@ -23,7 +23,7 @@ $_['text_capture_ok_order']			= 'Capture was successful, order status updated to
 $_['text_rebate_ok']				= 'Rebate was successful';
 $_['text_rebate_ok_order']			= 'Rebate was successful, order status updated to rebated';
 $_['text_void_ok']					= 'Void was successful, order status updated to voided';
-$_['text_settle_auto']				= 'Auto';
+$_['text_settle_auto']				= 'Автоматически';
 $_['text_settle_delayed']			= 'Delayed';
 $_['text_settle_multi']				= 'Multi';
 $_['text_ip_message']				= 'You must supply your server IP address to your Realex account manager before going live';
@@ -41,18 +41,18 @@ $_['text_confirm_rebate']			= 'Are you sure you want to rebate the payment?';
 $_['text_realex_remote']			= '<a target="_BLANK" href="http://www.realexpayments.co.uk/partner-refer?id=opencart"><img src="view/image/payment/realex.png" alt="Realex" title="Realex" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Column
-$_['text_column_amount']			= 'Amount';
-$_['text_column_type']				= 'Type';
-$_['text_column_date_added']		= 'Created';
+$_['text_column_amount']			= 'Сумма';
+$_['text_column_type']				= 'Тип';
+$_['text_column_date_added']		= 'Создан';
 
 // Entry
-$_['entry_merchant_id']				= 'Merchant ID';
+$_['entry_merchant_id']				= 'ID Продавца';
 $_['entry_secret']					= 'Shared secret';
 $_['entry_rebate_password']			= 'Rebate password';
-$_['entry_total']					= 'Total';
-$_['entry_sort_order']				= 'Sort order';
-$_['entry_geo_zone']				= 'Geo zone';
-$_['entry_status']					= 'Status';
+$_['entry_total']					= 'Итого';
+$_['entry_sort_order']				= 'Порядок сортировки';
+$_['entry_geo_zone']				= 'Регион';
+$_['entry_status']					= 'Статус';
 $_['entry_debug']					= 'Debug logging';
 $_['entry_auto_settle']				= 'Settlement type';
 $_['entry_tss_check']				= 'TSS checks';
