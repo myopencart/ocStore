@@ -58,12 +58,12 @@ $_['button_grid']           = 'Сетка';
 $_['button_map']            = 'Посмотреть на Google карте';
 
 // Error
-$_['error_exception']       = 'Error Code(%s): %s in %s on line %s';
-$_['error_upload_1']        = 'Warning: The uploaded file exceeds the upload_max_filesize directive in php.ini!';
-$_['error_upload_2']        = 'Warning: The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form!';
-$_['error_upload_3']        = 'Warning: The uploaded file was only partially uploaded!';
-$_['error_upload_4']        = 'Warning: No file was uploaded!';
-$_['error_upload_6']        = 'Warning: Missing a temporary folder!';
-$_['error_upload_7']        = 'Warning: Failed to write file to disk!';
-$_['error_upload_8']        = 'Warning: File upload stopped by extension!';
-$_['error_upload_999']      = 'Warning: No error code available!';
+$_['error_exception']       = 'Код ошибки (%s): %s в %s на строке %s';
+$_['error_upload_1']        = 'Внимание: Размер загружаемого файла превышает значение директивы upload_max_filesize в php.ini!';
+$_['error_upload_2']        = 'Внимание: Размер загружаемого файла превышает значение директивы MAX_FILE_SIZE, указанный в форме HTML!';
+$_['error_upload_3']        = 'Предупреждение: Загруженный файл был загружен только частично!';
+$_['error_upload_4']        = 'Внимание: Файл не был загружен!';
+$_['error_upload_6']        = 'Предупреждение: Не найдена временная папка!';
+$_['error_upload_7']        = 'Предупреждение: Не удалось записать файл на диск!';
+$_['error_upload_8']        = 'Предупреждение: Загрузка файла была остановлена расширением!';
+$_['error_upload_999']      = 'Предупреждение: Код ошибки не доступен!';
