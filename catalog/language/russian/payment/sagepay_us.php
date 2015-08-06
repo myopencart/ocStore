@@ -1,10 +1,10 @@
 <?php
 // Text
-$_['text_title']				= 'Кредитная карта / Дебетовая карта (SagePay)';
-$_['text_credit_card']			= 'Данные кредитной карты';
+$_['text_title']				= 'Credit Card / Debit Card (SagePay)';
+$_['text_credit_card']			= 'Credit Card Details';
 
 // Entry
-$_['entry_cc_owner']			= 'Владелец карты';
-$_['entry_cc_number']			= 'Номер карты';
-$_['entry_cc_expire_date']		= 'Срок действия карты';
-$_['entry_cc_cvv2']				= 'Код безопасности карты (CVV2)';
+$_['entry_cc_owner']			= 'Card Owner';
+$_['entry_cc_number']			= 'Card Number';
+$_['entry_cc_expire_date']		= 'Card Expiry Date';
+$_['entry_cc_cvv2']				= 'Card Security Code (CVV2)';

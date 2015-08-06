@@ -1,14 +1,14 @@
 <?php
-// Heading
-$_['heading_title']      = 'Ваши транзакции';
+// Heading 
+$_['heading_title']      = 'История выплат';
 
 // Column
-$_['column_date_added']  = 'Дата добавления';
+$_['column_date_added']  = 'Добавлено';
 $_['column_description'] = 'Описание';
-$_['column_amount']      = 'Количество (%s)';
+$_['column_amount']      = 'Сумма (%s)';
 
 // Text
-$_['text_account']       = 'Аккаунт';
-$_['text_transaction']   = 'Ваши транзакции';
-$_['text_balance']       = 'Ваш текущий баланс составляет:';
-$_['text_empty']         = 'У Вас нет ни одной транзакции!';
+$_['text_account']       = 'Кабинет Партнера';
+$_['text_transaction']   = 'Выплаты';
+$_['text_balance']       = 'Ваш текущий баланс:';
+$_['text_empty']         = 'У Вас не было выплат!';

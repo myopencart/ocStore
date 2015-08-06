@@ -1,10 +1,10 @@
 <?php
 // Text
-$_['text_paid_amazon'] 			= 'Оплата на Amazon';
-$_['text_total_shipping'] 		= 'Доставка';
-$_['text_total_shipping_tax'] 	= 'Налог на доставку';
-$_['text_total_giftwrap'] 		= 'Подарочная упаковка';
-$_['text_total_giftwrap_tax'] 	= 'Налог на подарочную упаковку';
-$_['text_total_sub'] 			= 'Подытог';
-$_['text_tax'] 					= 'Налог';
-$_['text_total'] 				= 'Итого';
+$_['text_paid_amazon'] 			= 'Paid on Amazon';
+$_['text_total_shipping'] 		= 'Shipping';
+$_['text_total_shipping_tax'] 	= 'Shipping tax';
+$_['text_total_giftwrap'] 		= 'Gift wrap';
+$_['text_total_giftwrap_tax'] 	= 'Gift wrap tax';
+$_['text_total_sub'] 			= 'Sub-total';
+$_['text_tax'] 					= 'Tax';
+$_['text_total'] 				= 'Total';
