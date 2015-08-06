@@ -90,12 +90,22 @@ class ControllerProductCategory extends Controller {
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 
 		if ($category_info) {
-			$this->document->setTitle($category_info['meta_title']);
+
+			if ($category_info['meta_title']) {
+				$this->document->setTitle($category_info['meta_title']);
+			} else {
+				$this->document->setTitle($category_info['name']);
+			}
+
 			$this->document->setDescription($category_info['meta_description']);
 			$this->document->setKeywords($category_info['meta_keyword']);
 			$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path']), 'canonical');
 
-			$data['heading_title'] = $category_info['name'];
+			if ($category_info['meta_h1']) {
+				$this->data['heading_title'] = $category_info['meta_h1'];
+			} else {
+				$this->data['heading_title'] = $category_info['name'];
+			}
 
 			$data['text_refine'] = $this->language->get('text_refine');
 			$data['text_empty'] = $this->language->get('text_empty');
