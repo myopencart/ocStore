@@ -1,21 +1,21 @@
 <?php
-// Heading
-$_['heading_title']      = 'Аккаунт';
+// Heading 
+$_['heading_title']      = 'Личный Кабинет';
 
 // Text
-$_['text_account']       = 'Аккаунт';
-$_['text_my_account']    = 'Аккаунт';
+$_['text_account']       = 'Личный Кабинет';
+$_['text_my_account']    = 'Моя учетная запись';
 $_['text_my_orders']     = 'Мои заказы';
-$_['text_my_newsletter'] = 'Информационная рассылка';
-$_['text_edit']          = 'Редактировать Вашу учетную запись';
-$_['text_password']      = 'Изменить пароль';
-$_['text_address']       = 'Изменить записи Вашей адресной книги';
-$_['text_wishlist']      = 'Изменить Ваш список пожеланий';
-$_['text_order']         = 'Просмотреть историю заказов';
-$_['text_download']      = 'Загрузки';
-$_['text_reward']        = 'Ваши бонусные очки';
-$_['text_return']        = 'Просмотреть ваши запросы на возврат';
-$_['text_transaction']   = 'Ваши транзакции';
-$_['text_newsletter']    = 'Подписаться / отказаться от подписки на рассылку';
+$_['text_my_newsletter'] = 'Подписка';
+$_['text_edit']          = 'Основные данные';
+$_['text_password']      = 'Изменить свой пароль';
+$_['text_address']       = 'Изменить мои адреса';
+$_['text_wishlist']      = 'Изменить закладки';
+$_['text_order']         = 'История заказов';
+$_['text_download']      = 'Файлы для скачивания';
+$_['text_reward']        = 'Бонусные баллы';
+$_['text_return']        = 'Заявки на возврат';
+$_['text_transaction']   = 'История платежей';
+$_['text_newsletter']    = 'Редактировать подписку';
 $_['text_recurring']     = 'Регулярные платежи';
-$_['text_transactions']  = 'Операции';
+$_['text_transactions']  = 'Переводы';

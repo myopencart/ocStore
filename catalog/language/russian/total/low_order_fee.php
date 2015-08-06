@@ -1,2 +1,2 @@
 <?php
-$_['text_low_order_fee'] = 'Доп. плата минимального заказа';
+$_['text_low_order_fee'] = 'Low Order Fee';

@@ -1,30 +1,29 @@
 <?php
+$_['text_title'] = 'Credit / Debit card';
+$_['text_card_details'] = 'Card details';
+$_['text_wait'] = 'Processing your payment';
+$_['text_auth_code'] = 'Authorisation code: %s';
+$_['text_postcode_check'] = 'Postcode check: %s';
+$_['text_security_code_check'] = 'CVV2 check: %s';
+$_['text_address_check'] = 'Address check: %s';
+$_['text_3d_secure_check'] = '3D Secure: %s';
+$_['text_not_given'] = 'Not given';
+$_['text_not_checked'] = 'Not checked';
+$_['text_match'] = 'Matched';
+$_['text_not_match'] = 'Not matched';
+$_['text_authenticated'] = 'Authenticated';
+$_['text_not_authenticated'] = 'Not authenticated';
+$_['text_authentication_not_completed'] = 'Attempted but not completed';
+$_['text_unable_to_perform'] = 'Unable to perform';
+$_['text_transaction_declined'] = 'Your bank has declined the transaction. Please use a different payment method.';
+$_['text_transaction_failed'] = 'Could not process the payment. Please check the details you provided.';
+$_['text_connection_error'] = 'Please try again later or use a different payment method.';
 
-$_['text_title'] = 'Кредитная или дебетовая карта';
-$_['text_card_details'] = 'Данные карты';
-$_['text_wait'] = 'Обработка платежа';
-$_['text_auth_code'] = 'Код авторизации: %s';
-$_['text_postcode_check'] = 'Проверить почтовый индекс: %s';
-$_['text_security_code_check'] = 'Проверки CVV2: %s';
-$_['text_address_check'] = 'Адрес регистрации: %s';
-$_['text_3d_secure_check'] = '3D Защита: %s';
-$_['text_not_given'] = 'Нет данных';
-$_['text_not_checked'] = 'Не установлен';
-$_['text_match'] = 'Соответствует';
-$_['text_not_match'] = 'Не соответствует';
-$_['text_authenticated'] = 'проверка подлинности выполнена';
-$_['text_not_authenticated'] = 'Проверка подлинности не выполнена';
-$_['text_authentication_not_completed'] = 'Отгруженно но не завершено';
-$_['text_unable_to_perform'] = 'Не удается выполнить';
-$_['text_transaction_declined'] = 'Ваш банк отклонил транзакцию. Пожалуйста, используйте другой способ оплаты.';
-$_['text_transaction_failed'] = 'Не удалось обработать платеж. Проверьте информацию, которую вы предоставили.';
-$_['text_connection_error'] = 'Пожалуйста, повторите попытку позже или использовать другой способ оплаты.';
+$_['entry_type'] = 'Card type';
+$_['entry_number'] = 'Card number';
+$_['entry_expire_date'] = 'Expiry date';
+$_['entry_cvv2'] = 'Security Code (CVV2)';
 
-$_['entry_type'] = "Тип карты";
-$_['entry_number'] = "Номер карты";
-$_['entry_expire_date'] = "Дата окончания";
-$_['entry_cvv2'] = "Код безопасности (CVV2)";
+$_['button_confirm'] = 'Confirm';
 
-$_['button_confirm'] = 'Подтвердить';
-
-$_['error_failure'] = 'Не удалось завершить транзакцию. Пожалуйста, повторите попытку позже или используйте другой способ оплаты.';
+$_['error_failure'] = 'Could not complete transaction. Please try again later or use a different payment method.';
