@@ -1,14 +1,14 @@
 <?php
 // Text
-$_['text_success']           = 'Success: You have modified orders!';
+$_['text_success']           = 'Заказ был успешно изменен';
 
 // Error
-$_['error_permission']       = 'Warning: You do not have permission to access the API!';
-$_['error_customer']         = 'Customer details needs to be set!';
-$_['error_payment_address']  = 'Payment address required!';
-$_['error_payment_method']   = 'Payment method required!';
-$_['error_shipping_address'] = 'Shipping address required!';
-$_['error_shipping_method']  = 'Shipping method required!';
-$_['error_stock']            = 'Products marked with *** are not available in the desired quantity or not in stock!';
-$_['error_minimum']          = 'Minimum order amount for %s is %s!';
-$_['error_not_found']        = 'Warning: Order could not be found!';
+$_['error_permission']       = 'Внимание: У Вас нет разрешения на доступ к API!';
+$_['error_customer']         = 'Необходимо задать сведения о клиенте !';
+$_['error_payment_address']  = 'Требуется адрес оплаты!';
+$_['error_payment_method']   = 'Требуется способ оплаты!';
+$_['error_shipping_address'] = 'Требуется адрес доставки!';
+$_['error_shipping_method']  = 'Требуется способ доставки!';
+$_['error_stock']            = 'Товары, отмеченные *** не доступны в требуемом количестве или нет на складе!';
+$_['error_minimum']          = 'Минимальная сумма заказа для %s-%s!';
+$_['error_not_found']        = 'Внимание: Заказ не найден!';
