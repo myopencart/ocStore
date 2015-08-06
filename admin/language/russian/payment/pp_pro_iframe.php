@@ -3,7 +3,7 @@
 $_['heading_title']					= 'PayPal Pro iFrame';
 
 // Text
-$_['text_success']					= 'Success: You have modified PayPal Pro iFrame account details!';
+$_['text_success']					= 'Успех: Вы изменили данные учетной записи PayPal Pro iFrame!';
 $_['text_edit']                     = 'Edit PayPal Pro iFrame';
 $_['text_pp_pro_iframe']			= '<a target="_BLANK" href="https://www.paypal.com/uk/mrb/pal=V4T754QB63XXL"><img src="view/image/payment/paypal.png" alt="PayPal Website Payment Pro" title="PayPal Website Payment Pro iFrame" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_authorization']			= 'Authorization';
@@ -105,8 +105,8 @@ $_['text_sub_amt']					= 'Subscription amount';
 $_['text_sub_period']				= 'Subscription period';
 $_['text_redirect']					= 'Redirect';
 $_['text_iframe']					= 'Iframe';
-$_['help_checkout_method']			= 'Please use Redirect method if do not have SSL installed or if you do not have Pay with PayPal option disabled on your hosted payment page.';
-$_['help_debug']					= 'Logs additional information.';
+$_['help_checkout_method']			= "Please use Redirect method if do not have SSL installed or if you do not have Pay with PayPal option disabled on your hosted payment page.";
+$_['help_debug']					= "Logs additional information.";
 
 // Column
 $_['column_trans_id']				= 'Transaction ID';

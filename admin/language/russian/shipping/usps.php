@@ -1,9 +1,9 @@
 <?php
 // Heading
-$_['heading_title']         = 'United States Postal Service';
+$_['heading_title']         = 'Заголовок';
 
 // Text
-$_['text_shipping']         = 'Shipping';
+$_['text_shipping']         = 'Текст';
 $_['text_success']          = 'Success: You have modified United States Postal Service!';
 $_['text_edit']             = 'Edit United States Postal Service Shipping';
 $_['text_domestic_00']      = 'First-Class Mail Parcel';
@@ -16,7 +16,7 @@ $_['text_domestic_3']       = 'Express Mail';
 $_['text_domestic_4']       = 'Parcel Post';
 $_['text_domestic_5']       = 'Bound Printed Matter';
 $_['text_domestic_6']       = 'Media Mail';
-$_['text_domestic_7']       = 'Library';
+$_['text_domestic_7']       = 'Библиотека';
 $_['text_domestic_12']      = 'First-Class Postcard Stamped';
 $_['text_domestic_13']      = 'Express Mail Flat-Rate Envelope';
 $_['text_domestic_16']      = 'Priority Mail Flat-Rate Envelope';
@@ -44,31 +44,31 @@ $_['text_international_14'] = 'First Class Mail International Flats';
 $_['text_international_15'] = 'First Class Mail International Parcels';
 $_['text_international_16'] = 'Priority Mail Flat Rate Small Box';
 $_['text_international_21'] = 'Postcards';
-$_['text_regular']          = 'Regular';
-$_['text_large']            = 'Large';
-$_['text_rectangular']      = 'Rectangular';
-$_['text_non_rectangular']  = 'Non Rectangular';
-$_['text_variable']         = 'Variable';
+$_['text_regular']          = 'Обычный';
+$_['text_large']            = 'Большой';
+$_['text_rectangular']      = 'Прямоугольные';
+$_['text_non_rectangular']  = 'Не прямоугольная';
+$_['text_variable']         = 'Переменная';
 
 // Entry
-$_['entry_user_id']         = 'User ID';
-$_['entry_postcode']        = 'Zip Code';
+$_['entry_user_id']         = 'ID пользователя';
+$_['entry_postcode']        = 'Почтовый индекс';
 $_['entry_domestic']        = 'Domestic Services';
 $_['entry_international']   = 'International Services';
-$_['entry_size']            = 'Size';
-$_['entry_container']       = 'Container';
+$_['entry_size']            = 'Размер';
+$_['entry_container']       = 'Контейнер';
 $_['entry_machinable']      = 'Machinable';
-$_['entry_dimension']       = 'Dimensions (L x W x H)';
-$_['entry_length']          = 'Length';
-$_['entry_height']          = 'Height';
-$_['entry_width']           = 'Width';
-$_['entry_display_time']    = 'Display Delivery Time';
+$_['entry_dimension']       = 'Габаритные размеры (Д x Ш x В)';
+$_['entry_length']          = 'Длина';
+$_['entry_height']          = 'Высота';
+$_['entry_width']           = 'Ширина';
+$_['entry_display_time']    = 'Отображать время доставки';
 $_['entry_display_weight']  = 'Display Delivery Weight';
-$_['entry_weight_class']    = 'Weight Class';
-$_['entry_tax']             = 'Tax Class';
-$_['entry_geo_zone']        = 'Geo Zone';
-$_['entry_status']          = 'Status';
-$_['entry_sort_order']      = 'Sort Order';
+$_['entry_weight_class']    = 'Класс веса';
+$_['entry_tax']             = 'Налоговый класс';
+$_['entry_geo_zone']        = 'Регион';
+$_['entry_status']          = 'Статус';
+$_['entry_sort_order']      = 'Порядок сортировки';
 $_['entry_debug']      		= 'Debug Mode';
 
 // Help

@@ -3,26 +3,26 @@
 $_['heading_title']					= 'Paymate';
 
 // Text
-$_['text_payment']					= 'Payment';
-$_['text_success']					= 'Success: You have modified Paymate account details!';
-$_['text_edit']                     = 'Edit Paymate';
+$_['text_payment']					= 'Оплата';
+$_['text_success']					= 'Вы успешно изменили Paymate реквизиты!';
+$_['text_edit']                     = 'Редактировать Paymate';
 $_['text_paymate']					= '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';
 
 // Entry
-$_['entry_username']				= 'Paymate Username';
-$_['entry_password']				= 'Password';
-$_['entry_test']					= 'Test Mode';
-$_['entry_total']					= 'Total';
-$_['entry_order_status']			= 'Order Status';
-$_['entry_geo_zone']				= 'Geo Zone';
-$_['entry_status']					= 'Status';
-$_['entry_sort_order']				= 'Sort Order';
+$_['entry_username']				= 'Paymate логин';
+$_['entry_password']				= 'Пароль';
+$_['entry_test']					= 'Тестовый режим';
+$_['entry_total']					= 'Итого';
+$_['entry_order_status']			= 'Статус заказа';
+$_['entry_geo_zone']				= 'Регион';
+$_['entry_status']					= 'Статус';
+$_['entry_sort_order']				= 'Порядок сортировки';
 
 // Help
 $_['help_password']					= 'Just use some random password. This will be used to make sure the payment information is not interfered with after being sent to the payment gateway.';
-$_['help_total']					= 'The checkout total the order must reach before this payment method becomes active.';
+$_['help_total']					= 'Сумма заказа должна быть выше, прежде чем этот метод оплаты станет активным.';
 
 // Error
-$_['error_permission']				= 'Warning: You do not have permission to modify payment Paymate!';
-$_['error_username']				= 'Paymate Username required!';
-$_['error_password']				= 'Password required!';
+$_['error_permission']				= 'Внимание: Вы не имеете разрешения на изменение оплаты Paymate!';
+$_['error_username']				= 'Paymate имя пользователя обязательно!';
+$_['error_password']				= 'Требуется пароль!';
