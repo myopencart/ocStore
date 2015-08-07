@@ -145,7 +145,28 @@ class ControllerProductManufacturer extends Controller {
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)
 			);
 
-			$data['heading_title'] = $manufacturer_info['name'];
+			if ($manufacturer_info['meta_title']) {
+				$this->document->setTitle($manufacturer_info['meta_title']);
+			} else {
+				$this->document->setTitle($manufacturer_info['name']);
+			}
+
+			$this->document->setDescription($manufacturer_info['meta_description']);
+			$this->document->setKeywords($manufacturer_info['meta_keyword']);
+
+			if ($manufacturer_info['meta_h1']) {
+				$data['heading_title'] = $manufacturer_info['meta_h1'];
+			} else {
+				$data['heading_title'] = $manufacturer_info['name'];
+			}
+
+			if ($manufacturer_info['image']) {
+				$data['thumb'] = $this->model_tool_image->resize($manufacturer_info['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
+			} else {
+				$data['thumb'] = '';
+			}
+
+			$data['description'] = html_entity_decode($manufacturer_info['description'], ENT_QUOTES, 'UTF-8');
 
 			$data['text_empty'] = $this->language->get('text_empty');
 			$data['text_quantity'] = $this->language->get('text_quantity');
