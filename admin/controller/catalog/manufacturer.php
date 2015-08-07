@@ -270,6 +270,12 @@ class ControllerCatalogManufacturer extends Controller {
 		$data['text_amount'] = $this->language->get('text_amount');
 
 		$data['entry_name'] = $this->language->get('entry_name');
+		$data['entry_description'] = $this->language->get('entry_description');
+		$data['entry_meta_title'] = $this->language->get('entry_meta_title');
+		$data['entry_meta_h1'] = $this->language->get('entry_meta_h1');
+		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
+		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
+		$data['entry_keyword'] = $this->language->get('entry_keyword');
 		$data['entry_store'] = $this->language->get('entry_store');
 		$data['entry_keyword'] = $this->language->get('entry_keyword');
 		$data['entry_image'] = $this->language->get('entry_image');
@@ -339,6 +345,18 @@ class ControllerCatalogManufacturer extends Controller {
 
 		$data['token'] = $this->session->data['token'];
 
+		$this->load->model('localisation/language');
+
+		$data['languages'] = $this->model_localisation_language->getLanguages();
+
+		if (isset($this->request->post['manufacturer_description'])) {
+			$data['manufacturer_description'] = $this->request->post['manufacturer_description'];
+		} elseif (isset($this->request->get['manufacturer_id'])) {
+			$data['manufacturer_description'] = $this->model_catalog_manufacturer->getManufacturerDescriptions($this->request->get['manufacturer_id']);
+		} else {
+			$data['manufacturer_description'] = array();
+		}
+
 		if (isset($this->request->post['name'])) {
 			$data['name'] = $this->request->post['name'];
 		} elseif (!empty($manufacturer_info)) {
@@ -407,8 +425,28 @@ class ControllerCatalogManufacturer extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		if ((utf8_strlen($this->request->post['name']) < 2) || (utf8_strlen($this->request->post['name']) > 64)) {
-			$this->error['name'] = $this->language->get('error_name');
+		foreach ($this->request->post['manufacturer_description'] as $language_id => $value) {
+			if ((utf8_strlen($value['name']) < 2) || (utf8_strlen($value['name']) > 255)) {
+				$this->error['name'][$language_id] = $this->language->get('error_name');
+			}
+		}
+
+		if (utf8_strlen($this->request->post['keyword']) > 0) {
+			$this->load->model('catalog/url_alias');
+
+			$url_alias_info = $this->model_catalog_url_alias->getUrlAlias($this->request->post['keyword']);
+
+			if ($url_alias_info && isset($this->request->get['manufacturer_id']) && $url_alias_info['query'] != 'manufacturer_id=' . $this->request->get['manufacturer_id']) {
+				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+			}
+
+			if ($url_alias_info && !isset($this->request->get['manufacturer_id'])) {
+				$this->error['keyword'] = sprintf($this->language->get('error_keyword'));
+			}
+
+			if ($this->error && !isset($this->error['warning'])) {
+				$this->error['warning'] = $this->language->get('error_warning');
+			}
 		}
 
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
