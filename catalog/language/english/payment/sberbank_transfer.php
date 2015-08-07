@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Text
 $_['text_title']            = 'Receipt of Sberbank Russian Federation';
 $_['text_instruction']      = 'To print the receipt press the button &laquo;Print the receipt&raquo; (will be opened in new window).';
