@@ -16,14 +16,15 @@ $_['column_sort_order']          	= 'Порядок сортировки';
 
 // Entry
 $_['entry_column']          		= 'Колонки:';
-$_['entry_description']          	= 'Описание:';
+$_['entry_description']          	= 'Описание';
 $_['entry_filter']          		= 'Фильтры:';
-$_['entry_image']          			= 'Изображение категории:';
+$_['entry_image']          			= 'Изображение категории';
 $_['entry_keyword']          		= 'SEO URL:';
 $_['entry_layout']          		= 'Выберите макет:';
-$_['entry_meta_description']        = 'Мета-тег Description:';
-$_['entry_meta_keyword']          	= 'Мета-тег Keywords:';
-$_['entry_meta_title']          	= 'Мета-тег Title';
+$_['entry_meta_description']        = 'Мета-тег Description';
+$_['entry_meta_keyword']          	= 'Мета-тег Keywords';
+$_['entry_meta_title']          	= 'HTML-тег Title';
+$_['entry_meta_h1']          	    = 'HTML-тег H1';
 $_['entry_name']          			= 'Название категории:';
 $_['entry_parent']          		= 'Родительская категория:';
 $_['entry_sort_order']          	= 'Порядок сортировки:';

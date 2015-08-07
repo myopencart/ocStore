@@ -102,9 +102,9 @@ class ControllerProductCategory extends Controller {
 			$this->document->addLink($this->url->link('product/category', 'path=' . $this->request->get['path']), 'canonical');
 
 			if ($category_info['meta_h1']) {
-				$this->data['heading_title'] = $category_info['meta_h1'];
+				$data['heading_title'] = $category_info['meta_h1'];
 			} else {
-				$this->data['heading_title'] = $category_info['name'];
+				$data['heading_title'] = $category_info['name'];
 			}
 
 			$data['text_refine'] = $this->language->get('text_refine');

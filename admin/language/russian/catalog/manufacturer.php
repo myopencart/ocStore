@@ -19,7 +19,12 @@ $_['column_sort_order']         = 'Порядок сортировки';
 // Entry
 $_['entry_image']          		= 'Изображение:';
 $_['entry_keyword']          	= 'SEO URL:';
-$_['entry_name']          		= 'Имя Производителя:';
+$_['entry_name']          		= 'Имя Производителя';
+$_['entry_description']         = 'Описание';
+$_['entry_meta_description']    = 'Мета-тег Description';
+$_['entry_meta_keyword']        = 'Мета-тег Keywords';
+$_['entry_meta_title']          = 'HTML-тег Title';
+$_['entry_meta_h1']          	= 'HTML-тег H1';
 $_['entry_sort_order']          = 'Порядок сортировки:';
 $_['entry_store']          		= 'Магазины:';
 $_['entry_type']          		= 'Тип:';
