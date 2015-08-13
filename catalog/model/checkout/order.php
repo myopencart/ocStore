@@ -800,6 +800,25 @@ class ModelCheckoutOrder extends Model {
 						}
 					}
 				}
+
+				// Send Admins SMS if configure
+				if ($this->config->get('config_sms_alert')) {
+					$options = array(
+						'to'       => $this->config->get('config_sms_to'),
+						'copy'     => $this->config->get('config_sms_copy'),
+						'from'     => $this->config->get('config_sms_from'),
+						'username' => $this->config->get('config_sms_gate_username'),
+						'password' => $this->config->get('config_sms_gate_password'),
+						'message'  => str_replace(array('{ID}', '{DATE}', '{TIME}', '{SUM}', '{PHONE}'),
+							array($order_id, date('d.m.Y'), date('H:i'), floatval($order_info['total']), $order_info['telephone']),
+							$this->config->get('config_sms_message'))
+					);
+
+					$this->load->library('sms');
+
+					$sms = new Sms($this->config->get('config_sms_gatename'), $options);
+					$sms->send();
+				}
 			}
 
 			// If order status is not 0 then send update text email
