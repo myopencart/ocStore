@@ -2773,6 +2773,7 @@ INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_
 CREATE TABLE IF NOT EXISTS `oc_product_to_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
+  `main_category` tinyint(1) NOT NULL default '0',
   PRIMARY KEY (`product_id`,`category_id`),
   KEY `category_id` (`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

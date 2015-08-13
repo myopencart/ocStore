@@ -25,6 +25,7 @@ $_['column_quantity']          	= 'Количество';
 $_['column_status']          	= 'Статус';
 
 // Entry
+$_['entry_main_category']       = 'Главная категория:';
 $_['entry_attribute']          	= 'Атрибут:';
 $_['entry_attribute_group']     = 'Группа атрибутов:';
 $_['entry_category']          	= 'Показывать в категориях:';
