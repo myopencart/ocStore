@@ -25,6 +25,7 @@ $_['column_status']          = 'Status';
 $_['column_action']          = 'Action';
 
 // Entry
+$_['entry_main_category']    = 'Main category';
 $_['entry_name']             = 'Product Name';
 $_['entry_description']      = 'Description';
 $_['entry_meta_title'] 	     = 'Meta Tag Title';

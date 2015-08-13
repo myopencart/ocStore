@@ -342,6 +342,21 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-category"><?php echo $entry_main_category; ?></label>
+                <div class="col-sm-10">
+                  <select id="main_category_id" name="main_category_id" class="form-control">
+                    <option value="0" selected="selected"><?php echo $text_none; ?></option>
+                    <?php foreach($product_categories as $category) { ?>
+                    <?php if($category['category_id'] == $main_category_id) { ?>
+                    <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
+                    <?php } else { ?>
+                    <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
@@ -974,11 +989,17 @@ $('input[name=\'category\']').autocomplete({
 		
 		$('#product-category' + item['value']).remove();
 		
-		$('#product-category').append('<div id="product-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_category[]" value="' + item['value'] + '" /></div>');	
+		$('#product-category').append('<div id="product-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_category[]" value="' + item['value'] + '" /></div>');
+
+        if ($('#main_category_id option[value="' + item['value'] + '"]').length == 0) {
+          $('#main_category_id').append('<option value="' + item['value'] + '">' + item['label'] + '</option>');
+        }
 	}
 });
 
 $('#product-category').delegate('.fa-minus-circle', 'click', function() {
+    var category_id = $(this).parent().find('input[name="product_category\\[\\]"]').val();
+    $('#main_category_id option[value="' + category_id + '"]').remove();
 	$(this).parent().remove();
 });
 

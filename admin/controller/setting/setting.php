@@ -153,6 +153,12 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_error_log'] = $this->language->get('entry_error_log');
 		$data['entry_error_filename'] = $this->language->get('entry_error_filename');
 		$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
+		$data['entry_seo_url'] = $this->language->get('entry_seo_url');
+		$data['entry_seo_url_type'] = $this->language->get('entry_seo_url_type');
+		$data['entry_seo_url_include_path'] = $this->language->get('entry_seo_url_include_path');
+		$data['entry_seo_url_postfix'] = $this->language->get('entry_seo_url_postfix');
+		$data['entry_seo_url_include_path_help'] = $this->language->get('entry_seo_url_include_path_help');
+		$data['entry_seo_url_postfix_help'] = $this->language->get('entry_seo_url_postfix_help');
 		$data['entry_google_captcha_public'] = $this->language->get('entry_google_captcha_public');
 		$data['entry_google_captcha_secret'] = $this->language->get('entry_google_captcha_secret');
 		$data['entry_sms_gatename'] = $this->language->get('entry_sms_gatename');
@@ -1212,6 +1218,30 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_url'] = $this->request->post['config_seo_url'];
 		} else {
 			$data['config_seo_url'] = $this->config->get('config_seo_url');
+		}
+
+		if (isset($this->request->post['config_seo_url_type'])) {
+			$data['config_seo_url_type'] = $this->request->post['config_seo_url_type'];
+		} elseif ($this->config->get('config_seo_url_type')) {
+			$data['config_seo_url_type'] = $this->config->get('config_seo_url_type');
+		} else {
+			$data['config_seo_url_type'] = 'seo_url';
+		}
+
+		$data['seo_types'] = array();
+		$data['seo_types'][] = array('type' => 'seo_url', 'name' => $this->language->get('text_seo_url'));
+		$data['seo_types'][] = array('type' => 'seo_pro', 'name' => $this->language->get('text_seo_pro'));
+
+		if (isset($this->request->post['config_seo_url_include_path'])) {
+			$data['config_seo_url_include_path'] = $this->request->post['config_seo_url_include_path'];
+		} else {
+			$data['config_seo_url_include_path'] = $this->config->get('config_seo_url_include_path');
+		}
+
+		if (isset($this->request->post['config_seo_url_postfix'])) {
+			$data['config_seo_url_postfix'] = $this->request->post['config_seo_url_postfix'];
+		} else {
+			$data['config_seo_url_postfix'] = $this->config->get('config_seo_url_postfix');
 		}
 
 		if (isset($this->request->post['config_file_max_size'])) {

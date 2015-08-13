@@ -138,9 +138,13 @@ $_['entry_sms_gate_username']          = 'Логин на SMS шлюз';
 $_['entry_sms_gate_password']          = 'Пароль на SMS шлюз';
 $_['entry_sms_alert']                  = 'Включить SMS уведомления';
 $_['entry_sms_copy']                   = 'Дополнительные номера';
-$_['entry_seo_url_type']               = 'Тип ЧПУ:';
-$_['entry_seo_url_include_path']       = 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
-$_['entry_seo_url_postfix']            = 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
+$_['text_seo_url']					   = 'Default';
+$_['text_seo_pro']					   = 'SeoPro';
+$_['entry_seo_url_type']			   = 'Seo Type';
+$_['entry_seo_url_include_path']	   = 'Seo products in the categories';
+$_['entry_seo_url_include_path_help']  = '/category/subcategory/product (only for SeoPro)';
+$_['entry_seo_url_postfix']			   = 'Seo ending';
+$_['entry_seo_url_postfix_help']	   = 'Example .html (only for SeoPro)';
 $_['entry_status']                     = 'Status';
 
 // Help
