@@ -130,6 +130,17 @@ $_['entry_error_filename']             = 'Файл журнала ошибок';
 $_['entry_google_analytics']           = 'Код Google Analytics';
 $_['entry_google_captcha_public']      = 'Ключ';
 $_['entry_google_captcha_secret']      = 'Секретный ключ';
+$_['entry_sms_gatename']               = 'Сервис отправки SMS:';
+$_['entry_sms_to']                     = 'Номер телефона получателя';
+$_['entry_sms_from']                   = 'Псевдоним отправителя';
+$_['entry_sms_message']                = 'Текст сообщения';
+$_['entry_sms_gate_username']          = 'Логин на SMS шлюз';
+$_['entry_sms_gate_password']          = 'Пароль на SMS шлюз';
+$_['entry_sms_alert']                  = 'Включить SMS уведомления';
+$_['entry_sms_copy']                   = 'Дополнительные номера';
+$_['entry_seo_url_type']               = 'Тип ЧПУ:';
+$_['entry_seo_url_include_path']       = 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
+$_['entry_seo_url_postfix']            = 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
 $_['entry_status']                     = 'Статус';
 
 // Help
@@ -195,6 +206,10 @@ $_['help_encryption']                  = 'Ключ, который будет и
 $_['help_compression']                 = 'Задайте значение от 0 до 9';
 $_['help_google_analytics']            = 'Войдите в учетную запись <a href="http://www.google.com/analytics/" target="_blank"><u>Google Analytics</u></a> и создайте профиль сайта. Затем, добавьте в поле ниже сформированный код:';
 $_['help_google_captcha']              = 'Перейдите на страницу <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"><u>Google reCAPTCHA</u></a> и зарегистрируйте сайт. Затем, вставьте выданные ключи в поля ниже:';
+$_['help_sms_to']                      = 'В международном формате, только цифры 7926xxxxxxx';
+$_['help_sms_from']                    = 'Не более 11 символов, либо номер телефона до 15 цифр';
+$_['help_sms_copy']                    = 'Указывать через запятую, в международном формате, без разделителей 7926xxxxxxx';
+$_['help_sms_message']                 = 'Можно использовать теги:<br/>{ID} - номер заказа<br/>{DATE} - дата заказа<br/>{TIME} - время заказа<br/>{SUM} - сумма заказа<br/>{PHONE} - телефон клиента';
 
 // Error
 $_['error_warning']                    = 'Внимательно проверьте форму на ошибки!';

@@ -132,6 +132,7 @@ $_['tab_activity']                  = 'Последняя активность';
 $_['tab_recurring']                 = 'Регулярные платежи';
 $_['tab_action']                    = 'Дейтвие';
 $_['tab_google']                    = 'Google';
+$_['tab_sms']                       = 'SMS';
 
 // Error
 $_['error_exception']          		= 'Код ошибки(%s): %s в %s в строке %s';
