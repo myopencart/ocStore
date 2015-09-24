@@ -1,0 +1,48 @@
+
+.qiwi .input-span
+{
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;    
+    height: 34px;
+    line-height: 34px;
+    min-width: 100px;
+}
+
+.qiwi input[type="radio"],
+.qiwi .radio input[type="radio"],
+.qiwi .radio-inline input[type="radio"]
+{
+    height: 100%;
+    margin-right: 5px;
+}
+
+.qiwi input[type='radio'].radio-inline
+{
+    float: left;
+    margin-right: 1px 5px 0 0;
+}
+
+.qiwi .input-span > label
+{
+    float: left;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.qiwi .group-settings
+{
+	clear: both;
+	overflow: hidden;
+}
+
+.qiwi .group-settings:nth-child(2n)
+{
+    margin-top: 5px;
+}
+
+.qiwi .group-settings input
+{
+    width: 100%;
+}
