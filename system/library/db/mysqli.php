@@ -13,6 +13,7 @@ final class MySQLi {
 
 		$this->link->set_charset("utf8");
 		$this->link->query("SET SQL_MODE = ''");
+		$this->link->query("SET OPTION SQL_BIG_SELECTS=1");
 	}
 
 	public function query($sql) {
