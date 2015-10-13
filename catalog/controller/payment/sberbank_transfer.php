@@ -50,11 +50,11 @@ class ControllerPaymentSberBankTransfer extends Controller {
         $data['text_confirm']   = $this->language->get('text_confirm');
 
         $data['bank']     = nl2br($this->config->get('sberbank_transfer_bank_' . $this->config->get('config_language_id')));
-        $data['inn']      = $this->config->get('sberbank_transfer_inn_' . $this->config->get('config_language_id'));
-        $data['rs']       = $this->config->get('sberbank_transfer_rs_' . $this->config->get('config_language_id'));
+        $data['inn']      = $this->config->get('sberbank_transfer_inn');
+        $data['rs']       = $this->config->get('sberbank_transfer_rs');
         $data['bankuser'] = $this->config->get('sberbank_transfer_bankuser_' . $this->config->get('config_language_id'));
-        $data['bik']      = $this->config->get('sberbank_transfer_bik_' . $this->config->get('config_language_id'));
-        $data['ks']       = $this->config->get('sberbank_transfer_ks_' . $this->config->get('config_language_id'));
+        $data['bik']      = $this->config->get('sberbank_transfer_bik');
+        $data['ks']       = $this->config->get('sberbank_transfer_ks');
 
         $this->getCurrencyCode();
         $rur_order_total = $this->currency->convert($order_info['total'], $order_info['currency_code'], $this->currency_code);
