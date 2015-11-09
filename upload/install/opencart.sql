@@ -1903,11 +1903,11 @@ CREATE TABLE `oc_manufacturer` (
 
 INSERT INTO `oc_manufacturer` (`manufacturer_id`, `image`, `sort_order`) VALUES
 (5, 'catalog/demo/htc_logo.jpg', 0),
-(6, 'catalog/demo//palm_logo.jpg', 0),
-(7, 'catalog/demo//hp_logo.jpg', 0),
-(8, 'catalog/demo//apple_logo.jpg', 0),
-(9, 'catalog/demo//canon_logo.jpg', 0),
-(10, 'catalog/demo//sony_logo.jpg', 0);
+(6, 'catalog/demo/palm_logo.jpg', 0),
+(7, 'catalog/demo/hp_logo.jpg', 0),
+(8, 'catalog/demo/apple_logo.jpg', 0),
+(9, 'catalog/demo/canon_logo.jpg', 0),
+(10, 'catalog/demo/sony_logo.jpg', 0);
 
 -- --------------------------------------------------------
 
