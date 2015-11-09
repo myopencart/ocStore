@@ -16,7 +16,7 @@ class Mem {
 	}
 
 	public function set($key,$value) {
-		return $this->cache->set(CACHE_PREFIX . $key, $value, MEMCACHE_COMPRESSED, $this->expire);
+		return $this->cache->set(CACHE_PREFIX . $key, $value, MEMCACHE_COMPRESSED, $this->expire+mt_rand(1,$this->expire));
 	}
 
 	public function delete($key) {

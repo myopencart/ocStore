@@ -13,7 +13,7 @@ class APC {
 	}
 
 	public function set($key, $value) {
-		return apc_store(CACHE_PREFIX . $key, $value, $this->expire);
+		return apc_store(CACHE_PREFIX . $key, $value, $this->expire+mt_rand(1,$this->expire));
 	}
 
 	public function delete($key) {
