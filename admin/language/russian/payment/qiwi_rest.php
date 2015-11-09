@@ -1,12 +1,12 @@
 <?php
 // Heading
 $_['heading_title']         					= 'QIWI Кошелек';
-$_['text_edit']                     			= 'Редактирование';
+$_['text_edit']                     			= 'Редактирование QIWI Кошелек';
 
 // Text
 $_['text_payment']          					= 'Оплата';
 $_['text_success']          					= 'Настройки модуля обновлены!';
-$_['text_qiwi_rest']             				= '<a onclick="window.open(\'http://qiwi.ru/\');"><img  src="view/image/payment/qiwi_rest.jpg" alt="QIWI Кошелек" title="QIWI Кошелек" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_qiwi_rest']             				= '<a href="http://ishop.qiwi.com" onclick="return !window.open(this.href)"><img  src="view/image/payment/qiwi_rest.jpg" alt="QIWI Кошелек" title="QIWI Кошелек" style="border: 1px solid #EEEEEE;" /></a>';
 
 // Entry
 $_['entry_qiwi_rest_shop_id']         			= 'ID проекта:';

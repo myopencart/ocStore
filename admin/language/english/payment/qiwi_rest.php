@@ -1,12 +1,12 @@
 <?php
 // Heading
 $_['heading_title'] 						= 'QIWI Wallet';
-$_['text_edit'] 							= 'Edit';
+$_['text_edit'] 							= 'Edit QIWI Wallet';
 
 // Text
 $_['text_payment'] 						= 'Payment';
 $_['text_success'] 						= 'Settings module updated';
-$_['text_qiwi_rest'] 						= '<a onclick="window.open(\'http://qiwi.ru/\');"> <img src = "view/image/payment/qiwi_rest.jpg" alt = "QIWI Purse" title = "QIWI Wallet" style = "border: 1px solid #EEEEEE;" /> </a> ';
+$_['text_qiwi_rest'] 						= '<a href="http://ishop.qiwi.com" onclick="return !window.open(this.href)"> <img src = "view/image/payment/qiwi_rest.jpg" alt="QIWI Purse" title="QIWI Wallet" style="border: 1px solid #EEEEEE;" /> </a> ';
 
 // Entry
 $_['entry_qiwi_rest_shop_id'] 				= 'ID Project';
@@ -18,22 +18,22 @@ $_['help_qiwi_rest_id'] 					= 'API ID system for the REST protocol.';
 $_['entry_qiwi_rest_password'] 				= 'Password';
 $_['help_qiwi_rest_password'] 				= 'Password for the system REST protocol.';
 
-$_['entry_qiwi_rest_result_url'] 				= 'URL to notify:';
-$_['help_qiwi_rest_result_url'] 				= 'URL to notify.';
+$_['entry_qiwi_rest_result_url'] 				= 'Notify URL:';
+$_['help_qiwi_rest_result_url'] 				= 'Notify URL.';
 
-$_['entry_qiwi_rest_order_status_cancel_id'] 		= 'Order status when canceling the account:';
-$_['help_qiwi_rest_order_status_cancel_id'] 		= 'Order status when canceling the account.';
+$_['entry_qiwi_rest_order_status_cancel_id'] 		= 'Order status when canceling the order:';
+$_['help_qiwi_rest_order_status_cancel_id'] 		= 'Order status when canceling the order.';
 
 $_['entry_qiwi_rest_order_status_progress_id'] 		= 'The status of the order to pay';
 $_['help_qiwi_rest_order_status_progress_id'] 		= 'The status of the order to pay.';
 
-$_['entry_qiwi_rest_lifetime'] 				= 'The lifetime of the account (in hours):';
-$_['help_qiwi_rest_lifetime'] 				= 'The lifetime hours accounts.';
+$_['entry_qiwi_rest_lifetime'] 				= 'The lifetime (in hours):';
+$_['help_qiwi_rest_lifetime'] 				= 'The lifetime in hours.';
 
 $_['entry_qiwi_rest_order_status_id'] 			= 'Order status after the payment';
 $_['help_qiwi_rest_order_status_id'] 			= 'Order status after the payment.';
 
-$_['entry_qiwi_rest_geo_zone_id'] 				= 'Geo Zones';
+$_['entry_qiwi_rest_geo_zone_id'] 				= 'Geographical area';
 $_['help_qiwi_rest_geo_zone_id'] 				= 'The geographical area.';
 
 $_['entry_qiwi_rest_status'] 					= 'Status';
@@ -60,7 +60,7 @@ $_['help_qiwi_rest_mode_show_picture'] 			= 'Show icon when selecting a method o
 $_['entry_qiwi_rest_show_picture_on'] 			= 'Yes';
 $_['entry_qiwi_rest_show_picture_off'] 			= 'No';
 
-$_['entry_qiwi_rest_total'] 					= 'Minimum order';
+$_['entry_qiwi_rest_total'] 					= 'Minimum summ';
 $_['help_qiwi_rest_total'] 					= 'Below that amount, the method is not available.';
 
 $_['entry_qiwi_rest_show_pay_now'] 				= 'Just Pay';

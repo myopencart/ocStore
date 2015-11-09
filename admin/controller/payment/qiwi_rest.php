@@ -20,7 +20,7 @@ class ControllerPaymentQiwiRest extends Controller {
 
 		}
 
-		$data['qiwi_rest_version'] = '1.1 for OpenCart 2.x';	
+		$data['qiwi_rest_version'] = '1.3 for OpenCart 2.x';	
 		$data['text_edit'] = $this->language->get('text_edit');
 
 		$data['text_no_results'] = $this->language->get('text_no_results');
@@ -39,15 +39,25 @@ class ControllerPaymentQiwiRest extends Controller {
 		$data['entry_qiwi_rest_total'] = $this->language->get('entry_qiwi_rest_total');	
 		$data['help_qiwi_rest_total'] = $this->language->get('help_qiwi_rest_total');	
 
-		$this->load->model('sale/customer_group');
-
 		$data['customer_groups'] = array();
 
-		
-		$customer_group_total = $this->model_sale_customer_group->getTotalCustomerGroups();
-		
-		$results = $this->model_sale_customer_group->getCustomerGroups();
+		if (file_exists(DIR_APPLICATION . '/model/sale/customer_group.php')) 
+		{		
+			$this->load->model('sale/customer_group');
+			$customer_group_total = $this->model_sale_customer_group->getTotalCustomerGroups();
+			$results = $this->model_sale_customer_group->getCustomerGroups();
 
+		}
+		else
+		{
+			$this->load->model('customer/customer_group');
+			$customer_group_total = $this->model_customer_customer_group->getTotalCustomerGroups();
+			$results = $this->model_customer_customer_group->getCustomerGroups();
+
+		}	
+
+
+	
 		foreach ($results as $result) {
 		
 			$data['customer_groups'][] = array(

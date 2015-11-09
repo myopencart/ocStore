@@ -29,9 +29,9 @@
 
       <table width=100%>
 	<tr><td width=10 valign=top>
-<a onclick="window.open(\'http://qiwi.ru/\');"><img  src="view/image/payment/qiwi_rest2.jpg" alt="QIWI Кошелек" title="QIWI Кошелек" style="border: 1px solid #EEEEEE;" /></a>
-</td>
-<td>
+	<a href="http://ishop.qiwi.com" onclick="return !window.open(this.href)" ><img  src="view/image/payment/qiwi_rest2.jpg" alt="QIWI Кошелек" title="QIWI Кошелек" style="border: 1px solid #EEEEEE;" /></a>
+	</td>
+	<td>
 
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="qiwi_rest_ccy_select"><span data-toggle="tooltip" title="<?php echo $help_qiwi_rest_ccy_select; ?>"><?php echo $entry_qiwi_rest_ccy_select; ?></span></label>
