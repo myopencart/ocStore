@@ -2336,9 +2336,9 @@ CREATE TABLE IF NOT EXISTS `oc_product` (
   `minimum` int(11) NOT NULL DEFAULT '1',
   `sort_order` int(11) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '0',
+  `viewed` int(5) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
-  `viewed` int(5) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -3590,9 +3590,9 @@ CREATE TABLE IF NOT EXISTS `oc_voucher_theme` (
 --
 
 INSERT INTO `oc_voucher_theme` (`voucher_theme_id`, `image`) VALUES
-(8, 'catalog/demo//canon_eos_5d_2.jpg'),
-(7, 'catalog/demo//gift-voucher-birthday.jpg'),
-(6, 'catalog/demo//apple_logo.jpg');
+(8, 'catalog/demo/canon_eos_5d_2.jpg'),
+(7, 'catalog/demo/gift-voucher-birthday.jpg'),
+(6, 'catalog/demo/apple_logo.jpg');
 
 -- --------------------------------------------------------
 
