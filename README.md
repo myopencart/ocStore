@@ -25,7 +25,7 @@ ocStore - это онлайн-магазин, который основан на базе OpenCart и имеет открытый 
 
 ## Ћицензи€
 
-[GNU General Public License версии 3 (GPLv3)] (https://github.com/opencart/opencart/blob/master/license.txt)
+[GNU General Public License версии 3 (GPLv3)] (https://github.com/myopencart/ocStore/blob/ocStore2/license.txt)
 
 ## —сылки
 
