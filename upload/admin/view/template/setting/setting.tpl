@@ -1636,6 +1636,8 @@
                 </div>
               </div>
               </fieldset>
+            </div>
+            <div class="tab-pane" id="tab-google">
               <fieldset>
                 <legend><?php echo $text_google_captcha; ?></legend>
                 <div class="alert alert-info"><?php echo $help_google_captcha; ?></div>
