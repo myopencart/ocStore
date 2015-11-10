@@ -37,6 +37,8 @@ $_['text_manufacturer']          			= 'Производители';
 $_['text_module']          					= 'Модули';
 $_['text_option']          					= 'Опции';
 $_['text_order']          					= 'Заказы';
+
+$_['text_octeam_toolset']             = 'OC Team';
 $_['text_order_status']          			= 'Статусы заказов';
 $_['text_payment']          				= 'Платежи';
 $_['text_paypal']          					= 'PayPal';

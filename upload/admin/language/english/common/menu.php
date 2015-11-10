@@ -98,3 +98,5 @@ $_['text_openbay_report_price']        = 'Pricing report';
 $_['text_openbay_order_import']        = 'Order import';
 $_['text_paypal_manage']               = 'PayPal';
 $_['text_paypal_search']               = 'Search';
+
+$_['text_octeam_toolset']              = 'OC Team';

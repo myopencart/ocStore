@@ -107,6 +107,9 @@ class ControllerCommonMenu extends Controller {
 		$data['text_openbay_report_price'] = $this->language->get('text_openbay_report_price');
 		$data['text_openbay_order_import'] = $this->language->get('text_openbay_order_import');
 
+		/* octeam */
+		$data['text_octeam_toolset'] = $this->language->get('text_octeam_toolset');
+
 		$data['analytics'] = $this->url->link('extension/analytics', 'token=' . $this->session->data['token'], 'SSL');
 		$data['home'] = $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL');
 		$data['affiliate'] = $this->url->link('marketing/affiliate', 'token=' . $this->session->data['token'], 'SSL');
@@ -206,6 +209,9 @@ class ControllerCommonMenu extends Controller {
 			'amazonus' => $this->config->get('openbay_amazonus_status'),
 			'etsy' => $this->config->get('etsy_status'),
 		);
+
+    /* octeam */
+    $data['octeam_toolset'] = $this->url->link('octeam/toolset', 'token=' . $this->session->data['token'], 'SSL');
 
 		return $this->load->view('common/menu.tpl', $data);
 	}
