@@ -1139,9 +1139,9 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' р.', '2', 29.37199974, 1, '2012-03-31 17:33:53'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2012-03-31 17:33:53'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.74959999, 1, '2012-03-31 17:33:53');
+(1, 'Рубль', 'RUB', '', ' р.', '2', 1.00000000, 1, '2015-11-10 17:33:53'),
+(2, 'US Dollar', 'USD', '$', '', '2', 0.01550000, 1, '2015-11-10 17:33:53'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.01440000, 1, '2015-11-10 17:33:53');
 
 -- --------------------------------------------------------
 
@@ -1737,7 +1737,7 @@ INSERT INTO `oc_layout` (`layout_id`, `name`) VALUES
 (1, 'Главная'),
 (2, 'Продукт'),
 (3, 'Категория'),
-(4, 'По-умолчанию'),
+(4, 'По умолчанию'),
 (5, 'Производитель'),
 (6, 'Аккаунт'),
 (7, 'Оформление заказ'),
@@ -3164,8 +3164,8 @@ CREATE TABLE `oc_return_reason` (
 INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
 (1, 1, 'Получен/доставлен неисправным (сломанным)'),
 (2, 1, 'Получен не тот (ошибочный) товар'),
-(4, 1, 'Ошибочный, пожалуйста укажите/приложите подробности'),
-(5, 1, 'Другое (другая причина), пожалуйста укажите/приложите подробности'),
+(4, 1, 'Ошибочный, пожалуйста, укажите/приложите подробности'),
+(5, 1, 'Другое (другая причина), пожалуйста, укажите/приложите подробности'),
 (1, 2, 'Dead On Arrival'),
 (2, 2, 'Received Wrong Item'),
 (4, 2, 'Faulty, please supply details'),
@@ -3289,16 +3289,16 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (250, 0, 'config', 'config_image_cart_height', '47', 0),
 (249, 0, 'config', 'config_image_cart_width', '47', 0),
 (248, 0, 'config', 'config_image_wishlist_height', '47', 0),
-(181, 0, 'config', 'config_meta_title', 'Your Store', 0),
-(182, 0, 'config', 'config_meta_description', 'My Store', 0),
+(181, 0, 'config', 'config_meta_title', 'Мой Магазин', 0),
+(182, 0, 'config', 'config_meta_description', 'Мой Магазин', 0),
 (183, 0, 'config', 'config_meta_keyword', '', 0),
 (184, 0, 'config', 'config_template', 'default', 0),
 (185, 0, 'config', 'config_layout_id', '4', 0),
-(186, 0, 'config', 'config_country_id', '222', 0),
-(187, 0, 'config', 'config_zone_id', '3563', 0),
+(186, 0, 'config', 'config_country_id', '176', 0),
+(187, 0, 'config', 'config_zone_id', '2761', 0),
 (188, 0, 'config', 'config_language', 'ru', 0),
 (189, 0, 'config', 'config_admin_language', 'ru', 0),
-(190, 0, 'config', 'config_currency', 'USD', 0),
+(190, 0, 'config', 'config_currency', 'RUB', 0),
 (191, 0, 'config', 'config_currency_auto', '1', 0),
 (192, 0, 'config', 'config_length_class_id', '1', 0),
 (193, 0, 'config', 'config_weight_class_id', '1', 0),
@@ -3320,7 +3320,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (209, 0, 'config', 'config_customer_price', '0', 0),
 (210, 0, 'config', 'config_account_id', '3', 0),
 (211, 0, 'config', 'config_account_mail', '0', 0),
-(212, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(212, 0, 'config', 'config_invoice_prefix', 'INV-2016-00', 0),
 (213, 0, 'config', 'config_api_id', '1', 0),
 (214, 0, 'config', 'config_cart_weight', '1', 0),
 (215, 0, 'config', 'config_checkout_guest', '1', 0),
@@ -3362,7 +3362,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (177, 0, 'config', 'config_fax', '', 0),
 (176, 0, 'config', 'config_telephone', '123456789', 0),
 (175, 0, 'config', 'config_email', 'admin@store.ru', 0),
-(174, 0, 'config', 'config_geocode', '', 0),
+(174, 0, 'config', 'config_geocode', '54.718681,20.499113', 0),
 (172, 0, 'config', 'config_owner', 'Мое Имя', 0),
 (173, 0, 'config', 'config_address', 'Адрес', 0),
 (171, 0, 'config', 'config_name', 'Мой Магазин', 0),
