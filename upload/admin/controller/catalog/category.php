@@ -559,13 +559,10 @@ class ControllerCatalogCategory extends Controller {
 			if ((utf8_strlen($value['name']) < 2) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
-<<<<<<< HEAD
-=======
 
 			if ((utf8_strlen($value['meta_title']) < 3) || (utf8_strlen($value['meta_title']) > 255)) {
 				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
 			}
->>>>>>> 2.0.3.1
 		}
 
 		if (utf8_strlen($this->request->post['keyword']) > 0) {
