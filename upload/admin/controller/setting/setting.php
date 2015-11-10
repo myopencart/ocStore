@@ -159,6 +159,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_error_display'] = $this->language->get('entry_error_display');
 		$data['entry_error_log'] = $this->language->get('entry_error_log');
 		$data['entry_error_filename'] = $this->language->get('entry_error_filename');
+		$data['text_google_captcha'] = $this->language->get('text_google_captcha');
 		$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
 		$data['entry_seo_url'] = $this->language->get('entry_seo_url');
 		$data['entry_seo_url_type'] = $this->language->get('entry_seo_url_type');
