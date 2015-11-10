@@ -33,10 +33,16 @@ class ControllerProductManufacturer extends Controller {
 		$results = $this->model_catalog_manufacturer->getManufacturers();
 
 		foreach ($results as $result) {
-			if (is_numeric(utf8_substr($result['name'], 0, 1))) {
+			if ($result['meta_h1']) {
+				$name = $result['meta_h1'];
+			} else {
+				$name = $result['name'];
+			}
+
+			if (is_numeric(utf8_substr($name, 0, 1))) {
 				$key = '0 - 9';
 			} else {
-				$key = utf8_substr(utf8_strtoupper($result['name']), 0, 1);
+				$key = utf8_substr(utf8_strtoupper($name), 0, 1);
 			}
 
 			if (!isset($data['categories'][$key])) {
@@ -44,7 +50,7 @@ class ControllerProductManufacturer extends Controller {
 			}
 
 			$data['categories'][$key]['manufacturer'][] = array(
-				'name' => $result['name'],
+				'name' => $name,
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id'])
 			);
 		}

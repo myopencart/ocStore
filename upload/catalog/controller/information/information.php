@@ -39,7 +39,7 @@ class ControllerInformationInformation extends Controller {
 			if ($information_info['meta_h1']) {
 				$data['heading_title'] = $information_info['meta_h1'];
 			} else {
-				$data['heading_title'] = $information_info['name'];
+				$data['heading_title'] = $information_info['title'];
 			}
 
 			$data['button_continue'] = $this->language->get('button_continue');
