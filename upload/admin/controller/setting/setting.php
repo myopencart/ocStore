@@ -81,6 +81,11 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_product_description_length'] = $this->language->get('entry_product_description_length');
 		$data['entry_limit_admin'] = $this->language->get('entry_limit_admin');
 		$data['entry_product_count'] = $this->language->get('entry_product_count');
+		$data['entry_product_upc_hide'] = $this->language->get('entry_product_upc_hide');
+		$data['entry_product_ean_hide'] = $this->language->get('entry_product_ean_hide');
+		$data['entry_product_jan_hide'] = $this->language->get('entry_product_jan_hide');
+		$data['entry_product_isbn_hide'] = $this->language->get('entry_product_isbn_hide');
+		$data['entry_product_mpn_hide'] = $this->language->get('entry_product_mpn_hide');
 		$data['entry_review'] = $this->language->get('entry_review');
 		$data['entry_review_guest'] = $this->language->get('entry_review_guest');
 		$data['entry_review_mail'] = $this->language->get('entry_review_mail');
@@ -191,6 +196,11 @@ class ControllerSettingSetting extends Controller {
 		$data['help_product_description_length'] = $this->language->get('help_product_description_length');
 		$data['help_limit_admin'] = $this->language->get('help_limit_admin');
 		$data['help_product_count'] = $this->language->get('help_product_count');
+		$data['help_product_upc_hide'] = $this->language->get('help_product_isbn_hide');
+		$data['help_product_ean_hide'] = $this->language->get('help_product_isbn_hide');
+		$data['help_product_jan_hide'] = $this->language->get('help_product_isbn_hide');
+		$data['help_product_isbn_hide'] = $this->language->get('help_product_isbn_hide');
+		$data['help_product_mpn_hide'] = $this->language->get('help_product_isbn_hide');
 		$data['help_review'] = $this->language->get('help_review');
 		$data['help_review_guest'] = $this->language->get('help_review_guest');
 		$data['help_review_mail'] = $this->language->get('help_review_mail');
@@ -731,6 +741,36 @@ class ControllerSettingSetting extends Controller {
 			$data['config_product_count'] = $this->request->post['config_product_count'];
 		} else {
 			$data['config_product_count'] = $this->config->get('config_product_count');
+		}
+
+		if (isset($this->request->post['config_product_upc_hide'])) {
+			$data['config_product_upc_hide'] = $this->request->post['config_product_upc_hide'];
+		} else {
+			$data['config_product_upc_hide'] = $this->config->get('config_product_upc_hide');
+		}
+
+		if (isset($this->request->post['config_product_ean_hide'])) {
+			$data['config_product_ean_hide'] = $this->request->post['config_product_ean_hide'];
+		} else {
+			$data['config_product_ean_hide'] = $this->config->get('config_product_ean_hide');
+		}
+
+		if (isset($this->request->post['config_product_jan_hide'])) {
+			$data['config_product_jan_hide'] = $this->request->post['config_product_jan_hide'];
+		} else {
+			$data['config_product_jan_hide'] = $this->config->get('config_product_jan_hide');
+		}
+
+		if (isset($this->request->post['config_product_isbn_hide'])) {
+			$data['config_product_isbn_hide'] = $this->request->post['config_product_isbn_hide'];
+		} else {
+			$data['config_product_isbn_hide'] = $this->config->get('config_product_isbn_hide');
+		}
+
+		if (isset($this->request->post['config_product_mpn_hide'])) {
+			$data['config_product_mpn_hide'] = $this->request->post['config_product_mpn_hide'];
+		} else {
+			$data['config_product_mpn_hide'] = $this->config->get('config_product_mpn_hide');
 		}
 
 		if (isset($this->request->post['config_review_status'])) {

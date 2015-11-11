@@ -815,6 +815,36 @@ class ControllerCatalogProduct extends Controller {
 			$data['location'] = '';
 		}
 
+		if ($this->config->get('config_product_upc_hide') != 0) {
+			$data['hide_upc'] = true;
+		} else {
+			$data['hide_upc'] = false;
+		}
+
+		if ($this->config->get('config_product_ean_hide') != 0) {
+			$data['hide_ean'] = true;
+		} else {
+			$data['hide_ean'] = false;
+		}
+
+		if ($this->config->get('config_product_jan_hide') != 0) {
+			$data['hide_jan'] = true;
+		} else {
+			$data['hide_jan'] = false;
+		}
+
+		if ($this->config->get('config_product_isbn_hide') != 0) {
+			$data['hide_isbn'] = true;
+		} else {
+			$data['hide_isbn'] = false;
+		}
+
+		if ($this->config->get('config_product_isbn_mpn') != 0) {
+			$data['hide_mpn'] = true;
+		} else {
+			$data['hide_mpn'] = false;
+		}
+
 		$this->load->model('setting/store');
 
 		$data['stores'] = $this->model_setting_store->getStores();

@@ -123,31 +123,31 @@
                   <input type="text" name="sku" value="<?php echo $sku; ?>" placeholder="<?php echo $entry_sku; ?>" id="input-sku" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group<?php echo ($hide_upc == true)? ' hide':''; ?>">
                 <label class="col-sm-2 control-label" for="input-upc"><span data-toggle="tooltip" title="<?php echo $help_upc; ?>"><?php echo $entry_upc; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="upc" value="<?php echo $upc; ?>" placeholder="<?php echo $entry_upc; ?>" id="input-upc" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group<?php echo ($hide_ean == true)? ' hide':''; ?>">
                 <label class="col-sm-2 control-label" for="input-ean"><span data-toggle="tooltip" title="<?php echo $help_ean; ?>"><?php echo $entry_ean; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="ean" value="<?php echo $ean; ?>" placeholder="<?php echo $entry_ean; ?>" id="input-ean" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group<?php echo ($hide_jan == true)? ' hide':''; ?>">
                 <label class="col-sm-2 control-label" for="input-jan"><span data-toggle="tooltip" title="<?php echo $help_jan; ?>"><?php echo $entry_jan; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="jan" value="<?php echo $jan; ?>" placeholder="<?php echo $entry_jan; ?>" id="input-jan" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group<?php echo ($hide_isbn == true)? ' hide':''; ?>">
                 <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="<?php echo $help_isbn; ?>"><?php echo $entry_isbn; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="isbn" value="<?php echo $isbn; ?>" placeholder="<?php echo $entry_isbn; ?>" id="input-isbn" class="form-control" />
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group<?php echo ($hide_mpn == true)? ' hide':''; ?>">
                 <label class="col-sm-2 control-label" for="input-mpn"><span data-toggle="tooltip" title="<?php echo $help_mpn; ?>"><?php echo $entry_mpn; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="mpn" value="<?php echo $mpn; ?>" placeholder="<?php echo $entry_mpn; ?>" id="input-mpn" class="form-control" />

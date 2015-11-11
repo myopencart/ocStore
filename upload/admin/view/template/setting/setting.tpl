@@ -361,6 +361,121 @@
                     <?php } ?>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_product_upc_hide; ?>"><?php echo $entry_product_upc_hide; ?></span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <?php if ($config_product_upc_hide) { ?>
+                      <input type="radio" name="config_product_upc_hide" value="1" checked="checked" />
+                      <?php echo $text_yes; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_upc_hide" value="1" />
+                      <?php echo $text_yes; ?>
+                      <?php } ?>
+                    </label>
+                    <label class="radio-inline">
+                      <?php if (!$config_product_upc_hide) { ?>
+                      <input type="radio" name="config_product_upc_hide" value="0" checked="checked" />
+                      <?php echo $text_no; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_upc_hide" value="0" />
+                      <?php echo $text_no; ?>
+                      <?php } ?>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_product_ean_hide; ?>"><?php echo $entry_product_ean_hide; ?></span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <?php if ($config_product_ean_hide) { ?>
+                      <input type="radio" name="config_product_ean_hide" value="1" checked="checked" />
+                      <?php echo $text_yes; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_ean_hide" value="1" />
+                      <?php echo $text_yes; ?>
+                      <?php } ?>
+                    </label>
+                    <label class="radio-inline">
+                      <?php if (!$config_product_ean_hide) { ?>
+                      <input type="radio" name="config_product_ean_hide" value="0" checked="checked" />
+                      <?php echo $text_no; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_ean_hide" value="0" />
+                      <?php echo $text_no; ?>
+                      <?php } ?>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_product_jan_hide; ?>"><?php echo $entry_product_jan_hide; ?></span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <?php if ($config_product_jan_hide) { ?>
+                      <input type="radio" name="config_product_jan_hide" value="1" checked="checked" />
+                      <?php echo $text_yes; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_jan_hide" value="1" />
+                      <?php echo $text_yes; ?>
+                      <?php } ?>
+                    </label>
+                    <label class="radio-inline">
+                      <?php if (!$config_product_jan_hide) { ?>
+                      <input type="radio" name="config_product_jan_hide" value="0" checked="checked" />
+                      <?php echo $text_no; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_jan_hide" value="0" />
+                      <?php echo $text_no; ?>
+                      <?php } ?>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_product_isbn_hide; ?>"><?php echo $entry_product_isbn_hide; ?></span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <?php if ($config_product_isbn_hide) { ?>
+                      <input type="radio" name="config_product_isbn_hide" value="1" checked="checked" />
+                      <?php echo $text_yes; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_isbn_hide" value="1" />
+                      <?php echo $text_yes; ?>
+                      <?php } ?>
+                    </label>
+                    <label class="radio-inline">
+                      <?php if (!$config_product_isbn_hide) { ?>
+                      <input type="radio" name="config_product_isbn_hide" value="0" checked="checked" />
+                      <?php echo $text_no; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_isbn_hide" value="0" />
+                      <?php echo $text_no; ?>
+                      <?php } ?>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_product_mpn_hide; ?>"><?php echo $entry_product_mpn_hide; ?></span></label>
+                  <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <?php if ($config_product_mpn_hide) { ?>
+                      <input type="radio" name="config_product_mpn_hide" value="1" checked="checked" />
+                      <?php echo $text_yes; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_mpn_hide" value="1" />
+                      <?php echo $text_yes; ?>
+                      <?php } ?>
+                    </label>
+                    <label class="radio-inline">
+                      <?php if (!$config_product_mpn_hide) { ?>
+                      <input type="radio" name="config_product_mpn_hide" value="0" checked="checked" />
+                      <?php echo $text_no; ?>
+                      <?php } else { ?>
+                      <input type="radio" name="config_product_mpn_hide" value="0" />
+                      <?php echo $text_no; ?>
+                      <?php } ?>
+                    </label>
+                  </div>
+                </div>
               </fieldset>
               <fieldset>
                 <legend><?php echo $text_review; ?></legend>
