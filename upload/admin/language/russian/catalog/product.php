@@ -5,10 +5,10 @@ $_['heading_title']          	= 'Товары';
 // Text
 $_['text_add']          		= 'Добавление товара';
 $_['text_amount']         	 	= 'Фиксированная сумма';
-$_['text_default']        		= 'Основной магазин';
 $_['text_edit']         	 	= 'Редактирование товара';
 $_['text_list']          		= 'Список товаров';
 $_['text_minus']       	 		= '-';
+$_['text_default']        		= 'Основной магазин';
 $_['text_option']		        = 'Опция';
 $_['text_option_value']         = 'Значение опции';
 $_['text_percent']          	= 'Процент';

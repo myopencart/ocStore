@@ -13,4 +13,5 @@ $_['text_success']    = 'Новый пароль был выслан на Ваш
 $_['entry_email']     = 'E-Mail:';
 
 // Error
+$_['error_email']     = 'Warning: The E-Mail Address was not found in our records, please try again!';
 $_['error_email']     = 'E-Mail адрес не найден, проверьте и попробуйте ещё раз!';

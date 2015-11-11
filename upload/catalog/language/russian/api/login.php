@@ -1,6 +1,8 @@
 <?php
 // Text
-$_['text_success'] = 'Успех: API сессия успешно запущена!';
+$_['text_success'] = 'API сессия успешно запущена!';
 
 // Error
+$_['error_key']  = 'Warning: Incorrect API Key!';
 $_['error_login']  = 'Имя пользователя и пароль не совпадают.';
+$_['error_ip']   = 'Warning: Your IP %s is not allowed to access this API!';

@@ -1,14 +1,14 @@
 <?php
 // Heading
-$_['heading_title'] = 'Use Gift Voucher';
+$_['heading_title'] = 'Использовать Подарочный Сертификат';
 
 // Text
 $_['text_voucher'] = 'Сертификат (%s)';
-$_['text_success']  = 'Success: Your gift voucher discount has been applied!';
+$_['text_success']  = 'Код Сертификата успешно принят. Итоговая сумма заказа изменена!';
 
 // Entry
-$_['entry_voucher'] = 'Enter your gift voucher code here';
+$_['entry_voucher'] = 'Введите код Сертификата';
 
 // Error
-$_['error_voucher'] = 'Warning: Gift Voucher is either invalid or the balance has been used up!';
-$_['error_empty']   = 'Warning: Please enter a voucher code!';
+$_['error_voucher'] = 'Подарочный Сертификат либо недействителен, либо его баланса не хватает для оплаты заказа!';
+$_['error_empty']   = 'Пожалуйста, введите код Сертификата!';

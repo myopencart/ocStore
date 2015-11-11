@@ -46,20 +46,19 @@ $_['text_invoice']                            = 'Счет';
 $_['text_from']                               = 'Отправитель';
 $_['text_to']                                 = 'Адрес доставки';
 $_['text_ship_to']                            = 'Адрес доставки (если адрес отличается)';
-$_['text_missing']                            = 'Ошибочные заказы';
-$_['text_default']                            = 'По умолчанию';
-$_['text_product']                            = 'Добавить товар(ы)';
-$_['text_voucher']                            = 'Добавить сертификат(ы)';
 $_['text_order']                              = 'Детали заказа';
-$_['text_shipping']                           = 'Доставка';
-$_['text_contact']                            = 'Контактные данные';
 $_['text_sku']                                = 'SKU:';
 $_['text_upc']                                = 'UPC:';
 $_['text_ean']                                = 'EAN:';
 $_['text_jan']                                = 'JAN:';
 $_['text_isbn']                               = 'ISBN:';
 $_['text_mpn']                                = 'MPN:';
-$_['text_generate']                           = 'Сгенерировать';
+$_['text_missing']                            = 'Ошибочные заказы';
+$_['text_default']                            = 'По умолчанию';
+$_['text_product']                            = 'Добавить товар(ы)';
+$_['text_voucher']                            = 'Добавить сертификат(ы)';
+$_['text_shipping']                           = 'Доставка';
+$_['text_contact']                            = 'Контактные данные';
 $_['text_reward_added']                       = 'Бонусные баллы успешно добавлены!';
 $_['text_reward_removed']                     = 'Бонусные баллы успешно удалены!';
 $_['text_commission_added']                   = 'Комиссионные успешно добавлены!';
@@ -129,6 +128,9 @@ $_['entry_order_id']                          = 'Заказ №';
 $_['entry_total']                             = 'Итого';
 $_['entry_date_added']                        = 'Дата добавления';
 $_['entry_date_modified']                     = 'Дата редактирования';
+
+// Help
+$_['help_override']              = 'If the customers order is being blocked from changing the order status due to a anti-fraud extension enable override.';
 
 // Error
 $_['error_warning']                           = 'Внимание: Внимательно проверьте форму на наличие ошибок!';
