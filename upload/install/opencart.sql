@@ -3410,7 +3410,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (286, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
 (287, 0, 'config', 'config_captcha', 'basic_captcha', 0),
 (288, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
-(289, 0, 'config', 'config_login_attempts', '5', 0);
+(289, 0, 'config', 'config_login_attempts', '5', 0),
 (290, 0, 'config', 'config_mail_regexp', '/^[^\@]+@.*.[a-z]{2,15}$/i', 0);
 
 -- --------------------------------------------------------
