@@ -44,6 +44,8 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		$this->load->language('common/header');
+		$data['og_url'] = (isset($this->request->server['HTTPS']) ? HTTPS_SERVER : HTTP_SERVER) . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
+		$data['og_image'] = $this->document->getOgImage();
 
 		$data['text_home'] = $this->language->get('text_home');
 
@@ -67,6 +69,7 @@ class ControllerCommonHeader extends Controller {
 		$data['text_download'] = $this->language->get('text_download');
 		$data['text_logout'] = $this->language->get('text_logout');
 		$data['text_checkout'] = $this->language->get('text_checkout');
+		$data['text_page'] = $this->language->get('text_page');
 		$data['text_category'] = $this->language->get('text_category');
 		$data['text_all'] = $this->language->get('text_all');
 

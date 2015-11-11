@@ -9,14 +9,23 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title><?php echo $title; ?></title>
+<title><?php echo $title; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?></title>
 <base href="<?php echo $base; ?>" />
 <?php if ($description) { ?>
-<meta name="description" content="<?php echo $description; ?>" />
+<meta name="description" content="<?php echo $description; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?>" />
 <?php } ?>
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
+<meta property="og:title" content="<?php echo $title; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<?php echo $og_url; ?>" />
+<?php if ($og_image) { ?>
+<meta property="og:image" content="<?php echo $og_image; ?>" />
+<?php } else { ?>
+<meta property="og:image" content="<?php echo $logo; ?>" />
+<?php } ?>
+<meta property="og:site_name" content="<?php echo $name; ?>" />
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -72,9 +81,13 @@
       <div class="col-sm-4">
         <div id="logo">
           <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+            <?php if ($home == $og_url) { ?>
+              <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?> class="img-responsive" />
+            <?php } else { ?>
+              <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+            <?php } ?>
           <?php } else { ?>
-          <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
+            <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
           <?php } ?>
         </div>
       </div>

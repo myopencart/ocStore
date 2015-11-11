@@ -33,8 +33,13 @@ class Pagination {
 		$output = '<ul class="pagination">';
 
 		if ($page > 1) {
-			$output .= '<li><a href="' . str_replace('{page}', 1, $this->url) . '">' . $this->text_first . '</a></li>';
-			$output .= '<li><a href="' . str_replace('{page}', $page - 1, $this->url) . '">' . $this->text_prev . '</a></li>';
+			$tmp_url = str_replace('&amp;', '&', $this->url);
+			$output .= '<li><a href="' . str_replace('&', '&amp;', rtrim( str_replace('page={page}', '', $tmp_url), '?&')) . '">' . $this->text_first . '</a></li>';
+			if ($page == 2){
+				$output .= '<li><a href="' . str_replace('&', '&amp;', rtrim( str_replace('page={page}', '', $tmp_url), '?&')) . '">' . $this->text_prev . '</a></li>';
+			}else{
+				$output .= '<li><a href="' . str_replace('{page}', $page - 1, $this->url) . '">' . $this->text_prev . '</a></li>';
+			}
 		}
 
 		if ($num_pages > 1) {
@@ -60,7 +65,11 @@ class Pagination {
 				if ($page == $i) {
 					$output .= '<li class="active"><span>' . $i . '</span></li>';
 				} else {
-					$output .= '<li><a href="' . str_replace('{page}', $i, $this->url) . '">' . $i . '</a></li>';
+					if ($i == 1){
+						$output .= '<li><a href="' . str_replace('&', '&amp;', rtrim( str_replace('page={page}', '', $tmp_url), '?&')) . '">' . $i . '</a></li>';
+					}else{
+						$output .= '<li><a href="' . str_replace('{page}', $i, $this->url) . '">' . $i . '</a></li>';
+					}
 				}
 			}
 		}
