@@ -252,10 +252,6 @@ header h3 small {
 	.modules {
 		padding: 50px;
 	}
-
-	h5 {clear: both;
-		margin-top: 19px;
-		padding-top: 11px;}
 }
 .modules h2 {
 	margin: 50px 0;
@@ -306,7 +302,7 @@ header h3 small {
 	}
 }
 
-@media (max-width: 992px) {
+@media (max-width: 992px) and (min-width: 767px) {
 	h5 {clear: both;
 		margin-top: 19px;
 		padding-top: 11px;}
