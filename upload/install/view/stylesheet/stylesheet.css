@@ -252,6 +252,10 @@ header h3 small {
 	.modules {
 		padding: 50px;
 	}
+
+	h5 {clear: both;
+		margin-top: 19px;
+		padding-top: 11px;}
 }
 .modules h2 {
 	margin: 50px 0;
@@ -300,6 +304,12 @@ header h3 small {
 	.mailing-list a {
 		float: right;
 	}
+}
+
+@media (max-width: 992px) {
+	h5 {clear: both;
+		margin-top: 19px;
+		padding-top: 11px;}
 }
 
 /*Core modules*/
