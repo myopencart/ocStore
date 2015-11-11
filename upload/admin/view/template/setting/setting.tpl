@@ -1475,6 +1475,15 @@
                      <input type="text" name="config_compression" value="<?php echo $config_compression; ?>" placeholder="<?php echo $entry_compression; ?>" id="input-compression" class="form-control" />
                    </div>
                 </div>
+              <div class="form-group requried">
+                <label class="col-sm-2 control-label" for="input-mail_regexp"><span data-toggle="tooltip" title="<?php echo $help_mail_regexp; ?>"><?php echo $entry_mail_regexp; ?></span></label>
+                <div class="col-sm-10">
+                     <input type="text" name="config_mail_regexp" value="<?php echo $config_mail_regexp; ?>" placeholder="<?php echo $entry_mail_regexp; ?>" id="input-mail_regexp" class="form-control" />
+                  <?php if ($error_mail_regexp) { ?>
+                  <div class="text-danger"><?php echo $error_mail_regexp; ?></div>
+                  <?php } ?>
+                </div>
+              </div>
             </fieldset>
             <fieldset>
               <legend><?php echo $text_security; ?></legend>

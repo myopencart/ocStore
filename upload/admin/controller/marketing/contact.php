@@ -232,7 +232,7 @@ class ControllerMarketingContact extends Controller {
 					$message .= '</html>' . "\n";
 
 					foreach ($emails as $email) {
-						if (preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $email)) {
+						if (preg_match($this->config->get('config_mail_regexp'), $email)) {
 							$mail = new Mail();
 							$mail->protocol = $this->config->get('config_mail_protocol');
 							$mail->parameter = $this->config->get('config_mail_parameter');

@@ -10,6 +10,7 @@ class ControllerSettingSetting extends Controller {
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			$this->request->post['config_mail_regexp'] = trim($this->request->post['config_mail_regexp']);
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
 			if ($this->config->get('config_currency_auto')) {
@@ -156,6 +157,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_encryption'] = $this->language->get('entry_encryption');
 		$data['entry_seo_url'] = $this->language->get('entry_seo_url');
 		$data['entry_compression'] = $this->language->get('entry_compression');
+		$data['entry_mail_regexp'] = $this->language->get('entry_mail_regexp');
 		$data['entry_error_display'] = $this->language->get('entry_error_display');
 		$data['entry_error_log'] = $this->language->get('entry_error_log');
 		$data['entry_error_filename'] = $this->language->get('entry_error_filename');
@@ -242,6 +244,7 @@ class ControllerSettingSetting extends Controller {
 		$data['help_password'] = $this->language->get('help_password');
 		$data['help_encryption'] = $this->language->get('help_encryption');
 		$data['help_compression'] = $this->language->get('help_compression');
+		$data['help_mail_regexp'] = $this->language->get('help_mail_regexp');
 		$data['help_google_analytics'] = $this->language->get('help_google_analytics');
 		$data['help_google_captcha'] = $this->language->get('help_google_captcha');
 		$data['help_sms_from'] = $this->language->get('help_sms_from');
@@ -467,6 +470,12 @@ class ControllerSettingSetting extends Controller {
 			$data['error_limit_admin'] = $this->error['limit_admin'];
 		} else {
 			$data['error_limit_admin'] = '';
+		}
+
+		if (isset($this->error['mail_regexp'])) {
+			$data['error_mail_regexp'] = $this->error['mail_regexp'];
+		} else {
+			$data['error_mail_regexp'] = '';
 		}
 
 		if (isset($this->error['encryption'])) {
@@ -1358,6 +1367,14 @@ class ControllerSettingSetting extends Controller {
 			$data['config_compression'] = $this->config->get('config_compression');
 		}
 
+		if (isset($this->request->post['config_mail_regexp'])) {
+			$data['config_mail_regexp'] = $this->request->post['config_mail_regexp'];
+		} elseif ($this->config->get('config_mail_regexp')) {
+			$data['config_mail_regexp'] = $this->config->get('config_mail_regexp');
+		} else {
+			$data['config_mail_regexp'] = '/^[^\@]+@.*.[a-z]{2,15}$/i';
+		}
+
 		if (isset($this->request->post['config_error_display'])) {
 			$data['config_error_display'] = $this->request->post['config_error_display'];
 		} else {
@@ -1590,6 +1607,10 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_limit_admin']) {
 			$this->error['limit_admin'] = $this->language->get('error_limit');
+		}
+
+		if (!trim($this->request->post['config_mail_regexp'])) {
+			$this->error['mail_regexp'] = $this->language->get('error_mail_regexp');
 		}
 
 		if ((utf8_strlen($this->request->post['config_encryption']) < 32) || (utf8_strlen($this->request->post['config_encryption']) > 1024)) {
