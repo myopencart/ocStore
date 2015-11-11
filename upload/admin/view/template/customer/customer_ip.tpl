@@ -11,7 +11,7 @@
       <?php if ($ips) { ?>
       <?php foreach ($ips as $ip) { ?>
       <tr>
-        <td class="text-left"><a href="http://www.geoiptool.com/en/?IP=<?php echo $ip['ip']; ?>" target="_blank"><?php echo $ip['ip']; ?></a></td>
+        <td class="text-left"><a href="http://ipgeobase.ru/?address=<?php echo $ip['ip']; ?>" target="_blank"><?php echo $ip['ip']; ?></a></td>
         <td class="text-right"><a href="<?php echo $ip['filter_ip']; ?>" target="_blank"><?php echo $ip['total']; ?></a></td>
         <td class="text-left"><?php echo $ip['date_added']; ?></td>      </tr>
       <?php } ?>
