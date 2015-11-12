@@ -50,6 +50,11 @@ $_['entry_meter']                              = 'Номер счетчика';
 $_['entry_postcode']                           = 'Почтовый индекс';
 $_['entry_test']                               = 'Тестовый режим';
 $_['entry_service']                            = 'Службы';
+$_['entry_dimension']                          = 'Box Dimensions (L x W x H)';
+$_['entry_length_class']                       = 'Length Class';
+$_['entry_length']                             = 'Length';
+$_['entry_width']                              = 'Width';
+$_['entry_height']                             = 'Height';
 $_['entry_dropoff_type']                       = 'Drop Off Type';
 $_['entry_packaging_type']                     = 'Packaging Type';
 $_['entry_rate_type']                          = 'Тип ставки';
@@ -62,6 +67,7 @@ $_['entry_status']                             = 'Статус';
 $_['entry_sort_order']                         = 'Sort Order';
 
 // Help
+$_['help_length_class']                        = 'Set to inches or centimeters.';
 $_['help_display_time']                        = 'Do you want to display the shipping time? (e.g. Ships within 3 to 5 days)';
 $_['help_display_weight']                      = 'Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 kg)';
 $_['help_weight_class']                        = 'Set to kilograms or pounds.';
@@ -73,3 +79,4 @@ $_['error_password']                           = 'Password Required!';
 $_['error_account']                            = 'Account Required!';
 $_['error_meter']                              = 'Meter Required!';
 $_['error_postcode']                           = 'Post Code Required!';
+$_['error_dimension']                          = 'Width &amp; Height required!';

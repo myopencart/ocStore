@@ -4,6 +4,9 @@ $_['heading_title']					= 'Пересмотреть список eBay';
 $_['text_openbay']					= 'OpenBay Pro';
 $_['text_ebay']						= 'eBay';
 
+// Tab
+$_['tab_recommendations']			= 'Recommendations';
+
 // Text
 $_['text_revise']               	= 'Пересмотреть перечень';
 $_['text_loading']                  = 'Получить информацию по товару с eBay';
@@ -11,6 +14,9 @@ $_['text_error_loading']            = 'Произошла ошибка при п
 $_['text_saved']                    = 'Список сохранён';
 $_['text_alert_removed']            = 'Список был отменён';
 $_['text_alert_ended']              = 'Перечень был завершен на eBay';
+$_['text_listing_info']             = 'Listing information';
+$_['text_check_recommendations']    = 'Checking for eBay listing recommendations';
+$_['text_success_recommendations']  = 'There are no listing improvement recommendations for this item!';
 
 // Buttons
 $_['button_view']					= 'Просмотреть список';
@@ -45,3 +51,6 @@ $_['help_stock_reserve']			= 'Это максимальный уровень з�
 // Error
 $_['error_ended']					= 'Связанный список закончился, вы не сможете редактировать его. Вы должны удалить ссылку.';
 $_['error_reserve']					= 'Вы не можете установить резерв больше, чем в локальном магазине';
+$_['error_no_sku']          		= 'No SKU found!';
+$_['error_no_item_id']              = 'Item ID is missing from the request';
+$_['error_recommendations_load']    = 'Unable to load item recommendations';

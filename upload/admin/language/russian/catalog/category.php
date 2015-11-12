@@ -3,34 +3,34 @@
 $_['heading_title']          		= 'Категории';
 
 // Text
-$_['text_add']          			= 'Добавление категории';
-$_['text_default']          		= 'Основной магазин';
-$_['text_edit']          			= 'Редактирование категории';
-$_['text_list']          			= 'Список категорий';
 $_['text_success']          		= 'Список категорий обновлен!';
+$_['text_list']          			= 'Список категорий';
+$_['text_add']          			= 'Добавление категории';
+$_['text_edit']          			= 'Редактирование категории';
+$_['text_default']          		= 'Основной магазин';
 
 // Column
-$_['column_action']          		= 'Действие';
 $_['column_name']          			= 'Название категории';
 $_['column_sort_order']          	= 'Порядок сортировки';
+$_['column_action']          		= 'Действие';
 
 // Entry
-$_['entry_column']          		= 'Колонки:';
+$_['entry_name']          			= 'Название категории:';
 $_['entry_description']          	= 'Описание';
 $_['entry_meta_title']          	= 'HTML-тег Title';
 $_['entry_meta_h1']          	    = 'HTML-тег H1';
 $_['entry_meta_keyword']          	= 'Мета-тег Keywords';
 $_['entry_meta_description']        = 'Мета-тег Description';
-$_['entry_filter']          		= 'Фильтры:';
-$_['entry_image']          			= 'Изображение категории';
-$_['entry_top']          			= 'Главное меню:';
 $_['entry_keyword']          		= 'SEO URL:';
 $_['entry_parent']          		= 'Родительская категория:';
-$_['entry_layout']          		= 'Выберите макет:';
-$_['entry_name']          			= 'Название категории:';
+$_['entry_filter']          		= 'Фильтры:';
+$_['entry_store']          			= 'Магазины:';
+$_['entry_image']          			= 'Изображение категории';
+$_['entry_top']          			= 'Главное меню:';
+$_['entry_column']          		= 'Колонки:';
 $_['entry_sort_order']          	= 'Порядок сортировки:';
 $_['entry_status']          		= 'Статус:';
-$_['entry_store']          			= 'Магазины:';
+$_['entry_layout']          		= 'Выберите макет:';
 
 // Help
 $_['help_filter']          			= '(Autocomplete)';

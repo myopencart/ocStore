@@ -23,6 +23,7 @@ $_['entry_import']						= 'Импорт элементов eBay';
 
 // Buttons
 $_['button_import']						= 'Импортировать';
+$_['button_complete']					= 'Complete';
 
 // Help
 $_['help_import_item_advanced']        	= 'Импортирование займёт в 10 раз больше времени. Импорт веса, размеров, ISBN и прочих доступных данных';

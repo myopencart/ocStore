@@ -17,6 +17,9 @@ $_['text_added']                    = 'Новый шаблон добавлен'
 $_['text_updated']                  = 'Шаблон обновлен';
 $_['text_deleted']                  = 'Шаблон удален';
 $_['text_confirm_delete']           = 'Вы действительно хотите удалить шаблон?';
+$_['text_list']           			= 'Template list';
+$_['text_add']      				= 'Add profile';
+$_['text_edit']      				= 'Edit profile';
 
 // Error
 $_['error_name']               		= 'Необходимо ввести имя шаблона';

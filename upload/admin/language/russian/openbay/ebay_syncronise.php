@@ -18,6 +18,7 @@ $_['text_sync_desc']            = 'Sync your store with the latest available shi
 $_['text_ebay_categories'] 		= 'This may take a while, wait 5 minutes before you do anything else.';
 $_['text_category_import']      = 'Your eBay shop categories have been imported.';
 $_['text_setting_import']  		= 'Your settings have been imported.';
+$_['text_sync']  				= 'Update settings from eBay';
 
 // Help
 $_['help_sync_categories']   	= 'This does not import any categories to your store!';

@@ -1,8 +1,8 @@
 <?php
 // Headings
 $_['heading_title']      	= 'Создать новый список Etsy';
-$_['text_title']      		= 'Etsy';
-$_['text_openbay']      	= 'OpenBay Pro';
+$_['text_openbay']          = 'OpenBay Pro';
+$_['text_etsy']             = 'Etsy';
 
 // Tabs
 $_['tab_additional']      	= 'Дополнительная информация';
@@ -45,6 +45,9 @@ $_['entry_is_custom']  		= 'Can it be customised?';
 $_['entry_image']  			= 'Main image';
 $_['entry_image_other']		= 'Other images';
 
+// Help
+$_['help_description']			= 'All HTML has been removed from your description as it is not supported on Etsy';
+
 // Errors
 $_['error_no_shipping']  	= 'You have not setup any shipping profiles!';
 $_['error_no_shop_secton']  = 'You have not setup any shop sections!';
@@ -59,3 +62,6 @@ $_['error_style_1_tag']  	= 'Style 1 tag is not valid';
 $_['error_style_2_tag']  	= 'Style 2 tag is not valid';
 $_['error_materials']  		= 'Можно добавить только 13 материалов';
 $_['error_tags']  			= 'Можно добавить только 13 тегов';
+$_['error_stock_max']  			= 'The maximum stock you can list on Etsy is 999, you have %s in stock';
+$_['error_image_max']  			= 'The maximum number of images you can use on Etsy is 5, you have chosen %s';
+$_['error_variant']				= 'Variant items on Etsy.com are not yet supported by OpenBay Pro';

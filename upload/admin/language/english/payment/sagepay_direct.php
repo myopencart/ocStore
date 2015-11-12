@@ -56,7 +56,7 @@ $_['help_cron_job_url']				= 'Set a cron job to call this URL';
 
 // Button
 $_['button_release']				= 'Release';
-$_['button_rebate']					= 'Rebate / refund';
+$_['button_release']					= 'Rebate / refund';
 $_['button_void']					= 'Void';
 
 // Error

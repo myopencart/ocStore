@@ -15,6 +15,7 @@ $_['text_sync_pull_notice']         = 'Это будет тянуть новые
 $_['text_ajax_orders_import']       = 'Любые новые заказы должны появиться в течение нескольких минут';
 $_['text_complete']             	= 'Импорт просил';
 $_['text_failed']               	= 'Не удалось загрузить';
+$_['text_pull']               		= 'Request a manual import';
 
 // Errors
 $_['error_validation']             = 'Вам нужно зарегистрироваться для вашего маркера API и включить модуль.';

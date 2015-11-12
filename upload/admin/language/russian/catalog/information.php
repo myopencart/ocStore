@@ -3,34 +3,34 @@
 $_['heading_title']          	= 'Информация';
 
 // Text
-$_['text_add']          		= 'Добавление Статьи';
-$_['text_default']          	= 'Основной магазин';
-$_['text_edit']          		= 'Редактирование Статьи';
-$_['text_list']          		= 'Список Статей';
 $_['text_success']          	= 'Список статей обновлен!';
+$_['text_list']          		= 'Список Статей';
+$_['text_add']          		= 'Добавление Статьи';
+$_['text_edit']          		= 'Редактирование Статьи';
+$_['text_default']          	= 'Основной магазин';
 
 // Column
-$_['column_action']          	= 'Действие';
-$_['column_sort_order']         = 'Порядок сортировки';
 $_['column_title']          	= 'Заголовок Статьи';
+$_['column_sort_order']         = 'Порядок сортировки';
+$_['column_action']          	= 'Действие';
 
 // Entry
-$_['entry_bottom']          	= 'Футер:';
+$_['entry_title']          		= 'Заголовок статьи:';
 $_['entry_description']         = 'Описание:';
-$_['entry_keyword']          	= 'SEO URL:';
-$_['entry_layout']          	= 'Выберите схему:';
-$_['entry_meta_description']    = 'Мета-тег Description:';
-$_['entry_meta_keyword']        = 'Мета-тег Keywords:';
+$_['entry_store']          		= 'Магазины:';
 $_['entry_meta_title']          = 'HTML-тег Title';
 $_['entry_meta_h1']             = 'HTML-тег H1';
-$_['entry_sort_order']          = 'Порядок сортировки:';
+$_['entry_meta_keyword']        = 'Мета-тег Keywords:';
+$_['entry_meta_description']    = 'Мета-тег Description:';
+$_['entry_keyword']          	= 'SEO URL:';
+$_['entry_bottom']          	= 'Футер:';
 $_['entry_status']          	= 'Статус:';
-$_['entry_store']          		= 'Магазины:';
-$_['entry_title']          		= 'Заголовок статьи:';
+$_['entry_sort_order']          = 'Порядок сортировки:';
+$_['entry_layout']          	= 'Выберите схему:';
 
 // Help
-$_['help_bottom']          		= 'Показать в футере';
 $_['help_keyword']          	= 'Используйте тире вместо пробелов. Должно быть уникально на всю систему';
+$_['help_bottom']          		= 'Показать в футере';
 
 // Error
 $_['error_warning']          	= 'Внимательно проверьте форму на ошибки!';

@@ -34,6 +34,11 @@ $_['text_shipping_handling']          	= 'Оплата за отгрузку';
 $_['text_shipping_cod']           		= 'Наложенным платежом';
 $_['text_shipping_handling_nat']    	= 'Оплата за обработку заказа (гос. налог)';
 $_['entry_shipping_handling_int']    	= 'Оплата за обработку заказа (междунар. налог)';
+$_['entry_shipping_pickupdropoff']  	= 'Click and Collect';
+$_['entry_shipping_pickupinstore']  	= 'Available for In-Store Pickup';
+$_['entry_shipping_global_shipping']  	= 'Use eBay global shipping service';
+$_['entry_shipping_promotion_discount'] = 'Combined shipping discounts (national)';
+$_['entry_shipping_promotion_discount_international'] = 'Combined shipping discounts (international)';
 
 //Returns profile
 $_['text_returns_accept']       		= 'Возвращено верно';
@@ -50,6 +55,7 @@ $_['text_returns_costs']        		= 'Возвращение транспортн
 $_['text_returns_costs_b']      		= 'Покупатель оплачивает';
 $_['text_returns_costs_s']      		= 'Продавец платит';
 $_['text_returns_restock']      		= 'Плата за пополнение';
+$_['text_list']           				= 'Profile list';
 
 //Template profile
 $_['text_template_choose']      		= 'Шаблон по умолчанию';
@@ -68,6 +74,8 @@ $_['text_confirm_delete']       		= 'Вы уверены, что вы хотит
 $_['text_width']      					= 'Ширина';
 $_['text_height']      					= 'Высота';
 $_['text_px']      						= 'px';
+$_['text_add']      					= 'Add profile';
+$_['text_edit']      					= 'Edit profile';
 
 //General profile
 $_['text_general_private']      		= 'List items as private auction';
@@ -96,3 +104,7 @@ $_['error_permission']        			= 'У Вас недостаточно прав 
 $_['error_name']           				= 'Вы должны ввести имя профиля';
 $_['error_no_template']          		= 'Идентификатор шаблона не существует';
 $_['error_missing_settings'] 			= 'Вы не можете добавлять, редактировать или удалять профили пока не синхронизируете ваши настройки eBay';
+
+//Help
+$_['help_shipping_promotion_discount']  = 'Offer national buyers a discount on shipping if they buy multiple items. Discounts must have been setup in eBay to take effect.';
+$_['help_shipping_promotion_discount_international']  = 'Offer international buyers a discount on shipping if they buy multiple items. Discounts must have been setup in eBay to take effect.';

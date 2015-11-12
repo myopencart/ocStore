@@ -15,6 +15,7 @@ $_['text_catalog']                  = 'Выберите каталог';
 $_['text_catalog_search']           = 'Поиск по каталогу';
 $_['text_search_term']           	= 'Поиск термина';
 $_['text_close']           			= 'Закрыть';
+$_['text_bulk']           			= 'Create new listings in bulk';
 
 //Form options / text
 $_['text_pixels']                   = 'Разрешение';
@@ -57,6 +58,11 @@ $_['text_loading_duration']         = 'Загрузка списка длите�
 $_['text_total_fee']         		= 'Общая сумма вознаграждения';
 $_['text_category_choose']         	= 'Найти категорию';
 $_['text_suggested']         		= 'Предлагаемые категории';
+$_['text_product_identifiers']    	= 'Product identifiers';
+$_['text_ean']    					= 'EAN';
+$_['text_upc']    					= 'UPC';
+$_['text_isbn']    					= 'ISBN';
+$_['text_identifier_not_required']  = 'Not required';
 
 //Errors
 $_['text_error_ship_profile']       = 'Вам необходимо иметь профиль доставки по умолчанию настройка';

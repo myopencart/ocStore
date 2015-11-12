@@ -76,7 +76,6 @@ $_['entry_dimension']			   = 'Габаритные размеры (Д x Ш x В)
 $_['entry_length']                 = 'Длина';
 $_['entry_height']                 = 'Высота';
 $_['entry_width']                  = 'Width';
-$_['entry_height']                 = 'Высота';
 $_['entry_tax_class']              = 'Tax Class';
 $_['entry_geo_zone']               = 'Geo Zone';
 $_['entry_status']                 = 'Status';

@@ -1,6 +1,6 @@
 <?php
 // Locale
-$_['code']                          = 'en';
+$_['code']                          = 'ru';
 $_['direction']                     = 'ltr';
 $_['date_format_short']             = 'd.m.Y';
 $_['date_format_long']              = 'l dS F Y';
@@ -45,8 +45,8 @@ $_['button_copy']          			= 'Копировать';
 $_['button_back']          			= 'Назад';
 $_['button_remove']          		= 'Удалить';
 $_['button_refresh']          		= 'Обновить';
-$_['button_backup']          		= 'Сохранить';
-$_['button_restore']          		= 'Восстановить';
+$_['button_export']          		= 'Сохранить';
+$_['button_import']          		= 'Восстановить';
 $_['button_download']          		= 'Скачать';
 $_['button_rebuild']          		= 'Исправить';
 $_['button_upload']          		= 'Загрузить';
@@ -94,9 +94,11 @@ $_['button_unlock']          		= 'Разблокировать аккаунт';
 $_['button_link']          			= 'Ссылка';
 $_['button_currency']          		= 'Обновить курсы валют';
 $_['button_apply']                  = 'Применить';
+$_['button_category_add']           = 'Добавить категорию';
 
 // Tab
 $_['tab_address']                   = 'Адрес';
+$_['tab_additional']                = 'Additional';
 $_['tab_admin']                     = 'Админ';
 $_['tab_attribute']                 = 'Атрибуты';
 $_['tab_customer']                  = 'Информация о покупателе';
@@ -114,10 +116,10 @@ $_['tab_option']                    = 'Опции';
 $_['tab_server']                    = 'Сервер';
 $_['tab_store']                     = 'Витрина';
 $_['tab_special']                   = 'Акции';
+$_['tab_session']                   = 'Session';
 $_['tab_local']                     = 'Локализация';
 $_['tab_mail']                      = 'Почта';
 $_['tab_module']                    = 'Модуль';
-$_['tab_order']                     = 'Детали заказа';
 $_['tab_payment']                   = 'Детали оплаты';
 $_['tab_product']                   = 'Товары';
 $_['tab_reward']                    = 'Бонусные баллы';
