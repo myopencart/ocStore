@@ -16,10 +16,10 @@ $_['text_length']				= ' для %s платежей';
 $_['express_entry_coupon']		= 'Введите ваш купон:';
 
 // Button
-$_['express_button_coupon']		= 'Добавить';
-$_['express_button_confirm']	= 'Подтвердить';
-$_['express_button_login']		= 'Продолжать c PayPal';
-$_['express_button_shipping']	= 'Обновить доставку';
+$_['button_express_coupon']		= 'Добавить';
+$_['button_express_confirm']	= 'Подтвердить';
+$_['button_express_login']		= 'Продолжать c PayPal';
+$_['button_express_shipping']	= 'Обновить доставку';
 $_['button_cancel_recurring']	= 'Отменить платежи';
 
 // Error

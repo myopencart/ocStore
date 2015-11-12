@@ -3,15 +3,15 @@
 $_['text_title'] 			= 'QIWI Wallet';
 $_['sub_text_info'] 		= '';
 $_['sub_text_info_phone'] 	= 'QIWI Wallet (Telephone number) : +';
-$_['markup'] 			= 'Total in %s + markup(%s%%) : ';
-$_['order_id'] 			= 'Order №';
+$_['markup'] 			    = 'Total in %s + markup(%s%%) : ';
+$_['order_id'] 			    = 'Order №';
 $_['qiwi_rest_limit'] 		= '<font color="red">Exceeded the limit on the maximum amount of the order in qiwi (15000 rubles)</font>';
-$_['button_back'] 		= 'Shopping Cart';
+$_['button_back'] 		    = 'Shopping Cart';
 $_['qiwi_rest_rubls'] 		= ' rubles';
-$_['qiwi_pcs'] 			= ' pcs ';
+$_['qiwi_pcs'] 			    = ' pcs ';
 
 $_['qiwi_error'] 			= 'Error';
-$_['qiwi_error_5'] 		= 'There are no values ​​in the request parameters';
+$_['qiwi_error_5'] 		    = 'There are no values ​​in the request parameters';
 $_['qiwi_error_13'] 		= 'The server is busy, try again later';
 $_['qiwi_error_78'] 		= 'Illegal Operation';
 $_['qiwi_error_150'] 		= 'Error authorization';

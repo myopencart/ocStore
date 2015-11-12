@@ -2,8 +2,8 @@
 
 // Text
 $_['text_title']				= 'Кредитная карта / Дебетная карта (WorldPay)';
-$_['text_response']				= 'Ответ от WorldPay:';
-$_['text_success']				= '... ваш платеж был успешно получен.';
+$_['text_credit_card']		 = 'Card Details';
+$_['text_card_type']		 = 'Card Type: ';
 $_['text_card_name']		 = 'Card Name: ';
 $_['text_card_digits']		 = 'Last Digits: ';
 $_['text_card_expiry']		 = 'Expiry: ';

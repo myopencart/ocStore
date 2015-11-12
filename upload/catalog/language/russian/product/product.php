@@ -24,7 +24,7 @@ $_['text_error']                              = 'Товар не найден!';
 $_['text_payment_recurring']                    = 'Платежные профили';
 $_['text_trial_description']                  = '%s каждый %d %sй для %d оплат(ы),';
 $_['text_payment_description']                = '%s каждый %d %s(-и) из %d платежей(-а)';
-$_['text_payment_until_canceled_description'] = '%s каждый %d %s до отмены';
+$_['text_payment_cancel']                     = '%s every %d %s(s) until canceled';
 $_['text_day']                                = 'день';
 $_['text_week']                               = 'неделя';
 $_['text_semi_month']                         = 'полмесяца';
@@ -38,7 +38,6 @@ $_['entry_review']                            = 'Ваш отзыв';
 $_['entry_rating']                            = 'Рейтинг';
 $_['entry_good']                              = 'Хорошо';
 $_['entry_bad']                               = 'Плохо';
-$_['entry_captcha']                           = 'Введите защитный код';
 
 // Tabs
 $_['tab_description']                         = 'Описание';
@@ -49,4 +48,3 @@ $_['tab_review']                              = 'Отзывы (%s)';
 $_['error_name']                              = 'Имя должно быть от 3 до 25 символов!';
 $_['error_text']                              = 'Текст Отзыва должен быть от 25 до 1000 символов!';
 $_['error_rating']                            = 'Пожалуйста поставьте оценку!';
-$_['error_captcha']                           = 'Код подтверждения не соответствует картинке!';
