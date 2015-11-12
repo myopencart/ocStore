@@ -8,8 +8,8 @@ $_['text_success']     = 'Success: You have successfully imported your database!
 $_['text_list']        = 'Upload List';
 
 // Entry
-$_['entry_restore']    = 'Restore Backup';
-$_['entry_backup']     = 'Backup';
+$_['entry_import']     = 'Restore Backup';
+$_['entry_export']     = 'Backup';
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify backups!';
