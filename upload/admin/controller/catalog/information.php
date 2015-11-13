@@ -364,6 +364,8 @@ class ControllerCatalogInformation extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+		$data['lang'] = $this->language->get('lang');
+
 		if (isset($this->request->post['information_description'])) {
 			$data['information_description'] = $this->request->post['information_description'];
 		} elseif (isset($this->request->get['information_id'])) {

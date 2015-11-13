@@ -1286,6 +1286,8 @@ class ControllerOpenbayEbay extends Controller {
 
 				$setting['dispatch_times'] = $this->openbay->ebay->getSetting('dispatch_time_max');
 
+				$data['lang'] = $this->language->get('lang');
+
 				if (is_array($setting['dispatch_times'])) {
 					ksort($setting['dispatch_times']);
 				}

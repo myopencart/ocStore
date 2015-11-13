@@ -349,6 +349,8 @@ class ControllerCatalogManufacturer extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+		$data['lang'] = $this->language->get('lang');
+
 		if (isset($this->request->post['manufacturer_description'])) {
 			$data['manufacturer_description'] = $this->request->post['manufacturer_description'];
 		} elseif (isset($this->request->get['manufacturer_id'])) {

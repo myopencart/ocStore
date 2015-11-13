@@ -218,7 +218,8 @@
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
 $('#input-description<?php echo $language['language_id']; ?>').summernote({
-	height: 300
+	height: 300,
+    lang:'<?php echo $lang; ?>'
 });
 <?php } ?>
 //--></script>

@@ -14,7 +14,8 @@ class ControllerCommonHeader extends Controller {
 		$data['links'] = $this->document->getLinks();
 		$data['styles'] = $this->document->getStyles();
 		$data['scripts'] = $this->document->getScripts();
-		$data['lang'] = $this->config->get('config_admin_language');
+		$data['code'] = $this->language->get('code');
+		$data['lang'] = $this->language->get('lang');
 		$data['direction'] = $this->language->get('direction');
 
 		$this->load->language('common/header');

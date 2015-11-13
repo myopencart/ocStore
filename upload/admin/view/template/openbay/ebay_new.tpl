@@ -2494,7 +2494,7 @@
         profileThemeUpdate();
     <?php } ?>
 
-    $('#description-field').summernote({height: 300});
+    $('#description-field').summernote({height: 300, lang:'<?php echo $lang; ?>'});
   });
 
   $('#measure-unit').bind('change', function() {

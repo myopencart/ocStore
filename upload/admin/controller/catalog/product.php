@@ -723,6 +723,8 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+		$data['lang'] = $this->language->get('lang');
+
 		if (isset($this->request->post['product_description'])) {
 			$data['product_description'] = $this->request->post['product_description'];
 		} elseif (isset($this->request->get['product_id'])) {

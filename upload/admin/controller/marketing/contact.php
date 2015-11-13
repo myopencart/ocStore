@@ -35,6 +35,8 @@ class ControllerMarketingContact extends Controller {
 		$data['button_send'] = $this->language->get('button_send');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 
+		$data['lang'] = $this->language->get('lang');
+
 		$data['token'] = $this->session->data['token'];
 
 		$data['breadcrumbs'] = array();

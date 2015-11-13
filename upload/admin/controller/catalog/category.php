@@ -403,6 +403,8 @@ class ControllerCatalogCategory extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+		$data['lang'] = $this->language->get('lang');
+
 		if (isset($this->request->post['category_description'])) {
 			$data['category_description'] = $this->request->post['category_description'];
 		} elseif (isset($this->request->get['category_id'])) {

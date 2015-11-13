@@ -94,7 +94,8 @@
   </div>
   <script type="text/javascript"><!--
 $('#input-message').summernote({
-	height: 300
+	height: 300,
+	lang:'<?php echo $lang; ?>'
 });
 //--></script>
   <script type="text/javascript"><!--

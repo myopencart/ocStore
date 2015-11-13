@@ -1,6 +1,7 @@
 <?php
 // Locale
 $_['code']                          = 'ru';
+$_['lang']                          = 'ru-RU';
 $_['direction']                     = 'ltr';
 $_['date_format_short']             = 'd.m.Y';
 $_['date_format_long']              = 'l dS F Y';
