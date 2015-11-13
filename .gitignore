@@ -51,3 +51,7 @@
 
 # IDE Project files
 /.idea
+
+#Other languages
+/upload/admin/language/ukrainian/*
+/upload/catalog/language/ukrainian/*
