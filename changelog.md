@@ -1,32 +1,32 @@
 # ocStore 2.0 change log
 
 ## v2.1.0.1 (14.10.2015)
-#### Исправлено
-*Исправлена пагинация (удалено дубль первой страницы, убрано дублирование мета) (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
+#### РСЃРїСЂР°РІР»РµРЅРѕ
+*РСЃРїСЂР°РІР»РµРЅР° РїР°РіРёРЅР°С†РёСЏ (СѓРґР°Р»РµРЅРѕ РґСѓР±Р»СЊ РїРµСЂРІРѕР№ СЃС‚СЂР°РЅРёС†С‹, СѓР±СЂР°РЅРѕ РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ РјРµС‚Р°) (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
 
-#### Изменено
-*В логотипе на главной убрано ссылку на саму себя (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
-*Исправлена пагинация (удалено дубль первой страницы, убрано дублирование мета) (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
-*Скрыто владку Google через дублирование функционала (https://github.com/myopencart/ocStore/commit/8c69328587afed7314ccc16be2dd6c33825a97aa)
-*Изменена организация вывода категория в админке (https://github.com/myopencart/ocStore/commit/ce3a87686f409bc27afbba93066948ab73ae66b2)
+#### РР·РјРµРЅРµРЅРѕ
+*Р’ Р»РѕРіРѕС‚РёРїРµ РЅР° РіР»Р°РІРЅРѕР№ СѓР±СЂР°РЅРѕ СЃСЃС‹Р»РєСѓ РЅР° СЃР°РјСѓ СЃРµР±СЏ (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
+*РСЃРїСЂР°РІР»РµРЅР° РїР°РіРёРЅР°С†РёСЏ (СѓРґР°Р»РµРЅРѕ РґСѓР±Р»СЊ РїРµСЂРІРѕР№ СЃС‚СЂР°РЅРёС†С‹, СѓР±СЂР°РЅРѕ РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ РјРµС‚Р°) (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
+*РЎРєСЂС‹С‚Рѕ РІР»Р°РґРєСѓ Google С‡РµСЂРµР· РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ С„СѓРЅРєС†РёРѕРЅР°Р»Р° (https://github.com/myopencart/ocStore/commit/8c69328587afed7314ccc16be2dd6c33825a97aa)
+*РР·РјРµРЅРµРЅР° РѕСЂРіР°РЅРёР·Р°С†РёСЏ РІС‹РІРѕРґР° РєР°С‚РµРіРѕСЂРёСЏ РІ Р°РґРјРёРЅРєРµ (https://github.com/myopencart/ocStore/commit/ce3a87686f409bc27afbba93066948ab73ae66b2)
 
-#### Добавлено
-*Добавлен русский языковой пакет;
-*Локализация базы (схемы, статусы, возвраты).
-*Добавлена мультиязычность календаря
-*Добавлена мультиязычность редактора summernote (https://github.com/myopencart/ocStore/commit/a3c9fc8ae3a276f3bc35b4a870051c05ac265141)
-*Модуль оплаты Сбербанк России (https://github.com/myopencart/ocStore/commit/12ec37fef518adb419716f3ce4800b37b8d7d42e)
-*Модуль оплаты Qiwi (https://github.com/myopencart/ocStore/commit/6f3c823144f5177465c8392c4664444b8daf53e3)
-*Модуль для создания рассылок через сервис Unisender (https://github.com/myopencart/ocStore/commit/6008dbe82466afd80fb9e461d705aa7442ef7403)
-*Возможность самостоятельного ввода регулярного выражения для валидации email (https://github.com/myopencart/ocStore/commit/614b8ea91d0820835c5e8839542ae41bce754ce5) (https://github.com/myopencart/ocStore/commit/e2f13036e3dd5b4f77d7c0114f078c040a38dee3)
-*Добавление мета-тегов og:url, og:image, og:type, og:title (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
-*Добавление файла robots.txt (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
-*Добавлены title и h1 для товаров; (https://github.com/myopencart/ocStore/commit/1fcdc182c0ec079a73ca97ac9bdb685cdbdab089)
-*Добавлены title и h1 для категорий; (https://github.com/myopencart/ocStore/commit/a653a171e03e111a423b4ddcec65607bacb49291)
-*Для статей добавлены title, h1, meta keywords и meta description; (https://github.com/myopencart/ocStore/commit/b01352a7e52f3faab7155a903a77576a75138cce)
-*Для производителей добавлены мультиязычные имена, title, h1, meta keywords, meta description и description; (https://github.com/myopencart/ocStore/commit/6f3da8c5d059a08fb3ea07fd1dc3f555a6a24cbb)
-*Добавлен альтернативный метод формирования ЧПУ исключающий формирование разных ссылок для одной страницы; (https://github.com/myopencart/ocStore/commit/2bbb96c5ec2fd09821cf33c6b19e70ffb8fd303f) (https://github.com/myopencart/ocStore/commit/1bec354689300dfbd2dcf6242ccafcde06316419)
-*Добавлено url alias для базовых страниц
-*Добавлена отправка SMS уведомлений;
-*Добавлено полезные инструменты от OC Team (https://github.com/myopencart/ocStore/commit/6ad5ef1f9b33727e9d27ca16142036400770787f)
-*Добавлено возможность скрытия не часто используемых полей через настройки магазина (MPN, ISBN, JAN и т.д.) (https://github.com/myopencart/ocStore/commit/ae421d72af8545a9e7194cbe43c84330950f84e7)
+#### Р”РѕР±Р°РІР»РµРЅРѕ
+*Р”РѕР±Р°РІР»РµРЅ СЂСѓСЃСЃРєРёР№ СЏР·С‹РєРѕРІРѕР№ РїР°РєРµС‚;
+*Р›РѕРєР°Р»РёР·Р°С†РёСЏ Р±Р°Р·С‹ (СЃС…РµРјС‹, СЃС‚Р°С‚СѓСЃС‹, РІРѕР·РІСЂР°С‚С‹).
+*Р”РѕР±Р°РІР»РµРЅР° РјСѓР»СЊС‚РёСЏР·С‹С‡РЅРѕСЃС‚СЊ РєР°Р»РµРЅРґР°СЂСЏ
+*Р”РѕР±Р°РІР»РµРЅР° РјСѓР»СЊС‚РёСЏР·С‹С‡РЅРѕСЃС‚СЊ СЂРµРґР°РєС‚РѕСЂР° summernote (https://github.com/myopencart/ocStore/commit/a3c9fc8ae3a276f3bc35b4a870051c05ac265141)
+*РњРѕРґСѓР»СЊ РѕРїР»Р°С‚С‹ РЎР±РµСЂР±Р°РЅРє Р РѕСЃСЃРёРё (https://github.com/myopencart/ocStore/commit/12ec37fef518adb419716f3ce4800b37b8d7d42e)
+*РњРѕРґСѓР»СЊ РѕРїР»Р°С‚С‹ Qiwi (https://github.com/myopencart/ocStore/commit/6f3c823144f5177465c8392c4664444b8daf53e3)
+*РњРѕРґСѓР»СЊ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ СЂР°СЃСЃС‹Р»РѕРє С‡РµСЂРµР· СЃРµСЂРІРёСЃ Unisender (https://github.com/myopencart/ocStore/commit/6008dbe82466afd80fb9e461d705aa7442ef7403)
+*Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕРіРѕ РІРІРѕРґР° СЂРµРіСѓР»СЏСЂРЅРѕРіРѕ РІС‹СЂР°Р¶РµРЅРёСЏ РґР»СЏ РІР°Р»РёРґР°С†РёРё email (https://github.com/myopencart/ocStore/commit/614b8ea91d0820835c5e8839542ae41bce754ce5) (https://github.com/myopencart/ocStore/commit/e2f13036e3dd5b4f77d7c0114f078c040a38dee3)
+*Р”РѕР±Р°РІР»РµРЅРёРµ РјРµС‚Р°-С‚РµРіРѕРІ og:url, og:image, og:type, og:title (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
+*Р”РѕР±Р°РІР»РµРЅРёРµ С„Р°Р№Р»Р° robots.txt (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
+*Р”РѕР±Р°РІР»РµРЅС‹ title Рё h1 РґР»СЏ С‚РѕРІР°СЂРѕРІ; (https://github.com/myopencart/ocStore/commit/1fcdc182c0ec079a73ca97ac9bdb685cdbdab089)
+*Р”РѕР±Р°РІР»РµРЅС‹ title Рё h1 РґР»СЏ РєР°С‚РµРіРѕСЂРёР№; (https://github.com/myopencart/ocStore/commit/a653a171e03e111a423b4ddcec65607bacb49291)
+*Р”Р»СЏ СЃС‚Р°С‚РµР№ РґРѕР±Р°РІР»РµРЅС‹ title, h1, meta keywords Рё meta description; (https://github.com/myopencart/ocStore/commit/b01352a7e52f3faab7155a903a77576a75138cce)
+*Р”Р»СЏ РїСЂРѕРёР·РІРѕРґРёС‚РµР»РµР№ РґРѕР±Р°РІР»РµРЅС‹ РјСѓР»СЊС‚РёСЏР·С‹С‡РЅС‹Рµ РёРјРµРЅР°, title, h1, meta keywords, meta description Рё description; (https://github.com/myopencart/ocStore/commit/6f3da8c5d059a08fb3ea07fd1dc3f555a6a24cbb)
+*Р”РѕР±Р°РІР»РµРЅ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІРЅС‹Р№ РјРµС‚РѕРґ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ Р§РџРЈ РёСЃРєР»СЋС‡Р°СЋС‰РёР№ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЂР°Р·РЅС‹С… СЃСЃС‹Р»РѕРє РґР»СЏ РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹; (https://github.com/myopencart/ocStore/commit/2bbb96c5ec2fd09821cf33c6b19e70ffb8fd303f) (https://github.com/myopencart/ocStore/commit/1bec354689300dfbd2dcf6242ccafcde06316419)
+*Р”РѕР±Р°РІР»РµРЅРѕ url alias РґР»СЏ Р±Р°Р·РѕРІС‹С… СЃС‚СЂР°РЅРёС†
+*Р”РѕР±Р°РІР»РµРЅР° РѕС‚РїСЂР°РІРєР° SMS СѓРІРµРґРѕРјР»РµРЅРёР№;
+*Р”РѕР±Р°РІР»РµРЅРѕ РїРѕР»РµР·РЅС‹Рµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹ РѕС‚ OC Team (https://github.com/myopencart/ocStore/commit/6ad5ef1f9b33727e9d27ca16142036400770787f)
+*Р”РѕР±Р°РІР»РµРЅРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃРєСЂС‹С‚РёСЏ РЅРµ С‡Р°СЃС‚Рѕ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РїРѕР»РµР№ С‡РµСЂРµР· РЅР°СЃС‚СЂРѕР№РєРё РјР°РіР°Р·РёРЅР° (MPN, ISBN, JAN Рё С‚.Рґ.) (https://github.com/myopencart/ocStore/commit/ae421d72af8545a9e7194cbe43c84330950f84e7)
