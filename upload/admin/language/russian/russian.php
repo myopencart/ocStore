@@ -98,7 +98,7 @@ $_['button_category_add']           = 'Добавить категорию';
 
 // Tab
 $_['tab_address']                   = 'Адрес';
-$_['tab_additional']                = 'Additional';
+$_['tab_additional']                = 'Дополнительно';
 $_['tab_admin']                     = 'Админ';
 $_['tab_attribute']                 = 'Атрибуты';
 $_['tab_customer']                  = 'Информация о покупателе';
@@ -116,7 +116,7 @@ $_['tab_option']                    = 'Опции';
 $_['tab_server']                    = 'Сервер';
 $_['tab_store']                     = 'Витрина';
 $_['tab_special']                   = 'Акции';
-$_['tab_session']                   = 'Session';
+$_['tab_session']                   = 'Сессия';
 $_['tab_local']                     = 'Локализация';
 $_['tab_mail']                      = 'Почта';
 $_['tab_module']                    = 'Модуль';

@@ -3,11 +3,11 @@ $_['heading_title']    = 'Basic Captcha';
 
 // Text
 $_['text_captcha']     = 'Captcha';
-$_['text_success']	   = 'Success: You have modified Basic Captcha!';
-$_['text_edit']        = 'Edit Basic Captcha';
+$_['text_success']	   = 'Настройки Basic Captcha успешно обновлены!';
+$_['text_edit']        = 'Редактирование Basic Captcha';
 
 // Entry
-$_['entry_status']     = 'Status';
+$_['entry_status']     = 'Статус';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify Basic Captcha!';
+$_['error_permission'] = 'У Вас нет прав для управления этим модулем!';
