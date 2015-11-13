@@ -11,15 +11,15 @@ class ControllerOcteamToolsCache extends Controller {
     public function index() {
         $this->document->setTitle($this->language->get('heading_title'));
 
-        $data['heading_title']      = $this->language->get('heading_title') . ' v' . $this->version;
+        $data['heading_title']      = $this->language->get('heading_title');
         $data['button_image']       = $this->language->get('button_image');
         $data['button_system']      = $this->language->get('button_system');
         $data['button_back']        = $this->language->get('button_back');
         $data['text_delete']        = $this->language->get('text_delete');
         $data['text_cache']         = $this->language->get('text_cache');
         $data['text_cleared']       = $this->language->get('text_cleared');
-        $data['text_title_image']   = sprintf($this->language->get('text_buttons_help'), DIR_IMAGE . 'cache/');
-        $data['text_title_system']  = sprintf($this->language->get('text_buttons_help'), DIR_CACHE);
+        $data['text_title_image']   = sprintf($this->language->get('text_buttons_help'), 'image/cache/');
+        $data['text_title_system']  = sprintf($this->language->get('text_buttons_help'), 'system/storage/cache/');
 
         $data['action'] = str_replace('&amp;', '&', $this->url->link('octeam_tools/cache/remove', 'token=' . $this->session->data['token'], 'SSL'));
         $data['back'] = $this->url->link('octeam/toolset', 'token=' . $this->session->data['token'], 'SSL');

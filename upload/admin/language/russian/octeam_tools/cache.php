@@ -7,9 +7,9 @@ $_['button_image']            = 'Изображений';
 $_['button_system']           = 'Системы';
 
 // Text
-$_['text_cache']              = '<a style="cursor:pointer;" onclick="window.open(\'https://opencartforum.com/\');"><img src="view/image/octeam/octeam.png" alt="Shoputils" title="Shoputils" style="border: 1px solid #EEEEEE;" height="25px" /><img src="view/image/octeam/tool/cache.png" alt="Cache Remove" title="Cache Remove" style="border: 1px solid #EEEEEE;" height="25px" /></a>';
+$_['text_cache']              = '';
 $_['text_delete']             = 'Удалить кеш ';
-$_['text_buttons_help']       = 'Будет удалено содержимое директории %s';
+$_['text_buttons_help']       = 'Будет удалено содержимое каталога (папки) %s';
 $_['text_system']             = 'Удалить кеш ';
 $_['text_description']        = 'Инструмент для удаления кеша изображений (image/cache/) и системы (system/storage/cache/)';
 $_['text_octeam_toolset']     = 'Инструменты OC Team';

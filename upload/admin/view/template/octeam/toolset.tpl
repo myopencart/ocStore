@@ -23,7 +23,7 @@
     <?php } ?>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><img src="view/image/octeam/toolset.png" alt="<?php echo $heading_title; ?>" width="22" height="22" /> <?php echo $heading_title; ?></h3>
+        <h3 class="panel-title"><i class="fa fa-cogs"></i> <?php echo $heading_title; ?></h3>
       </div>
       <div class="panel-body">
         <div class="table-responsive">
@@ -32,8 +32,7 @@
               <tr>
                 <td class="text-left"><?php echo $column_name; ?></td>
                 <td class="text-left"><?php echo $column_description; ?></td>
-                <td></td>
-                <td class="text-right"><?php echo $column_action; ?></td>
+                <td class="text-center"><?php echo $column_action; ?></td>
               </tr>
             </thead>
             <tbody>
@@ -42,10 +41,9 @@
               <tr>
                 <td class="text-left"><?php echo $tool['name']; ?></td>
                 <td class="text-left"><?php echo $tool['description'] ?></td>
-                <td class="text-right"><?php echo $tool['link']; ?></td>
-                <td class="text-right">
+                <td class="text-center">
                   <?php foreach ($tool['action'] as $action) { ?>
-                  <a href="<?php echo $action['href']; ?>" data-toggle="tooltip" title="<?php echo $action['text']; ?>" class="btn btn-primary"><i class="fa fa-toggle-on"></i></a>
+                  <a href="<?php echo $action['href']; ?>" data-toggle="tooltip" title="<?php echo $action['text']; ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                   <?php } ?>
                 </td>
               </tr>
