@@ -7,7 +7,7 @@ $_['text_success']         = 'Список API интерфейсов успеш
 $_['text_list']            = 'Список API';
 $_['text_add']             = 'Добавление API';
 $_['text_edit']            = 'Редактирование API';
-$_['text_ip']              = 'Below you can create a list of IP\'s allowed to access the API. Your current IP is %s';
+$_['text_ip']              = 'Здесь, Вы можете создать список IP адресов для доступа к API. Ваш IP адрес %s';
 
 // Column
 $_['column_username']      = 'Логин';
