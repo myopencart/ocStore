@@ -841,7 +841,7 @@ class ControllerCatalogProduct extends Controller {
 			$data['hide_isbn'] = false;
 		}
 
-		if ($this->config->get('config_product_isbn_mpn') != 0) {
+		if ($this->config->get('config_product_mpn_hide') != 0) {
 			$data['hide_mpn'] = true;
 		} else {
 			$data['hide_mpn'] = false;
