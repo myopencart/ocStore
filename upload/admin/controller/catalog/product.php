@@ -537,6 +537,8 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_percent'] = $this->language->get('text_percent');
 		$data['text_amount'] = $this->language->get('text_amount');
+		$data['text_select_all'] = $this->language->get('text_select_all');
+		$data['text_unselect_all'] = $this->language->get('text_unselect_all');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
@@ -1071,6 +1073,13 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		$filter_data = array(
+			'sort'        => 'name',
+			'order'       => 'ASC'
+		);
+
+		$data['categories'] = $this->model_catalog_category->getCategories($filter_data);
+
 		// Filters
 
 		if (isset($this->request->post['main_category_id'])) {
@@ -1079,6 +1088,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['main_category_id'] = $this->model_catalog_product->getProductMainCategoryId($this->request->get['product_id']);
 		} else {
 			$data['main_category_id'] = 0;
+		}
+
+		if (isset($this->request->post['product_category'])) {
+			$data['product_category'] = $this->request->post['product_category'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$data['product_category'] = $this->model_catalog_product->getProductCategories($this->request->get['product_id']);
+		} else {
+			$data['product_category'] = array();
 		}
 
 		$this->load->model('catalog/filter');

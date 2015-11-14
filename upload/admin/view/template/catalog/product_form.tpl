@@ -357,17 +357,28 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
+                <label class="col-sm-2 control-label" for="input-category"><?php echo $entry_category; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
-                  <div id="product-category" class="well well-sm" style="height: 150px; overflow: auto;">
-                    <?php foreach ($product_categories as $product_category) { ?>
-                    <div id="product-category<?php echo $product_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_category['name']; ?>
-                      <input type="hidden" name="product_category[]" value="<?php echo $product_category['category_id']; ?>" />
-                    </div>
+                  <div class="well well-sm" style="min-height: 150px;max-height: 500px;overflow: auto;">
+                    <table class="table table-striped">
+                    <?php foreach ($categories as $category) { ?>
+                    <tr>
+                      <td class="checkbox">
+                        <label>
+                          <?php if (in_array($category['category_id'], $product_category)) { ?>
+                          <input type="checkbox" name="product_category[]" value="<?php echo $category['category_id']; ?>" checked="checked" />
+                          <?php echo $category['name']; ?>
+                          <?php } else { ?>
+                          <input type="checkbox" name="product_category[]" value="<?php echo $category['category_id']; ?>" />
+                          <?php echo $category['name']; ?>
+                          <?php } ?>
+                        </label>
+                      </td>
+                    </tr>
                     <?php } ?>
+                    </table>
                   </div>
-                </div>
+                  <a onclick="$(this).parent().find(':checkbox').prop('checked', true);"><?php echo $text_select_all; ?></a> / <a onclick="$(this).parent().find(':checkbox').prop('checked', false);"><?php echo $text_unselect_all; ?></a></div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-filter"><span data-toggle="tooltip" title="<?php echo $help_filter; ?>"><?php echo $entry_filter; ?></span></label>
@@ -966,41 +977,6 @@ $('input[name=\'manufacturer\']').autocomplete({
 		$('input[name=\'manufacturer\']').val(item['label']);
 		$('input[name=\'manufacturer_id\']').val(item['value']);
 	}
-});
-
-// Category
-$('input[name=\'category\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['category_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'category\']').val('');
-
-		$('#product-category' + item['value']).remove();
-		
-		$('#product-category').append('<div id="product-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_category[]" value="' + item['value'] + '" /></div>');
-
-        if ($('#main_category_id option[value="' + item['value'] + '"]').length == 0) {
-          $('#main_category_id').append('<option value="' + item['value'] + '">' + item['label'] + '</option>');
-        }
-	}
-});
-
-$('#product-category').delegate('.fa-minus-circle', 'click', function() {
-    var category_id = $(this).parent().find('input[name="product_category\\[\\]"]').val();
-    $('#main_category_id option[value="' + category_id + '"]').remove();
-	$(this).parent().remove();
 });
 
 // Filter
