@@ -18,6 +18,7 @@
 * Модуль оплаты Сбербанк России (https://github.com/myopencart/ocStore/commit/12ec37fef518adb419716f3ce4800b37b8d7d42e)
 * Модуль оплаты Qiwi (https://github.com/myopencart/ocStore/commit/6f3c823144f5177465c8392c4664444b8daf53e3)
 * Модуль для создания рассылок через сервис Unisender (https://github.com/myopencart/ocStore/commit/6008dbe82466afd80fb9e461d705aa7442ef7403)
+* Модуль доставки - доставка в зависимости от суммы заказа (https://github.com/myopencart/ocStore/commit/94cdb34c5e6cc5ae16527d084044e7490f8579fc)
 * Возможность самостоятельного ввода регулярного выражения для валидации email (https://github.com/myopencart/ocStore/commit/614b8ea91d0820835c5e8839542ae41bce754ce5) (https://github.com/myopencart/ocStore/commit/e2f13036e3dd5b4f77d7c0114f078c040a38dee3)
 * Добавление мета-тегов og:url, og:image, og:type, og:title (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
 * Добавление файла robots.txt (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
