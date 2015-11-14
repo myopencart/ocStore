@@ -1139,7 +1139,7 @@ CREATE TABLE `oc_currency` (
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Рубль', 'RUB', '', ' р.', '2', 1.00000000, 1, '2015-11-10 17:33:53'),
+(1, 'Рубль', 'RUB', '', ' ₽.', '2', 1.00000000, 1, '2015-11-10 17:33:53'),
 (2, 'US Dollar', 'USD', '$', '', '2', 0.01550000, 1, '2015-11-10 17:33:53'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.01440000, 1, '2015-11-10 17:33:53');
 
