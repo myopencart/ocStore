@@ -636,3 +636,9 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
     visibility: unset;
 }
 /* Menu Fix For System -> Layout -> Banner */
+
+/* CKEditor */
+div.ckeditor {
+  z-index: 10011;
+}
+/* CKEditor */

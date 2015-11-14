@@ -35,6 +35,9 @@ class ControllerModuleHTML extends Controller {
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 
+		$data['token'] = $this->session->data['token'];
+		$data['ckeditor'] = $this->config->get('config_editor_default');
+
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {

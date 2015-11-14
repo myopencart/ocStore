@@ -2494,7 +2494,11 @@
         profileThemeUpdate();
     <?php } ?>
 
+    <?php if ($ckeditor) { ?>
+    ckeditorInit('description-field', '<?php echo $token; ?>');
+    <?php } else { ?>
     $('#description-field').summernote({height: 300, lang:'<?php echo $lang; ?>'});
+    <?php } ?>
   });
 
   $('#measure-unit').bind('change', function() {

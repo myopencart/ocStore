@@ -1599,6 +1599,22 @@
                   <?php } ?>
                 </div>
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">
+                  <span data-toggle="tooltip" title="<?php echo $help_editor_default; ?>"><?php echo $entry_editor_default; ?></span>
+                </label>
+                <div class="col-sm-10">
+                  <select id="config_editor_default" class="form-control" name="config_editor_default">
+                    <?php if ($config_editor_default) { ?>
+                    <option value="0"><?php echo $text_summer_note; ?></option>
+                    <option value="1" selected="selected"><?php echo $text_ckeditor; ?></option>
+                    <?php } else { ?>
+                    <option value="0" selected="selected"><?php echo $text_summer_note; ?></option>
+                    <option value="1"><?php echo $text_ckeditor; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
             </fieldset>
             <fieldset>
               <legend><?php echo $text_security; ?></legend>

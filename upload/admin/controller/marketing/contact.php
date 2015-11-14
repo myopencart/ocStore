@@ -38,6 +38,7 @@ class ControllerMarketingContact extends Controller {
 		$data['lang'] = $this->language->get('lang');
 
 		$data['token'] = $this->session->data['token'];
+		$data['ckeditor'] = $this->config->get('config_editor_default');
 
 		$data['breadcrumbs'] = array();
 

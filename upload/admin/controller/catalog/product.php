@@ -720,6 +720,7 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$data['token'] = $this->session->data['token'];
+		$data['ckeditor'] = $this->config->get('config_editor_default');
 
 		$this->load->model('localisation/language');
 

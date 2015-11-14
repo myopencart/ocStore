@@ -28,6 +28,8 @@ $_['text_general']                     = 'General';
 $_['text_security']                    = 'Security';
 $_['text_upload']                      = 'Uploads';
 $_['text_error']                       = 'Error Handling';
+$_['text_summer_note']                 = 'Summer Note';
+$_['text_ckeditor']                    = 'CKEditor';
 
 // Entry
 $_['entry_name']                       = 'Store Name';
@@ -140,6 +142,7 @@ $_['entry_password']                   = 'Allow Forgotten Password';
 $_['entry_encryption']                 = 'Encryption Key';
 $_['entry_compression']                = 'Output Compression Level';
 $_['entry_mail_regexp']                = 'Regular expression to validate email addresses';
+$_['entry_editor_default']             = 'Default Editor';
 $_['entry_error_display']              = 'Display Errors';
 $_['entry_error_log']                  = 'Log Errors';
 $_['entry_error_filename']             = 'Error Log Filename';
@@ -232,6 +235,7 @@ $_['help_password']                    = 'Allow forgotten password to be used fo
 $_['help_encryption']                  = 'Please provide a secret key that will be used to encrypt private information when processing orders.';
 $_['help_compression']                 = 'GZIP for more efficient transfer to requesting clients. Compression level must be between 0 - 9.';
 $_['help_mail_regexp']                 = 'Do not change anything in this field, if its purpose is not clear to you!';
+$_['help_editor_default']              = 'Sets the visual editor the default system. If you select the editor CKEditor, in some third-party modules, it can not operate.';
 $_['help_google_analytics']            = 'Войдите в учетную запись <a href="http://www.google.com/analytics/" target="_blank"><u>Google Analytics</u></a> и создайте профиль сайта. Затем, добавьте в поле ниже сформированный код:';
 $_['help_google_captcha']              = 'Перейдите на страницу <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"><u>Google reCAPTCHA</u></a> и зарегистрируйте сайт. Затем, вставьте выданные ключи в поля ниже:';
 $_['help_sms_to']                      = 'В международном формате, только цифры 7926xxxxxxx';

@@ -93,10 +93,14 @@
     </div>
   </div>
   <script type="text/javascript"><!--
+<?php if ($ckeditor) { ?>
+ckeditorInit('input-message', '<?php echo $token; ?>');
+<?php } else { ?>
 $('#input-message').summernote({
 	height: 300,
 	lang:'<?php echo $lang; ?>'
 });
+<?php } ?>
 //--></script>
   <script type="text/javascript"><!--
 $('select[name=\'to\']').on('change', function() {

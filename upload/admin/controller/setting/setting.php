@@ -52,6 +52,8 @@ class ControllerSettingSetting extends Controller {
 		$data['text_security'] = $this->language->get('text_security');
 		$data['text_upload'] = $this->language->get('text_upload');
 		$data['text_error'] = $this->language->get('text_error');
+		$data['text_summer_note'] = $this->language->get('text_summer_note');
+		$data['text_ckeditor'] = $this->language->get('text_ckeditor');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_owner'] = $this->language->get('entry_owner');
@@ -163,6 +165,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_seo_url'] = $this->language->get('entry_seo_url');
 		$data['entry_compression'] = $this->language->get('entry_compression');
 		$data['entry_mail_regexp'] = $this->language->get('entry_mail_regexp');
+		$data['entry_editor_default'] = $this->language->get('entry_editor_default');
 		$data['entry_error_display'] = $this->language->get('entry_error_display');
 		$data['entry_error_log'] = $this->language->get('entry_error_log');
 		$data['entry_error_filename'] = $this->language->get('entry_error_filename');
@@ -255,6 +258,7 @@ class ControllerSettingSetting extends Controller {
 		$data['help_encryption'] = $this->language->get('help_encryption');
 		$data['help_compression'] = $this->language->get('help_compression');
 		$data['help_mail_regexp'] = $this->language->get('help_mail_regexp');
+		$data['help_editor_default'] = $this->language->get('help_editor_default');
 		$data['help_google_analytics'] = $this->language->get('help_google_analytics');
 		$data['help_google_captcha'] = $this->language->get('help_google_captcha');
 		$data['help_sms_from'] = $this->language->get('help_sms_from');
@@ -1413,6 +1417,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_mail_regexp'] = $this->config->get('config_mail_regexp');
 		} else {
 			$data['config_mail_regexp'] = '/^[^\@]+@.*.[a-z]{2,15}$/i';
+		}
+
+		if (isset($this->request->post['config_editor_default'])) {
+			$data['config_editor_default'] = $this->request->post['config_editor_default'];
+		} else {
+			$data['config_editor_default'] = $this->config->get('config_editor_default');
 		}
 
 		if (isset($this->request->post['config_error_display'])) {

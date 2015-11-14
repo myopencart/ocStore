@@ -79,6 +79,15 @@ $('a.thumbnail').on('click', function(e) {
 
 	range.insertNode(img);
 
+  //CKEditor
+  <?php if ($cke){ ?>
+      var cke_target = '<?php echo $cke; ?>' || null;
+      cke_target = cke_target.split( ':' ); //link,txtUrl
+      CKEDITOR.dialog.getCurrent().setValueOf(cke_target[0], cke_target[1], this.getAttribute('href'));
+      //window.opener.CKEDITOR.tools.callFunction(<?php echo $cke; ?>, 'this.getAttribute('href'));
+      $('.cke_dialog_body img[src="'+ this.getAttribute('href') + '"]').first().remove();
+  <?php } ?>
+
 	$('#modal-image').modal('hide');
 });
 <?php } ?>
@@ -121,6 +130,10 @@ $('#button-search').on('click', function(e) {
 	if (filter_name) {
 		url += '&filter_name=' + encodeURIComponent(filter_name);
 	}
+
+  <?php if ($cke) { ?>
+  url += '&cke=' + '<?php echo $cke; ?>';
+  <?php } ?>
 
 	<?php if ($thumb) { ?>
 	url += '&thumb=' + '<?php echo $thumb; ?>';

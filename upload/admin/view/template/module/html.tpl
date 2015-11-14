@@ -79,7 +79,11 @@
   </div>
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
+<?php if ($ckeditor) { ?>
+ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
+<?php } else { ?>
 $('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300, lang:'<?php echo $lang; ?>'});
+<?php } ?>
 <?php } ?>
 //--></script> 
   <script type="text/javascript"><!--

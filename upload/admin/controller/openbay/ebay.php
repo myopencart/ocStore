@@ -1259,7 +1259,8 @@ class ControllerOpenbayEbay extends Controller {
 
 				$data['action']   = $this->url->link('openbay/ebay/create', 'token=' . $this->session->data['token'], 'SSL');
 				$data['cancel']   = $this->url->link('extension/openbay/items', 'token=' . $this->session->data['token'], 'SSL');
-				$data['token']    = $this->session->data['token'];
+        $data['token'] = $this->session->data['token'];
+        $data['ckeditor'] = $this->config->get('config_editor_default');
 
 				$data['breadcrumbs'] = array();
 				$data['breadcrumbs'][] = array(
