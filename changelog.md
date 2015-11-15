@@ -1,4 +1,4 @@
-# ocStore 2.0 change log
+# ocStore 2.x.x.x change log
 
 ## v2.1.0.1 (14.10.2015)
 #### Исправлено
@@ -9,11 +9,13 @@
 * Исправлена пагинация (удалено дубль первой страницы, убрано дублирование мета) (https://github.com/myopencart/ocStore/commit/000464351be6bdceb1e7f6d1c312920430ac909b)
 * Скрыто владку Google через дублирование функционала (https://github.com/myopencart/ocStore/commit/8c69328587afed7314ccc16be2dd6c33825a97aa)
 * Изменена организация вывода категория в админке (https://github.com/myopencart/ocStore/commit/ce3a87686f409bc27afbba93066948ab73ae66b2)
+* По умолчанию установлен редактор CKEditor (https://github.com/myopencart/ocStore/commit/12133094f78ef255e8c54e284492514581e3fde9)
 
 #### Добавлено
 * Добавлен русский языковой пакет
 * Локализация базы (схемы, статусы, возвраты)
 * Добавлена мультиязычность календаря
+* Добавлен редактор CKEditor и возможность смены на summernote (https://github.com/myopencart/ocStore/commit/12133094f78ef255e8c54e284492514581e3fde9)
 * Добавлена мультиязычность редактора summernote (https://github.com/myopencart/ocStore/commit/a3c9fc8ae3a276f3bc35b4a870051c05ac265141)
 * Модуль оплаты Сбербанк России (https://github.com/myopencart/ocStore/commit/12ec37fef518adb419716f3ce4800b37b8d7d42e)
 * Модуль оплаты Qiwi (https://github.com/myopencart/ocStore/commit/6f3c823144f5177465c8392c4664444b8daf53e3)
@@ -31,3 +33,4 @@
 * Добавлена отправка SMS уведомлений
 * Добавлено полезные инструменты от OC Team (https://github.com/myopencart/ocStore/commit/6ad5ef1f9b33727e9d27ca16142036400770787f)
 * Добавлено возможность скрытия не часто используемых полей через настройки магазина (MPN, ISBN, JAN и т.д.) (https://github.com/myopencart/ocStore/commit/ae421d72af8545a9e7194cbe43c84330950f84e7)
+* Добавлена возможность скрытия не используемых модулей, методов оплат и доставок (https://github.com/myopencart/ocStore/commit/36a616f3cc613dcb4fd491772c41f7966cd0ea22)
