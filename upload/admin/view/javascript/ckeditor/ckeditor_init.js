@@ -1,7 +1,5 @@
 // CKEditor */
 function ckeditorInit(node, token) {
-  console.log('node: ' + node);
-  console.log('token: ' + token);
   CKEDITOR.replace(node);
   CKEDITOR.on('dialogDefinition', function (ev) {
     for (i = 0; i < ev.data.definition.contents.length; i++) {

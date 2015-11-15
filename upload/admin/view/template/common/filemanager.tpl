@@ -60,14 +60,25 @@ $('a.thumbnail').on('click', function(e) {
 });
 
 <?php } else { ?>
+<?php if (!$cke){ ?>
 // Get the current selection
 var range = window.getSelection().getRangeAt(0);
 var node = range.startContainer;
 var startOffset = range.startOffset;  // where the range starts
 var endOffset = range.endOffset;      // where the range ends
+<?php } ?>
 
 $('a.thumbnail').on('click', function(e) {
 	e.preventDefault();
+
+  //CKEditor
+  <?php if ($cke){ ?>
+      var cke_target = '<?php echo $cke; ?>' || null;
+      cke_target = cke_target.split( ':' ); //link,txtUrl
+      CKEDITOR.dialog.getCurrent().setValueOf(cke_target[0], cke_target[1], this.getAttribute('href'));
+      //window.opener.CKEDITOR.tools.callFunction(<?php echo $cke; ?>, 'this.getAttribute('href'));
+      //$('.cke_dialog_body img[src="'+ this.getAttribute('href') + '"]').first().remove();
+  <?php } else { ?>
 
     // Create a new range from the orginal selection
     var range = document.createRange();
@@ -79,13 +90,6 @@ $('a.thumbnail').on('click', function(e) {
 
 	range.insertNode(img);
 
-  //CKEditor
-  <?php if ($cke){ ?>
-      var cke_target = '<?php echo $cke; ?>' || null;
-      cke_target = cke_target.split( ':' ); //link,txtUrl
-      CKEDITOR.dialog.getCurrent().setValueOf(cke_target[0], cke_target[1], this.getAttribute('href'));
-      //window.opener.CKEDITOR.tools.callFunction(<?php echo $cke; ?>, 'this.getAttribute('href'));
-      $('.cke_dialog_body img[src="'+ this.getAttribute('href') + '"]').first().remove();
   <?php } ?>
 
 	$('#modal-image').modal('hide');
