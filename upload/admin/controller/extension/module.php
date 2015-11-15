@@ -111,6 +111,8 @@ class ControllerExtensionModule extends Controller {
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 
+		$data['text_hide_modules'] = sprintf($this->language->get('text_hide_modules'), $this->url->link('user/user_permission', 'token=' . $this->session->data['token'], 'SSL'));
+
 		$data['column_name'] = $this->language->get('column_name');
 		$data['column_action'] = $this->language->get('column_action');
 
@@ -151,33 +153,49 @@ class ControllerExtensionModule extends Controller {
 
 		$files = glob(DIR_APPLICATION . 'controller/module/*.php');
 
+		$this->load->model('user/user_group');
+
+		$user_group_info = $this->model_user_user_group->getUserGroup($this->user->user_group_id);
+
+		if(isset($user_group_info['permission']['hiden'])) {
+			$hiden = $user_group_info['permission']['hiden'];
+		} else {
+			$hiden = array();
+		}
+
+		$data['hiden'] = false;
+
 		if ($files) {
 			foreach ($files as $file) {
 				$extension = basename($file, '.php');
 
-				$this->load->language('module/' . $extension);
+				if (!in_array('module/' . $extension, $hiden)) {
+					$this->load->language('module/' . $extension);
 
-				$module_data = array();
+					$module_data = array();
 
-				$modules = $this->model_extension_module->getModulesByCode($extension);
+					$modules = $this->model_extension_module->getModulesByCode($extension);
 
-				foreach ($modules as $module) {
-					$module_data[] = array(
-						'module_id' => $module['module_id'],
-						'name'      => $this->language->get('heading_title') . ' &gt; ' . $module['name'],
-						'edit'      => $this->url->link('module/' . $extension, 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], 'SSL'),
-						'delete'    => $this->url->link('extension/module/delete', 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], 'SSL')
+					foreach ($modules as $module) {
+						$module_data[] = array(
+								'module_id' => $module['module_id'],
+								'name' => $this->language->get('heading_title') . ' &gt; ' . $module['name'],
+								'edit' => $this->url->link('module/' . $extension, 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], 'SSL'),
+								'delete' => $this->url->link('extension/module/delete', 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], 'SSL')
+						);
+					}
+
+					$data['extensions'][] = array(
+							'name' => $this->language->get('heading_title'),
+							'module' => $module_data,
+							'install' => $this->url->link('extension/module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
+							'uninstall' => $this->url->link('extension/module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
+							'installed' => in_array($extension, $extensions),
+							'edit' => $this->url->link('module/' . $extension, 'token=' . $this->session->data['token'], 'SSL')
 					);
+				} else {
+					$data['hiden'] = true;
 				}
-
-				$data['extensions'][] = array(
-					'name'      => $this->language->get('heading_title'),
-					'module'    => $module_data,
-					'install'   => $this->url->link('extension/module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
-					'uninstall' => $this->url->link('extension/module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
-					'installed' => in_array($extension, $extensions),
-					'edit'      => $this->url->link('module/' . $extension, 'token=' . $this->session->data['token'], 'SSL')
-				);
 			}
 		}
 

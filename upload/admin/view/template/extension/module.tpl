@@ -24,6 +24,11 @@
     <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_layout; ?>
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
+    <?php if (!empty($hiden)) { ?>
+    <div class="alert alert-info"><i class="fa fa-check-circle"></i> <?php echo $text_hide_modules; ?>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    <?php } ?>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-puzzle-piece"></i> <?php echo $text_list; ?></h3>

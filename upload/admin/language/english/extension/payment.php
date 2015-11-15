@@ -5,6 +5,7 @@ $_['heading_title']     = 'Payments';
 // Text
 $_['text_success']      = 'Success: You have modified payments!';
 $_['text_list']         = 'Payment List';
+$_['text_hide_modules'] = 'The list is not displayed modules payments, which are hidden in <a href="%s" class="alert-link">section </a> the control of user rights!';
 
 // Column
 $_['column_name']       = 'Payment Method';

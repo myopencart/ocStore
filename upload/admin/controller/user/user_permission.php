@@ -266,6 +266,9 @@ class ControllerUserUserPermission extends Controller {
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_access'] = $this->language->get('entry_access');
 		$data['entry_modify'] = $this->language->get('entry_modify');
+		$data['entry_hide'] = $this->language->get('entry_hide');
+
+		$data['help_hide'] = $this->language->get('help_hide');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -349,6 +352,7 @@ class ControllerUserUserPermission extends Controller {
 			'dashboard/recent'
 		);
 
+		$data['hiden'] = array();
 		$data['permissions'] = array();
 
 		$files = array();
@@ -357,10 +361,13 @@ class ControllerUserUserPermission extends Controller {
 		$path = array(DIR_APPLICATION . 'controller/*');
 
 		// While the path array is still populated keep looping through
+
+
 		while (count($path) != 0) {
 			$next = array_shift($path);
 
 			foreach (glob($next) as $file) {
+
 				// If directory add to path array
 				if (is_dir($file)) {
 					$path[] = $file . '/*';
@@ -379,11 +386,29 @@ class ControllerUserUserPermission extends Controller {
 		foreach ($files as $file) {
 			$controller = substr($file, strlen(DIR_APPLICATION . 'controller/'));
 
+
+
 			$permission = substr($controller, 0, strrpos($controller, '.'));
+
+			$hidefiles = explode("/", $permission);
+
+			if ($hidefiles[0] == "module" or $hidefiles[0] == "payment" or $hidefiles[0] == "shipping") {
+				if (!in_array($permission, $ignore)) {
+					$data['hiden'][] = $permission;
+				}
+			}
 
 			if (!in_array($permission, $ignore)) {
 				$data['permissions'][] = $permission;
 			}
+		}
+
+		if (isset($this->request->post['permission']['hiden'])) {
+			$data['ishide'] = $this->request->post['permission']['hiden'];
+		} elseif (isset($user_group_info['permission']['hiden'])) {
+			$data['ishide'] = $user_group_info['permission']['hiden'];
+		} else {
+			$data['ishide'] = array();
 		}
 
 		if (isset($this->request->post['permission']['access'])) {

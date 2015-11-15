@@ -81,6 +81,7 @@ class ControllerExtensionShipping extends Controller {
 		$data['text_list'] = $this->language->get('text_list');
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
+		$data['text_hide_shipping'] = sprintf($this->language->get('text_hide_shipping'), $this->url->link('user/user_permission', 'token=' . $this->session->data['token'], 'SSL'));
 
 		$data['column_name'] = $this->language->get('column_name');
 		$data['column_status'] = $this->language->get('column_status');
@@ -121,21 +122,37 @@ class ControllerExtensionShipping extends Controller {
 
 		$files = glob(DIR_APPLICATION . 'controller/shipping/*.php');
 
+		$this->load->model('user/user_group');
+
+		$user_group_info = $this->model_user_user_group->getUserGroup($this->user->user_group_id);
+
+		if(isset($user_group_info['permission']['hiden'])) {
+			$hiden = $user_group_info['permission']['hiden'];
+		} else {
+			$hiden = array();
+		}
+
+		$data['hiden'] = false;
+
 		if ($files) {
 			foreach ($files as $file) {
 				$extension = basename($file, '.php');
 
-				$this->load->language('shipping/' . $extension);
+				if (!in_array('shipping/' . $extension, $hiden)) {
+					$this->load->language('shipping/' . $extension);
 
-				$data['extensions'][] = array(
-					'name'       => $this->language->get('heading_title'),
-					'status'     => $this->config->get($extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
-					'sort_order' => $this->config->get($extension . '_sort_order'),
-					'install'    => $this->url->link('extension/shipping/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
-					'uninstall'  => $this->url->link('extension/shipping/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
-					'installed'  => in_array($extension, $extensions),
-					'edit'       => $this->url->link('shipping/' . $extension . '', 'token=' . $this->session->data['token'], 'SSL')
-				);
+					$data['extensions'][] = array(
+							'name' => $this->language->get('heading_title'),
+							'status' => $this->config->get($extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+							'sort_order' => $this->config->get($extension . '_sort_order'),
+							'install' => $this->url->link('extension/shipping/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
+							'uninstall' => $this->url->link('extension/shipping/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, 'SSL'),
+							'installed' => in_array($extension, $extensions),
+							'edit' => $this->url->link('shipping/' . $extension . '', 'token=' . $this->session->data['token'], 'SSL')
+					);
+				} else {
+					$data['hiden'] = true;
+				}
 			}
 		}
 

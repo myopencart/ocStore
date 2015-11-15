@@ -74,6 +74,26 @@
               </div>
               <a onclick="$(this).parent().find(':checkbox').prop('checked', true);"><?php echo $text_select_all; ?></a> / <a onclick="$(this).parent().find(':checkbox').prop('checked', false);"><?php echo $text_unselect_all; ?></a></div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_hide; ?>"><?php echo $entry_hide; ?></span></label>
+            <div class="col-sm-10">
+              <div class="well well-sm" style="height: 150px; overflow: auto;">
+                <?php foreach ($hiden as $hide) { ?>
+                <div class="checkbox">
+                  <label>
+                    <?php if (in_array($hide, $ishide)) { ?>
+                    <input type="checkbox" name="permission[hiden][]" value="<?php echo $hide; ?>" checked="checked" />
+                    <?php echo $hide; ?>
+                    <?php } else { ?>
+                    <input type="checkbox" name="permission[hiden][]" value="<?php echo $hide; ?>" />
+                    <?php echo $hide; ?>
+                    <?php } ?>
+                  </label>
+                </div>
+                <?php } ?>
+              </div>
+              <a onclick="$(this).parent().find(':checkbox').prop('checked', true);"><?php echo $text_select_all; ?></a> / <a onclick="$(this).parent().find(':checkbox').prop('checked', false);"><?php echo $text_unselect_all; ?></a></div>
+          </div>
         </form>
       </div>
     </div>
