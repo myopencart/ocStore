@@ -1,5 +1,6 @@
 <?php
 // Text
+$_['text_analytics']                        = 'Статистика';
 $_['text_affiliate']          				= 'Партнеры';
 $_['text_api']          					= 'API';
 $_['text_attribute']          				= 'Атрибуты';
