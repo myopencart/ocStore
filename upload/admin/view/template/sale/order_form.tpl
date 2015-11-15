@@ -2431,6 +2431,7 @@ $('#button-save').on('click', function() {
 
 			if (json['success']) {
 				$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+				$('html, body').animate({ scrollTop: 0 }, 'slow'); 
 
                 // Refresh products, vouchers and totals
 				$('#button-refresh').trigger('click');
