@@ -1,11 +1,11 @@
 <?php
 // Heading
-$_['heading_title']         = 'Заголовок';
+$_['heading_title']         = 'United States Postal Service';
 
 // Text
-$_['text_shipping']         = 'Текст';
-$_['text_success']          = 'Success: You have modified United States Postal Service!';
-$_['text_edit']             = 'Edit United States Postal Service Shipping';
+$_['text_shipping']         = 'Доставка';
+$_['text_success']          = 'Настройки модуля United States Postal Service успешно обновлены!';
+$_['text_edit']             = 'Редактирование модуля';
 $_['text_domestic_00']      = 'First-Class Mail Parcel';
 $_['text_domestic_01']      = 'First-Class Mail Large Envelope';
 $_['text_domestic_02']      = 'First-Class Mail Letter';
@@ -69,7 +69,7 @@ $_['entry_tax']             = 'Налоговый класс';
 $_['entry_geo_zone']        = 'Регион';
 $_['entry_status']          = 'Статус';
 $_['entry_sort_order']      = 'Порядок сортировки';
-$_['entry_debug']      		= 'Debug Mode';
+$_['entry_debug']      		  = 'Режим отладки';
 
 // Help
 $_['help_dimension']        = 'Average package dimensions for shipping package. Product dimensions are not used for shipping at this time.';
