@@ -33,5 +33,6 @@
 * Добавлен SeoPro
 * Добавлена отправка SMS уведомлений
 * Добавлено полезные инструменты от OC Team (https://github.com/myopencart/ocStore/commit/6ad5ef1f9b33727e9d27ca16142036400770787f)
+* Добавлена возможность удаления кеша системы и изображений
 * Добавлено возможность скрытия не часто используемых полей через настройки магазина (MPN, ISBN, JAN и т.д.) (https://github.com/myopencart/ocStore/commit/ae421d72af8545a9e7194cbe43c84330950f84e7)
 * Добавлена возможность скрытия не используемых модулей, методов оплат и доставок (https://github.com/myopencart/ocStore/commit/36a616f3cc613dcb4fd491772c41f7966cd0ea22)
