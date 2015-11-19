@@ -654,7 +654,7 @@ class ControllerCatalogCategory extends Controller {
 			$action = array();
 
 			$action[] = array(
-				'text' => $this->language->get('text_edit'), //что за нах!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				'text' => $this->language->get('text_edit'),
 				'href' => $href_action . $result['category_id']
 			);
 
