@@ -200,8 +200,12 @@ $('#input-product').parent().find('.well').delegate('.fa-minus-circle', 'click',
 });
 
 function send(url) {
+	<?php if ($ckeditor) { ?>
+	$('textarea[name=\'message\']').val(CKEDITOR.instances['input-message'].getData());
+	<?php } else { ?>
 	// Summer not fix
 	$('textarea[name=\'message\']').val($('#input-message').code());
+	<?php } ?>
 
 	$.ajax({
 		url: url,
