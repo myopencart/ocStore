@@ -23,9 +23,9 @@ class ControllerInformationInformation extends Controller {
 		if ($information_info) {
 
 			if ($information_info['meta_title']) {
-				$data['heading_title'] = $information_info['meta_title'];
+				$this->document->setTitle($information_info['meta_title']);
 			} else {
-				$data['heading_title'] = $information_info['title'];
+				$this->document->setTitle($information_info['title']);
 			}
 
 			$this->document->setDescription($information_info['meta_description']);
