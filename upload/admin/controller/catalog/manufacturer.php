@@ -260,6 +260,12 @@ class ControllerCatalogManufacturer extends Controller {
 	}
 
 	protected function getForm() {
+    //CKEditor
+    if ($this->config->get('config_editor_default')) {
+        $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
+        $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+    }
+
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_form'] = !isset($this->request->get['manufacturer_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');

@@ -18,10 +18,6 @@
 <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
 <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
 <script src="view/javascript/summernote/lang/summernote-<?php echo $lang; ?>.js"></script>
-<?php if ($ckeditor) { ?>
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor_init.js"></script>
-<?php } ?>
 <script src="view/javascript/jquery/datetimepicker/moment.js" type="text/javascript"></script>
 <script src="view/javascript/jquery/datetimepicker/locale/<?php echo $code; ?>.js" type="text/javascript"></script>
 <script src="view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>

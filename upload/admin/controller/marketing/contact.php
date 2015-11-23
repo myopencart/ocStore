@@ -7,6 +7,12 @@ class ControllerMarketingContact extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
+    //CKEditor
+    if ($this->config->get('config_editor_default')) {
+        $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
+        $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+    }
+
 		$data['heading_title'] = $this->language->get('heading_title');
 
 		$data['text_default'] = $this->language->get('text_default');

@@ -1242,6 +1242,12 @@ class ControllerOpenbayEbay extends Controller {
 	}
 
 	public function create() {
+    //CKEditor
+    if ($this->config->get('config_editor_default')) {
+        $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
+        $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+    }
+
 		if ($this->checkConfig() == true) {
 			if (!empty($this->request->get['product_id'])) {
 				$data = $this->load->language('openbay/ebay_new');
