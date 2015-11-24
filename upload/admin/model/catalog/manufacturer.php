@@ -111,7 +111,7 @@ class ModelCatalogManufacturer extends Model {
 
 
 		if (!empty($data['filter_name'])) {
-			$sql .= " WHERE name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+			$sql .= " AND name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
 		$sort_data = array(
