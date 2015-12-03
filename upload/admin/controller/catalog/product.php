@@ -1033,6 +1033,8 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$this->load->model('catalog/manufacturer');
+		
+    $data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 
 		if (isset($this->request->post['manufacturer_id'])) {
 			$data['manufacturer_id'] = $this->request->post['manufacturer_id'];
@@ -1065,19 +1067,6 @@ class ControllerCatalogProduct extends Controller {
 			$categories = $this->model_catalog_product->getProductCategories($this->request->get['product_id']);
 		} else {
 			$categories = array();
-		}
-
-		$data['product_categories'] = array();
-
-		foreach ($categories as $category_id) {
-			$category_info = $this->model_catalog_category->getCategory($category_id);
-
-			if ($category_info) {
-				$data['product_categories'][] = array(
-					'category_id' => $category_info['category_id'],
-					'name' => ($category_info['path']) ? $category_info['path'] . ' &gt; ' . $category_info['name'] : $category_info['name']
-				);
-			}
 		}
 
 		$filter_data = array(

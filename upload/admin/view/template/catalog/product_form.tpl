@@ -335,10 +335,18 @@
             </div>
             <div class="tab-pane" id="tab-links">
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-manufacturer"><span data-toggle="tooltip" title="<?php echo $help_manufacturer; ?>"><?php echo $entry_manufacturer; ?></span></label>
+                <label class="col-sm-2 control-label" for="input-manufacturer"><?php echo $entry_manufacturer; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="manufacturer" value="<?php echo $manufacturer ?>" placeholder="<?php echo $entry_manufacturer; ?>" id="input-manufacturer" class="form-control" />
-                  <input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />
+                  <select id="input-manufacturer" name="manufacturer_id" class="form-control">
+                    <option value="0" selected="selected"><?php echo $text_none; ?></option>
+                  <?php foreach ($manufacturers as $manufacturer) { ?>
+                  <?php if ($manufacturer['manufacturer_id'] == $manufacturer_id) { ?>
+                  <option value="<?php echo $manufacturer['manufacturer_id']; ?>" selected="selected"><?php echo $manufacturer['name']; ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $manufacturer['manufacturer_id']; ?>"><?php echo $manufacturer['name']; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
@@ -346,7 +354,7 @@
                 <div class="col-sm-10">
                   <select id="main_category_id" name="main_category_id" class="form-control">
                     <option value="0" selected="selected"><?php echo $text_none; ?></option>
-                    <?php foreach($product_categories as $category) { ?>
+                    <?php foreach($categories as $category) { ?>
                     <?php if($category['category_id'] == $main_category_id) { ?>
                     <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
                     <?php } else { ?>
@@ -956,33 +964,6 @@ $('#input-description<?php echo $language['language_id']; ?>').summernote({heigh
 <?php } ?>
 //--></script>
   <script type="text/javascript"><!--
-// Manufacturer
-$('input[name=\'manufacturer\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				json.unshift({
-					manufacturer_id: 0,
-					name: '<?php echo $text_none; ?>'
-				});
-
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['manufacturer_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'manufacturer\']').val(item['label']);
-		$('input[name=\'manufacturer_id\']').val(item['value']);
-	}
-});
-
 // Filter
 $('input[name=\'filter\']').autocomplete({
 	'source': function(request, response) {
