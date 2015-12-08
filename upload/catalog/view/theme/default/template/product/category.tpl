@@ -55,7 +55,7 @@
       <?php if ($products) { ?>
       <p><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></p>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="btn-group hidden-xs">
             <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
             <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
@@ -75,7 +75,7 @@
             <?php } ?>
           </select>
         </div>
-        <div class="col-md-1 text-right">
+        <div class="col-md-2 text-right">
           <label class="control-label" for="input-limit"><?php echo $text_limit; ?></label>
         </div>
         <div class="col-md-2 text-right">
