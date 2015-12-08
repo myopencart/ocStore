@@ -69,6 +69,21 @@
                   <?php } ?>
                 </select>
               </div>
+              <div class="form-group">
+                <label class="control-label" for="input-status"><?php echo $column_category; ?></label>
+                <select name="filter_category" id="input-status" class="form-control">
+                  <option value="*"></option>
+                  <?php foreach ($categories as $category) { ?>
+                  <?php if ($category['product_count'] >= 1) { ?>
+                  <?php if ($category['category_id']==$filter_category) { ?>
+                  <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                  <?php } else { ?>
+                  <option value="<?php echo $category['category_id']; ?>">&nbsp;&nbsp;<?php echo $category['name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</option> 
+                  <?php } ?>
+                  <?php } ?>
+                  <?php } ?>
+                </select>
+              </div>
               <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
             </div>
           </div>
@@ -95,6 +110,7 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_price; ?>"><?php echo $column_price; ?></a>
                     <?php } ?></td>
+                  <td class="text-left"><?php echo $column_category; ?></td>
                   <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
                     <a href="<?php echo $sort_quantity; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_quantity; ?></a>
                     <?php } else { ?>
@@ -130,6 +146,14 @@
                     <?php } else { ?>
                     <?php echo $product['price']; ?>
                     <?php } ?></td>
+
+                  <td class="text-left">
+                    <?php foreach ($categories as $category) { ?>
+                    <?php if (in_array($category['category_id'], $product['category'])) { ?>
+                    <?php echo $category['name'];?><br>
+                    <?php } ?>
+                    <?php } ?></td>
+            
                   <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
                     <span class="label label-warning"><?php echo $product['quantity']; ?></span>
                     <?php } elseif ($product['quantity'] <= 5) { ?>
@@ -179,6 +203,13 @@ $('#button-filter').on('click', function() {
 		url += '&filter_price=' + encodeURIComponent(filter_price);
 	}
 
+
+	var filter_category = $('select[name=\'filter_category\']').val();
+
+  if (filter_category != '*') {
+		url += '&filter_category=' + encodeURIComponent(filter_category);
+	}
+            
 	var filter_quantity = $('input[name=\'filter_quantity\']').val();
 
 	if (filter_quantity) {
