@@ -87,8 +87,16 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_parent; ?></label>
                 <div class="col-sm-10">
-                  <input type="text" name="path" value="<?php echo $path; ?>" placeholder="<?php echo $entry_parent; ?>" id="input-parent" class="form-control" />
-                  <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>" />
+                  <select name="parent_id">
+                    <option value="0" selected="selected"><?php echo $text_none; ?></option>
+                    <?php foreach ($categories as $category) { ?>
+                    <?php if ($category['category_id'] == $parent_id) { ?>
+                    <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
+                    <?php } else { ?>
+                    <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
@@ -249,33 +257,6 @@ $('#input-description<?php echo $language['language_id']; ?>').summernote({
 });
 <?php } ?>
 <?php } ?>
-//--></script> 
-  <script type="text/javascript"><!--
-$('input[name=\'path\']').autocomplete({
-	'source': function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-			dataType: 'json',
-			success: function(json) {
-				json.unshift({
-					category_id: 0,
-					name: '<?php echo $text_none; ?>'
-				});
-
-				response($.map(json, function(item) {
-					return {
-						label: item['name'],
-						value: item['category_id']
-					}
-				}));
-			}
-		});
-	},
-	'select': function(item) {
-		$('input[name=\'path\']').val(item['label']);
-		$('input[name=\'parent_id\']').val(item['value']);
-	}
-});
 //--></script> 
   <script type="text/javascript"><!--
 $('input[name=\'filter\']').autocomplete({

@@ -429,14 +429,6 @@ class ControllerCatalogCategory extends Controller {
 			unset($data['categories'][$category_info['category_id']]);
 		}
 
-		if (isset($this->request->post['path'])) {
-			$data['path'] = $this->request->post['path'];
-		} elseif (!empty($category_info)) {
-			$data['path'] = $category_info['path'];
-		} else {
-			$data['path'] = '';
-		}
-
 		if (isset($this->request->post['parent_id'])) {
 			$data['parent_id'] = $this->request->post['parent_id'];
 		} elseif (!empty($category_info)) {
@@ -689,7 +681,8 @@ class ControllerCatalogCategory extends Controller {
 
 		if (array_key_exists($parent_id, $categories)) {
 			if ($parent_name != '') {
-				$parent_name .= $this->language->get('text_separator');
+				//$parent_name .= $this->language->get('text_separator');
+				$parent_name .= ' &gt; ';
 			}
 
 			foreach ($categories[$parent_id] as $category) {
@@ -702,8 +695,14 @@ class ControllerCatalogCategory extends Controller {
 			}
 		}
 
+    uasort($output, array($this, 'sortByName'));
+    
 		return $output;
 	}
+
+  function sortByName($a, $b) {
+    return strcmp($a['name'], $b['name']);
+  }
 
 	public function autocomplete() {
 		$json = array();
