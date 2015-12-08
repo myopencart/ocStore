@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']					= 'Пересмотреть список eBay';
+$_['heading_title']					= 'Revise eBay listing';
 $_['text_openbay']					= 'OpenBay Pro';
 $_['text_ebay']						= 'eBay';
 
@@ -8,49 +8,49 @@ $_['text_ebay']						= 'eBay';
 $_['tab_recommendations']			= 'Recommendations';
 
 // Text
-$_['text_revise']               	= 'Пересмотреть перечень';
-$_['text_loading']                  = 'Получить информацию по товару с eBay';
-$_['text_error_loading']            = 'Произошла ошибка при получении информации от eBay';
-$_['text_saved']                    = 'Список сохранён';
-$_['text_alert_removed']            = 'Список был отменён';
-$_['text_alert_ended']              = 'Перечень был завершен на eBay';
+$_['text_revise']               	= 'Revise listing';
+$_['text_loading']                  = 'Getting item information from eBay';
+$_['text_error_loading']            = 'There was an error getting the information from eBay';
+$_['text_saved']                    = 'Listing has been saved';
+$_['text_alert_removed']            = 'The listing has been unlinked';
+$_['text_alert_ended']              = 'The listing has been ended on eBay';
 $_['text_listing_info']             = 'Listing information';
 $_['text_check_recommendations']    = 'Checking for eBay listing recommendations';
 $_['text_success_recommendations']  = 'There are no listing improvement recommendations for this item!';
 
 // Buttons
-$_['button_view']					= 'Просмотреть список';
-$_['button_remove']					= 'Удалить связи';
-$_['button_end']                    = 'Конец списка';
-$_['button_retry']					= 'Повторить';
+$_['button_view']					= 'View listing';
+$_['button_remove']					= 'Remove link';
+$_['button_end']                    = 'End listing';
+$_['button_retry']					= 'Retry';
 
 // Entry
-$_['entry_title']					= 'Заголовок';
-$_['entry_price']					= 'Продажная цена (включает любой налог)';
-$_['entry_stock_store']				= 'Местный магазин';
-$_['entry_stock_listed']			= 'Магазин eBay';
-$_['entry_stock_reserve']			= 'Уровень резерва';
-$_['entry_stock_matrix_active']		= 'Матрица магазина (активная)';
-$_['entry_stock_matrix_inactive']	= 'Матрица магазина (неактивная)';
+$_['entry_title']					= 'Title';
+$_['entry_price']					= 'Selling price (Includes any tax)';
+$_['entry_stock_store']				= 'Local stock';
+$_['entry_stock_listed']			= 'eBay stock';
+$_['entry_stock_reserve']			= 'Reserve level';
+$_['entry_stock_matrix_active']		= 'Stock matrix (active)';
+$_['entry_stock_matrix_inactive']	= 'Stock matrix (inactive)';
 
 // Column
-$_['column_sku']					= 'Код var / артикул';
-$_['column_stock_listed']			= 'Внесено в список';
-$_['column_stock_reserve']			= 'Резерв';
-$_['column_stock_total']			= 'На складе';
-$_['column_price']					= 'Цена';
-$_['column_status']					= 'Активно';
-$_['column_add']					= 'Добавить';
-$_['column_combination']			= 'Сочетание';
+$_['column_sku']					= 'SKU';
+$_['column_stock_listed']			= 'Listed';
+$_['column_stock_reserve']			= 'Reserve';
+$_['column_stock_total']			= 'In stock';
+$_['column_price']					= 'Price';
+$_['column_status']					= 'Active';
+$_['column_add']					= 'Add';
+$_['column_combination']			= 'Combination';
 
 // Help
-$_['help_stock_store']				= 'Это уровень запасов на OpenCart';
-$_['help_stock_listed']				= 'Это текущий уровень запасов на eBay';
-$_['help_stock_reserve']			= 'Это максимальный уровень запасов на eBay (0 = нет предела резерва)';
+$_['help_stock_store']				= 'This is the level of stock on in OpenCart';
+$_['help_stock_listed']				= 'This is the current level of stock on eBay';
+$_['help_stock_reserve']			= 'This is the maximum level of stock on eBay (0 = no reserve limit)';
 
 // Error
-$_['error_ended']					= 'Связанный список закончился, вы не сможете редактировать его. Вы должны удалить ссылку.';
-$_['error_reserve']					= 'Вы не можете установить резерв больше, чем в локальном магазине';
+$_['error_ended']					= 'The linked listing has ended, you are unable to edit it. You should remove the link.';
+$_['error_reserve']					= 'You cannot set the reserve higher than the local stock';
 $_['error_no_sku']          		= 'No SKU found!';
 $_['error_no_item_id']              = 'Item ID is missing from the request';
 $_['error_recommendations_load']    = 'Unable to load item recommendations';

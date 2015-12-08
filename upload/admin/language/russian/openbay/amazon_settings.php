@@ -1,63 +1,63 @@
 <?php
 // Heading
-$_['heading_title']        				= 'Настройки магазина';
+$_['heading_title']        				= 'Marketplace settings';
 $_['text_openbay']						= 'OpenBay Pro';
-$_['text_amazon']						= 'Amazon Европа';
+$_['text_amazon']						= 'Amazon EU';
 
 // Text
-$_['text_api_status']               	= 'Состояние подключения API';
-$_['text_api_ok']                   	= 'Соединение установлено, авторизация выполнена';
-$_['text_api_auth_error']           	= 'Соединение установлено, ошибка авторизации';
-$_['text_api_error']                	= 'Ошибка соединения';
-$_['text_order_statuses']           	= 'Статус заказа';
-$_['text_unshipped']                	= 'Неотправленный';
-$_['text_partially_shipped']        	= 'Частично отправленный';
-$_['text_shipped']                  	= 'Доставлен';
-$_['text_canceled']                 	= 'Отменено';
-$_['text_other']                    	= 'Прочее';
-$_['text_marketplaces']             	= 'Магазины';
-$_['text_markets']                  	= 'Выберите магазины, из которых Вы хотите импортировать Ваши заказы';
-$_['text_de']                       	= 'Германия';
-$_['text_fr']                       	= 'Франция';
-$_['text_it']                       	= 'Италия';
-$_['text_es']                       	= 'Испания';
-$_['text_uk']                       	= 'Великобритания';
-$_['text_setttings_updated']        	= 'Настройки были успешно обновлены.';
-$_['text_new'] 							= 'Новый';
-$_['text_used_like_new'] 				= 'Бывший в употреблении - как новый';
-$_['text_used_very_good'] 				= 'Бывший в употреблении - очень хорошее состояние';
-$_['text_used_good'] 					= 'Бывший в употреблении - хорошее состояние';
-$_['text_used_acceptable'] 				= 'Бывший в употреблении - приемлемое состояние';
-$_['text_collectible_like_new'] 		= 'Предмет коллекции - как новый';
-$_['text_collectible_very_good'] 		= 'Предмет коллекции - очень хорошее состояние';
-$_['text_collectible_good'] 			= 'Предмет коллекции - хорошее состояние';
-$_['text_collectible_acceptable'] 		= 'Предмет коллекции - приемлемое состояние';
-$_['text_refurbished'] 					= 'Восстановленный';
+$_['text_api_status']               	= 'API connection status';
+$_['text_api_ok']                   	= 'Connection OK, Auth OK';
+$_['text_api_auth_error']           	= 'Connection OK, Auth failed';
+$_['text_api_error']                	= 'Connection error';
+$_['text_order_statuses']           	= 'Order Statuses';
+$_['text_unshipped']                	= 'Unshipped';
+$_['text_partially_shipped']        	= 'Partially Shipped';
+$_['text_shipped']                  	= 'Shipped';
+$_['text_canceled']                 	= 'Canceled';
+$_['text_other']                    	= 'Other';
+$_['text_marketplaces']             	= 'Marketplaces';
+$_['text_markets']                  	= 'Choose markets from which you would like to import your orders';
+$_['text_de']                       	= 'Germany';
+$_['text_fr']                       	= 'France';
+$_['text_it']                       	= 'Italy';
+$_['text_es']                       	= 'Spain';
+$_['text_uk']                       	= 'United Kingdom';
+$_['text_settings_updated']        		= 'Settings were successfully updated.';
+$_['text_new'] 							= 'New';
+$_['text_used_like_new'] 				= 'Used - Like New';
+$_['text_used_very_good'] 				= 'Used - Very Good';
+$_['text_used_good'] 					= 'Used - Good';
+$_['text_used_acceptable'] 				= 'Used - Acceptable';
+$_['text_collectible_like_new'] 		= 'Collectible - Like New';
+$_['text_collectible_very_good'] 		= 'Collectible - Very Good';
+$_['text_collectible_good'] 			= 'Collectible - Good';
+$_['text_collectible_acceptable'] 		= 'Collectible - Acceptable';
+$_['text_refurbished'] 					= 'Refurbished';
 
 // Error
-$_['error_permission']         			= 'Вы не имеете доступа к этому модулю';
+$_['error_permission']         			= 'You do not have access to this module';
 
 // Entry
-$_['entry_status']                 		= 'Статус';
-$_['entry_token']                    	= 'Маркер';
-$_['entry_string1']              		= 'Строка шифрования 1';
-$_['entry_string2']              		= 'Строка шифрования 2';
-$_['entry_import_tax']               	= 'Налог на импортируемые товары';
-$_['entry_customer_group']           	= 'Группа клиентов';
-$_['entry_tax_percentage']           	= 'Изменить цену';
-$_['entry_default_condition']        	= 'Состояние продукта по умолчанию';
-$_['entry_marketplace_default']			= 'Рынок по умолчанию';
-$_['entry_notify_admin']             	= 'Уведомлять администратора о новом заказе';
-$_['entry_default_shipping']         	= 'Доставка по умолчанию';
+$_['entry_status']                 		= 'Status';
+$_['entry_token']                    	= 'Token';
+$_['entry_string1']              		= 'Encryption String 1';
+$_['entry_string2']              		= 'Encryption String 2';
+$_['entry_import_tax']               	= 'Tax for imported items';
+$_['entry_customer_group']           	= 'Customer Group';
+$_['entry_tax_percentage']           	= 'Modify price';
+$_['entry_default_condition']        	= 'Default product condition type';
+$_['entry_marketplace_default']			= 'Default marketplace';
+$_['entry_notify_admin']             	= 'Notify admin of new order';
+$_['entry_default_shipping']         	= 'Default shipping';
 
 // Tabs
-$_['tab_settings']            			= 'Детали API';
-$_['tab_listing']                  		= 'Списки';
-$_['tab_orders']                   		= 'Заказы';
+$_['tab_settings']            			= 'API details';
+$_['tab_listing']                  		= 'Listings';
+$_['tab_orders']                   		= 'Orders';
 
 // Help
-$_['help_import_tax']          			= 'Использовать, если Amazon не предоставляет данные о налогах';
-$_['help_customer_group']      			= 'Выбрать группу пользователей для подтверждения отправки заказов';
-$_['help_default_shipping']    			= 'Используется в качестве предварительно выбранного варианта в порядке массового обновления';
-$_['help_entry_marketplace_default']	= 'Магазин по умолчанию для поиска и выбора товаров';
-$_['help_tax_percentage']           	= 'Добавлять проценты в стоимость товара по умолчанию';
+$_['help_import_tax']          			= 'Used if Amazon does not return tax information';
+$_['help_customer_group']      			= 'Select a customer group to assign to imported orders';
+$_['help_default_shipping']    			= 'Used as the pre-selected option in the bulk order update';
+$_['help_entry_marketplace_default']	= 'Default marketplace for product listings and lookups';
+$_['help_tax_percentage']           	= 'Percentage added to default product price';

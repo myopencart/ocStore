@@ -6,10 +6,10 @@ $_['text_etsy']                 = 'Etsy';
 
 // Text
 $_['text_link_saved']           = 'Item has been linked';
-$_['text_activate']         	= 'Активировать';
-$_['text_deactivate']         	= 'Деактивировать';
-$_['text_add_link']         	= 'Добавить ссылку';
-$_['text_delete_link']         	= 'Удалить ссылку';
+$_['text_activate']         	= 'Activate';
+$_['text_deactivate']         	= 'Deactivate';
+$_['text_add_link']         	= 'Add link';
+$_['text_delete_link']         	= 'Delete link';
 $_['text_delete']         		= 'Delete listing';
 $_['text_status_stock']         = 'Stock not synced';
 $_['text_status_ok']         	= 'OK';
@@ -26,7 +26,7 @@ $_['text_listings']     		= 'Manage your Etsy listings';
 
 // Columns
 $_['column_listing_id']			= 'Etsy ID';
-$_['column_title']				= 'Заголовок';
+$_['column_title']				= 'Title';
 $_['column_listing_qty']		= 'Listing quantity';
 $_['column_store_qty']			= 'Store quantity';
 $_['column_status']				= 'Status message';
@@ -35,9 +35,9 @@ $_['column_action']				= 'Action';
 
 // Entry
 $_['entry_limit']				= 'Page limit';
-$_['entry_status']				= 'Статус';
-$_['entry_keywords']			= 'Ключевые слова';
-$_['entry_name']				= 'Название товара';
+$_['entry_status']				= 'Status';
+$_['entry_keywords']			= 'Keywords';
+$_['entry_name']				= 'Product name';
 $_['entry_etsy_id']				= 'Etsy item ID';
 
 // Help

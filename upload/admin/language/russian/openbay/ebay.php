@@ -2,25 +2,25 @@
 // Heading
 $_['heading_title']         		= 'eBay';
 $_['text_openbay']					= 'OpenBay Pro';
-$_['text_dashboard']				= 'Панель управления eBay';
+$_['text_dashboard']				= 'eBay Dashboard';
 
 // Text
-$_['text_success']         			= 'Вы сохранили ваши изменения в eBay расширение';
-$_['text_heading_settings']         = 'Настройки';
-$_['text_heading_sync']             = 'Синхронизация';
-$_['text_heading_subscription']     = 'Сменить тарифный план';
-$_['text_heading_usage']          	= 'Использование';
-$_['text_heading_links']            = 'Ссылки на предмет';
-$_['text_heading_item_import']      = 'Импорт элементов';
-$_['text_heading_order_import']     = 'Импорт заказов';
-$_['text_heading_adds']             = 'Установленные дополнения';
-$_['text_heading_summary']          = 'eBay резюме';
-$_['text_heading_profile']          = 'Профили';
-$_['text_heading_template']         = 'Шаблоны';
-$_['text_heading_ebayacc']          = 'аккаунт eBay';
-$_['text_heading_register']         = 'Зарегистрируйтесь здесь';
+$_['text_success']         			= 'You have saved your changes to the eBay extension';
+$_['text_heading_settings']         = 'Settings';
+$_['text_heading_sync']             = 'Synchronise';
+$_['text_heading_subscription']     = 'Change plan';
+$_['text_heading_usage']          	= 'Usage';
+$_['text_heading_links']            = 'Item links';
+$_['text_heading_item_import']      = 'Import items';
+$_['text_heading_order_import']     = 'Import orders';
+$_['text_heading_adds']             = 'Installed add-ons';
+$_['text_heading_summary']          = 'eBay summary';
+$_['text_heading_profile']          = 'Profiles';
+$_['text_heading_template']         = 'Templates';
+$_['text_heading_ebayacc']          = 'eBay account';
+$_['text_heading_register']         = 'Register here';
 
 // Error
-$_['error_category_nosuggestions']  = 'Не удалось загрузить любые предлагаемые категории';
-$_['error_loading_catalog']         = 'В каталоге eBay не найдено';
-$_['error_generic_fail']         	= 'Произошла неизвестная ошибка!';
+$_['error_category_nosuggestions']  = 'Could not load any suggested categories';
+$_['error_loading_catalog']         = 'eBay catalog search failed';
+$_['error_generic_fail']         	= 'An unknown error just happened!';

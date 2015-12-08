@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] 					= 'Управление объявлениями';
+$_['heading_title'] 					= 'Manage listings';
 
 // Text
 $_['text_markets']                  	= 'Markets';

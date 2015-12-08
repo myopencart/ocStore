@@ -1,27 +1,27 @@
 <?php
 // Heading
-$_['heading_title'] 				= 'Основное соединение';
+$_['heading_title'] 				= 'Bulk Linking';
 $_['text_openbay'] 					= 'OpenBay Pro';
-$_['text_amazon'] 					= 'Amazon США';
+$_['text_amazon'] 					= 'Amazon US';
 
 // Button
-$_['button_load'] 					= 'Загрузить';
-$_['button_link'] 					= 'Ссылка';
+$_['button_load'] 					= 'Load';
+$_['button_link'] 					= 'Link';
 
 // Text
-$_['text_local'] 					= 'Локально';
-$_['text_load_listings'] 			= "Загрузка всех Ваших списков с Amazon может занять некоторое время (до двух часов в некоторых случаях). Если Вы связываете позиции, количество товара на Amazon будет обновляться из количества товаров Вашего магазина.";
-$_['text_report_requested'] 		= 'Отправлен запрос списков на Amazon';
-$_['text_report_request_failed'] 	= 'Не удалось запросить списки';
-$_['text_loading'] 					= 'Загрузка позиций';
+$_['text_local'] 					= 'Local';
+$_['text_load_listings'] 			= "Loading all your listings from Amazon can take some time (up to 2 hours in some cases). If you link your items, stock levels on Amazon will be updated with your shop's stock levels.";
+$_['text_report_requested'] 		= 'Successfully requested Listing Report from Amazon';
+$_['text_report_request_failed'] 	= 'Could not request Listing Report';
+$_['text_loading'] 					= 'Loading items';
 
 // Column
-$_['column_asin'] 					= "Amason Standart Identification Number";
-$_['column_price'] 					= "Цена";
-$_['column_name'] 					= "Название";
-$_['column_sku'] 					= "Артикул";
-$_['column_quantity'] 				= "Количество";
-$_['column_combination'] 			= "Сочетание";
+$_['column_asin'] 					= 'ASIN';
+$_['column_price'] 					= 'Price';
+$_['column_name'] 					= 'Name';
+$_['column_sku'] 					= 'SKU';
+$_['column_quantity'] 				= 'Quantity';
+$_['column_combination'] 			= 'Combination';
 
 // Error
-$_['error_bulk_link_permission'] 	= 'Групповая синхронизация не допускается на Вашем тарифном плане. Измените тариф';
+$_['error_bulk_link_permission'] 	= 'Bulk linking is not available on your plan, please upgrade to use this feature.';

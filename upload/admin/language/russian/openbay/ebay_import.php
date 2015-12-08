@@ -1,37 +1,37 @@
 <?php
 // Heading
-$_['heading_title']                     = 'Импорт товара';
+$_['heading_title']                     = 'Item import';
 $_['text_openbay']                      = 'OpenBay Pro';
 $_['text_ebay']                         = 'eBay';
 
 // Text
-$_['text_sync_import_line1']            = '<strong>Осторожно!</strong> Это импортирует все ваши товары на eBay  и построит структуру категорий в вашем магазине. Рекомендуется удалить все категории продуктов, прежде чем запускать этот параметр. < br / Категория продуктов берется из стандартных категорий eBay, a не из вашего магазина (если у вас есть магазин eBay). Можно переименовывать, удалять и редактировать импортированные категории, не затрагивая ваши eBay товары.';
-$_['text_sync_import_line3']            = 'Вам необходимо обеспечить возможность принимать вашим сервером большие объемы данных. 1000 eBay пунктов составляет около 40 МБ в размер, вам нужно будет вычислить необходимый объем. Если ваш запрос не удается, то это скорее всего ваши настройки слишком малы. Лимит памяти PHP должен быть около 128 МБ.';
-$_['text_sync_server_size']             = 'В настоящее время ваш сервер может принимать:';
-$_['text_sync_memory_size']             = 'Лимит памяти PHP: ';
-$_['text_import_confirm']				= 'Это импортирует все ваши категории на eBay как новые продукты. Вы уверены? Это не может быть отменено! Предварительно убедитесь, что у вас есть резервная копия данных!';
-$_['text_import_notify']				= 'Ваш запрос импорта был отправлен для обработки. Импорт занимает около 1 часа за 1000 единиц.';
-$_['text_import_images_msg1']           = 'изображения находятся на рассмотрении eBay. Обновите эту страницу, если количество не уменьшается.';
-$_['text_import_images_msg2']           = 'Нажмите здесь';
-$_['text_import_images_msg3']           = 'ожидайте. Подробнее о том, почему это произошло, можно узнать <a href="http://shop.openbaypro.com/index.php?route=information/faq&topic=8_45" target="_blank">здесь</a>';
+$_['text_sync_import_line1']            = '<strong>Caution!</strong> This will import all of your eBay products and build a category structure in your store. It is advised that you delete all categories and products before you run this option. <br />The category structure is from the normal eBay categories, not your shop categories (if you have an eBay shop). You can rename, remove and edit the imported categories without affecting your eBay products.';
+$_['text_sync_import_line3']            = 'You need to ensure your server can accept and process large POST data sizes. 1000 eBay items is about 40Mb in size, you will need to calculate what you require. If your call fails then it is likely your setting is too small. Your PHP memory limit needs to be about 128Mb.';
+$_['text_sync_server_size']             = 'Currently your server can accept: ';
+$_['text_sync_memory_size']             = 'Your PHP memory limit: ';
+$_['text_import_confirm']				= 'This will import all of your eBay items as new products, are you sure? This CAN NOT be undone! ENSURE you have a backup first!';
+$_['text_import_notify']				= 'Your import request has been sent for processing. An import takes about 1 hour per 1000 items.';
+$_['text_import_images_msg1']           = 'images are pending import/copy from eBay. Refresh this page, if the number does not decrease then';
+$_['text_import_images_msg2']           = 'click here';
+$_['text_import_images_msg3']           = 'and wait. More information about why this happened can be found <a href="http://shop.openbaypro.com/index.php?route=information/faq&topic=8_45" target="_blank">here</a>';
 
 // Entry
-$_['entry_import_item_advanced']        = 'Получить дополнительные данные';
-$_['entry_import_categories']         	= 'Импорт категорий';
-$_['entry_import_description']			= 'Импорт описания элементов';
-$_['entry_import']						= 'Импорт элементов eBay';
+$_['entry_import_item_advanced']        = 'Get advanced data';
+$_['entry_import_categories']         	= 'Import categories';
+$_['entry_import_description']			= 'Import item descriptions';
+$_['entry_import']						= 'Import eBay items';
 
 // Buttons
-$_['button_import']						= 'Импортировать';
+$_['button_import']						= 'Import';
 $_['button_complete']					= 'Complete';
 
 // Help
-$_['help_import_item_advanced']        	= 'Импортирование займёт в 10 раз больше времени. Импорт веса, размеров, ISBN и прочих доступных данных';
-$_['help_import_categories']         	= 'Создает структуру категории в вашем магазине в соответствии с категориями eBay';
-$_['help_import_description']         	= 'Это будет импортировать все, включая HTML, данные посещения и т.д.';
+$_['help_import_item_advanced']        	= 'Will take up to 10 times longer to import items. Imports weights, sizes, ISBN and more if available';
+$_['help_import_categories']         	= 'Builds a category structure in your store from the eBay categories';
+$_['help_import_description']         	= 'This will import everything including HTML, visit counters etc';
 
 // Error
-$_['error_import']                   	= 'Не удалось загрузить';
-$_['error_maintenance']					= 'Ваш магазин находится в режиме обслуживания. Импорт не удался!';
-$_['error_ajax_load']					= 'Не удалось подключиться к серверу';
-$_['error_validation']					= 'Вам нужно зарегистрироваться для вашего маркера API и включить модуль.';
+$_['error_import']                   	= 'Failed to load';
+$_['error_maintenance']					= 'Your store is in maintenance mode. Importing will fail!';
+$_['error_ajax_load']					= 'Failed to connect to server';
+$_['error_validation']					= 'You need to register for your API token and enable the module.';

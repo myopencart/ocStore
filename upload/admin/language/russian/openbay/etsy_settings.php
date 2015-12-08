@@ -1,41 +1,41 @@
 <?php
 // Headings
-$_['heading_title']        		= 'Параметры Etsy';
+$_['heading_title']        		= 'Marketplace settings';
 $_['text_openbay']              = 'OpenBay Pro';
 $_['text_etsy']                 = 'Etsy';
 
 // Text
-$_['text_success']     			= 'Ваши настройки были сохранены';
-$_['text_status']         		= 'Состояние';
-$_['text_account_ok']  			= 'Связь с Etsy OK';
-$_['text_api_other']            = 'Ссылки';
-$_['text_token_register']       = 'Регистрация';
-$_['text_api_ok']       		= 'API подключения ОК';
-$_['text_pull_orders']    		= 'Тянуть заказы';
+$_['text_success']     			= 'Your settings have been saved';
+$_['text_status']         		= 'Status';
+$_['text_account_ok']  			= 'Connection to Etsy OK';
+$_['text_api_other']            = 'Links';
+$_['text_token_register']       = 'Register';
+$_['text_api_ok']       		= 'API connection OK';
+$_['text_pull_orders']    		= 'Pull orders';
 $_['text_sync_settings']    	= 'Sync settings';
-$_['text_complete']    			= 'Завершено';
-$_['text_failed']    			= 'Ошибка';
-$_['text_orders_imported']    	= 'Было предложено порядка тянуть';
-$_['text_api_status']           = 'Подключение API';
+$_['text_complete']    			= 'Complete';
+$_['text_failed']    			= 'Failed';
+$_['text_orders_imported']    	= 'Order pull has been requested';
+$_['text_api_status']           = 'API connection';
 $_['text_edit']           		= 'Edit Etsy settings';
 
 // Entry
-$_['entry_import_def_id']       = 'По умолчанию состояние импорта (неоплачиваемый):';
-$_['entry_import_paid_id']      = 'Оплаченный статус:';
-$_['entry_import_shipped_id']   = 'Поставляется статус:';
-$_['entry_enc1']            	= 'API шифрования 1';
-$_['entry_enc2']            	= 'API шифрования 2';
-$_['entry_token']            	= 'Маркер API';
-$_['entry_address_format']      = 'По умолчанию формат адреса';
+$_['entry_import_def_id']       = 'Import default status (unpaid):';
+$_['entry_import_paid_id']      = 'Paid status:';
+$_['entry_import_shipped_id']   = 'Shipped status:';
+$_['entry_enc1']            	= 'API Encryption 1';
+$_['entry_enc2']            	= 'API Encryption 2';
+$_['entry_token']            	= 'API token';
+$_['entry_address_format']      = 'Default address format';
 
 // Error
-$_['error_api_connect']         = 'Не удается подключиться к API';
-$_['error_account_info']    	= 'Не удалось проверить подключение API для Etsy ';
+$_['error_api_connect']         = 'Failed to connect to the API';
+$_['error_account_info']    	= 'Unable to verify API connection to Etsy ';
 
 // Tabs
-$_['tab_api_info']            	= 'API детали';
+$_['tab_api_info']            	= 'API details';
 
 // Help
-$_['help_address_format']  		= 'Используется, только если связанный страны не имеют настройки формата адреса уже.';
+$_['help_address_format']  		= 'Only used if the linked country does not have an address format set-up already.';
 $_['help_sync_settings']  		= 'This will update your database with the latest setting options such as condition types, dates and more.';
 $_['help_pull_orders']  		= 'This will trigger a manual import of new and updated orders.';

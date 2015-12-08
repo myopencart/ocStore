@@ -1,54 +1,54 @@
 <?php
 // Heading
-$_['heading_title']         		= 'Элементы списка';
+$_['heading_title']         		= 'Item links';
 $_['text_openbay']					= 'OpenBay Pro';
 $_['text_ebay']						= 'eBay';
 
 // Buttons
-$_['button_resync']               	= 'Повторная синхронизация';
-$_['button_check_unlinked']       	= 'Выделить невыбранные позиции';
-$_['button_remove_link']       		= 'Удалить позицию';
+$_['button_resync']               	= 'Re-sync';
+$_['button_check_unlinked']       	= 'Check unlinked items';
+$_['button_remove_link']       		= 'Remove link';
 
 // Errors
-$_['error_ajax_load']          		= 'К сожалению не удалось получить ответ. Попробуйте позже.';
-$_['error_validation']         		= 'Вам нужно зарегистрироваться для вашего маркера API и включить модуль.';
-$_['error_no_listings']      		= 'Товар позиции не найден';
-$_['error_link_value']          	= 'Продукт позиции не определён';
-$_['error_link_no_stock']    		= 'Позиция не может быть создана для вывода на склад. Товары на eBay закончились.';
-$_['error_subtract_setting']        = 'Этот товар не учитывается на складе в OpenCart.';
+$_['error_ajax_load']          		= 'Sorry, could not get a response. Try later.';
+$_['error_validation']         		= 'You need to register for your API token and enable the module.';
+$_['error_no_listings']      		= 'No linked products found';
+$_['error_link_value']          	= 'The product link is not value';
+$_['error_link_no_stock']    		= 'A link cannot be created for an out of stock item. End the item manually on eBay.';
+$_['error_subtract_setting']        = 'This product is set not to subtract stock in OpenCart.';
 
 // Text
-$_['text_linked_items']             = 'Синхронизированные позиции';
-$_['text_unlinked_items']           = 'Несинхронизированные позиции';
-$_['text_alert_stock_local']        = 'Ваш eBay список наличия товара будет обновляться в соответствии с уровнем запасов магазина!';
-$_['text_link_desc1']               = 'Синхронизация товаров позволяет управлять наличием товара в списках Amazon.';
-$_['text_link_desc2']               = 'Для каждой позиции, которая была обновлена локально (в Вашем магазине OpenCart), будет обновлен Ваш список на eBay';
-$_['text_link_desc3']               = 'Запас в Вашем магазине, это запас который можно продать. Ваш eBay уровень запасов должен соответствовать ему.';
-$_['text_link_desc4']               = 'Ваш выделенный запас — товары, которые проданы, но еще не были оплачены. Эти товары следует выделить и не учитывать при расчете имеющихся запасов.';
-$_['text_text_linked_desc']         = 'Связанные товары это OpenCart товары, которые связаны с eBay списком объявлений.';
-$_['text_text_unlinked_desc']       = 'Несвязанные товары перечислены в Ваших списках eBay, но не содержат ссылок на какой либо из ваших товаров OpenCart.';
-$_['text_text_unlinked_info']       = 'Нажмите кнопку проверить несвязанные элементы для поиска в ваших активных eBay списках  несвязанных элементов. Это может занять долгое время, если у вас много eBay списков.';
-$_['text_text_loading_items']       = 'Загрузка позиций';
-$_['text_failed']       			= 'Не удалось загрузить';
-$_['text_limit_reached']       		= 'Достигнуто максимальное количество проверок на запрос, нажмите кнопку, чтобы продолжить поиск';
-$_['text_stock_error']       		= 'Ошибка магазина';
-$_['text_listing_ended']       		= 'Список закончился';
-$_['text_filter']             		= 'Результаты фильтрации';
-$_['text_filter_title']             = 'Заголовок';
-$_['text_filter_range']             = 'Уровень стока';
-$_['text_filter_range_from']        = 'Минимум';
-$_['text_filter_range_to']          = 'Максимум';
-$_['text_filter_var']             	= 'Включить варианты';
+$_['text_linked_items']             = 'Linked items';
+$_['text_unlinked_items']           = 'Unlinked items';
+$_['text_alert_stock_local']        = 'Your eBay listing will be updated with your local stock levels!';
+$_['text_link_desc1']               = 'Linking your items will allow for stock control on your eBay listings.';
+$_['text_link_desc2']               = 'For each item that is updated the local stock (the stock available in your OpenCart store) will update your eBay listing';
+$_['text_link_desc3']               = 'Your local stock is stock that is available to sell. Your eBay stock levels should match this.';
+$_['text_link_desc4']               = 'Your allocated stock is items that have sold but not yet been paid for. These items should be set aside and not calculated in your available stock levels.';
+$_['text_text_linked_desc']         = 'Linked items are OpenCart items that have a link to an eBay listing.';
+$_['text_text_unlinked_desc']       = 'Unlinked items are listings on your eBay account that do not link to any of your OpenCart products.';
+$_['text_text_unlinked_info']       = 'Click the check unlinked items button to search your active eBay listings for unlinked items. This may take a long time if you have many eBay listings.';
+$_['text_text_loading_items']       = 'Loading items';
+$_['text_failed']       			= 'Failed to load';
+$_['text_limit_reached']       		= 'The maximum number of checks per request was reached, click the button to continue searching';
+$_['text_stock_error']       		= 'Stock error';
+$_['text_listing_ended']       		= 'Listing ended';
+$_['text_filter']             		= 'Filter results';
+$_['text_filter_title']             = 'Title';
+$_['text_filter_range']             = 'Stock range';
+$_['text_filter_range_from']        = 'Min';
+$_['text_filter_range_to']          = 'Max';
+$_['text_filter_var']             	= 'Include variants';
 
 // Tables
-$_['column_action']            		= 'Действие';
-$_['column_status']            		= 'Статус';
-$_['column_variants']          		= 'Варианты';
-$_['column_item_id']            	= 'eBay ID товара';
-$_['column_product']           		= 'Товар';
-$_['column_product_auto']      		= 'Название продукта (автоматическое заполнение)';
-$_['column_listing_title']     		= 'eBay название списка';
-$_['column_allocated']         		= 'Выделенный сток';
-$_['column_ebay_stock']        		= 'eBay сток';
-$_['column_stock_available']   		= 'Сток магазина';
-$_['column_stock_reserve']   		= 'Уровень резерва';
+$_['column_action']            		= 'Action';
+$_['column_status']            		= 'Status';
+$_['column_variants']          		= 'Variants';
+$_['column_item_id']            	= 'eBay item ID';
+$_['column_product']           		= 'Product';
+$_['column_product_auto']      		= 'Product name (auto complete)';
+$_['column_listing_title']     		= 'eBay listing title';
+$_['column_allocated']         		= 'Allocated stock';
+$_['column_ebay_stock']        		= 'eBay stock';
+$_['column_stock_available']   		= 'Shop stock';
+$_['column_stock_reserve']   		= 'Reserve level';

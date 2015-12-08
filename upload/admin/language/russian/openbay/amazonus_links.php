@@ -1,30 +1,30 @@
 <?php
 // Heading
-$_['heading_title']					= 'Позиции';
+$_['heading_title']					= 'Item links';
 $_['text_openbay']					= 'OpenBay Pro';
-$_['text_amazon']					= 'Amazon EU';
+$_['text_amazon']					= 'Amazon US';
 
 // Text
-$_['text_desc1']                    = 'Синхронизация позиций позволяет управлять наличием товара в списках Amazon.';
-$_['text_desc2'] 					= 'Для каждой позиции, которая была обнавлена локально (в Вашем магазине OpenCart), будет обновлен Ваш список на Amazon';
-$_['text_desc3']                    = 'Вы можете синхронизировать позиции вручную, введя артикул (Amazon SKU) и название товара, или загрузить все несинхронизированные продукты и затем ввести Amazon SKU. (Выгрузка товаров из OpenCart в Amazon будет автоматически добавлять связи)';
-$_['text_new_link']                 = 'Новая позиция';
-$_['text_autocomplete_product']     = 'Товар (автозаполнение по имени)';
-$_['text_amazon_sku']               = 'Amazon SKU (Артикул)';
-$_['text_action']                   = 'Действие';
-$_['text_linked_items']             = 'Синхронизированные позиции';
-$_['text_unlinked_items']           = 'Несинхронизированные позиции';
-$_['text_name']                     = 'Название';
-$_['text_model']                    = 'Модель';
-$_['text_combination']              = 'Сочетание';
-$_['text_sku']                      = 'Артикул';
+$_['text_desc1']                    = 'Linking your items will allow for stock control on your Amazon listings.';
+$_['text_desc2'] 					= 'For each item that is updated the local stock (the stock available in your OpenCart store) will update your Amazon listing';
+$_['text_desc3']                    = 'You can link items manually by entering Amazon SKU and product name or load all unlinked products and then enter amazon SKUs. (Uploading products from OpenCart to Amazon will automatically add links)';
+$_['text_new_link']                 = 'New link';
+$_['text_autocomplete_product']     = 'Product (Auto complete from name)';
+$_['text_amazon_sku']               = 'Amazon item SKU';
+$_['text_action']                   = 'Action';
+$_['text_linked_items']             = 'Linked items';
+$_['text_unlinked_items']           = 'Unlinked items';
+$_['text_name']                     = 'Name';
+$_['text_model']                    = 'Model';
+$_['text_combination']              = 'Variant Combination';
+$_['text_sku']                      = 'Product SKU';
 $_['text_sku_variant']              = 'Variant SKU';
-$_['text_amazon_sku']               = 'Amazon SKU (Артикул)';
+$_['text_amazon_sku']               = 'Amazon item SKU';
 
 // Button
-$_['button_load']                 	= 'Загрузить';
+$_['button_load']                 	= 'Load';
 
 // Error
-$_['error_empty_sku']        		= 'Amazon SKU не должен быть пустым!';
-$_['error_empty_name']       		= 'Название товара не должно быть пустым!';
-$_['error_no_product_exists']       = 'Товар не существует. Пожалуйста, используйте список автозавершения для выбора.';
+$_['error_empty_sku']        		= 'Amazon SKU can not be empty!';
+$_['error_empty_name']       		= 'Product name can not be empty!';
+$_['error_no_product_exists']       = 'Product does not exist. Please use auto complete values.';

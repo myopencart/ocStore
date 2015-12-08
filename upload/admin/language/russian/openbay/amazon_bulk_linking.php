@@ -1,33 +1,33 @@
 <?php
 // Heading
-$_['heading_title'] 				= 'Групповая синхронизация';
+$_['heading_title'] 				= 'Bulk Linking';
 $_['text_openbay'] 					= 'OpenBay Pro';
 $_['text_amazon'] 					= 'Amazon EU';
 
 // Button
-$_['button_load'] 					= 'Загрузить';
-$_['button_link'] 					= 'Ссылка';
+$_['button_load'] 					= 'Load';
+$_['button_link'] 					= 'Link';
 
 // Text
-$_['text_local'] 					= 'Локально';
-$_['text_load_listings'] 			= "Загрузка всех Ваших списков с Amazon может занять некоторое время (до двух часов в некоторых случаях). Если Вы связываете позиции, количество товара на Amazon будет обновляться из количества товаров Вашего магазина.";
-$_['text_report_requested'] 		= 'Отправлен запрос списков на Amazon';
-$_['text_report_request_failed'] 	= 'Не удалось запросить списки';
-$_['text_loading'] 					= 'Загрузка позиций';
-$_['text_choose_marketplace'] 		= 'Выбрать торговую площадку';
-$_['text_uk'] 						= 'Великобритания';
-$_['text_de'] 						= 'Германия';
-$_['text_fr'] 						= 'Франция';
-$_['text_it'] 						= 'Италия';
-$_['text_es'] 						= 'Испания';
+$_['text_local'] 					= 'Local';
+$_['text_load_listings'] 			= 'Loading all your listings from Amazon can take some time (up to 2 hours in some cases). If you link your items, stock levels on Amazon will be updated with your shop\'s stock levels.';
+$_['text_report_requested'] 		= 'Successfully requested Listing Report from Amazon';
+$_['text_report_request_failed'] 	= 'Could not request Listing Report';
+$_['text_loading'] 					= 'Loading items';
+$_['text_choose_marketplace'] 		= 'Choose marketplace';
+$_['text_uk'] 						= 'United Kingdom';
+$_['text_de'] 						= 'Germany';
+$_['text_fr'] 						= 'France';
+$_['text_it'] 						= 'Italy';
+$_['text_es'] 						= 'Spain';
 
 // Column
-$_['column_asin'] 					= "ASIN";
-$_['column_price'] 					= "Цена";
-$_['column_name'] 					= "Название";
-$_['column_sku'] 					= "Артикул";
-$_['column_quantity'] 				= "Количество";
-$_['column_combination'] 			= "Сочетание";
+$_['column_asin'] 					= 'ASIN';
+$_['column_price'] 					= 'Price';
+$_['column_name'] 					= 'Name';
+$_['column_sku'] 					= 'SKU';
+$_['column_quantity'] 				= 'Quantity';
+$_['column_combination'] 			= 'Combination';
 
 // Error
-$_['error_bulk_link_permission'] 	= 'Групповая синхронизация не допускается на Вашем тарифном плане. Измените тариф.';
+$_['error_bulk_link_permission'] 	= 'Bulk linking is not available on your plan, please upgrade to use this feature.';

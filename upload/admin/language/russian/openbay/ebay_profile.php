@@ -1,39 +1,39 @@
 <?php
 // Heading
-$_['heading_title']                     = 'Профили';
+$_['heading_title']                     = 'Profiles';
 $_['text_openbay']                      = 'OpenBay Pro';
 $_['text_ebay']                         = 'eBay';
 
 //Tabs
-$_['tab_returns']          				= 'Возвраты';
-$_['tab_template']         				= 'Шаблон';
-$_['tab_gallery']          				= 'Галерея';
-$_['tab_settings']         				= 'Настройки';
+$_['tab_returns']          				= 'Returns';
+$_['tab_template']         				= 'Template';
+$_['tab_gallery']          				= 'Gallery';
+$_['tab_settings']         				= 'Settings';
 
 //Shipping Profile
-$_['text_shipping_dispatch_country']    = 'Доставка из страны';
-$_['text_shipping_postcode']            = 'Расположение почтовый кода';
-$_['text_shipping_location']            = 'Город или государство места';
-$_['text_shipping_despatch']            = 'Время отправки';
-$_['text_shipping_despatch_help']       = 'Это максимальное количество дней, вы будете принимать для отправки элемента';
-$_['text_shipping_nat']                 = 'Государственные транспортные услуги';
-$_['text_shipping_intnat']              = 'Международные транспортные услуги';
-$_['text_shipping_first']               = 'Первый элемент';
-$_['text_shipping_add']                 = 'Дополнительные элементы';
-$_['text_shipping_service']             = 'Услуги';
-$_['text_shipping_in_desc']             = 'Информация о грузе в описании';
-$_['text_shipping_getitfast']           = 'Получить как можно быстрее!';
-$_['text_shipping_zones']               = 'Отправка на территории';
-$_['text_shipping_worldwide']           = 'Во всем мире';
-$_['text_shipping_type_nat']           	= 'Отправка государственными службами';
-$_['text_shipping_type_int']           	= 'Международный тип доставки';
-$_['text_shipping_flat']           		= 'Фиксированная стоимость';
-$_['text_shipping_calculated']          = 'Подсчитано';
-$_['text_shipping_freight']          	= 'Контейнерная перевозка';
-$_['text_shipping_handling']          	= 'Оплата за отгрузку';
-$_['text_shipping_cod']           		= 'Наложенным платежом';
-$_['text_shipping_handling_nat']    	= 'Оплата за обработку заказа (гос. налог)';
-$_['entry_shipping_handling_int']    	= 'Оплата за обработку заказа (междунар. налог)';
+$_['text_shipping_dispatch_country']    = 'Shipping from country';
+$_['text_shipping_postcode']            = 'Postal/Zip code location';
+$_['text_shipping_location']            = 'Town or State location';
+$_['text_shipping_despatch']            = 'Despatch time';
+$_['text_shipping_despatch_help']       = 'This is the maximum number of days you will take to send the item';
+$_['text_shipping_nat']                 = 'National shipping services';
+$_['text_shipping_intnat']              = 'International shipping services';
+$_['text_shipping_first']               = 'First item';
+$_['text_shipping_add']                 = 'Additional items';
+$_['text_shipping_service']             = 'Service';
+$_['text_shipping_in_desc']             = 'Freight info in description';
+$_['text_shipping_getitfast']           = 'Get It Fast!';
+$_['text_shipping_zones']               = 'Ship to zones';
+$_['text_shipping_worldwide']           = 'Worldwide';
+$_['text_shipping_type_nat']           	= 'National shipping type';
+$_['text_shipping_type_int']           	= 'International shipping type';
+$_['text_shipping_flat']           		= 'Flat rate';
+$_['text_shipping_calculated']          = 'Calculated';
+$_['text_shipping_freight']          	= 'Freight';
+$_['text_shipping_handling']          	= 'Handling fee';
+$_['text_shipping_cod']           		= 'Cash on delivery fee';
+$_['text_shipping_handling_nat']    	= 'Handling fee (national)';
+$_['entry_shipping_handling_int']    	= 'Handling fee (international)';
 $_['entry_shipping_pickupdropoff']  	= 'Click and Collect';
 $_['entry_shipping_pickupinstore']  	= 'Available for In-Store Pickup';
 $_['entry_shipping_global_shipping']  	= 'Use eBay global shipping service';
@@ -41,69 +41,69 @@ $_['entry_shipping_promotion_discount'] = 'Combined shipping discounts (national
 $_['entry_shipping_promotion_discount_international'] = 'Combined shipping discounts (international)';
 
 //Returns profile
-$_['text_returns_accept']       		= 'Возвращено верно';
-$_['text_returns_inst']         		= 'Политика возврата';
-$_['text_returns_days']         		= 'Дни возврата';
-$_['text_returns_days10']       		= '10 дней';
-$_['text_returns_days14']       		= '14 дней';
-$_['text_returns_days30']       		= '30 дней';
-$_['text_returns_days60']       		= '60 дней';
-$_['text_returns_type']         		= 'Тип возврата';
-$_['text_returns_type_money']   		= 'Деньги обратно';
-$_['text_returns_type_exch']    		= 'Возврат денег или обмен';
-$_['text_returns_costs']        		= 'Возвращение транспортные расходы';
-$_['text_returns_costs_b']      		= 'Покупатель оплачивает';
-$_['text_returns_costs_s']      		= 'Продавец платит';
-$_['text_returns_restock']      		= 'Плата за пополнение';
+$_['text_returns_accept']       		= 'Returns accepted';
+$_['text_returns_inst']         		= 'Return Policy';
+$_['text_returns_days']         		= 'Return Days';
+$_['text_returns_days10']       		= '10 Days';
+$_['text_returns_days14']       		= '14 Days';
+$_['text_returns_days30']       		= '30 Days';
+$_['text_returns_days60']       		= '60 Days';
+$_['text_returns_type']         		= 'Return Type';
+$_['text_returns_type_money']   		= 'Money back';
+$_['text_returns_type_exch']    		= 'Money back or exchange';
+$_['text_returns_costs']        		= 'Return Shipping costs';
+$_['text_returns_costs_b']      		= 'Buyer pays';
+$_['text_returns_costs_s']      		= 'Seller pays';
+$_['text_returns_restock']      		= 'Restocking Fee';
 $_['text_list']           				= 'Profile list';
 
 //Template profile
-$_['text_template_choose']      		= 'Шаблон по умолчанию';
-$_['text_template_choose_help'] 		= 'Шаблон по умолчанию будет автоматически нагрузки при включении сэкономить время';
-$_['text_image_gallery']        		= 'Размер изображения в галерее';
-$_['text_image_gallery_help']   		= 'Размер пикселя изображения галереи, которые добавляются в шаблон.';
-$_['text_image_thumb']          		= 'Размер эскиза изображения';
-$_['text_image_thumb_help']     		= 'Пикселей размер эскизов изображений, которые добавляются в шаблон.';
-$_['text_image_super']          		= 'Очень большой размер';
-$_['text_image_gallery_plus']   		= 'Галерея плюс';
-$_['text_image_all_ebay']       		= 'Добавление всех изображений в eBay';
-$_['text_image_all_template']   		= 'Добавление всех изображений в шаблон';
-$_['text_image_exclude_default']		= 'Исключить изображение по умолчанию';
+$_['text_template_choose']      		= 'Default template';
+$_['text_template_choose_help'] 		= 'A default template will auto load when listing to save time';
+$_['text_image_gallery']        		= 'Gallery image size';
+$_['text_image_gallery_help']   		= 'Pixel size of gallery images that are added to your template.';
+$_['text_image_thumb']          		= 'Thumbnail image size';
+$_['text_image_thumb_help']     		= 'Pixel size of thumbnail images that are added to your template.';
+$_['text_image_super']          		= 'Supersize images';
+$_['text_image_gallery_plus']   		= 'Gallery plus';
+$_['text_image_all_ebay']       		= 'Add all images to eBay';
+$_['text_image_all_template']   		= 'Add all images to template';
+$_['text_image_exclude_default']		= 'Exclude default image';
 $_['text_image_exclude_default_help']	= 'Only for bulk listing feature! Will not include the default product image in theme image list';
-$_['text_confirm_delete']       		= 'Вы уверены, что вы хотите удалить профиль?';
-$_['text_width']      					= 'Ширина';
-$_['text_height']      					= 'Высота';
+$_['text_confirm_delete']       		= 'Are you sure you want to delete the profile?';
+$_['text_width']      					= 'Width';
+$_['text_height']      					= 'Height';
 $_['text_px']      						= 'px';
 $_['text_add']      					= 'Add profile';
 $_['text_edit']      					= 'Edit profile';
 
 //General profile
 $_['text_general_private']      		= 'List items as private auction';
-$_['text_general_price']        		= 'Изменение цены в %';
-$_['text_general_price_help']   		= '0-по умолчанию, -10 уменьшит на 10%, 10 увеличит на 10% (используется только в массовом списоке)';
+$_['text_general_price']        		= 'Price % modification';
+$_['text_general_price_help']   		= '0 is default, -10 will reduce by 10%, 10 will increase by 10% (only used on bulk listing)';
 
 //General profile options
-$_['text_profile_name']         		= 'Имя';
-$_['text_profile_default']      		= 'По умолчанию';
-$_['text_profile_type']         		= 'Тип';
-$_['text_profile_desc']         		= 'Описание';
-$_['text_profile_action']       		= 'Действие';
+$_['text_profile_name']         		= 'Name';
+$_['text_profile_default']      		= 'Default';
+$_['text_profile_type']         		= 'Type';
+$_['text_profile_desc']         		= 'Description';
+$_['text_profile_action']       		= 'Action';
 
 // Profile types
-$_['text_type_shipping']       			= 'Доставка';
-$_['text_type_returns']       			= 'Возвраты';
-$_['text_type_template']       			= 'Галерея шаблонов';
-$_['text_type_general']       			= 'Основные настройки';
+$_['text_type_shipping']       			= 'Shipping';
+$_['text_type_returns']       			= 'Returns';
+$_['text_type_template']       			= 'Template &amp; gallery';
+$_['text_type_general']       			= 'General settings';
 
 //Success messages
-$_['text_added']                		= 'Новый профиль добавлен';
-$_['text_updated']              		= 'Профиль обновлен';
+$_['text_added']                		= 'New profile has been added';
+$_['text_updated']              		= 'Profile has been updated';
 
 //Errors
-$_['error_permission']        			= 'У Вас недостаточно прав для изменения профиля';
-$_['error_name']           				= 'Вы должны ввести имя профиля';
-$_['error_no_template']          		= 'Идентификатор шаблона не существует';
-$_['error_missing_settings'] 			= 'Вы не можете добавлять, редактировать или удалять профили пока не синхронизируете ваши настройки eBay';
+$_['error_permission']        			= 'You do not have permission to edit profiles';
+$_['error_name']           				= 'You must enter a profile name';
+$_['error_no_template']          		= 'Template ID does not exist';
+$_['error_missing_settings'] 			= 'You cannot add,edit or delete profiles until you syncronise your eBay settings';
 
 //Help
 $_['help_shipping_promotion_discount']  = 'Offer national buyers a discount on shipping if they buy multiple items. Discounts must have been setup in eBay to take effect.';

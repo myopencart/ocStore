@@ -1,15 +1,15 @@
 <?php
 // Heading
-$_['heading_title']           	= 'Syncronise';
+$_['heading_title']           	= 'Synchronise';
 $_['text_openbay']              = 'OpenBay Pro';
 $_['text_ebay']                 = 'eBay';
 
 // Buttons
-$_['button_update']				= 'Обновить';
+$_['button_update']				= 'Update';
 
 // Entry
-$_['entry_sync_categories']     = 'Get main eBay categories';
-$_['entry_sync_shop']        	= 'Get you shop categories';
+$_['entry_sync_categories']     = 'Get eBay categories';
+$_['entry_sync_shop']        	= 'Get shop categories';
 $_['entry_sync_setting']     	= 'Get settings';
 
 // Text

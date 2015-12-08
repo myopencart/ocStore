@@ -5,7 +5,7 @@ $_['text_openbay']              = 'OpenBay Pro';
 $_['text_etsy']                 = 'Etsy';
 
 // Text
-$_['text_loading']              = 'Загрузка позиций';
+$_['text_loading']              = 'Loading items';
 $_['text_new_link']             = 'Create new link';
 $_['text_current_links']        = 'Current links';
 $_['text_link_saved']           = 'Item has been linked';
