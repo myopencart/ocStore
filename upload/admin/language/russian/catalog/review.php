@@ -25,7 +25,7 @@ $_['entry_text']          	= 'Текст:';
 $_['entry_date_added']      = 'Дата добавления';
 
 // Help
-$_['help_product']          = '(Autocomplete)';
+$_['help_product']          = '(Автодополнение)';
 
 // Error
 $_['error_permission']      = 'У Вас нет прав для изменения отзывов!';

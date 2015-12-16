@@ -91,14 +91,14 @@ $_['help_ean']               = 'European Article Number';
 $_['help_jan']               = 'Japanese Article Number';
 $_['help_isbn']              = 'International Standard Book Number';
 $_['help_mpn']               = 'Manufacturer Part Number';
-$_['help_manufacturer']      = '(Autocomplete)';
+$_['help_manufacturer']      = '(Автодополнение)';
 $_['help_minimum']           = 'Force a minimum ordered amount';
 $_['help_stock_status']      = 'Status shown when a product is out of stock';
 $_['help_points']            = 'Number of points needed to buy this item. If you don\'t want this product to be purchased with points leave as 0.';
-$_['help_category']          = '(Autocomplete)';
-$_['help_filter']            = '(Autocomplete)';
-$_['help_download']          = '(Autocomplete)';
-$_['help_related']           = '(Autocomplete)';
+$_['help_category']          = '(Автодополнение)';
+$_['help_filter']            = '(Автодополнение)';
+$_['help_download']          = '(Автодополнение)';
+$_['help_related']           = '(Автодополнение)';
 $_['help_tag']          	 = 'comma separated';
 
 // Error

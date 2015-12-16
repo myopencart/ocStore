@@ -28,7 +28,7 @@ $_['entry_message']        = 'Message';
 // Help
 $_['help_customer']       = 'Autocomplete';
 $_['help_affiliate']      = 'Autocomplete';
-$_['help_product']        = 'Send only to customers who have ordered products in the list. (Autocomplete)';
+$_['help_product']        = 'Send only to customers who have ordered products in the list. (Автодополнение)';
 
 // Error
 $_['error_permission']     = 'Warning: You do not have permission to send E-Mails!';

@@ -25,7 +25,7 @@ $_['entry_text']        = 'Text';
 $_['entry_date_added']  = 'Date Added';
 
 // Help
-$_['help_product']      = '(Autocomplete)';
+$_['help_product']      = '(Автодополнение)';
 
 // Error
 $_['error_permission']  = 'Warning: You do not have permission to modify reviews!';
