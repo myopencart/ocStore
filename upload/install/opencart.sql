@@ -3203,7 +3203,7 @@ DROP TABLE IF EXISTS `oc_return_status`;
 CREATE TABLE `oc_return_status` (
   `return_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(32) NOT NULL,
+  `name` varchar(128) NOT NULL,
   PRIMARY KEY (`return_status_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
