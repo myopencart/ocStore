@@ -199,11 +199,11 @@ class ControllerSettingSetting extends Controller {
 		$data['help_product_description_length'] = $this->language->get('help_product_description_length');
 		$data['help_limit_admin'] = $this->language->get('help_limit_admin');
 		$data['help_product_count'] = $this->language->get('help_product_count');
-		$data['help_product_upc_hide'] = $this->language->get('help_product_isbn_hide');
-		$data['help_product_ean_hide'] = $this->language->get('help_product_isbn_hide');
-		$data['help_product_jan_hide'] = $this->language->get('help_product_isbn_hide');
+		$data['help_product_upc_hide'] = $this->language->get('help_product_upc_hide');
+		$data['help_product_ean_hide'] = $this->language->get('help_product_ean_hide');
+		$data['help_product_jan_hide'] = $this->language->get('help_product_jan_hide');
 		$data['help_product_isbn_hide'] = $this->language->get('help_product_isbn_hide');
-		$data['help_product_mpn_hide'] = $this->language->get('help_product_isbn_hide');
+		$data['help_product_mpn_hide'] = $this->language->get('help_product_mpn_hide');
 		$data['help_review'] = $this->language->get('help_review');
 		$data['help_review_guest'] = $this->language->get('help_review_guest');
 		$data['help_review_mail'] = $this->language->get('help_review_mail');
