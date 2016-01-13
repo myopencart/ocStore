@@ -1,6 +1,6 @@
 <?php
 // Version
-define('VERSION', '2.1.0.1.1');
+define('VERSION', '2.1.0.2');
 
 // Configuration
 if (is_file('config.php')) {
@@ -258,11 +258,7 @@ $controller = new Front($registry);
 $controller->addPreAction(new Action('common/maintenance'));
 
 // SEO URL's
-if (!$seo_type = $config->get('config_seo_url_type')) {
-	$seo_type = 'seo_url';
-}
-
-$controller->addPreAction(new Action('common/' . $seo_type));
+$controller->addPreAction(new Action('common/seo_url'));
 
 // Router
 if (isset($request->get['route'])) {
