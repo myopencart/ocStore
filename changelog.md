@@ -1,8 +1,8 @@
 # ocStore 2 change log
 
 ## v2.1.0.2 (13.10.2015)
-#### Bugs fixed
-* XSS issue resolved for zone_id. Thanks to www.netsparker.com for finding. (https://github.com/opencart/opencart/commit/33642ba18dc2645396dd35a0434964d7721d5eb3)
+#### Исправлено
+* Устранение XSS уязвимости для zone_id. Спасибо www.netsparker.com за найденую уязвимость.
 
 ## v2.1.0.1.1 (17.12.2015)
 #### Исправлено:
