@@ -233,7 +233,7 @@ class ControllerProductProduct extends Controller {
 			if ($product_info['meta_h1']) {
 				$data['heading_title'] = $product_info['meta_h1'];
 			} else {
-				$data['heading_title'] = $product_info['name'];;
+				$data['heading_title'] = $product_info['name'];
 			}
 
 			$data['text_select'] = $this->language->get('text_select');
