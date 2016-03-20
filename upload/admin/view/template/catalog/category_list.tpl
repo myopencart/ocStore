@@ -58,7 +58,7 @@
                     <input type="checkbox" name="selected[]" value="<?php echo $category['category_id']; ?>" />
                     <?php } ?></td>
                     <?php if ($category['href']) { ?>
-                    <td class="left"><?php echo $category['indent']; ?><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></td>
+                    <td class="left"><?php echo $category['indent']; ?><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>&nbsp;&nbsp;<i class="fa fa-sort-desc"></i></td>
                   <?php } else { ?>
                     <td class="left"><?php echo $category['indent']; ?><?php echo $category['name']; ?></td>
                   <?php } ?>
