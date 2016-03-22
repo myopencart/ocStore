@@ -1,5 +1,5 @@
 <?php
-class ModelModuleSeoManager extends Model {
+class ModelOcteamToolsSeoManager extends Model {
 
 	public function updateUrlAlias($data) {
 		if(!empty($data['url_alias_id'])) {
@@ -25,6 +25,20 @@ class ModelModuleSeoManager extends Model {
 	public function getUrlAaliases($data = array()) {
 		if ($data) {
 			$sql = "SELECT * FROM `" . DB_PREFIX . "url_alias`";
+
+      $implode = array();
+
+      if (!empty($data['filter_query'])) {
+        $implode[] = "query LIKE '%" . $this->db->escape($data['filter_query']) . "%'";
+      }
+
+      if (!empty($data['filter_keyword'])) {
+        $implode[] = "keyword = '" . $this->db->escape($data['filter_keyword']) . "'";
+      }
+
+      if ($implode) {
+        $sql .= " WHERE " . implode(" AND ", $implode);
+      }
 
 			$sort_data = array('query', 'keyword');
 
@@ -62,8 +76,25 @@ class ModelModuleSeoManager extends Model {
 	}
 
 	// Total Aliases
-	public function getTotalUrlAalias() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "url_alias`");
+	public function getTotalUrlAalias($data = array()) {
+		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "url_alias`";
+
+		$implode = array();
+
+		if (!empty($data['filter_query'])) {
+			$implode[] = "query LIKE '%" . $this->db->escape($data['filter_query']) . "%'";
+		}
+
+		if (!empty($data['filter_keyword'])) {
+			$implode[] = "keyword = '" . $this->db->escape($data['filter_keyword']) . "'";
+		}
+
+		if ($implode) {
+			$sql .= " WHERE " . implode(" AND ", $implode);
+		}
+
+		$query = $this->db->query($sql);
+
 		return $query->row['total'];
 	}
 }
