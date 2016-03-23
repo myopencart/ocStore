@@ -7,10 +7,22 @@ class ControllerSettingSetting extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
+		$this->load->model('localisation/language');
+
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+      $language_info = $this->model_localisation_language->getLanguageById($this->request->post['config_language']);
+      $front_language_id = $language_info['language_id'];
+
+      $this->request->post['config_meta_title'] = $this->request->post['config_langdata'][$front_language_id]['meta_title'];
+      $this->request->post['config_meta_description'] = $this->request->post['config_langdata'][$front_language_id]['meta_description'];
+      $this->request->post['config_meta_keyword'] = $this->request->post['config_langdata'][$front_language_id]['meta_keyword'];
+      $this->request->post['config_name'] = $this->request->post['config_langdata'][$front_language_id]['name'];
+      $this->request->post['config_owner'] = $this->request->post['config_langdata'][$front_language_id]['owner'];
+      $this->request->post['config_address'] = $this->request->post['config_langdata'][$front_language_id]['address'];
 			$this->request->post['config_mail_regexp'] = trim($this->request->post['config_mail_regexp']);
+
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
 			if ($this->config->get('config_currency_auto')) {
@@ -21,6 +33,7 @@ class ControllerSettingSetting extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
+			
 			$this->response->redirect($this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
@@ -192,6 +205,7 @@ class ControllerSettingSetting extends Controller {
 		$data['help_geocode'] = $this->language->get('help_geocode');
 		$data['help_open'] = $this->language->get('help_open');
 		$data['help_comment'] = $this->language->get('help_comment');
+		$data['help_image'] = $this->language->get('help_image');
 		$data['help_location'] = $this->language->get('help_location');
 		$data['help_currency'] = $this->language->get('help_currency');
 		$data['help_currency_auto'] = $this->language->get('help_currency_auto');
@@ -297,19 +311,19 @@ class ControllerSettingSetting extends Controller {
 		if (isset($this->error['name'])) {
 			$data['error_name'] = $this->error['name'];
 		} else {
-			$data['error_name'] = '';
+			$data['error_name'] = array();
 		}
 
 		if (isset($this->error['owner'])) {
 			$data['error_owner'] = $this->error['owner'];
 		} else {
-			$data['error_owner'] = '';
+			$data['error_owner'] = array();
 		}
 
 		if (isset($this->error['address'])) {
 			$data['error_address'] = $this->error['address'];
 		} else {
-			$data['error_address'] = '';
+			$data['error_address'] = array();
 		}
 
 		if (isset($this->error['email'])) {
@@ -327,7 +341,7 @@ class ControllerSettingSetting extends Controller {
 		if (isset($this->error['meta_title'])) {
 			$data['error_meta_title'] = $this->error['meta_title'];
 		} else {
-			$data['error_meta_title'] = '';
+			$data['error_meta_title'] = array();
 		}
 
 		if (isset($this->error['country'])) {
@@ -529,6 +543,12 @@ class ControllerSettingSetting extends Controller {
 
 		$data['token'] = $this->session->data['token'];
 
+		if (isset($this->request->post['config_langdata'])) {
+			$data['config_langdata'] = $this->request->post['config_langdata'];
+		} else {
+			$data['config_langdata'] = $this->config->get('config_langdata');
+		}
+
 		if (isset($this->request->post['config_name'])) {
 			$data['config_name'] = $this->request->post['config_name'];
 		} else {
@@ -676,8 +696,6 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$data['config_language'] = $this->config->get('config_language');
 		}
-
-		$this->load->model('localisation/language');
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
@@ -1533,16 +1551,19 @@ class ControllerSettingSetting extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		if (!$this->request->post['config_name']) {
-			$this->error['name'] = $this->language->get('error_name');
-		}
-
-		if ((utf8_strlen($this->request->post['config_owner']) < 3) || (utf8_strlen($this->request->post['config_owner']) > 64)) {
-			$this->error['owner'] = $this->language->get('error_owner');
-		}
-
-		if ((utf8_strlen($this->request->post['config_address']) < 3) || (utf8_strlen($this->request->post['config_address']) > 256)) {
-			$this->error['address'] = $this->language->get('error_address');
+		foreach ($this->request->post['config_langdata'] as $language_id => $value) {
+			if (!$value['name']) {
+				$this->error['name'][$language_id] = $this->language->get('error_name');
+			}
+			if ((utf8_strlen($value['owner']) < 3) || (utf8_strlen($value['owner']) > 64)) {
+				$this->error['owner'][$language_id] = $this->language->get('error_owner');
+			}
+			if ((utf8_strlen($value['address']) < 3) || (utf8_strlen($value['address']) > 256)) {
+				$this->error['address'][$language_id] = $this->language->get('error_address');
+			}
+			if ((utf8_strlen($value['meta_title']) < 2) || (utf8_strlen($value['meta_title']) > 255)) {
+				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
+			}
 		}
 
 		if ((utf8_strlen($this->request->post['config_email']) > 96) || !preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $this->request->post['config_email'])) {
@@ -1551,10 +1572,6 @@ class ControllerSettingSetting extends Controller {
 
 		if ((utf8_strlen($this->request->post['config_telephone']) < 3) || (utf8_strlen($this->request->post['config_telephone']) > 32)) {
 			$this->error['telephone'] = $this->language->get('error_telephone');
-		}
-
-		if (!$this->request->post['config_meta_title']) {
-			$this->error['meta_title'] = $this->language->get('error_meta_title');
 		}
 
 		if (!empty($this->request->post['config_customer_group_display']) && !in_array($this->request->post['config_customer_group_id'], $this->request->post['config_customer_group_display'])) {

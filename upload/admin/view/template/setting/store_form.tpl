@@ -40,6 +40,12 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
+              <ul class="nav nav-tabs" id="content-language">
+                <?php foreach ($languages as $language) { ?>
+                <li><a href="#content-language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                <?php } ?>
+              </ul>
+
               <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-url"><span data-toggle="tooltip" data-html="true" title="<?php echo htmlspecialchars($help_url); ?>"><?php echo $entry_url; ?></span></label>
                 <div class="col-sm-10">
@@ -55,33 +61,53 @@
                   <input type="text" name="config_ssl" value="<?php echo $config_ssl; ?>" placeholder="<?php echo $entry_ssl; ?>" id="input-ssl" class="form-control" />
                 </div>
               </div>
-              <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-name"><?php echo $entry_name; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="config_name" value="<?php echo $config_name; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
-                  <?php if ($error_name) { ?>
-                  <div class="text-danger"><?php echo $error_name; ?></div>
-                  <?php } ?>
-                </div>
+
+              <div class="tab-content">
+                <?php foreach ($languages as $language) { ?>
+                  <div class="tab-pane" id="content-language<?php echo $language['language_id']; ?>">
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
+                      <div class="col-sm-10">
+                        <input type="text" name="config_langdata[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
+                        <?php if (isset($error_name[$language['language_id']])) { ?>
+                        <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-owner<?php echo $language['language_id']; ?>"><?php echo $entry_owner; ?></label>
+                      <div class="col-sm-10">
+                        <input type="text" name="config_langdata[<?php echo $language['language_id']; ?>][owner]" value="<?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['owner'] : ''; ?>" placeholder="<?php echo $entry_owner; ?>" id="input-owner<?php echo $language['language_id']; ?>" class="form-control" />
+                        <?php if (isset($error_owner[$language['language_id']])) { ?>
+                        <div class="text-danger"><?php echo $error_owner[$language['language_id']]; ?></div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-address<?php echo $language['language_id']; ?>"><?php echo $entry_address; ?></label>
+                      <div class="col-sm-10">
+                        <textarea name="config_langdata[<?php echo $language['language_id']; ?>][address]" placeholder="<?php echo $entry_address; ?>" rows="5" id="input-address<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['address'] : ''; ?></textarea>
+                        <?php if (isset($error_address[$language['language_id']])) { ?>
+                        <div class="text-danger"><?php echo $error_address[$language['language_id']]; ?></div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-open<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $help_open; ?>"><?php echo $entry_open; ?></span></label>
+                      <div class="col-sm-10">
+                        <textarea name="config_langdata[<?php echo $language['language_id']; ?>][open]" rows="5" placeholder="<?php echo $entry_open; ?>" id="input-open<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['open'] : ''; ?></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-comment<?php echo $language['language_id']; ?>"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $help_comment; ?>"><?php echo $entry_comment; ?></span></label>
+                      <div class="col-sm-10">
+                        <textarea name="config_langdata[<?php echo $language['language_id']; ?>][comment]" rows="5" placeholder="<?php echo $entry_comment; ?>" id="input-comment<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['comment'] : ''; ?></textarea>
+                      </div>
+                    </div>
+                  </div><!-- </div class="tab-pane" id="store-language<?php echo $language['language_id']; ?>">  -->
+                <?php } ?>
               </div>
-              <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-owner"><?php echo $entry_owner; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="config_owner" value="<?php echo $config_owner; ?>" placeholder="<?php echo $entry_owner; ?>" id="input-owner" class="form-control" />
-                  <?php if ($error_owner) { ?>
-                  <div class="text-danger"><?php echo $error_owner; ?></div>
-                  <?php } ?>
-                </div>
-              </div>
-              <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-address"><?php echo $entry_address; ?></label>
-                <div class="col-sm-10">
-                  <textarea name="config_address" rows="5" placeholder="<?php echo $entry_address; ?>" id="input-address" class="form-control"><?php echo $config_address; ?></textarea>
-                  <?php if ($error_address) { ?>
-                  <div class="text-danger"><?php echo $error_address; ?></div>
-                  <?php } ?>
-                </div>
-              </div>
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-geocode"><span data-toggle="tooltip" data-container="#tab-general" title="<?php echo $help_geocode; ?>"><?php echo $entry_geocode; ?></span></label>
                 <div class="col-sm-10">
@@ -118,18 +144,6 @@
                   <input type="hidden" name="config_image" value="<?php echo $config_image; ?>" id="input-image" />
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-open"><span data-toggle="tooltip" title="<?php echo $help_open; ?>"><?php echo $entry_open; ?></span></label>
-                <div class="col-sm-10">
-                  <textarea name="config_open" rows="5" placeholder="<?php echo $entry_open; ?>" id="input-open" class="form-control"><?php echo $config_open; ?></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-comment"><span data-toggle="tooltip" title="<?php echo $help_comment; ?>"><?php echo $entry_comment; ?></span></label>
-                <div class="col-sm-10">
-                  <textarea name="config_comment" rows="5" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"><?php echo $config_comment; ?></textarea>
-                </div>
-              </div>
               <?php if ($locations) { ?>
               <div class="form-group">
                 <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_location; ?>"><?php echo $entry_location; ?></span></label>
@@ -152,27 +166,42 @@
               <?php } ?>
             </div>
             <div class="tab-pane" id="tab-store">
-              <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-meta-title"><?php echo $entry_meta_title; ?></label>
-                <div class="col-sm-10">
-                  <input type="text" name="config_meta_title" value="<?php echo $config_meta_title; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title" class="form-control" />
-                  <?php if ($error_meta_title) { ?>
-                  <div class="text-danger"><?php echo $error_meta_title; ?></div>
+
+                <ul class="nav nav-tabs" id="store-language">
+                  <?php foreach ($languages as $language) { ?>
+                  <li><a href="#store-language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                  <?php } ?>
+                </ul>
+
+                <div class="tab-content">
+                  <?php foreach ($languages as $language) { ?>
+                  <div class="tab-pane" id="store-language<?php echo $language['language_id']; ?>">
+
+                    <div class="form-group required">
+                      <label class="col-sm-2 control-label" for="input-meta-title[<?php echo $language['language_id']; ?>]"><?php echo $entry_meta_title; ?></label>
+                      <div class="col-sm-10">
+                        <input type="text" name="config_langdata[<?php echo $language['language_id']; ?>][meta_title]" value="<?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['meta_title'] : ''; ?>" placeholder="<?php echo $entry_meta_title; ?>" id="input-meta-title[<?php echo $language['language_id']; ?>]" class="form-control" />
+                        <?php if (isset($error_meta_title[$language['language_id']])) { ?>
+                        <div class="text-danger"><?php echo $error_meta_title[$language['language_id']]; ?></div>
+                        <?php } ?>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-meta-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
+                      <div class="col-sm-10">
+                        <textarea name="config_langdata[<?php echo $language['language_id']; ?>][meta_description]" rows="5" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['meta_description'] : ''; ?></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-meta-keyword<?php echo $language['language_id']; ?>"><?php echo $entry_meta_keyword; ?></label>
+                      <div class="col-sm-10">
+                        <textarea name="config_langdata[<?php echo $language['language_id']; ?>][meta_keyword]" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['meta_keyword'] : ''; ?></textarea>
+                      </div>
+                    </div>
+                  </div><!-- </div class="tab-pane" id="store-language<?php echo $language['language_id']; ?>">  -->
                   <?php } ?>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-meta-description"><?php echo $entry_meta_description; ?></label>
-                <div class="col-sm-10">
-                  <textarea name="config_meta_description" rows="5" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description" class="form-control"><?php echo $config_meta_description; ?></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-meta-keyword"><?php echo $entry_meta_keyword; ?></label>
-                <div class="col-sm-10">
-                  <textarea name="config_meta_keyword" rows="5" placeholder="<?php echo $entry_meta_keyword; ?>" id="input-meta-keyword" class="form-control"><?php echo $config_meta_keyword; ?></textarea>
-                </div>
-              </div>
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-template"><?php echo $entry_template; ?></label>
                 <div class="col-sm-10">
@@ -807,5 +836,8 @@ $('select[name=\'config_country_id\']').on('change', function() {
 });
 
 $('select[name=\'config_country_id\']').trigger('change');
+
+$('#store-language a:first').tab('show');
+$('#content-language a:first').tab('show');
 //--></script></div>
 <?php echo $footer; ?>

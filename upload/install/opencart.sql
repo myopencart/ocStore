@@ -3410,8 +3410,8 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (287, 0, 'config', 'config_captcha', 'basic_captcha', 0),
 (288, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
 (289, 0, 'config', 'config_login_attempts', '5', 0),
-(290, 0, 'config', 'config_mail_regexp', '/^[^\@]+@.*.[a-z]{2,15}$/i', 0);
-
+(290, 0, 'config', 'config_mail_regexp', '/^[^\@]+@.*.[a-z]{2,15}$/i', 0),
+(291, 0, 'config', 'config_langdata', '{"1":{"meta_title":"Мой Магазин","meta_description":"Мой Магазин","meta_keyword":"","name":"Мой Магазин","owner":"Мое Имя","address":"Адрес","open":"с 10ч до 18ч\\r\\nобед с 14ч до 15ч\\r\\nвоскресенье - выходной","comment":""},"2":{"meta_title":"Your Store","meta_description":"My Store","meta_keyword":"","name":"Your Store","owner":"Your Name","address":"Address 1","open":"","comment":""}}', 1);
 -- --------------------------------------------------------
 
 --

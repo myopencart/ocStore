@@ -286,6 +286,12 @@ class ModelLocalisationLanguage extends Model {
 		return $query->row;
 	}
 
+	public function getLanguageById($code) {
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "language WHERE code = '" . $this->db->escape($code) . "'");
+
+		return $query->row;
+	}
+
 	public function getLanguages($data = array()) {
 		if ($data) {
 			$sql = "SELECT * FROM " . DB_PREFIX . "language";

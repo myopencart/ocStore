@@ -193,6 +193,14 @@ $language = new Language($languages[$code]['directory']);
 $language->load($languages[$code]['directory']);
 $registry->set('language', $language);
 
+//MultiLanguage Settings
+$langdata = $config->get('config_langdata');
+if (isset($langdata[$languages[$code]['language_id']])) {
+  foreach ($langdata[$languages[$code]['language_id']] as $key => $value) {
+    $config->set('config_' . $key, $value);
+  }
+}
+
 // Document
 $registry->set('document', new Document());
 
