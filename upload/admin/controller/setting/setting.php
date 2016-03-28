@@ -12,7 +12,7 @@ class ControllerSettingSetting extends Controller {
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-      $language_info = $this->model_localisation_language->getLanguageById($this->request->post['config_language']);
+      $language_info = $this->model_localisation_language->getLanguageByCode($this->request->post['config_language']);
       $front_language_id = $language_info['language_id'];
 
       $this->request->post['config_meta_title'] = $this->request->post['config_langdata'][$front_language_id]['meta_title'];

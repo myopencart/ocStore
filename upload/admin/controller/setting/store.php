@@ -21,7 +21,7 @@ class ControllerSettingStore extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
       $this->load->model('localisation/language');
-      $language_info = $this->model_localisation_language->getLanguageById($this->request->post['config_language']);
+      $language_info = $this->model_localisation_language->getLanguageByCode($this->request->post['config_language']);
       $front_language_id = $language_info['language_id'];
 
       $this->request->post['config_meta_title'] = $this->request->post['config_langdata'][$front_language_id]['meta_title'];
@@ -54,7 +54,7 @@ class ControllerSettingStore extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
       $this->load->model('localisation/language');
-      $language_info = $this->model_localisation_language->getLanguageById($this->request->post['config_language']);
+      $language_info = $this->model_localisation_language->getLanguageByCode($this->request->post['config_language']);
       $front_language_id = $language_info['language_id'];
 
       $this->request->post['config_meta_title'] = $this->request->post['config_langdata'][$front_language_id]['meta_title'];
