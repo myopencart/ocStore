@@ -38,8 +38,19 @@
                 <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
               </div>
               <div class="form-group">
-                <label class="control-label" for="input-model"><?php echo $entry_model; ?></label>
-                <input type="text" name="filter_model" value="<?php echo $filter_model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+                <label class="control-label" for="input-status"><?php echo $column_category; ?></label>
+                <select name="filter_category" id="input-status" class="form-control">
+                  <option value="*"></option>
+                  <?php foreach ($categories as $category) { ?>
+                  <?php if ($category['product_count'] >= 1) { ?>
+                  <?php if ($category['category_id']==$filter_category) { ?>
+                  <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                  <?php } else { ?>
+                  <option value="<?php echo $category['category_id']; ?>">&nbsp;&nbsp;<?php echo $category['name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</option> 
+                  <?php } ?>
+                  <?php } ?>
+                  <?php } ?>
+                </select>
               </div>
             </div>
             <div class="col-sm-4">
@@ -70,19 +81,8 @@
                 </select>
               </div>
               <div class="form-group">
-                <label class="control-label" for="input-status"><?php echo $column_category; ?></label>
-                <select name="filter_category" id="input-status" class="form-control">
-                  <option value="*"></option>
-                  <?php foreach ($categories as $category) { ?>
-                  <?php if ($category['product_count'] >= 1) { ?>
-                  <?php if ($category['category_id']==$filter_category) { ?>
-                  <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</option>
-                  <?php } else { ?>
-                  <option value="<?php echo $category['category_id']; ?>">&nbsp;&nbsp;<?php echo $category['name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;</option> 
-                  <?php } ?>
-                  <?php } ?>
-                  <?php } ?>
-                </select>
+                <label class="control-label" for="input-model"><?php echo $entry_model; ?></label>
+                <input type="text" name="filter_model" value="<?php echo $filter_model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
               </div>
               <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
             </div>
