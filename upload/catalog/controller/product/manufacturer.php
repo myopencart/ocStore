@@ -33,11 +33,7 @@ class ControllerProductManufacturer extends Controller {
 		$results = $this->model_catalog_manufacturer->getManufacturers();
 
 		foreach ($results as $result) {
-			if ($result['meta_h1']) {
-				$name = $result['meta_h1'];
-			} else {
-				$name = $result['name'];
-			}
+			$name = $result['name'];
 
 			if (is_numeric(utf8_substr($name, 0, 1))) {
 				$key = '0 - 9';
