@@ -40,3 +40,6 @@ ocStore - это онлайн магазин, который основан на
 - [OpenCart форум] (https://opencartforum.com/)
 - [Документация] (http://docs.myopencart.com/)
 - [Facebook] (https://www.facebook.com/ocstore)
+- [Вконтакте] (http://vk.com/myopencartcom)
+- [Twitter] (https://twitter.com/myopencartcom)
+- [YouTube] (https://www.youtube.com/c/MyOpenCart)
