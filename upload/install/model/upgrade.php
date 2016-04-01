@@ -308,15 +308,42 @@ class ModelUpgrade extends Model {
 
 		// Update any additional sql thats required
 
+		//Manufacturer
+		$query = $this->db->query("show columns FROM `". DB_PREFIX . "manufacturer_description` where `Field` = 'name'");
+			if (!$query->num_rows) {
+				$this->db->query("ALTER TABLE `".DB_PREFIX . "manufacturer_description` ADD COLUMN `name` varchar(64) NOT NULL AFTER `language_id`");
+
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "manufacturer");
+
+				foreach ($query->rows as $manufacturer) {
+					$this->db->query("UPDATE `" . DB_PREFIX . "manufacturer_description` SET `name` = '" . $this->db->escape($manufacturer['name']) . "' WHERE `manufacturer_id` = '" . (int)$manufacturer['manufacturer_id'] . "'");
+				}
+			}
+
 		// Settings
 		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE `store_id` = '0' ORDER BY `store_id` ASC");
 
+		$config_langdata = array();
+		$langdata_keys = array('config_meta_title', 'config_meta_description', 'config_meta_keyword', 'config_name', 'config_owner', 'config_address', 'config_open', 'config_comment');
 		foreach ($query->rows as $setting) {
 			if (!$setting['serialized']) {
 				$settings[$setting['key']] = $setting['value'];
+				if (in_array($setting['key'], $langdata_keys)) {
+					$config_langdata[str_replace('config_', '', $setting['key'])] = $setting['value'];
+				}
 			} else {
 				$settings[$setting['key']] = json_decode($setting['value'], true);
 			}
+		}
+		
+		if (!isset($settings['config_langdata']) && count($config_langdata)) {
+			$language_query = $this->db->query("SELECT `language_id` FROM `" . DB_PREFIX . "language`");
+
+			foreach ($language_query->rows as $language) {
+				$settings['config_langdata'][(int)$language['language_id']] = $config_langdata;
+			}
+
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `value` = '" . $this->db->escape(json_encode($settings['config_langdata'])) . "', `key` = 'config_langdata', `code` = 'config', `store_id` = 0, `serialized` = 1");
 		}
 
 		// Set defaults for new voucher min/max fields if not set
