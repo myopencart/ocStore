@@ -1,6 +1,7 @@
 <?php
 // Version
-define('VERSION', '2.1.0.2.1');
+define('VERSION', '2.1.0.2.1'); /* Fix version 02.04.2016 */
+
 
 // Configuration
 if (is_file('config.php')) {
