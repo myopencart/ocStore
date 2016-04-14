@@ -91,7 +91,7 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'information/information';
 			} elseif(isset($this->cache_data['queries'][$route_])) {
 					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
-					$this->response->redirect($this->cache_data['queries'][$route_]);
+					$this->response->redirect($this->cache_data['queries'][$route_], 301);
 			} else {
 				if (isset($queries[$parts[0]])) {
 					$this->request->get['route'] = $queries[$parts[0]];
@@ -166,32 +166,32 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		$queries = array();
-		if(!in_array($route, array('product/search'))) {
-			foreach($data as $key => $value) {
-				switch($key) {
-					case 'product_id':
-					case 'manufacturer_id':
-					case 'category_id':
-					case 'information_id':
-					case 'order_id':
-						$queries[] = $key . '=' . $value;
-						unset($data[$key]);
-						$postfix = 1;
-						break;
 
-					case 'path':
-						$categories = explode('_', $value);
-						foreach($categories as $category) {
-							$queries[] = 'category_id=' . $category;
-						}
-						unset($data[$key]);
-						break;
+		foreach ($data as $key => $value) {
+			switch ($key) {
+				case 'product_id':
+				case 'manufacturer_id':
+				case 'category_id':
+				case 'information_id':
+				case 'order_id':
+					$queries[] = $key . '=' . $value;
+					unset($data[$key]);
+					$postfix = 1;
+					break;
 
-					default:
-						break;
-				}
+				case 'path':
+					$categories = explode('_', $value);
+					foreach ($categories as $category) {
+						$queries[] = 'category_id=' . $category;
+					}
+					unset($data[$key]);
+					break;
+
+				default:
+					break;
 			}
 		}
+
 
 		if(empty($queries)) {
 			$queries[] = $route;
@@ -299,11 +299,6 @@ class ControllerCommonSeoPro extends Controller {
 		if (isset($this->request->get['route']) && $this->request->get['route'] == 'error/not_found') {
 			return;
 		}
-		if (ltrim($this->request->server['REQUEST_URI'], '/') =='sitemap.xml') {
-			$this->request->get['route'] = 'feed/google_sitemap';
-			return;
-		}
-
 		if(empty($this->request->get['route'])) {
 			$this->request->get['route'] = 'common/home';
 		}
@@ -325,7 +320,7 @@ class ControllerCommonSeoPro extends Controller {
 		if (rawurldecode($url) != rawurldecode($seo)) {
 			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 
-			$this->response->redirect($seo);
+			$this->response->redirect($seo, 301);
 		}
 	}
 
