@@ -20,6 +20,20 @@ class ControllerCommonFileManager extends Controller {
 			$filter_name = null;
 		}
 
+		// Save current directory
+		if (!isset($this->request->get['directory'])) {
+			if (!isset($this->request->get['parent'])) { //New call Filemanager
+				$this->request->get['directory'] = isset($this->request->cookie['file_manager']['directory']) ? $this->request->cookie['file_manager']['directory'] : null;
+				$this->request->get['page'] = isset($this->request->cookie['file_manager']['page']) ? $this->request->cookie['file_manager']['page'] : null;
+			} else { // Trying to go back to the root directory, delete cookies
+				setcookie('file_manager[directory]', '', time() - 3600, '/', $this->request->server['HTTP_HOST']);
+				setcookie('file_manager[page]', '', time() - 3600, '/', $this->request->server['HTTP_HOST']);
+			}
+		} else {
+			setcookie('file_manager[directory]', $this->request->get['directory'], time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
+			setcookie('file_manager[page]', isset($this->request->get['page']) ? $this->request->get['page'] : 1, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
+		}
+
 		// Make sure we have the correct directory
 		if (isset($this->request->get['directory'])) {
 			$directory = rtrim(DIR_IMAGE . 'catalog/' . str_replace(array('../', '..\\', '..'), '', $this->request->get['directory']), '/');
@@ -154,7 +168,7 @@ class ControllerCommonFileManager extends Controller {
 		}
 
 		// Parent
-		$url = '';
+		$url = '&parent=parent';
 
 		if (isset($this->request->get['directory'])) {
 			$pos = strrpos($this->request->get['directory'], '/');
