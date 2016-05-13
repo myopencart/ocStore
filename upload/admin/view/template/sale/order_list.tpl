@@ -77,7 +77,7 @@
             </div>
           </div>
         </div>
-        <form method="post" enctype="multipart/form-data" target="_blank" id="form-order">
+        <form method="post" action="" enctype="multipart/form-data" target="_blank" id="form-order">
           <div class="table-responsive">
             <table class="table table-bordered table-hover">
               <thead>
@@ -93,7 +93,7 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_customer; ?>"><?php echo $column_customer; ?></a>
                     <?php } ?></td>
-                  <td class="text-left"><?php if ($sort == 'status') { ?>
+                  <td class="text-left"><?php if ($sort == 'order_status') { ?>
                     <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a>
@@ -128,11 +128,11 @@
                     <input type="hidden" name="shipping_code[]" value="<?php echo $order['shipping_code']; ?>" /></td>
                   <td class="text-right"><?php echo $order['order_id']; ?></td>
                   <td class="text-left"><?php echo $order['customer']; ?></td>
-                  <td class="text-left"><?php echo $order['status']; ?></td>
+                  <td class="text-left"><?php echo $order['order_status']; ?></td>
                   <td class="text-right"><?php echo $order['total']; ?></td>
                   <td class="text-left"><?php echo $order['date_added']; ?></td>
                   <td class="text-left"><?php echo $order['date_modified']; ?></td>
-                  <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a> <a href="<?php echo $order['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" id="button-edit" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                  <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a> <a href="<?php echo $order['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                     <button type="button" value="<?php echo $order['order_id']; ?>" id="button-delete<?php echo $order['order_id']; ?>" data-loading-text="<?php echo $text_loading; ?>" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
                 </tr>
                 <?php } ?>
@@ -237,36 +237,9 @@ $('input[name^=\'selected\']').on('change', function() {
 
 $('input[name^=\'selected\']:first').trigger('change');
 
-// Login to the API
-var token = '';
-
-$.ajax({
-	url: '<?php echo $store; ?>index.php?route=api/login',
-	type: 'post',
-	data: 'key=<?php echo $api_key; ?>',
-	dataType: 'json',
-	crossDomain: true,
-	success: function(json) {
-        $('.alert').remove();
-
-        if (json['error']) {
-    		if (json['error']['key']) {
-    			$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['key'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-    		}
-
-        if (json['error']['ip']) {
-    			$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['ip'] + ' <button type="button" id="button-ip-add" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i> <?php echo $button_ip_add; ?></button></div>');
-    			$('#button-edit').attr('disabled', 'disabled');
-    		}
-        }
-
-		if (json['token']) {
-			token = json['token'];
-		}
-	},
-	error: function(xhr, ajaxOptions, thrownError) {
-		alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	}
+// IE and Edge fix!
+$('#button-shipping, #button-invoice').on('click', function(e) {
+	$('#form-order').attr('action', this.getAttribute('formAction'));
 });
 
 $(document).delegate('#button-ip-add', 'click', function() {
@@ -290,7 +263,7 @@ $(document).delegate('#button-ip-add', 'click', function() {
 
 			if (json['success']) {
 				$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-        $('#button-edit').removeAttr('disabled');
+				$(node).parents("tr").remove();
 			}
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
@@ -299,12 +272,43 @@ $(document).delegate('#button-ip-add', 'click', function() {
 	});
 });
 
+// Login to the API
+var token = '';
+
+$.ajax({
+	url: '<?php echo $store_url; ?>index.php?route=api/login',
+	type: 'post',
+	data: 'key=<?php echo $api_key; ?>',
+	dataType: 'json',
+	crossDomain: true,
+	success: function(json) {
+        $('.alert').remove();
+
+        if (json['error']) {
+    		if (json['error']['key']) {
+    			$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['key'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+    		}
+
+            if (json['error']['ip']) {
+    			$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['ip'] + ' <button type="button" id="button-ip-add" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-danger btn-xs pull-right"><i class="fa fa-plus"></i> <?php echo $button_ip_add; ?></button></div>');
+    		}
+        }
+
+		if (json['token']) {
+			token = json['token'];
+		}
+	},
+	error: function(xhr, ajaxOptions, thrownError) {
+		alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+	}
+});
+
 $('button[id^=\'button-delete\']').on('click', function(e) {
 	if (confirm('<?php echo $text_confirm; ?>')) {
 		var node = this;
 
 		$.ajax({
-			url: '<?php echo $store; ?>index.php?route=api/order/delete&token=' + token + '&order_id=' + $(node).val(),
+			url: '<?php echo $store_url; ?>index.php?route=api/order/delete&token=' + token + '&order_id=' + $(node).val(),
 			dataType: 'json',
 			crossDomain: true,
 			beforeSend: function() {
@@ -322,7 +326,7 @@ $('button[id^=\'button-delete\']').on('click', function(e) {
 
 				if (json['success']) {
 					$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-					
+
 					location.reload();
 				}
 			},

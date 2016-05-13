@@ -4,7 +4,7 @@ class ModelOpenbayEtsyOrder extends Model {
 		$this->load->model('checkout/order');
 		$this->load->model('localisation/currency');
 
-		$this->language->load('openbay/etsy_order');
+		$this->load->language('openbay/etsy_order');
 
 		if (!empty($orders)) {
 			foreach ($orders as $order) {
@@ -252,7 +252,6 @@ class ModelOpenbayEtsyOrder extends Model {
 		}
 
 		$this->updateOrderStatus($order_id, $this->config->get('etsy_order_status_new'));
-		$this->event->trigger('post.order.history.add', $order_id);
 
 		return $order_id;
 	}

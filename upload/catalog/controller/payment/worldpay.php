@@ -27,7 +27,7 @@ class ControllerPaymentWorldpay extends Controller {
 
 		$data['worldpay_client_key'] = $this->config->get('worldpay_client_key');
 
-		$data['form_submit'] = $this->url->link('payment/worldpay/send', '', 'SSL');
+		$data['form_submit'] = $this->url->link('payment/worldpay/send', '', true);
 
 		if ($this->config->get('worldpay_card') == '1' && $this->customer->isLogged()) {
 			$data['worldpay_card'] = true;
@@ -47,11 +47,7 @@ class ControllerPaymentWorldpay extends Controller {
 			$data['recurring_products'] = true;
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/worldpay.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/payment/worldpay.tpl', $data);
-		} else {
-			return $this->load->view('default/template/payment/worldpay.tpl', $data);
-		}
+		return $this->load->view('payment/worldpay', $data);
 	}
 
 	public function send() {
@@ -85,7 +81,7 @@ class ControllerPaymentWorldpay extends Controller {
 		$order = array(
 			"token" => $this->request->post['token'],
 			"orderType" => $order_type,
-			"amount" => (int)($order_info['total'] * 100),
+			"amount" => round($this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false)*100),
 			"currencyCode" => $order_info['currency_code'],
 			"name" => $order_info['firstname'] . ' ' . $order_info['lastname'],
 			"orderDescription" => $order_info['store_name'] . ' - ' . date('Y-m-d H:i:s'),
@@ -129,11 +125,11 @@ class ControllerPaymentWorldpay extends Controller {
 				$this->model_payment_worldpay->recurringPayment($item, $this->session->data['order_id'] . rand(), $this->request->post['token']);
 			}
 
-			$this->response->redirect($this->url->link('checkout/success', '', 'SSL'));
+			$this->response->redirect($this->url->link('checkout/success', '', true));
 		} else {
 
 			$this->session->data['error'] = $this->language->get('error_process_order');
-			$this->response->redirect($this->url->link('checkout/checkout', '', 'SSL'));
+			$this->response->redirect($this->url->link('checkout/checkout', '', true));
 		}
 	}
 
@@ -160,7 +156,7 @@ class ControllerPaymentWorldpay extends Controller {
 	}
 
 	public function webhook() {
-		if (isset($this->request->get['token']) && $this->request->get['token'] == $this->config->get('worldpay_secret_token')) {
+		if (isset($this->request->get['token']) && hash_equals($this->config->get('worldpay_secret_token'), $this->request->get['token'])) {
 			$this->load->model('payment/worldpay');
 			$message = json_decode(file_get_contents('php://input'), true);
 

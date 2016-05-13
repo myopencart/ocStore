@@ -63,11 +63,7 @@ class ControllerPaymentBluePayRedirect extends Controller {
 			$data['existing_cards'] = $cards;
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/bluepay_redirect.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/payment/bluepay_redirect.tpl', $data);
-		} else {
-			return $this->load->view('default/template/payment/bluepay_redirect.tpl', $data);
-		}
+		return $this->load->view('payment/bluepay_redirect', $data);
 	}
 
 	public function send() {
@@ -100,9 +96,9 @@ class ControllerPaymentBluePayRedirect extends Controller {
 		$post_data["ORDER_ID"] = $this->session->data['order_id'];
 		$post_data['ZIPCODE'] = substr($order_info['payment_postcode'], 0, 10);
 
-		$post_data['APPROVED_URL'] = $this->url->link('payment/bluepay_redirect/callback', '', 'SSL');
-		$post_data['DECLINED_URL'] = $this->url->link('payment/bluepay_redirect/callback', '', 'SSL');
-		$post_data['MISSING_URL'] = $this->url->link('payment/bluepay_redirect/callback', '', 'SSL');
+		$post_data['APPROVED_URL'] = $this->url->link('payment/bluepay_redirect/callback', '', true);
+		$post_data['DECLINED_URL'] = $this->url->link('payment/bluepay_redirect/callback', '', true);
+		$post_data['MISSING_URL'] = $this->url->link('payment/bluepay_redirect/callback', '', true);
 
 		if (isset($this->request->server["REMOTE_ADDR"])) {
 			$post_data["REMOTE_IP"] = $this->request->server["REMOTE_ADDR"];
@@ -117,15 +113,15 @@ class ControllerPaymentBluePayRedirect extends Controller {
 		if ($response_data['Result'] == 'APPROVED') {
 			$bluepay_redirect_order_id = $this->model_payment_bluepay_redirect->addOrder($order_info, $response_data);
 
-			if ($this->config->get('bluepay_hosted_transaction') == 'SALE') {
-				$this->model_payment_globalpay->addTransaction($bluepay_redirect_order_id, 'payment', $order_info);
+			if ($this->config->get('bluepay_redirect_transaction') == 'SALE') {
+				$this->model_payment_bluepay_redirect->addTransaction($bluepay_redirect_order_id, 'payment', $order_info);
 			} else {
-				$this->model_payment_globalpay->addTransaction($bluepay_redirect_order_id, 'auth', $order_info);
+				$this->model_payment_bluepay_redirect->addTransaction($bluepay_redirect_order_id, 'auth', $order_info);
 			}
 
 			$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('bluepay_redirect_order_status_id'));
 
-			$json['redirect'] = $this->url->link('checkout/success', '', 'SSL');
+			$json['redirect'] = $this->url->link('checkout/success', '', true);
 		} else {
 			$json['error'] = $response_data['Result'] . ' : ' . $response_data['MESSAGE'];
 		}

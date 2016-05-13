@@ -3,7 +3,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->language->load('catalog/attribute_group');
+		$this->load->language('catalog/attribute_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -13,7 +13,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 	}
 
 	public function add() {
-		$this->language->load('catalog/attribute_group');
+		$this->load->language('catalog/attribute_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -45,7 +45,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 	}
 
 	public function edit() {
-		$this->language->load('catalog/attribute_group');
+		$this->load->language('catalog/attribute_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -77,7 +77,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 	}
 
 	public function delete() {
-		$this->language->load('catalog/attribute_group');
+		$this->load->language('catalog/attribute_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -256,7 +256,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/attribute_group_list.tpl', $data));
+		$this->response->setOutput($this->load->view('catalog/attribute_group_list', $data));
 	}
 
 	protected function getForm() {
@@ -344,7 +344,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/attribute_group_form.tpl', $data));
+		$this->response->setOutput($this->load->view('catalog/attribute_group_form', $data));
 	}
 
 	protected function validateForm() {

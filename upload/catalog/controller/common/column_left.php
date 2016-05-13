@@ -49,22 +49,26 @@ class ControllerCommonColumnLeft extends Controller {
 			$part = explode('.', $module['code']);
 
 			if (isset($part[0]) && $this->config->get($part[0] . '_status')) {
-				$data['modules'][] = $this->load->controller('module/' . $part[0]);
+				$module_data = $this->load->controller('module/' . $part[0]);
+
+				if ($module_data) {
+					$data['modules'][] = $module_data;
+				}
 			}
 
 			if (isset($part[1])) {
 				$setting_info = $this->model_extension_module->getModule($part[1]);
 
 				if ($setting_info && $setting_info['status']) {
-					$data['modules'][] = $this->load->controller('module/' . $part[0], $setting_info);
+					$module_data = $this->load->controller('module/' . $part[0], $setting_info);
+
+					if ($module_data) {
+						$data['modules'][] = $module_data;
+					}
 				}
 			}
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/column_left.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/common/column_left.tpl', $data);
-		} else {
-			return $this->load->view('default/template/common/column_left.tpl', $data);
-		}
+		return $this->load->view('common/column_left', $data);
 	}
 }
