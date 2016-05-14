@@ -110,7 +110,7 @@ class ControllerCommonMenu extends Controller {
 
 		/* octeam */
 		$data['text_octeam_toolset'] = $this->language->get('text_octeam_toolset');
-		$data['analytics'] = $this->url->link('extension/analytics', 'token=' . $this->session->data['token'], true)
+		$data['analytics'] = $this->url->link('extension/analytics', 'token=' . $this->session->data['token'], true);
 		$data['home'] = $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true);
 		$data['affiliate'] = $this->url->link('marketing/affiliate', 'token=' . $this->session->data['token'], true);
 		$data['api'] = $this->url->link('user/api', 'token=' . $this->session->data['token'], true);

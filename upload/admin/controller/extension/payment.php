@@ -145,16 +145,17 @@ class ControllerExtensionPayment extends Controller {
 						$link = '';
 					}
 
-				$data['extensions'][] = array(
-					'name'       => $this->language->get('heading_title'),
-					'link'       => $link,
-					'status'     => $this->config->get($extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
-					'sort_order' => $this->config->get($extension . '_sort_order'),
-					'install'   => $this->url->link('extension/payment/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
-					'uninstall' => $this->url->link('extension/payment/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
-					'installed' => in_array($extension, $extensions),
-					'edit'      => $this->url->link('payment/' . $extension, 'token=' . $this->session->data['token'], true)
-				);
+					$data['extensions'][] = array(
+						'name' => $this->language->get('heading_title'),
+						'link' => $link,
+						'status' => $this->config->get($extension . '_status') ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+						'sort_order' => $this->config->get($extension . '_sort_order'),
+						'install' => $this->url->link('extension/payment/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
+						'uninstall' => $this->url->link('extension/payment/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
+						'installed' => in_array($extension, $extensions),
+						'edit' => $this->url->link('payment/' . $extension, 'token=' . $this->session->data['token'], true)
+					);
+				}
 			}
 		}
 

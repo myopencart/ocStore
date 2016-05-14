@@ -3322,8 +3322,8 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (185, 0, 'config', 'config_layout_id', '4', 0),
 (186, 0, 'config', 'config_country_id', '176', 0),
 (187, 0, 'config', 'config_zone_id', '2761', 0),
-(188, 0, 'config', 'config_language', 'ru', 0),
-(189, 0, 'config', 'config_admin_language', 'ru', 0),
+(188, 0, 'config', 'config_language', 'ru-ru', 0),
+(189, 0, 'config', 'config_admin_language', 'ru-ru', 0),
 (190, 0, 'config', 'config_currency', 'RUB', 0),
 (191, 0, 'config', 'config_currency_auto', '1', 0),
 (192, 0, 'config', 'config_length_class_id', '1', 0),
@@ -3421,8 +3421,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (310, 0, 'theme_default', 'theme_default_image_location_height', '50', 0),
 (311, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
 (312, 0, 'theme_default', 'theme_default_directory', 'default', 0),
-(313, 0, 'theme_default', 'theme_default_status', '1', 0);
-
+(313, 0, 'theme_default', 'theme_default_status', '1', 0),
 (314, 0, 'config', 'config_mail_regexp', '/^[^\@]+@.*.[a-z]{2,15}$/i', 0),
 (315, 0, 'config', 'config_langdata', '{"1":{"meta_title":"Мой Магазин","meta_description":"Мой Магазин","meta_keyword":"","name":"Мой Магазин","owner":"Мое Имя","address":"Адрес","open":"с 10ч до 18ч\\r\\nобед с 14ч до 15ч\\r\\nвоскресенье - выходной","comment":""},"2":{"meta_title":"Your Store","meta_description":"My Store","meta_keyword":"","name":"Your Store","owner":"Your Name","address":"Address 1","open":"","comment":""}}', 1);
 

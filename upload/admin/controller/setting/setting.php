@@ -23,7 +23,7 @@ class ControllerSettingSetting extends Controller {
       $this->request->post['config_address'] = $this->request->post['config_langdata'][$front_language_id]['address'];
       $this->request->post['config_address'] = $this->request->post['config_langdata'][$front_language_id]['open'];
       $this->request->post['config_address'] = $this->request->post['config_langdata'][$front_language_id]['comment'];
-			$this->request->post['config_mail_regexp'] = trim($this->request->post['config_mail_regexp']);
+	  $this->request->post['config_mail_regexp'] = trim($this->request->post['config_mail_regexp']);
 
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
@@ -1353,22 +1353,6 @@ class ControllerSettingSetting extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		if (!$this->request->post['config_meta_title']) {
-			$this->error['meta_title'] = $this->language->get('error_meta_title');
-		}
-
-		if (!$this->request->post['config_name']) {
-			$this->error['name'] = $this->language->get('error_name');
-		}
-
-		if ((utf8_strlen($this->request->post['config_owner']) < 3) || (utf8_strlen($this->request->post['config_owner']) > 64)) {
-			$this->error['owner'] = $this->language->get('error_owner');
-		}
-
-		if ((utf8_strlen($this->request->post['config_address']) < 3) || (utf8_strlen($this->request->post['config_address']) > 256)) {
-			$this->error['address'] = $this->language->get('error_address');
-		}
-
 		if ((utf8_strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
@@ -1429,14 +1413,6 @@ class ControllerSettingSetting extends Controller {
 			if (preg_match('/\.\.[\/\\\]?/', $this->request->post['config_error_filename'])) {
 				$this->error['error_filename'] = $this->language->get('error_malformed_filename');
 			}
-		}
-
-		if (!$this->request->post['config_product_limit']) {
-			$this->error['product_limit'] = $this->language->get('error_limit');
-		}
-
-		if (!$this->request->post['config_product_description_length']) {
-			$this->error['product_description_length'] = $this->language->get('error_limit');
 		}
 
 		if (!$this->request->post['config_limit_admin']) {

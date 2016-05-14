@@ -158,7 +158,7 @@ class ControllerProductManufacturer extends Controller {
 			}
 
 			if ($manufacturer_info['image']) {
-				$data['thumb'] = $this->model_tool_image->resize($manufacturer_info['image'], $this->config->get('config_image_category_width'), $this->config->get('config_image_category_height'));
+				$data['thumb'] = $this->model_tool_image->resize($manufacturer_info['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
 				$this->document->setOgImage($data['thumb']);
 			} else {
 				$data['thumb'] = '';
