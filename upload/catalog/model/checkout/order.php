@@ -363,7 +363,7 @@ class ModelCheckoutOrder extends Model {
 				$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 
 				foreach ($order_total_query->rows as $order_total) {
-					if (is_file(DIR_APPLICATION . 'model/total/' . $order_info['code'] . '.php')) {
+					if (is_file(DIR_APPLICATION . 'model/total/' . $order_total['code'] . '.php')) {
 						$this->load->model('total/' . $order_total['code']);
 					}
 
