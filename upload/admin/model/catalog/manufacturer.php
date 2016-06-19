@@ -98,7 +98,9 @@ class ModelCatalogManufacturer extends Model {
 	public function getManufacturerDescriptions($manufacturer_id) {
 		$manufacturer_description_data = array();
 
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "manufacturer_description WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
+		$query = $this->db->query("SELECT md.*, c.name FROM " . DB_PREFIX . "manufacturer_description md 
+		INNER JOIN " . DB_PREFIX . "manufacturer c ON (md.manufacturer_id = c.manufacturer_id)
+		WHERE md.manufacturer_id = '" . (int)$manufacturer_id . "'");
 
 		foreach ($query->rows as $result) {
 			$manufacturer_description_data[$result['language_id']] = array(
@@ -117,7 +119,7 @@ class ModelCatalogManufacturer extends Model {
 	public function getManufacturers($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "manufacturer";
 
-		$sql = "SELECT c.manufacturer_id, md.name, c.sort_order FROM " . DB_PREFIX . "manufacturer c LEFT JOIN " . DB_PREFIX . "manufacturer_description md ON (c.manufacturer_id = md.manufacturer_id) WHERE md.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT c.manufacturer_id, с.name, c.sort_order FROM " . DB_PREFIX . "manufacturer c LEFT JOIN " . DB_PREFIX . "manufacturer_description md ON (c.manufacturer_id = md.manufacturer_id) WHERE md.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
 
 
