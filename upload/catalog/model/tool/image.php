@@ -47,7 +47,7 @@ class ModelToolImage extends Model {
 		$image_new = str_replace(' ', '%20', $image_new);  // fix bug when attach image on email (gmail.com). it is automatic changing space " " to +
 
 
-		$imagepath_parts = explode('/', $new_image);
+		$imagepath_parts = explode('/', $image_new);
 		$new_image = implode('/', array_map('rawurlencode', $imagepath_parts));
 
 		if ($this->request->server['HTTPS']) {
