@@ -8193,7 +8193,7 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (4232, 44, 'Qinghai', 'QH', 1),
 (4233, 100, 'Papua Barat', 'PB', 1),
 (4234, 100, 'Sulawesi Barat', 'SR', 1),
-(4235, 100, 'Kepulauan Riau', 'KR', 1);
+(4235, 100, 'Kepulauan Riau', 'KR', 1),
 (4236, 220, 'KE', 'Херсон', 1);
 
 -- --------------------------------------------------------
