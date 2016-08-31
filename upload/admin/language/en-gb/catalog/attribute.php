@@ -20,7 +20,7 @@ $_['entry_attribute_group'] = 'Attribute Group';
 $_['entry_sort_order']      = 'Sort Order';
 
 // Error
-$_['error_permission']      = 'Warning: You do not have permission to modify attributes!';
-$_['error_attribute_group'] = 'Attribute Group Required!';
-$_['error_name']            = 'Attribute Name must be between 3 and 64 characters!';
-$_['error_product']         = 'Warning: This attribute cannot be deleted as it is currently assigned to %s products!';
+$_['error_permission']       = 'Warning: You do not have permission to modify attributes!';
+$_['error_attribute_group']  = 'Attribute Group Required!';
+$_['error_name']             = 'Attribute Name must be between 3 and 64 characters!';
+$_['error_product']          = 'Warning: This attribute cannot be deleted as it is currently assigned to %s products!';

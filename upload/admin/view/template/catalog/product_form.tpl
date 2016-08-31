@@ -962,16 +962,75 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+  <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
   <script type="text/javascript"><!--
-<?php foreach ($languages as $language) { ?>
-<?php if ($ckeditor) { ?>
-ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
-<?php } else { ?>
-$('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300, lang:'<?php echo $lang; ?>'});
-<?php } ?>
-<?php } ?>
-//--></script>
-  <script type="text/javascript"><!--
+        <?php foreach ($languages as $language) { ?>
+        <?php if ($ckeditor) { ?>
+                ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
+            <?php } else { ?>
+                $('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300, lang:'<?php echo $lang; ?>'});
+            <?php } ?>
+        <?php } ?>
+        //--></script>
+   <script type="text/javascript"><!--
+// Manufacturer
+$('input[name=\'manufacturer\']').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				json.unshift({
+					manufacturer_id: 0,
+					name: '<?php echo $text_none; ?>'
+				});
+
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item['manufacturer_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		$('input[name=\'manufacturer\']').val(item['label']);
+		$('input[name=\'manufacturer_id\']').val(item['value']);
+	}
+});
+
+// Category
+$('input[name=\'category\']').autocomplete({
+	'source': function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item['category_id']
+					}
+				}));
+			}
+		});
+	},
+	'select': function(item) {
+		$('input[name=\'category\']').val('');
+
+		$('#product-category' + item['value']).remove();
+
+		$('#product-category').append('<div id="product-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_category[]" value="' + item['value'] + '" /></div>');
+	}
+});
+
+$('#product-category').delegate('.fa-minus-circle', 'click', function() {
+	$(this).parent().remove();
+});
+
 // Filter
 $('input[name=\'filter\']').autocomplete({
 	'source': function(request, response) {
@@ -1223,7 +1282,7 @@ $('input[name=\'option\']').autocomplete({
 
 		$('#tab-option .tab-content').append(html);
 
-		$('#option > li:last-child').before('<li><a href="#tab-option' + option_row + '" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$(\'a[href=\\\'#tab-option' + option_row + '\\\']\').parent().remove(); $(\'#tab-option' + option_row + '\').remove(); $(\'#option a:first\').tab(\'show\')"></i> ' + item['label'] + '</li>');
+		$('#option > li:last-child').before('<li><a href="#tab-option' + option_row + '" data-toggle="tab"><i class="fa fa-minus-circle" onclick=" $(\'#option a:first\').tab(\'show\');$(\'a[href=\\\'#tab-option' + option_row + '\\\']\').parent().remove(); $(\'#tab-option' + option_row + '\').remove();"></i>' + item['label'] + '</li>');
 
 		$('#option a[href=\'#tab-option' + option_row + '\']').tab('show');
 
@@ -1281,7 +1340,7 @@ function addOptionValue(option_row) {
 	html += '</tr>';
 
 	$('#option-value' + option_row + ' tbody').append(html);
-        $('[rel=tooltip]').tooltip();
+	$('[rel=tooltip]').tooltip();
 
 	option_value_row++;
 }
@@ -1358,10 +1417,7 @@ function addImage() {
 var recurring_row = <?php echo $recurring_row; ?>;
 
 function addRecurring() {
-	recurring_row++;
-
-	html  = '';
-	html += '<tr id="recurring-row' + recurring_row + '">';
+	html  = '<tr id="recurring-row' + recurring_row + '">';
 	html += '  <td class="left">';
 	html += '    <select name="product_recurring[' + recurring_row + '][recurring_id]" class="form-control">>';
 	<?php foreach ($recurrings as $recurring) { ?>
@@ -1382,6 +1438,8 @@ function addRecurring() {
 	html += '</tr>';
 
 	$('#tab-recurring table tbody').append(html);
+
+	recurring_row++;
 }
 //--></script>
   <script type="text/javascript"><!--

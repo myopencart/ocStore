@@ -277,6 +277,12 @@ class ControllerCatalogProduct extends Controller {
 			$filter_status = null;
 		}
 
+		if (isset($this->request->get['filter_image'])) {
+			$filter_image = $this->request->get['filter_image'];
+		} else {
+			$filter_image = null;
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -320,9 +326,13 @@ class ControllerCatalogProduct extends Controller {
     if (isset($this->request->get['filter_category'])) {
       $url .= '&filter_category=' . $this->request->get['filter_category'];
     }
-            
+
 		if (isset($this->request->get['filter_status'])) {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
+		}
+
+		if (isset($this->request->get['filter_image'])) {
+			$url .= '&filter_image=' . $this->request->get['filter_image'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -360,8 +370,9 @@ class ControllerCatalogProduct extends Controller {
 			'filter_model'	  => $filter_model,
 			'filter_price'	  => $filter_price,
 			'filter_quantity' => $filter_quantity,
-      'filter_category' => $filter_category,
+            'filter_category' => $filter_category,
 			'filter_status'   => $filter_status,
+			'filter_image'    => $filter_image,
 			'sort'            => $sort,
 			'order'           => $order,
 			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
@@ -386,7 +397,7 @@ class ControllerCatalogProduct extends Controller {
 		foreach ($results as $result) {
 
       $category =  $this->model_catalog_product->getProductCategories($result['product_id']);
-            
+
 			if (is_file(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], 40, 40);
 			} else {
@@ -414,7 +425,7 @@ class ControllerCatalogProduct extends Controller {
 				'category'   => $category,
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
-				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'edit'       => $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, true)
 			);
 		}
@@ -429,7 +440,7 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['column_image'] = $this->language->get('column_image');
 		$data['column_name'] = $this->language->get('column_name');
-		$data['column_category'] = $this->language->get('column_category');		
+		$data['column_category'] = $this->language->get('column_category');
 		$data['column_model'] = $this->language->get('column_model');
 		$data['column_price'] = $this->language->get('column_price');
 		$data['column_quantity'] = $this->language->get('column_quantity');
@@ -441,6 +452,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_price'] = $this->language->get('entry_price');
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
 		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_image'] = $this->language->get('entry_image');
 
 		$data['button_copy'] = $this->language->get('button_copy');
 		$data['button_add'] = $this->language->get('button_add');
@@ -496,6 +508,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
+		if (isset($this->request->get['filter_image'])) {
+			$url .= '&filter_image=' . $this->request->get['filter_image'];
+		}
+
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
 		} else {
@@ -539,6 +555,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
+		if (isset($this->request->get['filter_image'])) {
+			$url .= '&filter_image=' . $this->request->get['filter_image'];
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
 		}
@@ -559,13 +579,12 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['filter_name'] = $filter_name;
 		$data['filter_model'] = $filter_model;
-
-    	    $data['filter_category'] = $filter_category;
-            
+        $data['filter_category'] = $filter_category;
 		$data['filter_price'] = $filter_price;
 		$data['filter_quantity'] = $filter_quantity;
 		$data['filter_category'] = $filter_category;
 		$data['filter_status'] = $filter_status;
+		$data['filter_image'] = $filter_image;
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
@@ -1075,7 +1094,7 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$this->load->model('catalog/manufacturer');
-		
+
     $data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 
 		if (isset($this->request->post['manufacturer_id'])) {

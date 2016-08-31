@@ -149,7 +149,7 @@
                   <input type="text" name="keyword" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
                   <?php if ($error_keyword) { ?>
                   <div class="text-danger"><?php echo $error_keyword; ?></div>
-                  <?php } ?>                
+                  <?php } ?>
                 </div>
               </div>
               <div class="form-group">
@@ -246,13 +246,16 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript"><!--
-<?php foreach ($languages as $language) { ?>
-$('#input-description<?php echo $language['language_id']; ?>').summernote({
-	height: 300
-});
-<?php } ?>
-//--></script> 
+    <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+    <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+    <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+        <script type="text/javascript"><!--
+          <?php foreach ($languages as $language) { ?>
+    $('#input-description<?php echo $language['language_id']; ?>').summernote({
+        height: 300
+    });
+    <?php } ?>
+    //--></script>
   <script type="text/javascript"><!--
 $('input[name=\'path\']').autocomplete({
 	'source': function(request, response) {
