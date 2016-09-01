@@ -4,7 +4,7 @@ $_['heading_title'] 						    = 'QIWI Wallet';
 $_['text_edit'] 							    = 'Edit QIWI Wallet';
 
 // Text
-$_['text_payment'] 						        = 'Payment';
+$_['text_extension']	 = 'Extensions';
 $_['text_success'] 						        = 'Settings module updated';
 $_['text_qiwi_rest'] 						    = '<a href="http://ishop.qiwi.com" onclick="return !window.open(this.href)"> <img src = "view/image/payment/qiwi_rest.jpg" alt="QIWI Purse" title="QIWI Wallet" style="border: 1px solid #EEEEEE;" /> </a> ';
 

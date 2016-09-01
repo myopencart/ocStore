@@ -20,6 +20,7 @@ $_['text_datetime']         = 'Дата и Время';
 $_['text_time']             = 'Время';
 $_['text_account']          = 'Аккаунт';
 $_['text_address']          = 'Адрес';
+$_['text_regex']           = 'Regex';
 
 // Column
 $_['column_name']           = 'Название';
@@ -33,6 +34,7 @@ $_['entry_name']            = 'Название';
 $_['entry_location']        = 'Где показывать';
 $_['entry_type']            = 'Тип поля';
 $_['entry_value']           = 'Значение';
+$_['entry_validation']     = 'Validation';
 $_['entry_custom_value']    = 'Значение для этого поля';
 $_['entry_customer_group']  = 'Группа покупателей';
 $_['entry_required']        = 'Обязательно';
@@ -40,6 +42,7 @@ $_['entry_status']          = 'Статус';
 $_['entry_sort_order']      = 'Порядок сортировки';
 
 // Help
+$_['help_regex']           = 'Use regex. E.g: /[a-zA-Z0-9_-]/';
 $_['help_sort_order']       = 'Используйте - (минус) что бы просто скрыть поле из вида.';
 
 // Error

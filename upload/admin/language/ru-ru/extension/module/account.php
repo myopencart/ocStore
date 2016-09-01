@@ -2,7 +2,8 @@
 // Heading
 $_['heading_title']    = 'Аккаунт';
 
-$_['text_module']      = 'Модули';
+// Text
+$_['text_extension']   = 'Extensions';
 $_['text_success']     = 'Настройки модуля обновлены!';
 $_['text_edit']        = 'Редактирование модуля';
 

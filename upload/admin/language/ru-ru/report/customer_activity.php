@@ -9,6 +9,7 @@ $_['text_address_edit']   = '<a href="customer_id=%d">%s</a> обновил св
 $_['text_address_delete'] = '<a href="customer_id=%d">%s</a> удалил один из своих адресов.';
 $_['text_edit']           = '<a href="customer_id=%d">%s</a> обновил свои реквизиты.';
 $_['text_forgotten']      = '<a href="customer_id=%d">%s</a> запросили новый пароль.';
+$_['text_reset']          = '<a href="customer_id=%d">%s</a> reset their account password.';
 $_['text_login']          = '<a href="customer_id=%d">%s</a> авторизовался.';
 $_['text_password']       = '<a href="customer_id=%d">%s</a> обновил пароль от учетной записи.';
 $_['text_register']       = '<a href="customer_id=%d">%s</a> зарегистрировался.';

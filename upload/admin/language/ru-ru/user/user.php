@@ -28,9 +28,11 @@ $_['entry_status']     	= 'Статус';
 // Error
 $_['error_permission'] 	= 'У Вас нет прав на изменения списка пользователей!';
 $_['error_account']    	= 'Вы не можете удалить собственную учетную запись!';
-$_['error_exists']     	= 'Это имя уже используется!';
+$_['error_exists_username']     	= 'Это имя уже используется!';
 $_['error_username']   	= 'Логин должно быть от 3 до 20 символов!';
 $_['error_password']   	= 'Пароль должен быть от 4 до 20 символов!';
 $_['error_confirm']    	= 'Пароль и подтверждение пароля не совпадают!';
 $_['error_firstname']  	= 'Имя пользователя должно быть от 1 до 32 символов!';
 $_['error_lastname']   	= 'Фамилия пользователя должна быть от 1 до 32 символов!';
+$_['error_email']           = 'E-Mail Address does not appear to be valid!';
+$_['error_exists_email']    = 'Warning: E-Mail Address is already registered!';

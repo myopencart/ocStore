@@ -3,7 +3,7 @@
 $_['heading_title']    = 'Слайдшоу';
 
 // Text
-$_['text_module']      = 'Модули';
+$_['text_extension']   = 'Extensions';
 $_['text_success']     = 'Настройки модуля успешно обновлены!';
 $_['text_edit']        = 'Редактирование модуля Слайдшоу';
 

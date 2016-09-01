@@ -7,6 +7,9 @@ $_['text_success']          	= 'Список схем успешно обнов�
 $_['text_list']          		= 'Список схем';
 $_['text_add']          		= 'Добавление схемы';
 $_['text_edit']          		= 'Редактирование схемы';
+$_['text_remove']         = 'Remove';
+$_['text_route']          = 'Choose the store and routes to be used with this layout';
+$_['text_module']         = 'Choose the position of the modules';
 $_['text_default']          	= 'По умолчанию';
 $_['text_content_top']          = 'Вверху страницы';
 $_['text_content_bottom']       = 'Внизу страницы';
@@ -22,8 +25,6 @@ $_['entry_name']          		= 'Название схемы:';
 $_['entry_store']          		= 'Магазин:';
 $_['entry_route']          		= 'Путь:';
 $_['entry_module']          	= 'Модуль:';
-$_['entry_position']          	= 'Расположение:';
-$_['entry_sort_order']          = 'Порядок сортировки:';
 
 // Error
 $_['error_permission']          = 'У Вас нет прав для изменения схем!';

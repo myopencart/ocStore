@@ -21,8 +21,8 @@ $_['text_error']            = 'Запрошенный заказ не найде
 
 // Column
 $_['column_order_id']       = '№ Заказа';
-$_['column_product']        = 'Кол-во товара';
 $_['column_customer']       = 'Покупатель';
+$_['column_product']        = 'Кол-во товара';
 $_['column_name']           = 'Наименование товара';
 $_['column_model']          = 'Модель';
 $_['column_quantity']       = 'Кол-во';

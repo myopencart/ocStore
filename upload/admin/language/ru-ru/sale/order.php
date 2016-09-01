@@ -3,6 +3,7 @@
 $_['heading_title']                           = 'Заказы';
 
 // Text
+$_['text_success']               = 'Success: You have modified orders!';
 $_['text_list']                               = 'Список Заказов';
 $_['text_add']                                = 'Добавление Заказа';
 $_['text_edit']                               = 'Редактирование Заказа';

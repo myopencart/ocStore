@@ -3,7 +3,7 @@
 $_['heading_title'] = 'Unisender mailing lists';
 
 // Text
-$_['text_module'] = 'Modules';
+$_['text_extension']   = 'Extensions';
 $_['text_success'] = 'Success: You have modified Unisender module!';
 $_['text_edit'] = 'Edit Unisender Module';
 $_['text_unisender'] = '<a onclick="window.open(\'http://www.unisender.com/?a=opencart\');"><img src="view/image/payment/unisender.png" alt="Unisender" title="Unisender" style="border: 1px solid #EEEEEE;" /></a>';

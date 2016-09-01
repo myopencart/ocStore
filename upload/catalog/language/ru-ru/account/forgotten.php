@@ -11,6 +11,11 @@ $_['text_success']    = 'Новый пароль был выслан на Ваш
 
 // Entry
 $_['entry_email']     = 'E-Mail:';
+$_['entry_password']  = 'New Password';
+$_['entry_confirm']   = 'Confirm';
 
 // Error
 $_['error_email']     = 'E-Mail адрес не найден, проверьте и попробуйте ещё раз!';
+$_['error_approved']  = 'Warning: Your account requires approval before you can login.';
+$_['error_password']  = 'Password must be between 4 and 20 characters!';
+$_['error_confirm']   = 'Password and password confirmation do not match!';

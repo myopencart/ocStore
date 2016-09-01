@@ -3,7 +3,7 @@
 $_['heading_title']					= 'Оплата при доставке';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_extension']	 = 'Extensions';
 $_['text_success']		 			= 'Настройки модуля успешно обновлены!';
 $_['text_edit']          			= 'Редактирование модуля';
 

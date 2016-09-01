@@ -3,7 +3,7 @@
 $_['heading_title']    = 'Оформление заказа через PayPal Express';
 
 // Text
-$_['text_module']      = 'Modules';
+$_['text_extension']   = 'Extensions';
 $_['text_success']     = 'Success: You have modified PayPal Express Checkout Button module!';
 $_['text_edit']        = 'Редактирование модуля';
 

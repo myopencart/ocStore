@@ -62,6 +62,7 @@ $_['entry_length']          	= 'Единица длины:';
 $_['entry_width']          		= 'Ширина';
 $_['entry_height']          	= 'Высота';
 $_['entry_image']          		= 'Изображение товара:';
+$_['entry_additional_image'] = 'Additional Images';
 $_['entry_customer_group']      = 'Группа покупателей:';
 $_['entry_date_start']          = 'Дата начала:';
 $_['entry_date_end']          	= 'Дата окончания:';

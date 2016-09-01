@@ -11,7 +11,6 @@ $_['text_choose']          		= 'Выбор';
 $_['text_select']          		= 'Список';
 $_['text_radio']          		= 'Переключатель';
 $_['text_checkbox']          	= 'Флажок';
-$_['text_image']          		= 'Изображение';
 $_['text_input']          		= 'Поле ввода';
 $_['text_text']          		= 'Текст';
 $_['text_textarea']          	= 'Текстовая область';
