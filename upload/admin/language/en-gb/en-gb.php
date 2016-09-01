@@ -1,7 +1,6 @@
 <?php
 // Locale
 $_['code']                          = 'en';
-$_['lang']                          = 'en-GB';
 $_['direction']                     = 'ltr';
 $_['date_format_short']             = 'd/m/Y';
 $_['date_format_long']              = 'l dS F Y';

@@ -24,9 +24,9 @@ $_['entry_image']            = 'Image';
 $_['entry_sort_order']       = 'Sort Order';
 $_['entry_type']             = 'Type';
 $_['entry_description']      = 'Description';
-$_['entry_meta_title'] 	     = 'Meta Tag Title';
-$_['entry_meta_h1'] 	     = 'HTML Tag H1';
-$_['entry_meta_keyword'] 	 = 'Meta Tag Keywords';
+$_['entry_meta_title']       = 'Meta Tag Title';
+$_['entry_meta_h1']          = 'HTML Tag H1';
+$_['entry_meta_keyword']     = 'Meta Tag Keywords';
 $_['entry_meta_description'] = 'Meta Tag Description';
 
 // Help

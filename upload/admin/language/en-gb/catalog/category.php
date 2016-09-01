@@ -17,9 +17,9 @@ $_['column_action']          = 'Action';
 // Entry
 $_['entry_name']             = 'Category Name';
 $_['entry_description']      = 'Description';
-$_['entry_meta_title'] 	     = 'HTML Tag Title';
-$_['entry_meta_h1'] 	     = 'HTML Tag H1';
-$_['entry_meta_keyword'] 	 = 'Meta Tag Keywords';
+$_['entry_meta_title']       = 'HTML Tag Title';
+$_['entry_meta_h1']          = 'HTML Tag H1';
+$_['entry_meta_keyword']     = 'Meta Tag Keywords';
 $_['entry_meta_description'] = 'Meta Tag Description';
 $_['entry_keyword']          = 'SEO URL';
 $_['entry_parent']           = 'Parent';

@@ -16,7 +16,7 @@ $_['entry_height']     = 'Height';
 $_['entry_status']     = 'Status';
 
 // Help
-$_['help_product']     = '(Автодополнение)';
+$_['help_product']     = '(Autocomplete)';
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify featured module!';

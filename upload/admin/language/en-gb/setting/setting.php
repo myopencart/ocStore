@@ -32,8 +32,8 @@ $_['text_general']                 = 'General';
 $_['text_security']                = 'Security';
 $_['text_upload']                  = 'Uploads';
 $_['text_error']                   = 'Error Handling';
-$_['text_summer_note']                 = 'Summer Note';
-$_['text_ckeditor']                    = 'CKEditor';
+$_['text_summer_note']             = 'Summer Note';
+$_['text_ckeditor']                = 'CKEditor';
 // Entry
 $_['entry_meta_title']             = 'Meta Title';
 $_['entry_meta_description']       = 'Meta Tag Description';
