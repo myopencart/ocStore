@@ -111,8 +111,8 @@ class ControllerExtensionExtensionPayment extends Controller {
                 $extension = basename($file, '.php');
 
                 $this->load->language('extension/payment/' . $extension);
-                if (!in_array('payment/' . $extension, $hiden)) {
-                    $this->load->language('payment/' . $extension);
+                if (!in_array('extension/payment/' . $extension, $hiden)) {
+                    $this->load->language('extension/payment/' . $extension);
 
                     $text_link = $this->language->get('text_' . $extension);
 
