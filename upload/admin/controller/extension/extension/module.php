@@ -155,35 +155,36 @@ class ControllerExtensionExtensionModule extends Controller {
 		$data['hiden'] = false;
 
 		if ($files) {
-			foreach ($files as $file) {
-				$extension = basename($file, '.php');
+            foreach ($files as $file) {
+                $extension = basename($file, '.php');
 
-				if (!in_array('module/' . $extension, $hiden)) {
-					$this->load->language('module/' . $extension);
+                if (!in_array('extension/module/' . $extension, $hiden)) {
+                    $this->load->language('extension/module/' . $extension);
 
-				$module_data = array();
+                    $module_data = array();
 
-				$modules = $this->model_extension_module->getModulesByCode($extension);
+                    $modules = $this->model_extension_module->getModulesByCode($extension);
 
-				foreach ($modules as $module) {
-					$module_data[] = array(
-						'module_id' => $module['module_id'],
-						'name'      => $module['name'],
-						'edit'      => $this->url->link('extension/module/' . $extension, 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], true),
-						'delete'    => $this->url->link('extension/extension/module/delete', 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], true)
-					);
-				}
+                    foreach ($modules as $module) {
+                        $module_data[] = array(
+                            'module_id' => $module['module_id'],
+                            'name' => $module['name'],
+                            'edit' => $this->url->link('extension/module/' . $extension, 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], true),
+                            'delete' => $this->url->link('extension/extension/module/delete', 'token=' . $this->session->data['token'] . '&module_id=' . $module['module_id'], true)
+                        );
+                    }
 
-				$data['extensions'][] = array(
-					'name'      => $this->language->get('heading_title'),
-					'module'    => $module_data,
-					'install'   => $this->url->link('extension/extension/module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
-					'uninstall' => $this->url->link('extension/extension/module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
-					'installed' => in_array($extension, $extensions),
-					'edit'      => $this->url->link('extension/module/' . $extension, 'token=' . $this->session->data['token'], true)
-				);
-			}
-		}
+                    $data['extensions'][] = array(
+                        'name' => $this->language->get('heading_title'),
+                        'module' => $module_data,
+                        'install' => $this->url->link('extension/extension/module/install', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
+                        'uninstall' => $this->url->link('extension/extension/module/uninstall', 'token=' . $this->session->data['token'] . '&extension=' . $extension, true),
+                        'installed' => in_array($extension, $extensions),
+                        'edit' => $this->url->link('extension/module/' . $extension, 'token=' . $this->session->data['token'], true)
+                    );
+                }
+            }
+        }
 
 		$sort_order = array();
 
@@ -194,6 +195,7 @@ class ControllerExtensionExtensionModule extends Controller {
 		array_multisort($sort_order, SORT_ASC, $data['extensions']);
 
 		$this->response->setOutput($this->load->view('extension/extension/module', $data));
+
 	}
 
 	protected function validate() {
