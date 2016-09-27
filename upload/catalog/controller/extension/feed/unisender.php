@@ -10,7 +10,7 @@
 *
 * Version of this module: http://opencartforum.ru/files/file/1258-unisender-eksport-kontakov/
 */
-class ControllerModuleUnisender extends Controller {
+class ControllerExtensionFeedUnisender extends Controller {
 
 	public function update() {
 		$newsletter = $this->customer->getNewsletter();
@@ -30,13 +30,15 @@ class ControllerModuleUnisender extends Controller {
 		return $this->send($field_names, $dat);
 	}
 
-	public function subscribe_customer($customer_id) {
+	public function subscribe_customer() {
+		$customer_id = $this->session->data['customer_id'];
 		$this->load->model('account/customer');
 		$data = $this->model_account_customer->getCustomer($customer_id);
 		$this->subscribe($data);
 	}
 	
-	public function subscribe_guest($order_id) {
+	public function subscribe_guest() {
+		$order_id = $this->session->data['order_id'];
 		$this->load->model('checkout/order');
 		$data = $this->model_checkout_order->getOrder($order_id);
 		if ($data['customer_id'] > 0) return;

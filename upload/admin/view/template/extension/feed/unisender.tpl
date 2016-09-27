@@ -29,10 +29,12 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="unisender_key"><span data-toggle="tooltip" title="<?php echo $entry_unisender_key_help; ?>"><?php echo $entry_unisender_key; ?></span></label>
             <div class="col-sm-10">
-				<input id="unisender_key" type="text" name="unisender_key" value="<?php echo $unisender_key; ?>" required/> <a href="http://www.unisender.com/?a=opencart" target="_blank"><?php echo $text_get_key; ?></a>
+				<input id="unisender_key" type="text" class="form-control" name="unisender_key" value="<?php echo $unisender_key; ?>" required/> <a href="http://www.unisender.com/?a=opencart" target="_blank"><?php echo $text_get_key; ?></a>
+				<div id="key_td" style="width:100%;">
               <?php if (isset($_error['unisender_key'])) { ?>
-              <span class="error alert alert-danger" id="key_error"><?php echo $_error['unisender_key']; ?></span>
+              <span class="error alert alert-danger col-sm-12" id="key_error"><?php echo $_error['unisender_key']; ?></span>
               <?php } ?>			
+			    </div>
             </div>
           </div>
           
@@ -98,12 +100,12 @@ if (is_array($unisender_subscribtion)) {
 		if ($(this).val()) {
 			$('#subscribtion_selector').attr('readonly', 'readonly');
 			$('#unisender_key').attr('readonly', 'readonly');
-			$.getJSON('index.php?route=module/unisender/subscribtions&key='+$(this).val()+'&token=<?=$token;?>', function(data) {
+			$.getJSON('index.php?route=extension/feed/unisender/subscribtions&key='+$(this).val()+'&token=<?=$token;?>', function(data) {
 				$('#subscribtion_selector').removeAttr('readonly');
 				$('#unisender_key').removeAttr('readonly');
 				if (data.error) {
 					var err_text = (err_codes[data.code] ? err_codes[data.code] : 'Ошибка взаимодействия с Unisender API');
-					$('#key_td').append('<span class="error alert alert-danger" id="key_error">'+err_text+'</span>');
+					$('#key_td').html('<span class="error alert alert-danger col-sm-12" id="key_error">'+err_text+'</span>');
 				}
 				else {
 					$.each(data.result, function() {
@@ -114,7 +116,7 @@ if (is_array($unisender_subscribtion)) {
 			})
 		}
 	})
-	$('input[name="unisender_key"]').trigger('change');
+	$('#unisender_key').trigger('change');
 })
 //--></script> 
 <?php echo $footer; ?>

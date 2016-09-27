@@ -1,11 +1,11 @@
 <?php
 /**
- * Модуль интеграции с Unisender http://www.unisender.com/?a=opencart,
+ * Модуль интеграции с Unisender http://www.unisender.com/?a=opencart
  * 
  * Александр Топорков
  * toporchillo@gmail.com
  */
-class ControllerModuleUnisender extends Controller {
+class ControllerExtensionFeedUnisender extends Controller {
 	private $error = array();
 	private $form;
 	private $tdata = array();
@@ -20,7 +20,7 @@ class ControllerModuleUnisender extends Controller {
 	}
 	
   	public function index() {
-		$this->load->language('module/unisender');
+		$this->load->language('extension/feed/unisender');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -32,7 +32,7 @@ class ControllerModuleUnisender extends Controller {
 				
 				$this->session->data['success'] = $this->language->get('text_success');
 	
-				$this->response->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
+				$this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=feed', 'SSL'));
     		}
     	}
 
@@ -54,9 +54,9 @@ class ControllerModuleUnisender extends Controller {
 		}
 		$this->tdata['_error'] = $this->error;
 		
-    	$this->tdata['action'] = $this->url->link('module/unisender', 'token=' . $this->session->data['token'], 'SSL');
+    	$this->tdata['action'] = $this->url->link('extension/feed/unisender', 'token=' . $this->session->data['token'], 'SSL');
 		
-		$this->tdata['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
+		$this->tdata['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=feed', 'SSL');
 
 		$defaults = array(
 			'unisender_key' => '',
@@ -78,7 +78,7 @@ class ControllerModuleUnisender extends Controller {
 			}
 		}
 
-		$template = 'module/unisender.tpl';
+		$template = 'extension/feed/unisender.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -92,9 +92,9 @@ class ControllerModuleUnisender extends Controller {
 	
 	public function install() {
 		$this->load->model('extension/event');
-		$this->model_extension_event->addEvent('unisender_subscribe', 'post.customer.add', 'module/unisender/subscribe_customer');
-		$this->model_extension_event->addEvent('unisender_update', 'post.customer.edit.newsletter', 'module/unisender/update');
-		$this->model_extension_event->addEvent('unisender_guest', 'post.order.add', 'module/unisender/subscribe_guest');
+		$this->model_extension_event->addEvent('unisender_subscribe', 'catalog/controller/account/success/index/before', 'extension/feed/unisender/subscribe_customer');
+		$this->model_extension_event->addEvent('unisender_update', 'catalog/model/account/customer/editNewsletter/after', 'extension/feed/unisender/update');
+		$this->model_extension_event->addEvent('unisender_guest', 'catalog/controller/checkout/success/before', 'extension/feed/unisender/subscribe_guest');
 	}
 
 	public function uninstall() {
@@ -105,7 +105,7 @@ class ControllerModuleUnisender extends Controller {
 	}
 
   	private function validate($post_data) {
-		if (!$this->user->hasPermission('modify', 'module/unisender')) {
+		if (!$this->user->hasPermission('modify', 'extension/feed/unisender')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 		if (!$post_data['unisender_key']) {
@@ -131,13 +131,13 @@ class ControllerModuleUnisender extends Controller {
 
    		$breadcrumbs[] = array(
        		'text'      => $this->language->get('text_module'),
-			'href'      => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'),
+			'href'      => $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=feed', 'SSL'),
       		'separator' => ' :: '
    		);
 
    		$breadcrumbs[] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('module/unisender', 'token=' . $this->session->data['token'], 'SSL'),      		
+			'href'      => $this->url->link('extension/feed/unisender', 'token=' . $this->session->data['token'], 'SSL'),      		
       		'separator' => ' :: '
    		);
    		

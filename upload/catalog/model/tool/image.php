@@ -44,16 +44,13 @@ class ModelToolImage extends Model {
 			}
 		}
 
-		$image_new = str_replace(' ', '%20', $image_new);  // fix bug when attach image on email (gmail.com). it is automatic changing space " " to +
-
-
 		$imagepath_parts = explode('/', $image_new);
 		$new_image = implode('/', array_map('rawurlencode', $imagepath_parts));
 
 		if ($this->request->server['HTTPS']) {
-			return $this->config->get('config_ssl') . 'image/' . $image_new;
+			return $this->config->get('config_ssl') . 'image/' . $new_image;
 		} else {
-			return $this->config->get('config_url') . 'image/' . $image_new;
+			return $this->config->get('config_url') . 'image/' . $new_image;
 		}
 	}
 }
