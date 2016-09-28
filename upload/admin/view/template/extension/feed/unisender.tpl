@@ -29,7 +29,8 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="unisender_key"><span data-toggle="tooltip" title="<?php echo $entry_unisender_key_help; ?>"><?php echo $entry_unisender_key; ?></span></label>
             <div class="col-sm-10">
-				<input id="unisender_key" type="text" class="form-control" name="unisender_key" value="<?php echo $unisender_key; ?>" required/> <a href="http://www.unisender.com/?a=opencart" target="_blank"><?php echo $text_get_key; ?></a>
+				<input id="unisender_key" type="text" class="form-control" name="unisender_key" value="<?php echo $unisender_key; ?>" required/>
+				<a href="http://www.unisender.com/?a=opencart" target="_blank"><?php echo $text_get_key; ?></a>
 				<div id="key_td" style="width:100%;">
               <?php if (isset($_error['unisender_key'])) { ?>
               <span class="error alert alert-danger col-sm-12" id="key_error"><?php echo $_error['unisender_key']; ?></span>
@@ -67,6 +68,7 @@
                 <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
                 <?php } ?>
               </select>
+			  <a href="<?php echo $export; ?>"><?php echo $text_export; ?></a>
             </div>
           </div>
       </form>

@@ -42,6 +42,7 @@ class ControllerExtensionFeedUnisender extends Controller {
       	$this->tdata['button_cancel'] = $this->language->get('button_cancel');
 		$this->tdata['text_enabled'] = $this->language->get('text_enabled');
 		$this->tdata['text_disabled'] = $this->language->get('text_disabled');
+		$this->tdata['text_export'] = $this->language->get('text_export');
 		$this->tdata['token'] = $this->session->data['token'];
 		$this->tdata['text_edit'] = $this->language->get('text_edit');
 		$this->tdata['text_get_key'] = $this->language->get('text_get_key');
@@ -55,6 +56,8 @@ class ControllerExtensionFeedUnisender extends Controller {
 		$this->tdata['_error'] = $this->error;
 		
     	$this->tdata['action'] = $this->url->link('extension/feed/unisender', 'token=' . $this->session->data['token'], 'SSL');
+		
+    	$this->tdata['export'] = $this->url->link('extension/feed/unisender/export', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->tdata['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=feed', 'SSL');
 
@@ -89,6 +92,18 @@ class ControllerExtensionFeedUnisender extends Controller {
 		$this->tdata['footer'] = $this->load->controller('common/footer');
 		$this->response->setOutput($this->load->view($template, $this->tdata));				
   	}
+
+	public function export() {
+		header( 'Content-Type: text/csv' );
+		header( 'Content-Disposition: attachment;filename=unisender_contacts.csv');
+		$fp = fopen('php://output', 'w');
+		
+		$query = $this->db->query("SELECT CONCAT_WS(' ', firstname, lastname), email, telephone FROM `" . DB_PREFIX . "order` ORDER BY order_id");
+		foreach ($query->rows as $row) {
+			fputcsv($fp, $row);
+		}
+		fclose($fp);
+	}
 	
 	public function install() {
 		$this->load->model('extension/event');

@@ -585,5 +585,17 @@ $(document).ready(function() {
 		}
 	});
 });
+
+$(document).ready(function() {
+	var hash = window.location.hash;
+	if (hash) {
+		var hashpart = hash.split('#');
+		var  vals = hashpart[1].split('-');
+		for (i=0; i<vals.length; i++) {
+			$('div.options').find('select option[value="'+vals[i]+'"]').attr('selected', true).trigger('select');
+			$('div.options').find('input[type="radio"][value="'+vals[i]+'"]').attr('checked', true).trigger('click');
+		}
+	}
+})
 //--></script>
 <?php echo $footer; ?>

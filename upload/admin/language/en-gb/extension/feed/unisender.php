@@ -9,6 +9,7 @@ $_['text_edit'] = 'Edit Unisender Module';
 $_['text_unisender'] = '<a onclick="window.open(\'http://www.unisender.com/?a=opencart\');"><img src="view/image/payment/unisender.png" alt="Unisender" title="Unisender" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_get_key'] = 'Get key';
 $_['text_unselect'] = 'Unselect All';
+$_['text_export'] = 'Export current contacts as CSV';
 
 // Entry
 $_['entry_unisender_key']	= 'Unisender API key:';

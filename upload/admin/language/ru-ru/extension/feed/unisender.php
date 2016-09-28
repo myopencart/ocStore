@@ -9,6 +9,7 @@ $_['text_edit'] = 'Модуль рассылок Unisender';
 $_['text_unisender'] = '<a onclick="window.open(\'http://www.unisender.com/?a=opencart\');"><img src="view/image/payment/unisender.png" alt="Unisender" title="Unisender" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_get_key'] = 'Зарегистрироваться и получить ключ';
 $_['text_unselect'] = 'снять выделение';
+$_['text_export'] = 'Экспортировать существующие контакты в CSV';
 
 // Entry
 $_['entry_unisender_key']	= 'Ключ Unisender API:';
