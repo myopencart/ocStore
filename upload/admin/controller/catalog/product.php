@@ -1122,14 +1122,6 @@ class ControllerCatalogProduct extends Controller {
 		// Categories
 		$this->load->model('catalog/category');
 
-		if (isset($this->request->post['product_category'])) {
-			$categories = $this->request->post['product_category'];
-		} elseif (isset($this->request->get['product_id'])) {
-			$categories = $this->model_catalog_product->getProductCategories($this->request->get['product_id']);
-		} else {
-			$categories = array();
-		}
-
 		$filter_data = array(
 			'sort'        => 'name',
 			'order'       => 'ASC'
