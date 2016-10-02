@@ -2,6 +2,9 @@
 // Heading
 $_['heading_title']         = 'Order History';
 
+// Button
+$_['button_shoputils_payeer_onpay']  = 'Onpay Online via Payeer';
+
 // Text
 $_['text_account']          = 'Account';
 $_['text_order']            = 'Order Information';

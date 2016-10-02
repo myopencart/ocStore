@@ -46,6 +46,8 @@ class ControllerAccountOrder extends Controller {
 		$data['column_date_added'] = $this->language->get('column_date_added');
 
 		$data['button_view'] = $this->language->get('button_view');
+        $data['button_shoputils_payeer_onpay'] = $this->language->get('button_shoputils_payeer_onpay');
+        $this->load->model('extension/payment/shoputils_payeer');
 		$data['button_continue'] = $this->language->get('button_continue');
 
 		if (isset($this->request->get['page'])) {
@@ -73,6 +75,7 @@ class ControllerAccountOrder extends Controller {
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'products'   => ($product_total + $voucher_total),
 				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
+                'shoputils_payeer_onpay'  => $this->model_extension_payment_shoputils_payeer->checkLaterpay($result['order_id']) ? $this->url->link('extension/payment/shoputils_payeer/laterpay', sprintf('order_id=%s&order_tt=%s', $result['order_id'], $result['total'], 'SSL')) : '',
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 			);
 		}

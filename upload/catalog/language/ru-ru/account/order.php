@@ -2,6 +2,9 @@
 // Heading 
 $_['heading_title']         = 'История заказов';
 
+// Button
+$_['button_shoputils_payeer_onpay']  = 'Оплатить онлайн';
+
 // Text
 $_['text_account']          = 'Личный Кабинет';
 $_['text_order']            = 'Заказ';

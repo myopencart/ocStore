@@ -38,7 +38,7 @@
               <td class="text-left"><?php echo $order['status']; ?></td>
               <td class="text-right"><?php echo $order['total']; ?></td>
               <td class="text-left"><?php echo $order['date_added']; ?></td>
-              <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+              <td class="text-right"><a href="<?php if (!empty($order['shoputils_payeer_onpay'])) { ?><a rel="nofollow" onclick="location='<?php echo $order['shoputils_payeer_onpay']; ?>'" data-toggle="tooltip" title="<?php echo $button_shoputils_payeer_onpay; ?>" class="btn btn-info"><i class="fa fa-usd"></i></a>&nbsp;&nbsp;<?php } ?><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="<?php echo $button_view; ?>" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
             </tr>
             <?php } ?>
           </tbody>
