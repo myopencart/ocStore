@@ -3,7 +3,7 @@
 $_['heading_title'] = 'Рассылки Unisender';
 
 // Text
-$_['text_extension']   = 'Extensions';
+$_['text_extension']   = 'Расширения';
 $_['text_success'] = 'Настройки модуля обновлены!';
 $_['text_edit'] = 'Модуль рассылок Unisender';
 $_['text_unisender'] = '<a onclick="window.open(\'http://www.unisender.com/?a=opencart\');"><img src="view/image/payment/unisender.png" alt="Unisender" title="Unisender" style="border: 1px solid #EEEEEE;" /></a>';

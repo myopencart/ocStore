@@ -10,7 +10,7 @@ $_['text_order_recurring_id']    = 'Recurring ID:';
 $_['text_date_added'] 			 = 'Создан:';
 $_['text_status'] 				 = 'Статус:';
 $_['text_payment_method'] 		 = 'Метод оплаты:';
-$_['text_order_id']              = 'Order ID:';
+$_['text_order_id']              = 'Заказ ID:';
 $_['text_product'] 				 = 'Товар:';
 $_['text_quantity'] 			 = 'Количество:';
 $_['text_description']           = 'Описание';
@@ -40,7 +40,7 @@ $_['text_transaction_expired'] 				= 'Истек';
 
 
 $_['text_empty'] 				 = 'У вас нет ни одного профиля с периодическим платежом';
-$_['text_error']                 = 'The recurring order you requested could not be found!';
+$_['text_error']                 = 'Платеж который вы запросили не существует!';
 
 
 

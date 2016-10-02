@@ -3,7 +3,7 @@
 $_['heading_title']    = 'Информация';
 
 // Text
-$_['text_extension']   = 'Extensions';
+$_['text_extension']   = 'Расширения';
 $_['text_success']     = 'Настройки модуля обновлены!';
 $_['text_edit']        = 'Редактирование модуля';
 

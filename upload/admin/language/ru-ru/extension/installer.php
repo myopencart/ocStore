@@ -3,7 +3,7 @@
 $_['heading_title']        		= 'Установщик дополнений OCMOD';
 
 // Text
-$_['text_upload']          = 'Upload your extensions';
+$_['text_upload']          		= 'Вы можете добавить свои дополнения';
 $_['text_success']          	= 'Дополнение успешно установлено!';
 $_['text_unzip']          		= 'Файлы распакованы!';
 $_['text_ftp']          		= 'Копирование файлов!';

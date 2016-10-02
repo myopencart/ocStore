@@ -6,20 +6,20 @@ $_['heading_title']          = 'Google Base';
 $_['text_feed']              = 'Каналы продвижения';
 $_['text_success']           = 'Настройки модуля обновлены!';
 $_['text_edit']              = 'Редактировать Google Base';
-$_['text_import']            = 'To download the latest Google category list by <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" class="alert-link">clicking here</a> and choose taxonomy with numeric IDs in Plain Text (.txt) file. Upload via the green import button.';
+$_['text_import']            = 'Чтобы загрузить последнюю версию списка категорий Google <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" class="alert-link">нажмите здесь</a> и выбрать таксономию с помощью цифровых идентификаторов в файле Plain Text (.txt). Загрузка с помощью зеленой кнопки.';
 
 // Column
 $_['column_google_category'] = 'Google Category';
-$_['column_category']        = 'Category';
-$_['column_action']          = 'Action';
+$_['column_category']        = 'Категория';
+$_['column_action']          = 'Действие';
 
 // Entry
 $_['entry_google_category']  = 'Google Category';
-$_['entry_category']         = 'Category';
+$_['entry_category']         = 'Категория';
 $_['entry_data_feed']        = 'URL канала:';
 $_['entry_status']           = 'Статус:';
 
 // Error
 $_['error_permission']       = 'У Вас нет прав для управления Google Base!';
-$_['error_upload']           = 'File could not be uploaded!';
-$_['error_filetype']         = 'Invalid file type!';
+$_['error_upload']           = 'Файл не может быть загружен!';
+$_['error_filetype']         = 'Неправильный тип файла';

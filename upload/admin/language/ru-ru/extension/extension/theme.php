@@ -1,15 +1,15 @@
 <?php
 // Heading
-$_['heading_title']    = 'Themes';
+$_['heading_title']    = 'Темы';
 
 // Text
-$_['text_success']     = 'Success: You have modified themes!';
-$_['text_list']        = 'Theme List';
+$_['text_success']     = 'Тема успешно изменена!';
+$_['text_list']        = 'Список тем';
 
 // Column
-$_['column_name']      = 'Theme Name';
-$_['column_status']    = 'Status';
-$_['column_action']    = 'Action';
+$_['column_name']      = 'Название темы';
+$_['column_status']    = 'Статус';
+$_['column_action']    = 'Действие';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify themes!';
+$_['error_permission'] = 'Внимание: У вас нет разрешения на изменение темы!';

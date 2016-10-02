@@ -21,13 +21,13 @@ $_['text_vkontakte_visit']        = 'Посетить страницу Вкон�
 $_['text_forum']    	 	      = 'Форум техподдержки';
 $_['text_forum_description']      = 'Получите помощь от других пользователей';
 $_['text_forum_visit']    	      = 'Посетить форум техподдержки';
-$_['text_commercial']             = 'Commercial support';
-$_['text_commercial_description'] = 'Development services from OpenCart partners';
-$_['text_commercial_visit']       = 'Visit our partner page';
-$_['text_price']   	              = 'Price';
-$_['text_view']                   = 'View details';
-$_['text_download']               = 'Download';
-$_['text_downloads']              = 'Downloads';
+$_['text_commercial']             = 'Коммерческая поддержка';
+$_['text_commercial_description'] = 'Услуги по развитию от партнеров OpenCart';
+$_['text_commercial_visit']       = 'Посетите нашу партнерку';
+$_['text_price']   	              = 'Цена';
+$_['text_view']                   = 'Подробнее...';
+$_['text_download']               = 'Скачать';
+$_['text_downloads']              = 'Загрузки';
 
 // Button
 $_['button_mail']                 = 'Подписаться';

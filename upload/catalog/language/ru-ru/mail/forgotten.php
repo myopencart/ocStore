@@ -3,4 +3,4 @@
 $_['text_subject']  = '%s - Новый пароль';
 $_['text_greeting'] = 'Новый пароль был запрошен с %s.';
 $_['text_password'] = 'Ваш новый пароль:';
-$_['text_ip']       = 'The IP used to make this request was: %s';
+$_['text_ip']       = 'Этот запрос был выполнен с IP: %s';
