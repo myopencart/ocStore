@@ -1,7 +1,13 @@
 <?php
-class ModelPaymentSberBankTransfer extends Model {
+/**
+ * Support:
+ * https://opencartforum.com/user/3463-shoputils/
+ * http://opencart.shoputils.ru/?route=information/contact
+ *
+*/
+class ModelExtensionPaymentSberBankTransfer extends Model {
     public function getMethod($address, $total) {
-        $this->load->language('payment/sberbank_transfer');
+        $this->load->language('extension/payment/sberbank_transfer');
 
         if (($this->config->get('sberbank_transfer_status')) && ($total) &&
             (!$this->config->get('sberbank_transfer_minimal_order') || ($total >= (float)$this->config->get('sberbank_transfer_minimal_order'))) &&

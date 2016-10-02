@@ -1,24 +1,20 @@
 <?php
-class ControllerPaymentQiwiRest extends Controller {
+class ControllerExtensionPaymentQiwiRest extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('payment/qiwi_rest');
+		$this->load->language('extension/payment/qiwi_rest');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('setting/setting');
 
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate())) {
-			$this->load->model('setting/setting');
-
-			$this->model_setting_setting->editSetting('qiwi_rest', $this->request->post);
-
-			$this->session->data['success'] = $this->language->get('text_success');
-
-			$this->response->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-
-		}
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+            $this->load->model('setting/setting');
+            $this->model_setting_setting->editSetting('qiwi_rest', $this->request->post);
+            $this->session->data['success'] = sprintf($this->language->get('text_success'), $this->language->get('heading_title'));
+            $this->response->redirect($this->makeUrl('extension/extension', 'type=payment'));
+        }
 
 		$data['qiwi_rest_version'] = '1.3 for OpenCart 2.x';	
 		$data['text_edit'] = $this->language->get('text_edit');
@@ -183,8 +179,8 @@ class ControllerPaymentQiwiRest extends Controller {
       		'separator' => ' :: '
    		);
 
-		$data['action'] = $this->url->link('payment/qiwi_rest', 'token=' . $this->session->data['token'], 'SSL');
-		$data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action']         = $this->makeUrl('extension/payment/qiwi_rest');
+        $data['cancel']         = $this->makeUrl('extension/extension', 'type=payment');
 
 		$this->load->model('localisation/currency');
 		$data['currencies'] = $this->model_localisation_currency->getCurrencies();

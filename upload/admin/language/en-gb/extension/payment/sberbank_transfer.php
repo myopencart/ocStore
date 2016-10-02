@@ -1,9 +1,15 @@
 <?php
+/**
+ * Support:
+ * https://opencartforum.com/user/3463-shoputils/
+ * http://opencart.shoputils.ru/?route=information/contact
+ *
+*/
 // Heading
 $_['heading_title']          = 'Receipt of Sberbank Russian Federation';
 
 // Text
-$_['text_extension']	 = 'Extensions';
+$_['text_payment']           = 'Payment';
 $_['text_success']           = 'Module settings "%s" are updated!';
 $_['text_sberbank_transfer'] = '<a style="cursor: pointer;" onclick="window.open(\'http://sberbank.ru\');"><img src="view/image/payment/sberbank_transfer.png" alt="Sberbank" title="Sberbank" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_title_default']     = 'Receipt of Sberbank Russian Federation';

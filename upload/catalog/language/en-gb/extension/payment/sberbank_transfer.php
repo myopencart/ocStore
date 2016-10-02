@@ -1,4 +1,10 @@
 <?php
+/**
+ * Support:
+ * https://opencartforum.com/user/3463-shoputils/
+ * http://opencart.shoputils.ru/?route=information/contact
+ *
+*/
 // Text
 $_['text_title']            = 'Receipt of Sberbank Russian Federation';
 $_['text_instruction']      = 'To print the receipt press the button &laquo;Print the receipt&raquo; (will be opened in new window).';

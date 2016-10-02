@@ -1,18 +1,24 @@
 <?php
-class ControllerPaymentSberBankTransfer extends Controller {
+/**
+ * Support:
+ * https://opencartforum.com/user/3463-shoputils/
+ * http://opencart.shoputils.ru/?route=information/contact
+ *
+*/
+class ControllerExtensionPaymentSberBankTransfer extends Controller {
 
     private static $valid_currencies = array('RUB', 'RUR');
     private $currency_code;
 
     public function __construct($registry) {
         parent::__construct($registry);
-        $this->load->language('payment/sberbank_transfer');
+        $this->load->language('extension/payment/sberbank_transfer');
     }
 
     public function index() {
         $this->getCurrencyCode();
         
-        $data['text_printpay']        = sprintf($this->language->get('text_printpay'), $this->url->link('payment/sberbank_transfer/printpay', '', 'SSL'));
+        $data['text_printpay']        = sprintf($this->language->get('text_printpay'), $this->url->link('extension/payment/sberbank_transfer/printpay', '', 'SSL'));
         $data['text_instruction']     = $this->language->get('text_instruction');
         $data['text_payment']         = $this->language->get('text_payment');
         $data['text_payment_comment'] = $this->language->get('text_payment_comment');
@@ -20,11 +26,7 @@ class ControllerPaymentSberBankTransfer extends Controller {
         $data['button_confirm']       = $this->config->get('sberbank_transfer_button_confirm_' . $this->config->get('config_language_id'));
         $data['continue']             = $this->url->link('checkout/success');
 
-        if (is_file(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/sberbank_transfer.tpl')) {
-            return $this->load->view($this->config->get('config_template') . '/template/payment/sberbank_transfer.tpl', $data);
-        } else {
-            return $this->load->view('default/template/payment/sberbank_transfer.tpl', $data);
-        }
+        return $this->load->view('extension/payment/sberbank_transfer', $data);
     }
 
     public function printpay() {
@@ -65,11 +67,7 @@ class ControllerPaymentSberBankTransfer extends Controller {
         $data['address']  = $order_info['payment_zone'] . ', ' . $order_info['payment_city'] . ', ' .$order_info['payment_address_1'] . ($order_info['payment_address_2'] ? ', ' . $order_info['payment_address_2'] : '');
         $data['postcode'] = $order_info['payment_postcode'];
 
-        if (is_file(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/sberbank_transfer_printpay.tpl')) {
-            $this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/payment/sberbank_transfer_printpay.tpl', $data));
-        } else {
-            $this->response->setOutput($this->load->view('default/template/payment/sberbank_transfer_printpay.tpl', $data));
-        }
+        $this->response->setOutput($this->load->view('extension/payment/sberbank_transfer_printpay.tpl', $data));
     }
 
     public function confirm() {
@@ -78,7 +76,7 @@ class ControllerPaymentSberBankTransfer extends Controller {
 
         if ($order_info) {
             $comment  = $this->language->get('text_instruction') . "\n\n";
-            $comment .= sprintf($this->language->get('text_printpay'), $this->url->link('payment/sberbank_transfer/printpay', 'order_id=' . $order_info['order_id'] . '&order_ttl=' . $order_info['total'] . '&order_tel=' . $order_info['telephone'], 'SSL')) . "\n\n";
+            $comment .= sprintf($this->language->get('text_printpay'), $this->url->link('extension/payment/sberbank_transfer/printpay', 'order_id=' . $order_info['order_id'] . '&order_ttl=' . $order_info['total'] . '&order_tel=' . $order_info['telephone'], 'SSL')) . "\n\n";
             $comment .= $this->language->get('text_payment_comment');
 
             $this->model_checkout_order->addOrderHistory($order_info['order_id'], $this->config->get('sberbank_transfer_order_status_id'), $comment, true);

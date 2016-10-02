@@ -1,4 +1,10 @@
 <?php
+/**
+ * Support:
+ * https://opencartforum.com/user/3463-shoputils/
+ * http://opencart.shoputils.ru/?route=information/contact
+ *
+*/
 // Text
 $_['text_title']            = 'Квитанция Сбербанка РФ';
 $_['text_instruction']      = 'Для печати квитанции нажмите на кнопку &laquo;Печать квитанции&raquo; (откроется в новом окне).';
