@@ -31,7 +31,7 @@
             <label class="col-sm-2 control-label"><?php echo $entry_bank; ?></label>
             <div class="col-sm-10">
               <?php foreach ($languages as $language) { ?>
-              <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+              <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
                 <input type="text" name="sberbank_transfer_bank_<?php echo $language['language_id']; ?>"
                      value="<?php echo !empty(${'sberbank_transfer_bank_' . $language['language_id']}) ? ${'sberbank_transfer_bank_' . $language['language_id']} : ''; ?>"
                      placeholder="<?php echo $entry_bank; ?>" id="input-sberbank_transfer_bank_<?php echo $language['language_id']; ?>" class="form-control" />
@@ -68,7 +68,7 @@
             <label class="col-sm-2 control-label"><?php echo $entry_bankuser; ?></label>
             <div class="col-sm-10">
               <?php foreach ($languages as $language) { ?>
-              <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+              <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
                 <input type="text" name="sberbank_transfer_bankuser_<?php echo $language['language_id']; ?>"
                      value="<?php echo !empty(${'sberbank_transfer_bankuser_' . $language['language_id']}) ? ${'sberbank_transfer_bankuser_' . $language['language_id']} : ''; ?>"
                      placeholder="<?php echo $entry_bankuser; ?>" id="input-sberbank_transfer_bankuser_<?php echo $language['language_id']; ?>" class="form-control" />
@@ -105,7 +105,7 @@
             <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_title; ?>"><?php echo $entry_title; ?></span></label>
             <div class="col-sm-10">
               <?php foreach ($languages as $language) { ?>
-              <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+              <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
                 <input type="text" name="sberbank_transfer_title_<?php echo $language['language_id']; ?>"
                      value="<?php echo !empty(${'sberbank_transfer_title_' . $language['language_id']})
                                     ? ${'sberbank_transfer_title_' . $language['language_id']} : $text_title_default; ?>"
@@ -121,7 +121,7 @@
             <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_button_confirm; ?>"><?php echo $entry_button_confirm; ?></span></label>
             <div class="col-sm-10">
               <?php foreach ($languages as $language) { ?>
-              <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+              <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
                 <input type="text" name="sberbank_transfer_button_confirm_<?php echo $language['language_id']; ?>"
                      value="<?php echo !empty(${'sberbank_transfer_button_confirm_' . $language['language_id']})
                                     ? ${'sberbank_transfer_button_confirm_' . $language['language_id']} : $text_button_confirm_default; ?>"

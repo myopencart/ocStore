@@ -11,8 +11,8 @@ $_['text_success']    = 'Новый пароль был выслан на Ваш
 
 // Entry
 $_['entry_email']     = 'E-Mail:';
-$_['entry_password']  = 'New Password';
-$_['entry_confirm']   = 'Confirm';
+$_['entry_password']  = 'Новый пароль';
+$_['entry_confirm']   = 'Подтвердить';
 
 // Error
 $_['error_email']     = 'E-Mail адрес не найден, проверьте и попробуйте ещё раз!';

@@ -14,4 +14,4 @@ $_['entry_email']     = 'E-Mail адрес:';
 
 // Error
 $_['error_email']     = 'Такой E-Mail адрес не найден, попробуйте снова!';
-$_['error_approved']  = 'Warning: Your account requires approval before you can login.';
+$_['error_approved']  = 'Ваша учетная запись должна быть одобрена администрацией магазина, только после этого вы сможете войти в Личный кабинет.';

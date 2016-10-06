@@ -7,7 +7,7 @@ $_['text_success']         = 'Список валют обновлен';
 $_['text_list']            = 'Список валют';
 $_['text_add']             = 'Добавление валюты';
 $_['text_edit']            = 'Редактирование валюты';
-$_['text_iso']             = 'You can find a full list of ISO currency codes and settings <a href="http://www.xe.com/iso4217.php" target="_blank">here</a>.';
+$_['text_iso']             = 'Вы можете найти полный список кодов валют и настроек ISO <a href="http://www.xe.com/currency/rub-russian-ruble" target="_blank">здесь</a>.';
 
 // Column
 $_['column_title']         = 'Название валюты';
@@ -26,7 +26,7 @@ $_['entry_decimal_place']  = 'Знаков после запятой';
 $_['entry_status']         = 'Статус';
 
 // Help
-$_['help_code']            = 'Убедитесь, что <a href="http://www.xe.com/iso4217.php" target="_blank">ISO код</a> указан согласно правилам.';
+$_['help_code']            = 'Убедитесь, что <a href="http://www.xe.com/currency/rub-russian-ruble" target="_blank">ISO код</a> указан согласно международным правилам.';
 $_['help_value']           = 'Установите на 1.00000 - если это валюта по умолчанию.';
 
 // Error

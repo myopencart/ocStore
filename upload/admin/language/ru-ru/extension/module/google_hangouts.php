@@ -3,7 +3,7 @@
 $_['heading_title']    = 'Чат Google Hangouts';
 
 // Text
-$_['text_extension']   = 'Extensions';
+$_['text_extension']   = 'Расширения';
 $_['text_success']     = 'Чат от Google Hangouts успешно установлен!';
 $_['text_edit']        = 'Редактирование модуля';
 

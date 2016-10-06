@@ -1,17 +1,23 @@
 <?php
-class ControllerPaymentSberBankTransfer extends Controller {
+/**
+ * Support:
+ * https://opencartforum.com/user/3463-shoputils/
+ * http://opencart.shoputils.ru/?route=information/contact
+ *
+*/
+class ControllerExtensionPaymentSberBankTransfer extends Controller {
     private $error = array();
     private $version = '2.0';
 
     public function index() {
-        $this->load->language('payment/sberbank_transfer');
+        $this->load->language('extension/payment/sberbank_transfer');
         $this->load->model('localisation/language');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             $this->load->model('setting/setting');
             $this->model_setting_setting->editSetting('sberbank_transfer', $this->request->post);
             $this->session->data['success'] = sprintf($this->language->get('text_success'), $this->language->get('heading_title'));
-            $this->response->redirect($this->makeUrl('extension/payment'));
+            $this->response->redirect($this->makeUrl('extension/extension', 'type=payment'));
         }
 
         $this->load->model('localisation/order_status');
@@ -38,7 +44,6 @@ class ControllerPaymentSberBankTransfer extends Controller {
         $data['entry_bankuser']       = $this->language->get('entry_bankuser');
         $data['entry_bik']            = $this->language->get('entry_bik');
         $data['entry_ks']             = $this->language->get('entry_ks');
-        //$data['entry_total']        = $this->language->get('entry_total');
         $data['entry_title']          = $this->language->get('entry_title');
         $data['entry_button_confirm'] = $this->language->get('entry_button_confirm');
         $data['entry_maximal_order']  = $this->language->get('entry_maximal_order');
@@ -53,8 +58,8 @@ class ControllerPaymentSberBankTransfer extends Controller {
         $data['help_maximal_order']   = $this->language->get('help_maximal_order');
         $data['help_minimal_order']   = $this->language->get('help_minimal_order');
 
-        $data['action']         = $this->makeUrl('payment/sberbank_transfer');
-        $data['cancel']         = $this->makeUrl('extension/payment');
+        $data['action']         = $this->makeUrl('extension/payment/sberbank_transfer');
+        $data['cancel']         = $this->makeUrl('extension/extension', 'type=payment');
         $data['version']        = $this->version;
         $data['permission']     = $this->validatePermission();
         $data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
@@ -81,12 +86,12 @@ class ControllerPaymentSberBankTransfer extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text'  => $this->language->get('text_payment'),
-            'href'  => $this->makeUrl('extension/payment')
+            'href'  => $this->makeUrl('extension/extension', 'type=payment')
         );
 
         $data['breadcrumbs'][] = array(
             'text'  => $this->language->get('heading_title'),
-            'href'  => $this->makeUrl('payment/sberbank_transfer')
+            'href'  => $this->makeUrl('extension/payment/sberbank_transfer')
         );
 
         foreach ($languages as $language) {
@@ -116,7 +121,7 @@ class ControllerPaymentSberBankTransfer extends Controller {
         $data['column_left']  = $this->load->controller('common/column_left');
         $data['footer']       = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('payment/sberbank_transfer.tpl', $data));
+        $this->response->setOutput($this->load->view('extension/payment/sberbank_transfer', $data));
     }
 
     protected function validate() {
@@ -173,7 +178,7 @@ class ControllerPaymentSberBankTransfer extends Controller {
     }
 
     protected function validatePermission() {
-        return $this->user->hasPermission('modify', 'payment/sberbank_transfer');
+        return $this->user->hasPermission('modify', 'extension/payment/sberbank_transfer');
     }
 
     protected function makeUrl($route, $url = '') {

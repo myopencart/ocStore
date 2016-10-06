@@ -2,7 +2,7 @@
 $_['heading_title']    = 'Basic Captcha';
 
 // Text
-$_['text_extension']   = 'Extensions';
+$_['text_extension']   = 'Расширение';
 $_['text_success']	   = 'Настройки Basic Captcha успешно обновлены!';
 $_['text_edit']        = 'Редактирование Basic Captcha';
 

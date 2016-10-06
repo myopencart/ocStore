@@ -18,7 +18,7 @@ $_['text_select']           = ' --- Выберите --- ';
 $_['text_all_zones']        = 'Все Регионы';
 $_['text_pagination']       = 'Показано с %d по %d из %d (всего %d страниц)';
 $_['text_loading']          = 'Загрузка...';
-$_['text_no_results']       = 'Ничего нет!';
+$_['text_no_results']       = 'Нет результатов!';
 
 // Buttons
 $_['button_address_add']    = 'Добавить адрес';

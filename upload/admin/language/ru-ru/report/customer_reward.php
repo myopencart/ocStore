@@ -18,4 +18,4 @@ $_['column_action']         = 'Действие';
 // Entry
 $_['entry_date_start']      = 'Дата начала:';
 $_['entry_date_end']        = 'Дата окончания:';
-$_['entry_customer']		= 'Customer';
+$_['entry_customer']		= 'Покупатель';
