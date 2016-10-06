@@ -1,5 +1,5 @@
 <?php 
-class ModelPaymentQiwiRest extends Model {
+class ModelExtensionPaymentQiwiRest extends Model {
   	public function getMethod($address, $total) {
 		$this->load->language('payment/qiwi_rest');
 

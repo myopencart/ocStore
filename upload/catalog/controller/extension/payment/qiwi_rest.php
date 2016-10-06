@@ -1,7 +1,7 @@
 <?php
-class ControllerPaymentQiwiRest extends Controller {
+class ControllerExtensionPaymentQiwiRest extends Controller {
 	public function index() {
-	    	$data['button_confirm'] = $this->language->get('button_confirm');
+	    $data['button_confirm'] = $this->language->get('button_confirm');
 		$data['button_back'] = $this->language->get('button_back');
 
 		$data['continue'] = $this->url->link('checkout/success');
@@ -12,10 +12,11 @@ class ControllerPaymentQiwiRest extends Controller {
 
 		$this->load->model('checkout/order');
 
-		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
+		$order_id = isset($this->session->data['order_id']) ? $this->session->data['order_id'] : 0;
+		$order_info = $this->model_checkout_order->getOrder($order_id);
 
 
-		$this->load->language('payment/qiwi_rest');
+		$this->load->language('extension/payment/qiwi_rest');
 
 
 		$data['qiwi_error'] = $this->language->get('qiwi_error');
@@ -53,7 +54,7 @@ class ControllerPaymentQiwiRest extends Controller {
 
 		// Переменные
 		$data['shop'] = $this->config->get('qiwi_rest_shop_id');
-		$data['transaction'] = $this->session->data['order_id'];
+		$data['transaction'] = $order_id;
 
 		$data['successUrl'] = $this->url->link('payment/qiwi_rest/success', '', 'SSL'); 
 		$data['failUrl'] =  $this->url->link('payment/qiwi_rest/fail', '', 'SSL');
@@ -101,12 +102,7 @@ class ControllerPaymentQiwiRest extends Controller {
 
 		$data['markup'] = sprintf ($this->language->get('markup'), $text_title, $qiwi_rest_markup).$data['summ'].' '.$this->config->get('qiwi_rest_ccy_select'); 
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/qiwi_rest.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/payment/qiwi_rest.tpl', $data);
-		} else {
-			return $this->load->view('default/template/payment/qiwi_rest.tpl', $data);
-		}
-
+		return $this->load->view('extension/payment/qiwi_rest', $data);
 	}
 
 

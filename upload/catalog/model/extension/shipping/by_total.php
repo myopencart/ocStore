@@ -1,5 +1,5 @@
 <?php 
-class ModelShippingByTotal extends Model {
+class ModelExtensionShippingByTotal extends Model {
 	public function getQuote($address) {
 		$this->load->language('shipping/by_total');
 
@@ -64,4 +64,4 @@ class ModelShippingByTotal extends Model {
 		return $method_data;
 	}
 }
-?>
+

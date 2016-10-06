@@ -13,7 +13,7 @@ class ControllerExtensionPaymentQiwiRest extends Controller {
             $this->load->model('setting/setting');
             $this->model_setting_setting->editSetting('qiwi_rest', $this->request->post);
             $this->session->data['success'] = sprintf($this->language->get('text_success'), $this->language->get('heading_title'));
-            $this->response->redirect($this->makeUrl('extension/extension', 'type=payment'));
+            $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', 'SSL'));
         }
 
 		$data['qiwi_rest_version'] = '1.3 for OpenCart 2.x';	
@@ -169,18 +169,18 @@ class ControllerExtensionPaymentQiwiRest extends Controller {
 
    		$data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_payment'),
-			'href'      => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'),
+			'href'      => $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', 'SSL'),
       		'separator' => ' :: '
    		);
 
    		$data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('payment/qiwi_rest', 'token=' . $this->session->data['token'], 'SSL'),
+			'href'      => $this->url->link('extension/payment/qiwi_rest', 'token=' . $this->session->data['token'], 'SSL'),
       		'separator' => ' :: '
    		);
 
-        $data['action']         = $this->makeUrl('extension/payment/qiwi_rest');
-        $data['cancel']         = $this->makeUrl('extension/extension', 'type=payment');
+        $data['action']         = $this->url->link('extension/payment/qiwi_rest', 'token=' . $this->session->data['token'], 'SSL');
+        $data['cancel']         = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', 'SSL');
 
 		$this->load->model('localisation/currency');
 		$data['currencies'] = $this->model_localisation_currency->getCurrencies();
@@ -208,9 +208,9 @@ class ControllerExtensionPaymentQiwiRest extends Controller {
 		// URL
 
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-			$data['qiwi_rest_result_url'] = HTTPS_CATALOG . 'index.php?route=payment/qiwi_rest/callback'; 
+			$data['qiwi_rest_result_url'] = HTTPS_CATALOG . 'index.php?route=extension/payment/qiwi_rest/callback'; 
 		} else {
-			$data['qiwi_rest_result_url'] = HTTP_CATALOG . 'index.php?route=payment/qiwi_rest/callback'; 
+			$data['qiwi_rest_result_url'] = HTTP_CATALOG . 'index.php?route=extension/payment/qiwi_rest/callback'; 
 		}
 
 
@@ -343,12 +343,12 @@ class ControllerExtensionPaymentQiwiRest extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('payment/qiwi_rest.tpl', $data));
+		$this->response->setOutput($this->load->view('extension/payment/qiwi_rest.tpl', $data));
 
 	}
 
 	private function validate() {
-		if (!$this->user->hasPermission('modify', 'payment/qiwi_rest')) {
+		if (!$this->user->hasPermission('modify', 'extension/payment/qiwi_rest')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 

@@ -138,7 +138,7 @@
 	 $("#button-confirm").bind('click', function() {
 			$.ajax({
 		 		type: 'POST',
-				url: 'index.php?route=payment/qiwi_rest/confirm',
+				url: 'index.php?route=extension/payment/qiwi_rest/confirm',
 				dataType: 'json',
 				data: 'qiwi_phone=' + encodeURIComponent($('input[name=\'qiwi_phone\']').val()), 
 				success: function (json) {
