@@ -1640,7 +1640,8 @@
                       <?php } ?>
                     </select>
                     <br />
-                    <img src="" alt="" id="template" class="img-thumbnail" /></div>
+                    <img src="" alt="" id="template" class="img-thumbnail" />
+				  </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-config-sms-from"><span data-toggle="tooltip" title="<?php echo $help_sms_from; ?>"><?php echo $entry_sms_from; ?></span></label>
@@ -1669,7 +1670,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-sms-gate-username"><?php echo $entry_sms_gate_username; ?></label>
                   <div class="col-sm-10">
-                    <input type="text" name="config_sms_gate_username" value="<?php echo $config_sms_gate_username; ?>" placeholder="<?php echo $entry_sms_to; ?>" id="input-sms-gate-username" class="form-control" />
+                    <input type="text" name="config_sms_gate_username" value="<?php echo $config_sms_gate_username; ?>" placeholder="<?php echo $entry_sms_gate_username; ?>" id="input-sms-gate-username" class="form-control" />
                   </div>
                 </div>
                 <div class="form-group">

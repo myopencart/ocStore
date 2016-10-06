@@ -1,5 +1,5 @@
 <?php
-class ControllerShippingByTotal extends Controller {
+class ControllerExtensionShippingByTotal extends Controller {
 	private $error = array();
 
 	public function index() {
@@ -14,7 +14,7 @@ class ControllerShippingByTotal extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$this->response->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
+			$this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=shipping', 'SSL'));
 		}
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -48,17 +48,17 @@ class ControllerShippingByTotal extends Controller {
 
    		$data['breadcrumbs'][] = array(
 	   		'text'      => $this->language->get('text_shipping'),
-			'href'      => $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL')
+			'href'      => $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=shipping', 'SSL')
    		);
 
    		$data['breadcrumbs'][] = array(
 	   		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('shipping/by_total', 'token=' . $this->session->data['token'], 'SSL')
+			'href'      => $this->url->link('extension/shipping/by_total', 'token=' . $this->session->data['token'], 'SSL')
    		);
 
-		$data['action'] = $this->url->link('shipping/by_total', 'token=' . $this->session->data['token'], 'SSL');
+		$data['action'] = $this->url->link('extension/shipping/by_total', 'token=' . $this->session->data['token'], 'SSL');
 
-		$data['cancel'] = $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL');
+		$data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=shipping', 'SSL');
 
 		$this->load->model('localisation/geo_zone');
 
@@ -106,11 +106,11 @@ class ControllerShippingByTotal extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('shipping/by_total.tpl', $data));
+        $this->response->setOutput($this->load->view('extension/shipping/by_total.tpl', $data));
 	}
 
 	private function validate() {
-		if (!$this->user->hasPermission('modify', 'shipping/by_total')) {
+		if (!$this->user->hasPermission('modify', 'extension/shipping/by_total')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
