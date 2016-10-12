@@ -47,7 +47,7 @@ class ControllerApiTrackNo extends Controller {
 			echo 'Синхронизация заказов с LiveInform отключена. Включить можно в настройках модуля "Трек-номер заказа"';
 		}
 		else {
-			$this->load->model('shipping/track_no');
+			$this->load->model('extension/shipping/track_no');
 			echo "Синхронизация заказов с LiveInform...<br/>\n";
 			$orders = $this->model_extension_shipping_track_no->updateLiveinform();
 			echo "Синхронизация завершена\n";
