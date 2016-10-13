@@ -10,7 +10,7 @@
 $_['text_order_description']      = 'Оплата заказа №%d, на сумму: %s (%s)';
 
 $_['text_comment']                = 'Payeer: %s. Сумма: %s. Номер транзакции: %s';
-$_['text_description']            = 'Возможные методы оплаты: <br/><img src="%scatalog/view/theme/default/image/shoputils_payeer.jpg" title="Методы оплаты" alt="Методы оплаты"/>';
+$_['text_description']            = 'Возможные методы оплаты: <br/><img src="%scatalog/view/theme/default/image/ocstore_payeer.jpg" title="Методы оплаты" alt="Методы оплаты"/>';
 $_['text_payeer_onpay']           = 'Пожалуйста, оплатите покупку перейдя по ссылке: %s';
 
 $_['text_error_post']             = 'Ответ от шлюза не типа POST';

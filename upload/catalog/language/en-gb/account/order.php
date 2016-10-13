@@ -3,7 +3,7 @@
 $_['heading_title']         = 'Order History';
 
 // Button
-$_['button_shoputils_payeer_onpay']  = 'Onpay Online via Payeer';
+$_['button_ocstore_payeer_onpay']  = 'Onpay Online via Payeer';
 
 // Text
 $_['text_account']          = 'Account';

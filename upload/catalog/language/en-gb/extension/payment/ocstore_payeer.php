@@ -10,7 +10,7 @@
 $_['text_order_description']      = 'Payment order №%s, Amount: %s (%s)';
 
 $_['text_comment']                = 'Payeer: %s. Amount: %s. Transaction ID: %s';
-$_['text_description']            = 'Possible methods of payment: <br/><img src="%scatalog/view/theme/default/image/shoputils_payeer.jpg" title="methods of payment" alt="methods of payment"/>';
+$_['text_description']            = 'Possible methods of payment: <br/><img src="%scatalog/view/theme/default/image/ocstore_payeer.jpg" title="methods of payment" alt="methods of payment"/>';
 $_['text_payeer_onpay']           = 'Please pay clicking on the link: %s';
 
 $_['text_error_post']             = 'The response from the gateway is not a POST';

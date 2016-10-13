@@ -6,36 +6,36 @@
  * 
 */
 
-class ControllerExtensionPaymentShoputilsPayeer extends Controller {
+class ControllerExtensionPaymentOcstorePayeer extends Controller {
     private $error = array();
     private $version = '2.3';
     private $payeer_currencies = array();
     const MAX_LAST_LOG_LINES = 500;
-    const FILE_NAME_LOG = 'shoputils_payeer.log';
+    const FILE_NAME_LOG = 'ocstore_payeer.log';
 
     public function __construct($registry) {
         parent::__construct($registry);
-        $this->load->language('extension/payment/shoputils_payeer');
+        $this->load->language('extension/payment/ocstore_payeer');
         $this->document->setTitle($this->language->get('heading_title'));
     }
 
     public function index() {
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate())) {
             $this->_trimData(array(
-                 'shoputils_payeer_shop_id',
-                 'shoputils_payeer_sign_hash',
-                 'shoputils_payeer_minimal_order',
-                 'shoputils_payeer_maximal_order'
+                 'ocstore_payeer_shop_id',
+                 'ocstore_payeer_sign_hash',
+                 'ocstore_payeer_minimal_order',
+                 'ocstore_payeer_maximal_order'
             ));
 
             $this->_replaceData(',', '.', array(
-                 'shoputils_payeer_minimal_order',
-                 'shoputils_payeer_maximal_order'
+                 'ocstore_payeer_minimal_order',
+                 'ocstore_payeer_maximal_order'
             ));
 
             $this->load->model('setting/setting');
 
-            $this->model_setting_setting->editSetting('shoputils_payeer', $this->request->post);
+            $this->model_setting_setting->editSetting('ocstore_payeer', $this->request->post);
             $this->session->data['success'] = sprintf($this->language->get('text_success'), $this->language->get('heading_title'));
 
             $this->response->redirect($this->makeUrl('extension/extension', 'type=payment'));
@@ -173,9 +173,9 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
             'title_default'            => explode(',', $this->language->get('heading_title')),
             'text_copyright'           => sprintf($this->language->get('text_copyright'), $this->language->get('heading_title'), date('Y', time())),
             'list_helper'              => $this->getListHelper(),
-            'action'                   => $this->makeUrl('extension/payment/shoputils_payeer'),
+            'action'                   => $this->makeUrl('extension/payment/ocstore_payeer'),
             'cancel'                   => $this->makeUrl('extension/extension', 'type=payment'),
-            'clear_log'                => $this->makeUrl('extension/payment/shoputils_payeer/clearLog'),
+            'clear_log'                => $this->makeUrl('extension/payment/ocstore_payeer/clearLog'),
             'ckeditor'                 => $this->config->get('config_editor_default'),
             'token'                    => isset($this->session->data['token']) ? $this->session->data['token'] : '',
             'error_warning'            => isset($this->error['warning']) ? $this->error['warning'] : '',
@@ -190,9 +190,9 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
             'error_mail_admin_success_content'    => isset($this->error['error_mail_admin_success_content']) ? $this->error['error_mail_admin_success_content'] : '',
             'error_mail_admin_fail_subject'       => isset($this->error['error_mail_admin_fail_subject']) ? $this->error['error_mail_admin_fail_subject'] : '',
             'error_mail_admin_fail_content'       => isset($this->error['error_mail_admin_fail_content']) ? $this->error['error_mail_admin_fail_content'] : '',
-            'text_success_url'         => HTTPS_CATALOG . 'index.php?route=extension/payment/shoputils_payeer/success',
-            'text_fail_url'            => HTTPS_CATALOG . 'index.php?route=extension/payment/shoputils_payeer/fail',
-            'text_status_url'          => HTTPS_CATALOG . 'index.php?route=extension/payment/shoputils_payeer/status',
+            'text_success_url'         => HTTPS_CATALOG . 'index.php?route=extension/payment/ocstore_payeer/success',
+            'text_fail_url'            => HTTPS_CATALOG . 'index.php?route=extension/payment/ocstore_payeer/fail',
+            'text_status_url'          => HTTPS_CATALOG . 'index.php?route=extension/payment/ocstore_payeer/status',
             'version'                  => $this->version,
             'log_lines'                => $this->readLastLines(DIR_LOGS . self::FILE_NAME_LOG, self::MAX_LAST_LOG_LINES),
             'log_filename'             => self::FILE_NAME_LOG,
@@ -216,7 +216,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
         );
         
         $data['breadcrumbs'][] = array(
-           'href'      => $this->makeUrl('extension/payment/shoputils_payeer'),
+           'href'      => $this->makeUrl('extension/payment/ocstore_payeer'),
            'text'      => $this->language->get('heading_title')
         );
 
@@ -228,34 +228,34 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
 
         $data = array_merge($data, $this->_updateData(
             array(
-                 'shoputils_payeer_geo_zone_id',
-                 'shoputils_payeer_sort_order',
-                 'shoputils_payeer_status',
-                 'shoputils_payeer_hide_mode',
-                 'shoputils_payeer_minimal_order',
-                 'shoputils_payeer_maximal_order',
-                 'shoputils_payeer_laterpay_mode',
-                 'shoputils_payeer_order_status_id',
-                 'shoputils_payeer_order_fail_status_id',
-                 'shoputils_payeer_order_confirm_status_id',
-                 'shoputils_payeer_order_later_status_id',
-                 'shoputils_payeer_laterpay_button_lk',
-                 'shoputils_payeer_langdata',
+                 'ocstore_payeer_geo_zone_id',
+                 'ocstore_payeer_sort_order',
+                 'ocstore_payeer_status',
+                 'ocstore_payeer_hide_mode',
+                 'ocstore_payeer_minimal_order',
+                 'ocstore_payeer_maximal_order',
+                 'ocstore_payeer_laterpay_mode',
+                 'ocstore_payeer_order_status_id',
+                 'ocstore_payeer_order_fail_status_id',
+                 'ocstore_payeer_order_confirm_status_id',
+                 'ocstore_payeer_order_later_status_id',
+                 'ocstore_payeer_laterpay_button_lk',
+                 'ocstore_payeer_langdata',
 
-                 'shoputils_payeer_notify_customer_success',
-                 'shoputils_payeer_notify_customer_fail',
-                 'shoputils_payeer_notify_admin_success',
-                 'shoputils_payeer_mail_admin_success_subject',
-                 'shoputils_payeer_mail_admin_success_content',
-                 'shoputils_payeer_notify_admin_fail',
-                 'shoputils_payeer_mail_admin_fail_subject',
-                 'shoputils_payeer_mail_admin_fail_content',
+                 'ocstore_payeer_notify_customer_success',
+                 'ocstore_payeer_notify_customer_fail',
+                 'ocstore_payeer_notify_admin_success',
+                 'ocstore_payeer_mail_admin_success_subject',
+                 'ocstore_payeer_mail_admin_success_content',
+                 'ocstore_payeer_notify_admin_fail',
+                 'ocstore_payeer_mail_admin_fail_subject',
+                 'ocstore_payeer_mail_admin_fail_content',
 
-                 'shoputils_payeer_shop_id',
-                 'shoputils_payeer_sign_hash',
-                 'shoputils_payeer_currency',
+                 'ocstore_payeer_shop_id',
+                 'ocstore_payeer_sign_hash',
+                 'ocstore_payeer_currency',
 
-                 'shoputils_payeer_log'
+                 'ocstore_payeer_log'
             ),
             array()
         ));
@@ -268,7 +268,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
             )
         ));
 
-        $this->response->setOutput($this->load->view('extension/payment/shoputils_payeer', $data));
+        $this->response->setOutput($this->load->view('extension/payment/ocstore_payeer', $data));
     }
 
     public function clearLog() {
@@ -306,19 +306,19 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
                              'text_date_modified_ft'
                         ));
 
-        return $this->load->view('extension/payment/shoputils_payeer_list_helper', $data);
+        return $this->load->view('extension/payment/ocstore_payeer_list_helper', $data);
     }
 
     protected function validate() {
         if (!$this->validatePermission()) {
             $this->error['warning'] = sprintf($this->language->get('error_permission'), $this->language->get('heading_title'));
         } else {
-            if (!isset($this->request->post['shoputils_payeer_shop_id']) || !trim($this->request->post['shoputils_payeer_shop_id'])) {
+            if (!isset($this->request->post['ocstore_payeer_shop_id']) || !trim($this->request->post['ocstore_payeer_shop_id'])) {
                 $this->error['warning'] = $this->error['error_shop_id'] = sprintf($this->language->get('error_form'),
                                                                                         $this->language->get('entry_shop_id'),
                                                                                         $this->language->get('tab_settings'));
             }
-            if (!isset($this->request->post['shoputils_payeer_sign_hash']) || !trim($this->request->post['shoputils_payeer_sign_hash'])) {
+            if (!isset($this->request->post['ocstore_payeer_sign_hash']) || !trim($this->request->post['ocstore_payeer_sign_hash'])) {
                 $this->error['warning'] = $this->error['error_sign_hash'] = sprintf($this->language->get('error_form'),
                                                                                         $this->language->get('entry_sign_hash'),
                                                                                         $this->language->get('tab_settings'));
@@ -326,44 +326,44 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
 
             $this->load->model('localisation/language');
             foreach ($this->model_localisation_language->getLanguages() as $language) {
-              if (($this->request->post['shoputils_payeer_notify_customer_success']) && ((!isset($this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_success_subject']) || !trim($this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_success_subject'])))) {
+              if (($this->request->post['ocstore_payeer_notify_customer_success']) && ((!isset($this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_success_subject']) || !trim($this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_success_subject'])))) {
                   $this->error['warning'] = $this->error['error_mail_customer_success_subject'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_customer_success_subject'),
                                                                                                           $this->language->get('tab_emails'));
               }
-              if (($this->request->post['shoputils_payeer_notify_customer_success']) && ((!isset($this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_success_content']) || !$this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_success_content']))) {
+              if (($this->request->post['ocstore_payeer_notify_customer_success']) && ((!isset($this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_success_content']) || !$this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_success_content']))) {
                   $this->error['warning'] = $this->error['error_mail_customer_success_content'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_customer_success_content'),
                                                                                                           $this->language->get('tab_emails'));
               }
-              if (($this->request->post['shoputils_payeer_notify_customer_fail']) && ((!isset($this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_fail_subject']) || !trim($this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_fail_subject'])))) {
+              if (($this->request->post['ocstore_payeer_notify_customer_fail']) && ((!isset($this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_fail_subject']) || !trim($this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_fail_subject'])))) {
                   $this->error['warning'] = $this->error['error_mail_customer_fail_subject'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_customer_fail_subject'),
                                                                                                           $this->language->get('tab_emails'));
               }
-              if (($this->request->post['shoputils_payeer_notify_customer_fail']) && ((!isset($this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_fail_content']) || !$this->request->post['shoputils_payeer_langdata'][$language['language_id']]['mail_customer_fail_content']))) {
+              if (($this->request->post['ocstore_payeer_notify_customer_fail']) && ((!isset($this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_fail_content']) || !$this->request->post['ocstore_payeer_langdata'][$language['language_id']]['mail_customer_fail_content']))) {
                   $this->error['warning'] = $this->error['error_mail_customer_fail_content'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_customer_fail_content'),
                                                                                                           $this->language->get('tab_emails'));
               }
             }
 
-            if (($this->request->post['shoputils_payeer_notify_admin_success']) && ((!isset($this->request->post['shoputils_payeer_mail_admin_success_subject']) || !trim($this->request->post['shoputils_payeer_mail_admin_success_subject'])))) {
+            if (($this->request->post['ocstore_payeer_notify_admin_success']) && ((!isset($this->request->post['ocstore_payeer_mail_admin_success_subject']) || !trim($this->request->post['ocstore_payeer_mail_admin_success_subject'])))) {
                 $this->error['warning'] = $this->error['error_mail_admin_success_subject'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_admin_success_subject'),
                                                                                                           $this->language->get('tab_emails'));
             }
-            if (($this->request->post['shoputils_payeer_notify_admin_success']) && ((!isset($this->request->post['shoputils_payeer_mail_admin_success_content']) || !$this->request->post['shoputils_payeer_mail_admin_success_content']))) {
+            if (($this->request->post['ocstore_payeer_notify_admin_success']) && ((!isset($this->request->post['ocstore_payeer_mail_admin_success_content']) || !$this->request->post['ocstore_payeer_mail_admin_success_content']))) {
                 $this->error['warning'] = $this->error['error_mail_admin_success_content'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_admin_success_content'),
                                                                                                           $this->language->get('tab_emails'));
             }
-            if (($this->request->post['shoputils_payeer_notify_admin_fail']) && ((!isset($this->request->post['shoputils_payeer_mail_admin_fail_subject']) || !trim($this->request->post['shoputils_payeer_mail_admin_fail_subject'])))) {
+            if (($this->request->post['ocstore_payeer_notify_admin_fail']) && ((!isset($this->request->post['ocstore_payeer_mail_admin_fail_subject']) || !trim($this->request->post['ocstore_payeer_mail_admin_fail_subject'])))) {
                 $this->error['warning'] = $this->error['error_mail_admin_fail_subject'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_admin_fail_subject'),
                                                                                                           $this->language->get('tab_emails'));
             }
-            if (($this->request->post['shoputils_payeer_notify_admin_fail']) && ((!isset($this->request->post['shoputils_payeer_mail_admin_fail_content']) || !$this->request->post['shoputils_payeer_mail_admin_fail_content']))) {
+            if (($this->request->post['ocstore_payeer_notify_admin_fail']) && ((!isset($this->request->post['ocstore_payeer_mail_admin_fail_content']) || !$this->request->post['ocstore_payeer_mail_admin_fail_content']))) {
                 $this->error['warning'] = $this->error['error_mail_admin_fail_content'] = sprintf($this->language->get('error_form'),
                                                                                                           $this->language->get('entry_mail_admin_fail_content'),
                                                                                                           $this->language->get('tab_emails'));
@@ -374,7 +374,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
     }
 
     protected function validatePermission() {
-        return $this->user->hasPermission('modify', 'extension/payment/shoputils_payeer');
+        return $this->user->hasPermission('modify', 'extension/payment/ocstore_payeer');
     }
 
     protected function _setData($values) {

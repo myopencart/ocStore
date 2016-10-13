@@ -19,7 +19,7 @@ $_['text_payment']                = 'Оплата';
 $_['text_success']                = 'Настройки модуля \'%s\' обновлены!';
 $_['text_clear_log_success']      = 'Журнал запросов модуля успешно очищен!';
 $_['text_confirm']                = 'Удаление журнала невозможно отменить! Вы уверены, что хотите это сделать?';
-$_['text_shoputils_payeer']       = '<a style="cursor: pointer;" onclick="window.open(\'https://payeer.com/ru/?partner=87431\');"><img src="view/image/payment/shoputils_payeer.png" alt="payeer.com" title="payeer.com"/></a>';
+$_['text_ocstore_payeer']         = '<a style="cursor: pointer;" onclick="window.open(\'https://payeer.com/ru/?partner=87431\');"><img src="view/image/payment/ocstore_payeer.png" alt="payeer.com" title="payeer.com"/></a>';
 $_['text_currency_rub']           = 'Российские рубли (RUB-643)';
 $_['text_currency_uah']           = 'Украинские гривны (UAH-980)';
 $_['text_currency_usd']           = 'Доллары США (USD-840)';

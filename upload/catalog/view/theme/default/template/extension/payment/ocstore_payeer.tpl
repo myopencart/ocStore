@@ -28,7 +28,7 @@
 $('#button-confirm').on('click', function() {
         $.ajax({
             type: 'get',
-            url: 'index.php?route=extension/payment/shoputils_payeer/confirm',
+            url: 'index.php?route=extension/payment/ocstore_payeer/confirm',
             beforeSend: function() {
                 $('#button-confirm').attr('disabled', true);
                 $('#button-confirm').button('loading');

@@ -6,7 +6,7 @@
  * 
 */
 
-class ControllerExtensionPaymentShoputilsPayeer extends Controller {
+class ControllerExtensionPaymentOcstorePayeer extends Controller {
     private $order;
     private $log;
     private $version;
@@ -19,25 +19,25 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
 
     public function __construct($registry) {
         parent::__construct($registry);
-        $this->load->language('extension/payment/shoputils_payeer');
+        $this->load->language('extension/payment/ocstore_payeer');
     }
 
     public function index() {
-        $langdata = $this->config->get('shoputils_payeer_langdata');
+        $langdata = $this->config->get('ocstore_payeer_langdata');
         $this->_setData(
             array(
                  'text_loading',
                  'button_confirm'   => $langdata[$this->config->get('config_language_id')]['button_confirm'] ?: $this->language->get('button_confirm'),
                  'instruction'  => nl2br($langdata[$this->config->get('config_language_id')]['instruction']),
                  'continue'     => $this->url->link('checkout/success', '', 'SSL'),
-                 'pay_status'   => ((!$this->config->get('shoputils_payeer_laterpay_mode')) || ($this->config->get('shoputils_payeer_order_later_status_id') == $this->config->get('shoputils_payeer_order_confirm_status_id'))),
+                 'pay_status'   => ((!$this->config->get('ocstore_payeer_laterpay_mode')) || ($this->config->get('ocstore_payeer_order_later_status_id') == $this->config->get('ocstore_payeer_order_confirm_status_id'))),
                  'action'       => self::$ACTION,
                  'parameters'   => $this->makeForm()
             )
         );
 
 
-        return $this->load->view('extension/payment/shoputils_payeer', $this->data);
+        return $this->load->view('extension/payment/ocstore_payeer', $this->data);
     }
 
     public function laterpay() {
@@ -49,7 +49,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
                 )
             );
 
-            $this->response->setOutput($this->load->view('extension/payment/shoputils_payeer_laterpay.tpl', $this->data));
+            $this->response->setOutput($this->load->view('extension/payment/ocstore_payeer_laterpay.tpl', $this->data));
         } else {
             $this->logWrite('Fail Validate Laterpay:', self::$LOG_FULL);
             $this->logWrite('  POST:' . var_export($this->request->post, true), self::$LOG_FULL);
@@ -75,10 +75,10 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
 
         if ($this->request->post['m_status'] == 'success') {
             if ($this->order['order_status_id']) {
-                //Reverse $this->config->get('shoputils_payeer_notify_customer_success')
-                $notify = !$this->config->get('shoputils_payeer_notify_customer_success');
+                //Reverse $this->config->get('ocstore_payeer_notify_customer_success')
+                $notify = !$this->config->get('ocstore_payeer_notify_customer_success');
                 $this->model_checkout_order->addOrderHistory($this->order['order_id'],
-                    $this->config->get('shoputils_payeer_order_status_id'),
+                    $this->config->get('ocstore_payeer_order_status_id'),
                     sprintf($this->language->get('text_comment'),
                         $this->request->post['m_operation_ps'],
                         $this->request->post['m_amount'],
@@ -86,19 +86,19 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
                     ),
                     $notify);
                 if (!$notify) {
-                    $langdata = $this->config->get('shoputils_payeer_langdata');
+                    $langdata = $this->config->get('ocstore_payeer_langdata');
                     $langdata = $langdata[(int)$this->config->get('config_language_id')];
                     $this->sendMail($langdata['mail_customer_success_subject'],
                                     $langdata['mail_customer_success_content'],
-                                    $this->config->get('shoputils_payeer_order_status_id'),
+                                    $this->config->get('ocstore_payeer_order_status_id'),
                                     'customer',
                                     'Mail to Customer Sent Successfully: Payment Success');
                 }
 
-                if ($this->config->get('shoputils_payeer_notify_admin_success')) {
-                    $this->sendMail($this->config->get('shoputils_payeer_mail_admin_success_subject'),
-                                    $this->config->get('shoputils_payeer_mail_admin_success_content'),
-                                    $this->config->get('shoputils_payeer_order_status_id'),
+                if ($this->config->get('ocstore_payeer_notify_admin_success')) {
+                    $this->sendMail($this->config->get('ocstore_payeer_mail_admin_success_subject'),
+                                    $this->config->get('ocstore_payeer_mail_admin_success_content'),
+                                    $this->config->get('ocstore_payeer_order_status_id'),
                                     'admin',
                                     'Mail to Admin Sent Successfully: Payment Success');
                 }
@@ -134,28 +134,28 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
 
         if ($this->validate(false)) {
             if ($this->order['order_status_id']) {
-                //Reverse $this->config->get('shoputils_payeer_notify_customer_fail')
-                $notify = !$this->config->get('shoputils_payeer_notify_customer_fail');
+                //Reverse $this->config->get('ocstore_payeer_notify_customer_fail')
+                $notify = !$this->config->get('ocstore_payeer_notify_customer_fail');
 
                 $this->model_checkout_order->addOrderHistory($this->order['order_id'],
-                                                    $this->config->get('shoputils_payeer_order_fail_status_id'),
+                                                    $this->config->get('ocstore_payeer_order_fail_status_id'),
                                                     'PAYEER - Payment Fail, Order ID: ' . $this->request->post['m_orderid'],
                                                     $notify);
 
               if (!$notify) {
-                  $langdata = $this->config->get('shoputils_payeer_langdata');
+                  $langdata = $this->config->get('ocstore_payeer_langdata');
                   $langdata = $langdata[(int)$this->config->get('config_language_id')];
                   $this->sendMail($langdata['mail_customer_fail_subject'],
                                   $langdata['mail_customer_fail_content'],
-                                  $this->config->get('shoputils_payeer_order_fail_status_id'),
+                                  $this->config->get('ocstore_payeer_order_fail_status_id'),
                                   'customer',
                                   'Mail to Customer Sent Successfully: Payment Fail');
               }
 
-              if ($this->config->get('shoputils_payeer_notify_admin_fail')) {
-                  $this->sendMail($this->config->get('shoputils_payeer_mail_admin_fail_subject'),
-                                       $this->config->get('shoputils_payeer_mail_admin_fail_content'),
-                                       $this->config->get('shoputils_payeer_order_fail_status_id'),
+              if ($this->config->get('ocstore_payeer_notify_admin_fail')) {
+                  $this->sendMail($this->config->get('ocstore_payeer_mail_admin_fail_subject'),
+                                       $this->config->get('ocstore_payeer_mail_admin_fail_content'),
+                                       $this->config->get('ocstore_payeer_order_fail_status_id'),
                                        'admin',
                                        'Mail to Admin Sent Successfully: Payment Fail');
               }
@@ -165,10 +165,10 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
     }
 
     public function confirm() {
-        if (!empty($this->session->data['order_id']) && $this->session->data['payment_method']['code'] == 'shoputils_payeer') {
+        if (!empty($this->session->data['order_id']) && $this->session->data['payment_method']['code'] == 'ocstore_payeer') {
             $this->load->model('checkout/order');
             $this->model_checkout_order->addOrderHistory($this->session->data['order_id'],
-                                                         $this->config->get('shoputils_payeer_order_confirm_status_id'));
+                                                         $this->config->get('ocstore_payeer_order_confirm_status_id'));
         }
     }
 
@@ -185,7 +185,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
         $order_info = $this->model_checkout_order->getOrder($order_id);
 
         $current_currency = isset($this->session->data['currency']) ? $this->session->data['currency'] : $this->config->get('config_currency');
-        $sCurrencyCode = in_array($current_currency, $this->payeer_currencies) ? $current_currency : $this->config->get('shoputils_payeer_currency');
+        $sCurrencyCode = in_array($current_currency, $this->payeer_currencies) ? $current_currency : $this->config->get('ocstore_payeer_currency');
 
         if (!$this->currency->has($sCurrencyCode)) {
             die(sprintf('Currency code (%s) not found', $sCurrencyCode));
@@ -195,13 +195,13 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
         $m_desc     = base64_encode(sprintf($this->language->get('text_order_description'), $order_id , $m_amount, $sCurrencyCode));
 
         $params = array(
-                             'm_shop' => $this->config->get('shoputils_payeer_shop_id'),  //payeer_shop_id
+                             'm_shop' => $this->config->get('ocstore_payeer_shop_id'),  //payeer_shop_id
                              'm_orderid' => $order_id,
                              'm_amount' => $m_amount,
                              'm_curr' => $sCurrencyCode,
                              'm_desc' => $m_desc
         );
-        $params['m_sign'] = strtoupper(hash('sha256', implode(':', array_values($params)) . ':' . $this->config->get('shoputils_payeer_sign_hash')));
+        $params['m_sign'] = strtoupper(hash('sha256', implode(':', array_values($params)) . ':' . $this->config->get('ocstore_payeer_sign_hash')));
 
         $this->logWrite('Make payment form: ', self::$LOG_FULL);
         $this->logWrite('  DATA: ' . var_export($params, true), self::$LOG_FULL);
@@ -256,7 +256,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
                     $this->request->post['m_curr'] . ':' .
                     $this->request->post['m_desc'] . ':' .
                     $this->request->post['m_status'] . ':' .
-                    $this->config->get('shoputils_payeer_sign_hash');
+                    $this->config->get('ocstore_payeer_sign_hash');
             $sign_hash = strtoupper(hash('sha256', $m_sign_string));
 
             if ($this->request->post['m_sign'] != $sign_hash) {
@@ -304,9 +304,9 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
 
     //type = 'admin' - mail send to admin; type = 'customer' - mail send to customer
     protected function sendMail($subject, $content, $order_status_id, $type = 'admin', $log_result = '') {
-				$this->load->model('extension/payment/shoputils_payeer');
+				$this->load->model('extension/payment/ocstore_payeer');
 
-				$order_info = $this->model_extension_payment_shoputils_payeer->getOrder($this->order['order_id']);
+				$order_info = $this->model_extension_payment_ocstore_payeer->getOrder($this->order['order_id']);
 
 				$input = array(
             '{order_id}',
@@ -330,14 +330,14 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
             'order_id'            => $order_info['order_id'],
 				    'store_name'          => $this->config->get('config_name'),
 				    'logo'                => '<a href="' . HTTP_SERVER . '"><img src="' . HTTP_SERVER . 'image/' . $this->config->get('config_logo') . '" / ></a>',
-						//'products'            => $this->model_extension_payment_shoputils_payeer->getProducts($order_info['order_id']),
+						//'products'            => $this->model_extension_payment_ocstore_payeer->getProducts($order_info['order_id']),
 						'total'               => $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value']),
 						'customer_firstname'  => $order_info['payment_firstname'],
 						'customer_lastname'   => $order_info['payment_lastname'],
-						'customer_group'      => $this->model_extension_payment_shoputils_payeer->getCustomerGroup($order_info['customer_group_id']),
+						'customer_group'      => $this->model_extension_payment_ocstore_payeer->getCustomerGroup($order_info['customer_group_id']),
 						'customer_email'      => $order_info['email'],
 						'customer_telephone'  => $order_info['telephone'],
-						'order_status'        => $this->model_extension_payment_shoputils_payeer->getOrderStatusById($order_status_id, $order_info['language_id']),
+						'order_status'        => $this->model_extension_payment_ocstore_payeer->getOrderStatusById($order_status_id, $order_info['language_id']),
 						'comment'             => $order_info['comment'],
 						'ip'                  => $order_info['ip'],
 						'date_added'          => $order_info['date_added'],
@@ -407,7 +407,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
     }
 
     private function logWrite($message, $type) {
-        switch ($this->config->get('shoputils_payeer_log')) {
+        switch ($this->config->get('ocstore_payeer_log')) {
             case self::$LOG_OFF:
                 return;
             case self::$LOG_SHORT:
@@ -417,7 +417,7 @@ class ControllerExtensionPaymentShoputilsPayeer extends Controller {
         }
 
         if (!$this->log) {
-            $this->log = new Log($this->config->get('shoputils_payeer_log_filename'));
+            $this->log = new Log($this->config->get('ocstore_payeer_log_filename'));
         }
         $this->log->Write($message);
     }
