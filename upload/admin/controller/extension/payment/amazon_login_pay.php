@@ -19,7 +19,7 @@ class ControllerExtensionPaymentAmazonLoginPay extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			if (isset($this->request->post['language_reload'])) {
-				$this->response->redirect($this->url->link('payment/amazon_login_pay', 'token=' . $this->session->data['token'], true));
+				$this->response->redirect($this->url->link('extension/payment/amazon_login_pay', 'token=' . $this->session->data['token'], true));
 			} else {
 				$this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', true));
 			}

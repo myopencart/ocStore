@@ -1,7 +1,7 @@
 <?php 
 class ModelExtensionShippingByTotal extends Model {
 	public function getQuote($address) {
-		$this->load->language('shipping/by_total');
+		$this->load->language('extension/shipping/by_total');
 
 		$quote_data = array();
 

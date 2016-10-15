@@ -56,8 +56,8 @@ class ControllerExtensionPaymentQiwiRest extends Controller {
 		$data['shop'] = $this->config->get('qiwi_rest_shop_id');
 		$data['transaction'] = $order_id;
 
-		$data['successUrl'] = $this->url->link('payment/qiwi_rest/success', '', 'SSL'); 
-		$data['failUrl'] =  $this->url->link('payment/qiwi_rest/fail', '', 'SSL');
+		$data['successUrl'] = $this->url->link('extension/payment/qiwi_rest/success', '', 'SSL'); 
+		$data['failUrl'] =  $this->url->link('extension/payment/qiwi_rest/fail', '', 'SSL');
 
 		$data['qiwi_rest_show_pay_now'] = $this->config->get('qiwi_rest_show_pay_now');
 
@@ -113,7 +113,7 @@ class ControllerExtensionPaymentQiwiRest extends Controller {
 
 		$json = array();
 
-		$this->load->language('payment/qiwi_rest');
+		$this->load->language('extension/payment/qiwi_rest');
 
 		$this->load->model('checkout/order');
 
