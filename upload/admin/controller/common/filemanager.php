@@ -277,76 +277,77 @@ class ControllerCommonFileManager extends Controller {
 			if (!empty($this->request->files['file']['name']) && is_file($this->request->files['file']['tmp_name'])) {
 				// Sanitize the filename
 				$filename = basename(html_entity_decode($this->translit($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8')));
-			// Check if multiple files are uploaded or just one
-			$files = array();
+				// Check if multiple files are uploaded or just one
+				$files = array();
 
-			if (!empty($this->request->files['file']['name']) && is_array($this->request->files['file']['name'])) {
-				foreach (array_keys($this->request->files['file']['name']) as $key) {
-					$files[] = array(
-						'name'     => $this->request->files['file']['name'][$key],
-						'type'     => $this->request->files['file']['type'][$key],
-						'tmp_name' => $this->request->files['file']['tmp_name'][$key],
-						'error'    => $this->request->files['file']['error'][$key],
-						'size'     => $this->request->files['file']['size'][$key]
-					);
+				if (!empty($this->request->files['file']['name']) && is_array($this->request->files['file']['name'])) {
+					foreach (array_keys($this->request->files['file']['name']) as $key) {
+						$files[] = array(
+							'name' => $this->request->files['file']['name'][$key],
+							'type' => $this->request->files['file']['type'][$key],
+							'tmp_name' => $this->request->files['file']['tmp_name'][$key],
+							'error' => $this->request->files['file']['error'][$key],
+							'size' => $this->request->files['file']['size'][$key]
+						);
+					}
+				}
+
+				foreach ($files as $file) {
+					if (is_file($file['tmp_name'])) {
+						// Sanitize the filename
+						$filename = basename(html_entity_decode($this->translit($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8')));
+
+						// Validate the filename length
+						if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 255)) {
+							$json['error'] = $this->language->get('error_filename');
+						}
+
+						// Allowed file extension types
+						$allowed = array(
+							'jpg',
+							'jpeg',
+							'gif',
+							'png'
+						);
+
+						if (!in_array(utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)), $allowed)) {
+							$json['error'] = $this->language->get('error_filetype');
+						}
+
+						// Allowed file mime types
+						$allowed = array(
+							'image/jpeg',
+							'image/pjpeg',
+							'image/png',
+							'image/x-png',
+							'image/gif'
+						);
+
+						if (!in_array($file['type'], $allowed)) {
+							$json['error'] = $this->language->get('error_filetype');
+						}
+
+						// Return any upload error
+						if ($file['error'] != UPLOAD_ERR_OK) {
+							$json['error'] = $this->language->get('error_upload_' . $file['error']);
+						}
+					} else {
+						$json['error'] = $this->language->get('error_upload');
+					}
+
+					if (!$json) {
+						move_uploaded_file($file['tmp_name'], $directory . '/' . $filename);
+					}
 				}
 			}
 
-			foreach ($files as $file) {
-				if (is_file($file['tmp_name'])) {
-					// Sanitize the filename
-					$filename = basename(html_entity_decode($this->translit($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8')));
-
-					// Validate the filename length
-					if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 255)) {
-						$json['error'] = $this->language->get('error_filename');
-					}
-
-					// Allowed file extension types
-					$allowed = array(
-						'jpg',
-						'jpeg',
-						'gif',
-						'png'
-					);
-
-					if (!in_array(utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)), $allowed)) {
-						$json['error'] = $this->language->get('error_filetype');
-					}
-
-					// Allowed file mime types
-					$allowed = array(
-						'image/jpeg',
-						'image/pjpeg',
-						'image/png',
-						'image/x-png',
-						'image/gif'
-					);
-
-					if (!in_array($file['type'], $allowed)) {
-						$json['error'] = $this->language->get('error_filetype');
-					}
-
-					// Return any upload error
-					if ($file['error'] != UPLOAD_ERR_OK) {
-						$json['error'] = $this->language->get('error_upload_' . $file['error']);
-					}
-				} else {
-					$json['error'] = $this->language->get('error_upload');
-				}
-
-				if (!$json) {
-					move_uploaded_file($file['tmp_name'], $directory . '/' . $filename);
-				}
+			if (!$json) {
+				$json['success'] = $this->language->get('text_uploaded');
 			}
-		}
 
-		if (!$json) {
-			$json['success'] = $this->language->get('text_uploaded');
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));
 		}
-
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput(json_encode($json));
 	}
 
 	public function folder() {
