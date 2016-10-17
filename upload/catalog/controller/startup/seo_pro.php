@@ -1,5 +1,5 @@
 <?php
-class ControllerCommonSeoPro extends Controller {
+class ControllerStartupSeoPro extends Controller {
 	private $cache_data = null;
 
 	public function __construct($registry) {

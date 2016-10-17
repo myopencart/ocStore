@@ -1,48 +1,48 @@
 <?php
 // Heading
-$_['heading_title']                    = 'Default Store Theme';
+$_['heading_title']                    = 'Шаблон по умолчанию';
 
 // Text
-$_['text_theme']                       = 'Themes';
-$_['text_success']                     = 'Success: You have modified the default store theme!';
-$_['text_edit']                        = 'Edit Default Store Theme';
-$_['text_general']                     = 'General';
-$_['text_product']                     = 'Products';
-$_['text_image']                       = 'Images';
+$_['text_theme']                       = 'Шаблоны';
+$_['text_success']                     = 'Настройки Шаблона успешно сохранены!';
+$_['text_edit']                        = 'Настройка Шаблона';
+$_['text_general']                     = 'Общие';
+$_['text_product']                     = 'Товары и Категории';
+$_['text_image']                       = 'Размеры изображений';
 
 // Entry
-$_['entry_directory']                  = 'Theme Directory';
-$_['entry_status']                     = 'Status';
-$_['entry_product_limit']              = 'Default Items Per Page';
-$_['entry_product_description_length'] = 'List Description Limit';
-$_['entry_image_category']             = 'Category Image Size (W x H)';
-$_['entry_image_thumb']                = 'Product Image Thumb Size (W x H)';
-$_['entry_image_popup']                = 'Product Image Popup Size (W x H)';
-$_['entry_image_product']              = 'Product Image List Size (W x H)';
-$_['entry_image_additional']           = 'Additional Product Image Size (W x H)';
-$_['entry_image_related']              = 'Related Product Image Size (W x H)';
-$_['entry_image_compare']              = 'Compare Image Size (W x H)';
-$_['entry_image_wishlist']             = 'Wish List Image Size (W x H)';
-$_['entry_image_cart']                 = 'Cart Image Size (W x H)';
-$_['entry_image_location']             = 'Store Image Size (W x H)';
-$_['entry_width']                      = 'Width';
-$_['entry_height']                     = 'Height';
+$_['entry_directory']                  = 'Папка шаблона';
+$_['entry_status']                     = 'Статус';
+$_['entry_product_limit']              = 'На странице';
+$_['entry_product_description_length'] = 'Краткое описание';
+$_['entry_image_category']             = 'Категории (Ш x В)';
+$_['entry_image_thumb']                = 'Миниатюры (Ш x В)';
+$_['entry_image_popup']                = 'Всплывающие (Ш x В)';
+$_['entry_image_product']              = 'Товара (Ш x В)';
+$_['entry_image_additional']           = 'Дополнительные (Ш x В)';
+$_['entry_image_related']              = 'Рекомендуемые (Ш x В)';
+$_['entry_image_compare']              = 'В Сравнении (Ш x В)';
+$_['entry_image_wishlist']             = 'Закладки (Ш x В)';
+$_['entry_image_cart']                 = 'В корзине (Ш x В)';
+$_['entry_image_location']             = 'Изображение магазина (Ш x В)';
+$_['entry_width']                      = 'Ширина';
+$_['entry_height']                     = 'Высота';
 
 // Help
-$_['help_directory'] 	               = 'This field is only to enable older themes to be compatible with the new theme system. You can set the theme directory to use on the image size settings defined here.';
-$_['help_product_limit'] 	           = 'Determines how many catalog items are shown per page (products, categories, etc)';
-$_['help_product_description_length']  = 'In the list view, short description character limit (categories, special etc)';
+$_['help_directory'] 	               = 'Это поле только для выбора старых Шаблонов, что бы сделать их совместимыми с новым движком Opencart.';
+$_['help_product_limit'] 	           = 'Сколько элементов показывать на одной странице (Товары, Категории, и т.п.)';
+$_['help_product_description_length']  = 'Сколько знаков показывать из описания Товара в режиме Список.';
 
 // Error
-$_['error_permission']                 = 'Warning: You do not have permission to modify the default store theme!';
-$_['error_limit']       	           = 'Product Limit required!';
-$_['error_image_thumb']                = 'Product Image Thumb Size dimensions required!';
-$_['error_image_popup']                = 'Product Image Popup Size dimensions required!';
-$_['error_image_product']              = 'Product List Size dimensions required!';
-$_['error_image_category']             = 'Category List Size dimensions required!';
-$_['error_image_additional']           = 'Additional Product Image Size dimensions required!';
-$_['error_image_related']              = 'Related Product Image Size dimensions required!';
-$_['error_image_compare']              = 'Compare Image Size dimensions required!';
-$_['error_image_wishlist']             = 'Wish List Image Size dimensions required!';
-$_['error_image_cart']                 = 'Cart Image Size dimensions required!';
-$_['error_image_location']             = 'Store Image Size dimensions required!';
+$_['error_permission']                 = 'У вас не достаточно прав!';
+$_['error_limit']       	           = 'Укажите количество символов в Кратком описании товара для режима Список!';
+$_['error_image_thumb']                = 'Укажите размер Миниатюр!';
+$_['error_image_popup']                = 'Укажите размер всплывающих изображений Товара!';
+$_['error_image_product']              = 'Укажите размер изображения для Товаров!';
+$_['error_image_category']             = 'Укажите размер изображения для Категорий!';
+$_['error_image_additional']           = 'Укажите размер дополнительных изображений Товара!';
+$_['error_image_related']              = 'Укажите размер изображений для рекомендуемых (похожих) Товаров!';
+$_['error_image_compare']              = 'Укажите размер изображений товара для списка Сравнений!';
+$_['error_image_wishlist']             = 'Укажите размер изображений товара для Закладок!';
+$_['error_image_cart']                 = 'Укажите размер изображений товара для Корзины!';
+$_['error_image_location']             = 'Укажите размер изображений Магазина!';

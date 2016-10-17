@@ -3,7 +3,7 @@
 $_['heading_title']         = 'История заказов';
 
 // Button
-$_['button_ocstore_payeer_onpay']  = 'Оплатить онлайн';
+$_['button_shoputils_payeer_onpay']  = 'Оплатить онлайн';
 
 // Text
 $_['text_account']          = 'Личный Кабинет';

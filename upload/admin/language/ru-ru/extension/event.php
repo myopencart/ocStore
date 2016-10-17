@@ -1,19 +1,19 @@
 <?php
 // Heading
-$_['heading_title']     = 'Events';
+$_['heading_title']     = 'События';
 
 // Text
-$_['text_success']      = 'Success: You have modified events!';
-$_['text_list']         = 'Event List';
-$_['text_event']        = 'Events are used by extensions to override the default functionality of your store. If you have issues you can disable or enable the events here.';
+$_['text_success']      = 'Событие успешно изменено!';
+$_['text_list']         = 'Список Событий';
+$_['text_event']        = 'Используйте Событие что бы переопределить функционал того или иного Дополнения';
 
 // Column
-$_['column_code']       = 'Event Code';
-$_['column_trigger']    = 'Trigger';
-$_['column_action']     = 'Action';
-$_['column_status']     = 'Status';
-$_['column_date_added'] = 'Date Added';
-$_['column_action']     = 'Action';
+$_['column_code']       = 'Код события';
+$_['column_trigger']    = 'Триггер';
+$_['column_action']     = 'Действие';
+$_['column_status']     = 'Статус';
+$_['column_date_added'] = 'Добавлен';
+$_['column_action']     = 'Действие';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify extensions!';
+$_['error_permission']  = 'У вас не достаточно прав!';
