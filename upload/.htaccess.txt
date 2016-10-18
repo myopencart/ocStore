@@ -54,3 +54,11 @@ RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 
 # 7. disable open_basedir limitations
 # php_admin_value open_basedir none
+
+### Display PHP errors 
+### Uncomment the commands by removing the # sign in front of it.
+# php_flag display_startup_errors on
+# php_flag display_errors on
+# php_flag html_errors on
+# php_flag track_errors on
+# php_value error_reporting "E_ALL"
