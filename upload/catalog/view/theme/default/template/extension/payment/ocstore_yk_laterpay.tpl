@@ -22,4 +22,4 @@
         document.forms['checkout'].submit();
     //--></script>
   </body>
-</html><?php echo $footer; ?>
+</html>
