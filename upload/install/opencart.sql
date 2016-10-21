@@ -3473,6 +3473,7 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'dashboard_recent', 'dashboard_recent_sort_order', '8', 0),
 (0, 'dashboard_activity', 'dashboard_activity_width', '4', 0),
 (0, 'dashboard_recent', 'dashboard_recent_width', '8', 0),
+(0, 'config', 'config_seo_url_type', 'seo_url', 0),
 (0, 'config', 'config_mail_regexp', '/^[^\@]+@.*.[a-z]{2,15}$/i', 0),
 (0, 'config', 'config_langdata', '{"1":{"meta_title":"Мой Магазин","meta_description":"Мой Магазин","meta_keyword":"","name":"Мой Магазин","owner":"Мое Имя","address":"Адрес","open":"с 10ч до 18ч\\r\\nобед с 14ч до 15ч\\r\\nвоскресенье - выходной","comment":""},"2":{"meta_title":"Your Store","meta_description":"My Store","meta_keyword":"","name":"Your Store","owner":"Your Name","address":"Address 1","open":"","comment":""}}', 1);
 -- --------------------------------------------------------
