@@ -6,6 +6,7 @@ $_['heading_title']    			= 'Google Sitemap';
 $_['text_feed']          		= 'Каналы продвижения';
 $_['text_success']          	= 'Настройки модуля обновлены!';
 $_['text_edit']          		= 'Редактировать Google Sitemap';
+$_['text_extension']         = 'Дополнения';
 
 // Entry
 $_['entry_status']          	= 'Статус:';

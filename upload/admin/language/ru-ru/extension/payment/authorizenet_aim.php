@@ -11,6 +11,7 @@ $_['text_live']             = 'Действующий';
 $_['text_authorization']    = 'Авторизация';
 $_['text_capture']          = 'Фиксация';
 $_['text_authorizenet_aim'] = '<a onclick="window.open(\'http://reseller.authorize.net/application/?id=5561142\');"><img src="view/image/payment/authorizenet.png" alt="Authorize.Net" title="Authorize.Net" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_extension']                = 'Дополнения';
 
 // Entry
 $_['entry_login']           = 'ID пользователя';

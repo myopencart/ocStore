@@ -2,9 +2,9 @@
 $_['heading_title']    = 'Basic Captcha';
 
 // Text
-$_['text_extension']   = 'Extensions';
 $_['text_success']	   = 'Success: You have modified Basic Captcha!';
 $_['text_edit']        = 'Edit Basic Captcha';
+$_['text_extension']   = 'Extensions';
 
 // Entry
 $_['entry_status']     = 'Status';

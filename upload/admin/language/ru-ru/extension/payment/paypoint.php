@@ -10,6 +10,7 @@ $_['text_paypoint']					= '<a href="https://www.paypoint.net/partners/opencart" 
 $_['text_live']						= 'Production';
 $_['text_successful']				= 'Всегда успешно';
 $_['text_fail']						= 'Всегда не';
+$_['text_extension']   = 'Дополнения';
 
 // Entry
 $_['entry_merchant']				= 'Merchant ID';

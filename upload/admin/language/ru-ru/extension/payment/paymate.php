@@ -7,6 +7,7 @@ $_['text_payment']					= 'Оплата';
 $_['text_success']					= 'Вы успешно изменили Paymate реквизиты!';
 $_['text_edit']                     = 'Редактировать Paymate';
 $_['text_paymate']					= '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';
+$_['text_extension']   = 'Дополнения';
 
 // Entry
 $_['entry_username']				= 'Paymate логин';

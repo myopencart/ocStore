@@ -3,7 +3,7 @@
 $_['heading_title']			  = 'Skrill';
 
 // Text
-$_['text_extension']	 = 'Extensions';
+$_['text_extension']	 = 'Дополнения';
 $_['text_success']			  = 'Настройки модуля успешно обновлены!';
 $_['text_edit']               = 'Edit Skrill';
 $_['text_skrill']	     	  = '<a href="https://account.skrill.com/signup?rid=31313345" target="_blank"><img src="view/image/payment/skrill.png" alt="Skrill" title="Skrill" style="border: 1px solid #EEEEEE;" /></a>';

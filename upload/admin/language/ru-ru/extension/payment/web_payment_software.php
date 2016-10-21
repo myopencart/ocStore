@@ -11,6 +11,7 @@ $_['text_test']						= 'Проверка';
 $_['text_live']						= 'Действующий';
 $_['text_authorization']			= 'Авторизация';
 $_['text_capture']					= 'Capture';
+$_['text_extension']   = 'Дополнения';
 
 // Entry
 $_['entry_login']					= 'ID Продавца';

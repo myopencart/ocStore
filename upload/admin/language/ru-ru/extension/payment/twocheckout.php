@@ -7,6 +7,7 @@ $_['text_payment']					= 'Оплата';
 $_['text_success']					= 'Успешно: Вы изменили данные учетной записи 2Checkout!';
 $_['text_edit']                     = 'Редактировать 2Checkout';
 $_['text_twocheckout']				= '<a href="https://www.2checkout.com/2co/affiliate?affiliate=1596408" target="_blank"><img src="view/image/payment/2checkout.png" alt="2Checkout" title="2Checkout" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_extension']   = 'Дополнения';
 
 // Entry
 $_['entry_account']					= 'Идентификатор учетной записи 2Checkout';

@@ -15,6 +15,7 @@ $_['text_finland']					= 'Finland';
 $_['text_denmark']					= 'Denmark';
 $_['text_germany']					= 'Germany';
 $_['text_netherlands']				= 'The Netherlands';
+$_['text_extension']   = 'Дополнения';
 
 // Entry
 $_['entry_merchant']				= 'Klarna Merchant ID';

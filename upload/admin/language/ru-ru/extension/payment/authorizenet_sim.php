@@ -7,6 +7,7 @@ $_['text_payment']			= 'Оплата';
 $_['text_success']			= 'Успех: Вы изменили данные счета Authorize.Net (AIM)!';
 $_['text_edit']             = 'Редактировать данные Authorize.Net (AIM)';
 $_['text_authorizenet_sim']	= '<a onclick="window.open(\'http://reseller.authorize.net/application/?id=5561142\');"><img src="view/image/payment/authorizenet.png" alt="Authorize.Net" title="Authorize.Net" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_extension']                = 'Дополнения';
 
 // Entry
 $_['entry_merchant']		= 'ID Продавца';
