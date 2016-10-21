@@ -89,7 +89,7 @@ class ControllerStartupSeoPro extends Controller {
 				$this->request->get['route'] = 'product/manufacturer/info';
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
-			} elseif(isset($this->cache_data['queries'][$route_])) {
+			} elseif(isset($this->cache_data['queries'][$route_]) && isset($this->request->server['SERVER_PROTOCOL'])) {
 					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 					$this->response->redirect($this->cache_data['queries'][$route_], 301);
 			} else {
@@ -328,7 +328,7 @@ class ControllerStartupSeoPro extends Controller {
 			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), false));
 		}
 
-		if (rawurldecode($url) != rawurldecode($seo)) {
+		if (rawurldecode($url) != rawurldecode($seo) && isset($this->request->server['SERVER_PROTOCOL'])) {
 			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 
 			$this->response->redirect($seo, 301);
