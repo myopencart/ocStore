@@ -631,7 +631,16 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()		
 				);
 			}
-			
+
+		/* octeam */
+			if ($this->user->hasPermission('access', 'octeam/toolset')) {
+				$tool[] = array(
+					'name'	   => $this->language->get('text_octeam_toolset'),
+					'href'     => $this->url->link('octeam/toolset', 'token=' . $this->session->data['token'], true),
+					'children' => array()		
+				);
+			}
+
 			if ($tool) {
 				$system[] = array(
 					'name'	   => $this->language->get('text_tools'),
