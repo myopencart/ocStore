@@ -1,6 +1,6 @@
 <?php
 class ControllerCommonFileManager extends Controller {
-	function translit ($text) {
+	protected function translit($text) {
 		$rus = array("а","А","б","Б","в","В","г","Г","д","Д","е","Е","ё","Ё","є","Є","ж", "Ж",  "з","З","и","И","і","І","ї","Ї","й","Й","к","К","л","Л","м","М","н","Н","о","О","п","П","р","Р", "с","С","т","Т","у","У","ф","Ф","х","Х","ц","Ц","ч", "Ч", "ш", "Ш", "щ",  "Щ", "ъ","Ъ", "ы","Ы","ь","Ь","э","Э","ю", "Ю", "я","Я",'/',' ');
 		$eng =array("a","A","b","B","v","V","g","G","d","D","e","E","e","E","e","E", "zh","ZH","z","Z","i","I","i","I","yi","YI","j","J","k","K","l","L","m","M","n","N","o","O", "p","P","r","R","s","S","t","T","u","U","f","F","h","H","c","C","ch","CH", "sh","SH","sch","SCH","", "", "y","Y","","","e","E","ju","JU","ja","JA",'','');
 		$text = strtolower(str_replace($rus,$eng,$text));
@@ -274,80 +274,76 @@ class ControllerCommonFileManager extends Controller {
 		}
 
 		if (!$json) {
-			if (!empty($this->request->files['file']['name']) && is_file($this->request->files['file']['tmp_name'])) {
-				// Sanitize the filename
-				$filename = basename(html_entity_decode($this->translit($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8')));
-				// Check if multiple files are uploaded or just one
-				$files = array();
+			// Check if multiple files are uploaded or just one
+			$files = array();
 
-				if (!empty($this->request->files['file']['name']) && is_array($this->request->files['file']['name'])) {
-					foreach (array_keys($this->request->files['file']['name']) as $key) {
-						$files[] = array(
-							'name' => $this->request->files['file']['name'][$key],
-							'type' => $this->request->files['file']['type'][$key],
-							'tmp_name' => $this->request->files['file']['tmp_name'][$key],
-							'error' => $this->request->files['file']['error'][$key],
-							'size' => $this->request->files['file']['size'][$key]
-						);
-					}
-				}
-
-				foreach ($files as $file) {
-					if (is_file($file['tmp_name'])) {
-						// Sanitize the filename
-						$filename = basename(html_entity_decode($this->translit($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8')));
-
-						// Validate the filename length
-						if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 255)) {
-							$json['error'] = $this->language->get('error_filename');
-						}
-
-						// Allowed file extension types
-						$allowed = array(
-							'jpg',
-							'jpeg',
-							'gif',
-							'png'
-						);
-
-						if (!in_array(utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)), $allowed)) {
-							$json['error'] = $this->language->get('error_filetype');
-						}
-
-						// Allowed file mime types
-						$allowed = array(
-							'image/jpeg',
-							'image/pjpeg',
-							'image/png',
-							'image/x-png',
-							'image/gif'
-						);
-
-						if (!in_array($file['type'], $allowed)) {
-							$json['error'] = $this->language->get('error_filetype');
-						}
-
-						// Return any upload error
-						if ($file['error'] != UPLOAD_ERR_OK) {
-							$json['error'] = $this->language->get('error_upload_' . $file['error']);
-						}
-					} else {
-						$json['error'] = $this->language->get('error_upload');
-					}
-
-					if (!$json) {
-						move_uploaded_file($file['tmp_name'], $directory . '/' . $filename);
-					}
+			if (!empty($this->request->files['file']['name']) && is_array($this->request->files['file']['name'])) {
+				foreach (array_keys($this->request->files['file']['name']) as $key) {
+					$files[] = array(
+						'name'     => $this->request->files['file']['name'][$key],
+						'type'     => $this->request->files['file']['type'][$key],
+						'tmp_name' => $this->request->files['file']['tmp_name'][$key],
+						'error'    => $this->request->files['file']['error'][$key],
+						'size'     => $this->request->files['file']['size'][$key]
+					);
 				}
 			}
 
-			if (!$json) {
-				$json['success'] = $this->language->get('text_uploaded');
-			}
+			foreach ($files as $file) {
+				if (is_file($file['tmp_name'])) {
+					// Sanitize the filename
+					$filename = basename($this->translit(html_entity_decode($file['name'], ENT_QUOTES, 'UTF-8')));
 
-			$this->response->addHeader('Content-Type: application/json');
-			$this->response->setOutput(json_encode($json));
+					// Validate the filename length
+					if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 255)) {
+						$json['error'] = $this->language->get('error_filename');
+					}
+					
+					// Allowed file extension types
+					$allowed = array(
+						'jpg',
+						'jpeg',
+						'gif',
+						'png'
+					);
+	
+					if (!in_array(utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)), $allowed)) {
+						$json['error'] = $this->language->get('error_filetype');
+					}
+					
+					// Allowed file mime types
+					$allowed = array(
+						'image/jpeg',
+						'image/pjpeg',
+						'image/png',
+						'image/x-png',
+						'image/gif'
+					);
+	
+					if (!in_array($file['type'], $allowed)) {
+						$json['error'] = $this->language->get('error_filetype');
+					}
+
+					// Return any upload error
+					if ($file['error'] != UPLOAD_ERR_OK) {
+						$json['error'] = $this->language->get('error_upload_' . $file['error']);
+					}
+				} else {
+					$json['error'] = $this->language->get('error_upload');
+				}
+
+				if (!$json) {
+					move_uploaded_file($file['tmp_name'], $directory . '/' . $filename);
+				}
+			}
 		}
+
+		if (!$json) {
+			$json['success'] = $this->language->get('text_uploaded');
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
 	}
 
 	public function folder() {
@@ -355,8 +351,8 @@ class ControllerCommonFileManager extends Controller {
 
 		$json = array();
 
-    //Translit Folder Name
-    $this->request->post['folder'] = $this->translit($this->request->post['folder']);
+		//Translit Folder Name
+		$this->request->post['folder'] = $this->translit($this->request->post['folder']);
 
 		// Check user has permission
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
@@ -391,7 +387,7 @@ class ControllerCommonFileManager extends Controller {
 		}
 
 		if (!isset($json['error'])) {
-			mkdir($directory . '/' . $folder, 0777);
+			@mkdir($directory . '/' . $folder, 0777);
 			chmod($directory . '/' . $folder, 0777);
 
 			@touch($directory . '/' . $folder . '/' . 'index.html');
@@ -436,7 +432,7 @@ class ControllerCommonFileManager extends Controller {
 
 				// If path is just a file delete it
 				if (is_file($path)) {
-					unlink($path);
+					@unlink($path);
 
 				// If path is a directory beging deleting each file and sub folder
 				} elseif (is_dir($path)) {
@@ -466,7 +462,7 @@ class ControllerCommonFileManager extends Controller {
 					foreach ($files as $file) {
 						// If file just delete
 						if (is_file($file)) {
-							unlink($file);
+							@unlink($file);
 
 						// If directory use the remove directory function
 						} elseif (is_dir($file)) {
