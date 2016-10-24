@@ -17,7 +17,6 @@ $_['text_affiliate']                   = 'ПАРТНЕРЫ';
 $_['text_captcha']                     = 'Captcha';
 $_['text_register']                    = 'РЕГИСТРАЦИЯ';
 $_['text_return']                      = 'ВОЗВРАТЫ';
-$_['text_review']                      = 'ОПЦИИ';
 $_['text_contact']                     = 'КОНТАКТЫ';
 $_['text_shipping']                    = 'Адрес Доставки';
 $_['text_payment']                     = 'Адрес Платежа';
