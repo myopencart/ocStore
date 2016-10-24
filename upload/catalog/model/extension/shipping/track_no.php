@@ -40,7 +40,7 @@ class ModelExtensionShippingTrackNo extends Model {
 		if ($this->config->get('track_no_sms_notify')) {
 			$this->smsNotify($order_info, $this->getComment($order_info, $this->config->get('track_no_sms_text')));
 		}
-		if ($this->config->get('track_no_export_liveinform') && (preg_match('/\w\w\d{9}\w\w/i', $track_no) || preg_match('/\d{14}/i', $track_no))) {
+		if ($this->config->get('track_no_export_liveinform') && (preg_match('/\w\w\d{9}\w\w/i', $track_no) || preg_match('/\d{14}/i', $track_no) || preg_match('/\d{10}/i', $track_no))) {
 			$this->exportLiveinform($this->config->get('track_no_liveinform_api_id'), $this->config->get('track_no_liveinform_type'), $order_info);
 		}
 		return array('success'=>$this->liveinform_success, 'error'=>$this->liveinform_error);

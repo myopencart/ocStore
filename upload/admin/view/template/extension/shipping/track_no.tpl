@@ -113,7 +113,7 @@
 			<label class="col-sm-3 control-label" for="track_no_export_liveinform"><span data-toggle="tooltip" title="LiveInform.ru - сервис отслеживания статусов доставки Почты России и уведомления покупателей.">Экспортировать в <a href="http://www.liveinform.ru/?partner=2324" target="_blank">LiveInform.ru</a>:</span></label>
 			<div class="col-sm-7">
 				<div class="checkbox"><label><input class="_form_flag" rel="_export_liveinform" type="checkbox" name="track_no_export_liveinform" value="1" <?php echo ($track_no_export_liveinform ? ' checked="checked"' : ''); ?>/>
-				<span style="color: red;" data-toggle="tooltip" title="14 цифр для Почты России; либо 2 буквы, 9 цифр, 2 буквы для EMS">Только если трек-номер Почты России или EMS</span>
+				<span style="color: red;" data-toggle="tooltip" title="14 цифр для Почты России; либо 2 буквы, 9 цифр, 2 буквы для EMS; либо 10 цифр для СДЭК">Только если трек-номер Почты России, EMS или СДЭК</span>
 				</div>
 			</div>
 		  </div>
