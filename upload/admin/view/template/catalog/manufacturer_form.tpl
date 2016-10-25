@@ -45,7 +45,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                 <div class="col-sm-10">
-                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['description'] : ''; ?></textarea>
+                  <textarea name="manufacturer_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($manufacturer_description[$language['language_id']]) ? $manufacturer_description[$language['language_id']]['description'] : ''; ?></textarea>
                 </div>
               </div>
               <div class="form-group">
@@ -131,15 +131,15 @@
       </div>
     </div>
   </div>
+<?php if (!$ckeditor) { ?>
+  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+  <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+<?php } ?>
   <script type="text/javascript"><!--
     <?php foreach ($languages as $language) { ?>
       <?php if ($ckeditor) { ?>
       ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
-      <?php } else { ?>
-      $('#input-description<?php echo $language['language_id']; ?>').summernote({
-        height: 300,
-        lang:'<?php echo $lang; ?>'
-      });
       <?php } ?>
     <?php } ?>
     //--></script>
