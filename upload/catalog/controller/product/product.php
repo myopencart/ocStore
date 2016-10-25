@@ -299,6 +299,7 @@ class ControllerProductProduct extends Controller {
 
 			if ($product_info['image']) {
 				$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+				$this->document->setOgImage($data['thumb']);
 			} else {
 				$data['thumb'] = '';
 			}
