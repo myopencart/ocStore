@@ -28,6 +28,14 @@ class ControllerExtensionPaymentLiqPay extends Controller {
 		return $this->load->view('extension/payment/liqpay', $data);
 	}
 
+	public function confirm() {
+		if ($this->session->data['payment_method']['code'] == 'liqpay') {
+			$this->load->model('checkout/order');
+
+			$this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('liqpay_order_status_id'));
+		}
+	}
+
 	public function callback() {
 		$xml = base64_decode($this->request->post['operation_xml']);
 		$signature = base64_encode(sha1($this->config->get('liqpay_signature') . $xml . $this->config->get('liqpay_signature'), true));
@@ -36,11 +44,22 @@ class ControllerExtensionPaymentLiqPay extends Controller {
 		$posright = strpos($xml, '/order_id');
 
 		$order_id = substr($xml, $posleft + 9, $posright - $posleft - 10);
+		$p = simplexml_load_string($xml);
+
+		$status_id = $this->config->get('config_order_status_id');
 
 		if ($signature == $this->request->post['signature']) {
 			$this->load->model('checkout/order');
-
-			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('config_order_status_id'));
+			if ($p->status == "success") {
+				$status_id = $this->config->get('liqpay_order_success_status_id');
+			} elseif ($p->status == "reversed") {
+				$status_id = $this->config->get('liqpay_order_reversed_status_id');
+			} elseif ($p->status == "processing") {
+				$status_id = $this->config->get('liqpay_order_processing_status_id');
+			} elseif ($p->status == "failure") {
+				$status_id = $this->config->get('liqpay_order_failure_status_id');
+			}
+			$this->model_checkout_order->addOrderHistory($order_id, $status_id);
 		}
 	}
 }

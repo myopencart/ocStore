@@ -31,6 +31,10 @@ class ControllerExtensionPaymentLiqPay extends Controller {
 		$data['entry_type'] = $this->language->get('entry_type');
 		$data['entry_total'] = $this->language->get('entry_total');
 		$data['entry_order_status'] = $this->language->get('entry_order_status');
+		$data['entry_order_success_status'] = $this->language->get('entry_order_success_status');
+		$data['entry_order_reversed_status'] = $this->language->get('entry_order_reversed_status');
+		$data['entry_order_processing_status'] = $this->language->get('entry_order_processing_status');
+		$data['entry_order_failure_status'] = $this->language->get('entry_order_failure_status');
 		$data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
@@ -113,6 +117,30 @@ class ControllerExtensionPaymentLiqPay extends Controller {
 			$data['liqpay_order_status_id'] = $this->request->post['liqpay_order_status_id'];
 		} else {
 			$data['liqpay_order_status_id'] = $this->config->get('liqpay_order_status_id');
+		}
+
+		if (isset($this->request->post['liqpay_order_success_status_id'])) {
+			$data['liqpay_order_success_status_id'] = $this->request->post['liqpay_order_success_status_id'];
+		} else {
+			$data['liqpay_order_success_status_id'] = $this->config->get('liqpay_order_success_status_id');
+		}
+
+		if (isset($this->request->post['liqpay_order_reversed_status_id'])) {
+			$data['liqpay_order_reversed_status_id'] = $this->request->post['liqpay_order_reversed_status_id'];
+		} else {
+			$data['liqpay_order_reversed_status_id'] = $this->config->get('liqpay_order_reversed_status_id');
+		}
+
+		if (isset($this->request->post['liqpay_order_processing_status_id'])) {
+			$data['liqpay_order_processing_status_id'] = $this->request->post['liqpay_order_processing_status_id'];
+		} else {
+			$data['liqpay_order_processing_status_id'] = $this->config->get('liqpay_order_processing_status_id');
+		}
+
+		if (isset($this->request->post['liqpay_order_failure_status_id'])) {
+			$data['liqpay_order_failure_status_id'] = $this->request->post['liqpay_order_failure_status_id'];
+		} else {
+			$data['liqpay_order_failure_status_id'] = $this->config->get('liqpay_order_failure_status_id');
 		}
 
 		$this->load->model('localisation/order_status');
