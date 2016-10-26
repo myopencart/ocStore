@@ -3,10 +3,10 @@
 $_['heading_title']		 = 'Бесплатный заказ';
 
 // Text
-$_['text_payment']		 = 'Оплата';
+$_['text_payment']		 = 'Платежи';
 $_['text_success']		 = 'Настройки модуля успешно обновлены!';
 $_['text_edit']          = 'Редактирование модуля';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_order_status'] = 'Статус заказа:';

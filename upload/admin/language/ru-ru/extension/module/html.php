@@ -3,7 +3,7 @@
 $_['heading_title']     = 'HTML Содержимое';
 
 // Text
-$_['text_extension']    = 'Дополнения';
+$_['text_extension']    = 'Модули';
 $_['text_success']      = 'Модуль успешно установлен!';
 $_['text_edit']         = 'Редактирование модуля';
 

@@ -3,7 +3,7 @@
 $_['heading_title']                          = 'Королевская почта';
 
 // Text
-$_['text_shipping']                          = 'Доставка';
+$_['text_extension']                         = 'Доставка';
 $_['text_success']                           = 'Success: You have modified Royal Mail shipping!';
 $_['text_edit']                              = 'Edit Royal Mail Shipping';
 

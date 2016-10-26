@@ -3,10 +3,10 @@
 $_['heading_title']					= 'Payza';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Вы успешно изменили Payza реквизиты!';
 $_['text_edit']                     = 'Редактировать Payza';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_merchant']				= 'ID Продавца';

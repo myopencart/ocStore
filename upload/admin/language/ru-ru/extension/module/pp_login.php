@@ -3,7 +3,7 @@
 $_['heading_title']        = 'Авторизация через PayPal';
 
 //Text
-$_['text_extension']       = 'Дополнения';
+$_['text_extension']       = 'Модули';
 $_['text_success']         = 'Success: You have modified Log In with PayPal module!';
 $_['text_edit']            = 'Edit Log In with PayPal Module';
 $_['text_button_grey']     = 'Grey';

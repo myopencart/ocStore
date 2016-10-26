@@ -19,6 +19,7 @@ $_['text_small_button'] = 'Small';
 $_['text_medium_button'] = 'Medium';
 $_['text_large_button'] = 'Large';
 $_['text_x_large_button'] = 'X-Large';
+$_['text_extension']   = 'Модули';
 
 //Entry
 $_['entry_button_type'] = 'Button Type';

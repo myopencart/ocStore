@@ -4,7 +4,7 @@ $_['heading_title']         					    = 'QIWI Кошелек';
 $_['text_edit']                     			    = 'Редактирование QIWI Кошелек';
 
 // Text
-$_['text_extension']	 = 'Дополнения';
+$_['text_extension']	 = 'Платежи';
 $_['text_success']          					    = 'Настройки модуля обновлены!';
 $_['text_qiwi_rest']             				    = '<a href="http://ishop.qiwi.com" onclick="return !window.open(this.href)"><img  src="view/image/payment/qiwi_rest.jpg" alt="QIWI Кошелек" title="QIWI Кошелек" style="border: 1px solid #EEEEEE;" /></a>';
 

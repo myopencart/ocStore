@@ -3,7 +3,7 @@
 $_['heading_title']                           = 'MaxMind Anti-Fraud';
 
 // Text
-$_['text_extension']                          = 'Расширения';
+$_['text_extension']                          = 'Защита от мошенничества';
 $_['text_success']                            = 'Настройки модуля успешно обновлены!';
 $_['text_edit']                               = 'Редактирование модуля';
 $_['text_signup']                             = 'MaxMind - это сервис по обнаружению подозрительных заказов и возвратов. Если у вас нет лицензионного ключа, вы можете <a href="https://www.maxmind.com/ru/minfraud-services" target="_blank"><u>зарегистрироваться в MaxMind</u></a>. <br>После получения индивидуального ключа скопируйте его в поле ниже.';

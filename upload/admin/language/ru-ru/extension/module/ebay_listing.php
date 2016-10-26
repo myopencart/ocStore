@@ -3,7 +3,7 @@
 $_['heading_title']     = 'Товары с eBay';
 
 // Text
-$_['text_extension']    = 'Дополнения';
+$_['text_extension']    = 'Модули';
 $_['text_success']      = 'Success: You have modified module eBay featured!';
 $_['text_edit']        	= 'Редактирование модуля';
 $_['text_list']         = 'Layout List';

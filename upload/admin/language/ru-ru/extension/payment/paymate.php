@@ -3,11 +3,11 @@
 $_['heading_title']					= 'Paymate';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Вы успешно изменили Paymate реквизиты!';
 $_['text_edit']                     = 'Редактировать Paymate';
 $_['text_paymate']					= '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_username']				= 'Paymate логин';

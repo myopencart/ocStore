@@ -3,7 +3,7 @@
 $_['heading_title']					= 'Web Payment Software';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Success: You have modified Web Payment Software account details!';
 $_['text_edit']                     = 'Edit AWeb Payment Software';
 $_['text_web_payment_software']		= '<a href="http://www.web-payment-software.com/" target="_blank"><img src="view/image/payment/wps-logo.jpg" alt="Web Payment Software" title="Web Payment Software" style="border: 1px solid #EEEEEE;" /></a>';
@@ -11,7 +11,7 @@ $_['text_test']						= 'Проверка';
 $_['text_live']						= 'Действующий';
 $_['text_authorization']			= 'Авторизация';
 $_['text_capture']					= 'Capture';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_login']					= 'ID Продавца';

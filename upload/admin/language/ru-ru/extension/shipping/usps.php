@@ -3,7 +3,7 @@
 $_['heading_title']         = 'United States Postal Service';
 
 // Text
-$_['text_shipping']         = 'Доставка';
+$_['text_extension']        = 'Доставка';
 $_['text_success']          = 'Настройки модуля United States Postal Service успешно обновлены!';
 $_['text_edit']             = 'Редактирование модуля';
 $_['text_domestic_00']      = 'First-Class Mail Parcel';

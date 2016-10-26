@@ -3,10 +3,10 @@
 $_['heading_title']					= 'Perpetual Payments';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Success: You have modified Perpetual Payments account details!';
 $_['text_edit']                     = 'Edit Perpetual Payments';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_auth_id']					= 'Authorization ID';

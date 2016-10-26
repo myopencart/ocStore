@@ -9,7 +9,7 @@ $_['button_clear']            = 'Очистить журнал';
 $_['tab_log']                 = 'Журнал';
 
 // Text 
-$_['text_payment']            = 'Оплаты';
+$_['text_payment']            = 'Платежи';
 $_['text_success']            = 'Настройки модуля обновлены!';
 $_['text_webmoney_wmr']       = '<a style="cursor: pointer;" onclick="window.open(\'https://webmoney.ru\');"><img src="view/image/payment/webmoney_wmr.gif" alt="Webmoney" title="Webmoney" style="border: 1px solid #EEEEEE;" height="25px" /></a>';
 $_['text_clear_log_success']  = 'Журнал запросов от сервера платежной системы успешно очищен!';
@@ -17,7 +17,7 @@ $_['text_confirm']            = 'Удаление журнала невозмо�
 $_['text_log_off']            = 'Выключен';
 $_['text_log_short']          = 'Частичный (Только результаты операций)';
 $_['text_log_full']           = 'Полный (Все запросы)';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_merch_r']               = 'Номер R-кошелька';

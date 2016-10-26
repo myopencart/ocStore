@@ -3,14 +3,14 @@
 $_['heading_title']					= 'PayPoint';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Success: You have modified PayPoint account details!';
 $_['text_edit']                     = 'Edit PayPoint';
 $_['text_paypoint']					= '<a href="https://www.paypoint.net/partners/opencart" target="_blank"><img src="view/image/payment/paypoint.png" alt="PayPoint" title="PayPoint" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']						= 'Production';
 $_['text_successful']				= 'Всегда успешно';
 $_['text_fail']						= 'Всегда не';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_merchant']				= 'Merchant ID';

@@ -3,7 +3,7 @@
 $_['heading_title']                = 'Последняя активность';
 
 // Text
-$_['text_extension']               = 'Дополнения';
+$_['text_extension']               = 'Панель управления';
 $_['text_success']                 = 'Панель активности успешно изменена';
 $_['text_edit']                    = 'Редактировать';
 $_['text_customer_address_add']    = '<a href="customer_id=%d">%s</a> добавил новый адрес.';

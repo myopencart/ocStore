@@ -3,7 +3,7 @@
 $_['heading_title']			  = 'Wallet One Единая касса';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Настройки успешно изменены!';
 $_['text_edit']							= 'Редактирование';
 $_['text_w1']								= '<a style="cursor: pointer;" onclick="window.open(\'https://www.walletone.com/merchant/?promo=ocstore\');"><img src="view/image/payment/w1/w1_logo.png" height="40" alt="Wallet One" title="Wallet One" /></a>';

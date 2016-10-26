@@ -9,7 +9,7 @@
 $_['heading_title']          = 'Квитанция Сбербанка РФ';
 
 // Text
-$_['text_payment']           = 'Оплата';
+$_['text_payment']           = 'Платежи';
 $_['text_success']           = 'Настройки модуля "%s" обновлены!';
 $_['text_sberbank_transfer'] = '<a style="cursor: pointer;" onclick="window.open(\'http://sberbank.ru\');"><img src="view/image/payment/sberbank_transfer.png" alt="Сбербанк" title="Сбербанк" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_title_default']     = 'Квитанция Сбербанка РФ';

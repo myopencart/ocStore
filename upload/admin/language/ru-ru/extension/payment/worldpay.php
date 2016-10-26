@@ -3,7 +3,7 @@
 $_['heading_title']					= 'WorldPay';
 
 // Text
-$_['text_payment']					= 'Оплата';
+$_['text_payment']					= 'Платежи';
 $_['text_success']					= 'Успех: Вы изменили детали аккаунта WorldPay!';
 $_['text_worldpay']					= '<a href="https://business.worldpay.com/partner/opencart" target="_blank"><img src="view/image/payment/worldpay.png" alt="Worldpay" title="Worldpay" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_test']					 = 'Test';
@@ -14,7 +14,7 @@ $_['text_release_ok_order']		 = 'Release was successful, order status updated to
 $_['text_refund_ok']			 = 'Rebate was successful';
 $_['text_refund_ok_order']		 = 'Rebate was successful, order status updated to refund';
 $_['text_void_ok']				 = 'Void was successful, order status updated to voided';
-$_['text_extension']   = 'Дополнения';
+$_['text_extension']   = 'Платежи';
 
 // Entry
 $_['entry_service_key']			 = 'Service Key';
