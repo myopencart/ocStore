@@ -1404,6 +1404,12 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-seo_pro_utm"><span data-toggle="tooltip" title="<?php echo $help_seo_pro_utm; ?>"><?php echo $entry_seo_pro_utm; ?></span></label>
+                  <div class="col-sm-10">
+                    <textarea name="config_seo_pro_utm" rows="5" placeholder="<?php echo $entry_seo_pro_utm; ?>" id="input-seo_pro_utm" class="form-control"><?php echo $config_seo_pro_utm; ?></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-robots"><span data-toggle="tooltip" title="<?php echo $help_robots; ?>"><?php echo $entry_robots; ?></span></label>
                   <div class="col-sm-10">
                     <textarea name="config_robots" rows="5" placeholder="<?php echo $entry_robots; ?>" id="input-robots" class="form-control"><?php echo $config_robots; ?></textarea>

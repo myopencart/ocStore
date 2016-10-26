@@ -129,20 +129,13 @@ class ControllerStartupSeoPro extends Controller {
 						if (!$data['path']) return $link;
 					}
 					$data['product_id'] = $tmp['product_id'];
-					$allowed_parameters = array(
-						'tracking',
-						'uri', 'list_type',
-						'gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-						'type', 'source', 'block', 'position', 'keyword',
-						'yclid', 'ymclid', 'openstat', 'frommarket',
-						'openstat_service', 'openstat_campaign', 'openstat_ad', 'openstat_source',
-						'urltype'
-					);
+					$seo_pro_utm = preg_replace('~\r?\n~', "\n", $this->config->get('config_seo_pro_utm'));
+					$allowed_parameters = explode("\n", $seo_pro_utm);
 					foreach($allowed_parameters as $ap) {
-						if (isset($tmp[$ap])) {
-							$data[$ap] = $tmp[$ap];
+						if (isset($tmp[trim($ap)])) {
+							$data[trim($ap)] = $tmp[trim($ap)];
 						}
-					}					
+					}
 				}
 				break;
 

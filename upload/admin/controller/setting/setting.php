@@ -182,6 +182,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_seo_url_postfix'] = $this->language->get('entry_seo_url_postfix');
 		$data['entry_seo_url_include_path_help'] = $this->language->get('entry_seo_url_include_path_help');
 		$data['entry_seo_url_postfix_help'] = $this->language->get('entry_seo_url_postfix_help');
+		$data['entry_seo_pro_utm'] = $this->language->get('entry_seo_pro_utm');
 		$data['entry_google_captcha_public'] = $this->language->get('entry_google_captcha_public');
 		$data['entry_google_captcha_secret'] = $this->language->get('entry_google_captcha_secret');
 		$data['entry_sms_gatename'] = $this->language->get('entry_sms_gatename');
@@ -252,6 +253,7 @@ class ControllerSettingSetting extends Controller {
 		$data['help_shared'] = $this->language->get('help_shared');
 		$data['help_robots'] = $this->language->get('help_robots');
 		$data['help_seo_url'] = $this->language->get('help_seo_url');
+		$data['help_seo_pro_utm'] = $this->language->get('help_seo_pro_utm');
 		$data['help_file_max_size'] = $this->language->get('help_file_max_size');
 		$data['help_file_ext_allowed'] = $this->language->get('help_file_ext_allowed');
 		$data['help_file_mime_allowed'] = $this->language->get('help_file_mime_allowed');
@@ -1198,6 +1200,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_url_include_path'] = $this->request->post['config_seo_url_include_path'];
 		} else {
 			$data['config_seo_url_include_path'] = $this->config->get('config_seo_url_include_path');
+		}
+
+		if (isset($this->request->post['config_seo_pro_utm'])) {
+			$data['config_seo_pro_utm'] = $this->request->post['config_seo_pro_utm'];
+		} else {
+			$data['config_seo_pro_utm'] = $this->config->get('config_seo_pro_utm');
 		}
 
 		if (isset($this->request->post['config_seo_url_postfix'])) {
