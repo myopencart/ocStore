@@ -26,7 +26,7 @@ $_['entry_decimal_place']  = 'Знаков после запятой';
 $_['entry_status']         = 'Статус';
 
 // Help
-$_['help_code']            = 'Убедитесь, что <a href="http://www.xe.com/currency/rub-russian-ruble" target="_blank">ISO код</a> указан согласно международным правилам.';
+$_['help_code']            = 'Убедитесь, что ISO код (www.xe.com/currency/rub-russian-ruble) указан согласно международным правилам.';
 $_['help_value']           = 'Установите на 1.00000 - если это валюта по умолчанию.';
 
 // Error
