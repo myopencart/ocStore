@@ -784,31 +784,10 @@ class ControllerSettingStore extends Controller {
 			if (!$value['name']) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
-			if ((utf8_strlen($value['owner']) < 3) || (utf8_strlen($value['owner']) > 64)) {
-				$this->error['owner'][$language_id] = $this->language->get('error_owner');
-			}
-			if ((utf8_strlen($value['address']) < 3) || (utf8_strlen($value['address']) > 256)) {
-				$this->error['address'][$language_id] = $this->language->get('error_address');
-			}
-			if ((utf8_strlen($value['meta_title']) < 2) || (utf8_strlen($value['meta_title']) > 255)) {
-				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
-			}
 		}
 
 		if (!$this->request->post['config_url']) {
 			$this->error['url'] = $this->language->get('error_url');
-		}
-
-		if (!$this->request->post['config_name']) {
-			$this->error['name'] = $this->language->get('error_name');
-		}
-
-		if ((utf8_strlen($this->request->post['config_owner']) < 3) || (utf8_strlen($this->request->post['config_owner']) > 64)) {
-			$this->error['owner'] = $this->language->get('error_owner');
-		}
-
-		if ((utf8_strlen($this->request->post['config_address']) < 3) || (utf8_strlen($this->request->post['config_address']) > 256)) {
-			$this->error['address'] = $this->language->get('error_address');
 		}
 
 		if ((utf8_strlen($this->request->post['config_email']) > 96) || !preg_match($this->config->get('config_mail_regexp'), $this->request->post['config_email'])) {
