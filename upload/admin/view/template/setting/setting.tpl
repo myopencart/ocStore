@@ -116,7 +116,7 @@
                 <?php foreach ($languages as $language) { ?>
                 <div class="tab-pane" id="store-language<?php echo $language['language_id']; ?>">
 
-                  <div class="form-group">
+                  <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
                     <div class="col-sm-10">
                       <input type="text" name="config_langdata[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($config_langdata[$language['language_id']]) ? $config_langdata[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
