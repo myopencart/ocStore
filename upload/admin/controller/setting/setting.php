@@ -1380,6 +1380,12 @@ class ControllerSettingSetting extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
+		foreach ($this->request->post['config_langdata'] as $language_id => $value) {
+			if (!$value['name']) {
+				$this->error['name'][$language_id] = $this->language->get('error_name');
+			}
+		}
+
 		if ((utf8_strlen($this->request->post['config_email']) > 96) || !filter_var($this->request->post['config_email'], FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
