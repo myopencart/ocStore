@@ -1,9 +1,10 @@
 <?php
 class ControllerCommonHome extends Controller {
 	public function index() {
-		$this->document->setTitle($this->config->get('config_meta_title'));
-		$this->document->setDescription($this->config->get('config_meta_description'));
-		$this->document->setKeywords($this->config->get('config_meta_keyword'));
+		$config_langdata = $this->config->get('config_langdata')[$this->config->get('config_language_id')];
+		$this->document->setTitle($config_langdata['meta_title']);
+		$this->document->setDescription($config_langdata['meta_description']);
+		$this->document->setKeywords($config_langdata['meta_keyword']);
 
 		if (isset($this->request->get['route'])) {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');
