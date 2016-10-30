@@ -128,7 +128,7 @@ class ModelExtensionShippingTrackNo extends Model {
 		$this->load->model('checkout/order');
 		$orders = $this->getLiveinformOrdersToUpdate();
 		foreach ($orders as $order) {
-            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no'])) {
+            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no']) && !preg_match('/\d{10}/i', $track_no)) {
                 continue;
             }
             $states = $this->getLiveinformStatus($api_id, $order);
