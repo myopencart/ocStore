@@ -356,19 +356,12 @@ class Cart {
 	}
 
 	public function countProducts() {
-		$product_total = 0;
-
-		$products = $this->getProducts();
-
-		foreach ($products as $product) {
-			$product_total += $product['quantity'];
-		}
-
-		return $product_total;
+		$query = $this->db->query("SELECT SUM(quantity) as total FROM " . DB_PREFIX . "cart WHERE api_id = '" . (isset($this->session->data['api_id']) ? (int)$this->session->data['api_id'] : 0) . "' AND customer_id = '" . (int)$this->customer->getId() . "' AND session_id = '" . $this->db->escape($this->session->getId()) . "'");
+		return $query->row['total'];
 	}
 
 	public function hasProducts() {
-		return count($this->getProducts());
+		return $this->countProducts();
 	}
 
 	public function hasRecurringProducts() {
