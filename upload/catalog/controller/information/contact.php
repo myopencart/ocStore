@@ -86,16 +86,14 @@ class ControllerInformationContact extends Controller {
 			$data['image'] = false;
 		}
 
-		$temp = $this->config->get('config_langdata')[$this->config->get('config_language_id')];
-
-		$data['store'] = $temp['name'];
-		$data['address'] = nl2br($temp['address']);
+		$data['store'] = $this->config->get('config_name');
+		$data['address'] = nl2br($this->config->get('config_address'));
 		$data['geocode'] = $this->config->get('config_geocode');
 		$data['geocode_hl'] = $this->config->get('config_language');
 		$data['telephone'] = $this->config->get('config_telephone');
 		$data['fax'] = $this->config->get('config_fax');
-		$data['open'] = nl2br($temp['open']);
-		$data['comment'] = $temp['comment'];
+		$data['open'] = nl2br($this->config->get('config_open'));
+		$data['comment'] = $this->config->get('config_comment');
 
 		$data['locations'] = array();
 

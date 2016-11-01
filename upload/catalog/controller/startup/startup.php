@@ -105,6 +105,15 @@ class ControllerStartupStartup extends Controller {
 		// Set the config language_id
 		$this->config->set('config_language_id', $languages[$code]['language_id']);	
 
+		// Set multiLanguage settings
+		$langdata = $this->config->get('config_langdata');
+		if (isset($langdata[$languages[$code]['language_id']])) {
+			foreach ($langdata[$languages[$code]['language_id']] as $key => $value) {
+				$this->config->set('config_' . $key, $value);
+			}
+		}
+
+
 		// Customer
 		$customer = new Cart\Customer($this->registry);
 		$this->registry->set('customer', $customer);
