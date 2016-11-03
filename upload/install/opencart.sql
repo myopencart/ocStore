@@ -7255,7 +7255,8 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (3261, 209, 'Uthai Thani', 'Uthai Thani', 1),
 (3262, 209, 'Uttaradit', 'Uttaradit', 1),
 (3263, 209, 'Yala', 'Yala', 1),
-(3264, 209, 'Yasothon', 'Yasothon', 1),
+(3264, 209, 'Yasothon', 'Yasothon', 1);
+INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 (3265, 210, 'Kara', 'K', 1),
 (3266, 210, 'Plateaux', 'P', 1),
 (3267, 210, 'Savanes', 'S', 1),
