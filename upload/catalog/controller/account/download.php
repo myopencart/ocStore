@@ -128,12 +128,12 @@ class ControllerAccountDownload extends Controller {
 
 		if ($download_info) {
 			$file = DIR_DOWNLOAD . $download_info['filename'];
-			$mask = basename($download_info['mask']);
+			$mask = $download_info['mask'];
 
 			if (!headers_sent()) {
 				if (file_exists($file)) {
 					header('Content-Type: application/octet-stream');
-					header('Content-Disposition: attachment; filename="' . ($mask ? $mask : basename($file)) . '"');
+					header('Content-Disposition: attachment; filename="' . ($mask ? $mask : $file) . '"');
 					header('Expires: 0');
 					header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 					header('Pragma: public');
