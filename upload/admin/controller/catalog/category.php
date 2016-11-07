@@ -195,27 +195,6 @@ class ControllerCatalogCategory extends Controller {
 
 		$data['categories'] = array();
 
-		$filter_data = array(
-			'sort'  => $sort,
-			'order' => $order,
-			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
-			'limit' => $this->config->get('config_limit_admin')
-		);
-
-		$category_total = $this->model_catalog_category->getTotalCategories();
-
-		$results = $this->model_catalog_category->getCategories($filter_data);
-
-		foreach ($results as $result) {
-			$data['categories'][] = array(
-				'category_id' => $result['category_id'],
-				'name'        => $result['name'],
-				'sort_order'  => $result['sort_order'],
-				'edit'        => $this->url->link('catalog/category/edit', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, true),
-				'delete'      => $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, true)
-			);
-		}
-
 		if (isset($this->request->get['path'])) {
 			if ($this->request->get['path'] != '') {
 				$this->path = explode('_', $this->request->get['path']);
