@@ -15,5 +15,5 @@ $_['entry_status']     = 'Статус';
 $_['help_code']        = 'Вначале, необходимо <a href="https://developers.google.com/+/hangouts/button" target="_blank">Создать значек для чата Google Hangout</a> затем, скопировать и вставить сгенерированный код в это поле.';
 
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления этим модулем!';
+$_['error_permission'] = 'У вас нет прав для управления этим модулем!';
 $_['error_code']       = 'Необходимо указать Код!';

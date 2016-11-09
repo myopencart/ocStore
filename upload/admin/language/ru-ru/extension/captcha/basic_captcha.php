@@ -10,4 +10,4 @@ $_['text_extension']   = 'Captcha';
 $_['entry_status']     = 'Статус';
 
 // Error
-$_['error_permission'] = 'У Вас нет прав для управления этим модулем!';
+$_['error_permission'] = 'У вас нет прав для управления этим модулем!';

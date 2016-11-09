@@ -1,9 +1,9 @@
 <?php
-// Heading 
+// Heading
 $_['heading_title']  = 'Смена пароля';
 
 // Text
-$_['text_account']   = 'Кабинет Партнера';
+$_['text_account']   = 'Кабинет партнера';
 $_['text_password']  = 'Ваш пароль';
 $_['text_success']   = 'Ваш пароль успешно изменен!';
 

@@ -8,4 +8,4 @@ $_['text_list']        = 'Список ошибок';
 
 // Error
 $_['error_warning']	   = 'ВНИМАНИЕ: Your error log file %s is %s!';
-$_['error_permission'] = 'У Вас нет прав что бы очистить журнал ошибок!';
+$_['error_permission'] = 'У вас нет прав что бы очистить журнал ошибок!';

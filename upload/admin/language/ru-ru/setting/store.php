@@ -27,7 +27,7 @@ $_['entry_ssl']                        = 'SSL URL';
 $_['entry_meta_title']                 = 'Заголовок:';
 $_['entry_meta_description']           = 'Мета-тег Description:';
 $_['entry_meta_keyword']               = 'Мета-тег Keywords:';
-$_['entry_layout']                     = 'Схема по умолчанию:';
+$_['entry_layout']                     = 'Макет по умолчанию:';
 $_['entry_theme']                   = 'Шаблон';
 $_['entry_name']                       = 'Название магазина';
 $_['entry_owner']                      = 'Владелец магазина';
@@ -41,7 +41,7 @@ $_['entry_open']                       = 'Время работы';
 $_['entry_comment']                    = 'Комментарий';
 $_['entry_location']                   = 'Местоположение магазина';
 $_['entry_country']                    = 'Страна:';
-$_['entry_zone']                       = 'Регион / Область:';
+$_['entry_zone']                       = 'Регион / область:';
 $_['entry_language']                   = 'Язык:';
 $_['entry_currency']                   = 'Валюта:';
 $_['entry_tax']                        = 'Отображать цены с налогом:';
@@ -85,7 +85,7 @@ $_['help_secure']                      = 'Для использования SSL 
 
 // Error
 $_['error_warning']                    = 'Внимательно проверьте форму на ошибки!';
-$_['error_permission']                 = 'У Вас нет прав для изменения настроек!';
+$_['error_permission']                 = 'У вас нет прав для изменения настроек!';
 $_['error_url']                    		= 'Необходим URL магазина!';
 $_['error_meta_title']             = 'Название должно быть от 3 до 32 символов!';
 $_['error_name']                   = 'Название магазина должно быть от 3 до 32 символов!';

@@ -1,9 +1,9 @@
 <?php
-// Heading 
+// Heading
 $_['heading_title']     = 'Данные учетной записи';
 
 // Text
-$_['text_account']      = 'Кабинет Партнера';
+$_['text_account']      = 'Кабинет партнера';
 $_['text_edit']         = 'Редактировать информацию';
 $_['text_your_details'] = 'Ваши персональные данные';
 $_['text_your_address'] = 'Ваш адрес';
@@ -22,7 +22,7 @@ $_['entry_address_2']   = 'Адрес (продолжение)';
 $_['entry_postcode']    = 'Индекс';
 $_['entry_city']        = 'Город';
 $_['entry_country']     = 'Страна';
-$_['entry_zone']        = 'Регион / Область';
+$_['entry_zone']        = 'Регион / область';
 
 // Error
 $_['error_exists']      = 'Такой E-Mail уже зарегистрирован!';

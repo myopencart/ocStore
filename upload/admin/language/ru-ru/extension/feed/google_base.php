@@ -21,6 +21,6 @@ $_['entry_data_feed']        = 'URL канала:';
 $_['entry_status']           = 'Статус:';
 
 // Error
-$_['error_permission']       = 'У Вас нет прав для управления Google Base!';
+$_['error_permission']       = 'У вас нет прав для управления Google Base!';
 $_['error_upload']           = 'Файл не может быть загружен!';
 $_['error_filetype']         = 'Неправильный тип файла';
