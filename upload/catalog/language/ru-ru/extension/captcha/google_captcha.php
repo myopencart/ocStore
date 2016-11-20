@@ -1,9 +1,9 @@
 <?php
 // Heading
-$_['heading_title'] = 'Captcha';
+$_['heading_title'] = 'Защитный код';
 
 // Entry
-$_['entry_captcha'] = 'Enter the code in the box below';
+$_['entry_captcha'] = 'Введите код';
 
 // Error
-$_['error_captcha'] = 'Verification code does not match the image!';
+$_['error_captcha'] = 'Введен неверный код!';

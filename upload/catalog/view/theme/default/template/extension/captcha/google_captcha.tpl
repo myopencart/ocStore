@@ -1,4 +1,4 @@
-<script src="//www.google.com/recaptcha/api.js" type="text/javascript"></script>
+<script src="//www.google.com/recaptcha/api.js?hl=<?php echo $lang; ?>" type="text/javascript"></script>
 <fieldset>
   <legend><?php echo $text_captcha; ?></legend>
   <div class="form-group required">
