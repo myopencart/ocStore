@@ -969,12 +969,12 @@
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
 <?php } ?>
   <script type="text/javascript"><!--
-        <?php foreach ($languages as $language) { ?>
-        <?php if ($ckeditor) { ?>
-                ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
-            <?php } ?>
-        <?php } ?>
-        //--></script>
+    <?php if ($ckeditor) { ?>
+      <?php foreach ($languages as $language) { ?>
+        ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
+      <?php } ?>
+    <?php } ?>
+   //--></script>
    <script type="text/javascript"><!--
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({

@@ -137,12 +137,12 @@
   <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
 <?php } ?>
   <script type="text/javascript"><!--
+    <?php if ($ckeditor) { ?>
     <?php foreach ($languages as $language) { ?>
-      <?php if ($ckeditor) { ?>
       ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
       <?php } ?>
     <?php } ?>
-    //--></script>
+  //--></script>
   <script type="text/javascript"><!--
     $('#language a:first').tab('show');
     //--></script></div>
