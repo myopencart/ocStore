@@ -574,6 +574,7 @@ $('#button-review').on('click', function() {
 			}
 		}
 	});
+    grecaptcha.reset();
 });
 
 $(document).ready(function() {
