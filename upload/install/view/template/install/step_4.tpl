@@ -91,8 +91,6 @@ $(document).ready(function() {
 					html += '  <p>' + extension['price'] + ' <a target="_BLANK" href="' + extension['href'] + '"><?php echo $text_view; ?></a></p>';
 					html += '  <div class="clearfix"></div>';
 					html += '</div>';
-
-					i++;
 				}
 
 				$('#extension').html(html);
