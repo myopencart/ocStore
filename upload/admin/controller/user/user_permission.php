@@ -357,8 +357,9 @@ class ControllerUserUserPermission extends Controller {
 
 		while (count($path) != 0) {
 			$next = array_shift($path);
-
-			foreach (glob($next) as $file) {
+            $g_files = glob($next);
+            if (!$g_files) $g_files = array();
+			foreach ($g_files as $file) {
 
 				// If directory add to path array
 				if (is_dir($file)) {
