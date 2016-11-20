@@ -50,15 +50,5 @@ $_['action_event'] = array(
 	'view/recurring/*/before'                 => 'event/compatibility/view',
 	'view/shipping/*/before'                  => 'event/compatibility/view',
 	'view/theme/*/before'                     => 'event/compatibility/view',
-	'view/total/*/before'                     => 'event/compatibility/view',
-	'language/extension/analytics/*/before'   => 'event/compatibility/language',
-	'language/extension/captcha/*/before'     => 'event/compatibility/language',
-	'language/extension/feed/*/before'        => 'event/compatibility/language',
-	'language/extension/fraud/*/before'       => 'event/compatibility/language',
-	'language/extension/module/*/before'      => 'event/compatibility/language',
-	'language/extension/payment/*/before'     => 'event/compatibility/language',
-	'language/extension/recurring/*/before'   => 'event/compatibility/language',
-	'language/extension/shipping/*/before'    => 'event/compatibility/language',
-	'language/extension/theme/*/before'       => 'event/compatibility/language',
-	'language/extension/total/*/before'       => 'event/compatibility/language'
+	'view/total/*/before'                     => 'event/compatibility/view'
 );
