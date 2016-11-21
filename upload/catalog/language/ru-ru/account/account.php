@@ -1,9 +1,9 @@
 <?php
-// Heading 
-$_['heading_title']      = 'Личный Кабинет';
+// Heading
+$_['heading_title']      = 'Личный кабинет';
 
 // Text
-$_['text_account']       = 'Личный Кабинет';
+$_['text_account']       = 'Личный кабинет';
 $_['text_my_account']    = 'Моя учетная запись';
 $_['text_my_orders']     = 'Мои заказы';
 $_['text_my_newsletter'] = 'Подписка';

@@ -1,7 +1,7 @@
 <?php
 // Text
 $_['text_home']          = 'Главная';
-$_['text_wishlist']      = 'Мои Закладки (%s)';
+$_['text_wishlist']      = 'Мои закладки (%s)';
 $_['text_shopping_cart'] = 'Корзина покупок';
 $_['text_category']      = 'Категории';
 $_['text_account']       = 'Личный кабинет';

@@ -20,7 +20,7 @@ $_['column_keyword']        = 'SEO Keyword';
 $_['column_action']         = 'Действие';
 
 // Error
-$_['error_permission']      = 'У Вас недостаточно прав для изменения в модуле SEO менеджер!';
+$_['error_permission']      = 'У вас недостаточно прав для изменения в модуле SEO менеджер!';
 $_['error_query']           = 'Запрос должен быть от 3 до 255 символов!';
 $_['error_keyword']         = 'Этот SEO keyword уже используется!';
 ?>

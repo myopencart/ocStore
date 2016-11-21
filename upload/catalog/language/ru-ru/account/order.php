@@ -1,5 +1,5 @@
 <?php
-// Heading 
+// Heading
 $_['heading_title']         = 'История заказов';
 
 // Button
@@ -7,7 +7,7 @@ $_['button_ocstore_payeer_onpay'] = 'Оплатить онлайн';
 $_['button_ocstore_yk_onpay']     = 'Оплатить онлайн';
 
 // Text
-$_['text_account']          = 'Личный Кабинет';
+$_['text_account']          = 'Личный кабинет';
 $_['text_order']            = 'Заказ';
 $_['text_order_detail']     = 'Детали заказа';
 $_['text_invoice_no']       = '№ Счета:';

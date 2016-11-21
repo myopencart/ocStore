@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'Использовать Купон на скидку';
+$_['heading_title'] = 'Использовать купон на скидку';
 
 // Text
 $_['text_coupon']   = 'Купон (%s)';
