@@ -3241,7 +3241,7 @@ DROP TABLE IF EXISTS `oc_return_status`;
 CREATE TABLE `oc_return_status` (
   `return_status_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(32) NOT NULL,
+  `name` varchar(128) NOT NULL,
   PRIMARY KEY (`return_status_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -3250,9 +3250,9 @@ CREATE TABLE `oc_return_status` (
 --
 
 INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUES
-(1, 1, 'Рассматриваемый / находящийся в процессе рассмотрения'),
+(1, 1, 'В обработке'),
 (3, 1, 'Готов (к отправке) / или Завершен'),
-(2, 1, 'Заказ "висит" в ожидании поступления товаров, которых в данный момент нет на складе.'),
+(2, 1, 'В ожидании'),
 (1, 2, 'Pending'),
 (3, 2, 'Complete'),
 (2, 2, 'Awaiting Products');
