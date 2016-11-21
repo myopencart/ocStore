@@ -1,4 +1,4 @@
-# ocStore 2 change log 
+# ocStore 2 change log
 
 ## v2.3.0.3 (22.11.2016)
 ####  Исправлено
