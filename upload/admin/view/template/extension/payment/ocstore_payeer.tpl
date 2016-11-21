@@ -335,6 +335,7 @@
                     <textarea name="ocstore_payeer_langdata[<?php echo $language['language_id']; ?>][mail_customer_success_content]" rows="5"
                               id="mail-customer-success-content<?php echo $language['language_id']; ?>"
                               placeholder="<?php echo $entry_mail_customer_success_content; ?>"
+                              data-lang="<?php echo $lang; ?>"
                               class="form-control summernote"><?php echo !empty($ocstore_payeer_langdata[$language['language_id']]['mail_customer_success_content'])
                                                    ? $ocstore_payeer_langdata[$language['language_id']]['mail_customer_success_content'] : $sample_mail_customer_success_content; ?></textarea>
                   </div>
@@ -399,6 +400,7 @@
                     <textarea name="ocstore_payeer_langdata[<?php echo $language['language_id']; ?>][mail_customer_fail_content]" rows="5"
                               id="mail-customer-fail-content<?php echo $language['language_id']; ?>"
                               placeholder="<?php echo $entry_mail_customer_fail_content; ?>"
+                              data-lang="<?php echo $lang; ?>"
                               class="form-control summernote"><?php echo !empty($ocstore_payeer_langdata[$language['language_id']]['mail_customer_fail_content'])
                                                    ? $ocstore_payeer_langdata[$language['language_id']]['mail_customer_fail_content'] : $sample_mail_customer_fail_content; ?></textarea>
                   </div>
@@ -453,6 +455,7 @@
                   <textarea name="ocstore_payeer_mail_admin_success_content" rows="5"
                             id="input-mail-admin-success-content"
                             placeholder="<?php echo $entry_mail_admin_success_content; ?>"
+                            data-lang="<?php echo $lang; ?>"
                             class="form-control summernote"><?php echo !empty($ocstore_payeer_mail_admin_success_content)
                                                  ? $ocstore_payeer_mail_admin_success_content : $sample_mail_admin_success_content; ?></textarea>
                   <?php if ($error_mail_admin_success_content) { ?>
@@ -505,6 +508,7 @@
                   <textarea name="ocstore_payeer_mail_admin_fail_content" rows="5"
                             id="input-mail-admin-fail-content"
                             placeholder="<?php echo $entry_mail_admin_fail_content; ?>"
+                            data-lang="<?php echo $lang; ?>"
                             class="form-control summernote"><?php echo !empty($ocstore_payeer_mail_admin_fail_content)
                                                  ? $ocstore_payeer_mail_admin_fail_content : $sample_mail_admin_fail_content; ?></textarea>
                   <?php if ($error_mail_admin_fail_content) { ?>

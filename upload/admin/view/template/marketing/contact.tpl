@@ -85,7 +85,7 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-message"><?php echo $entry_message; ?></label>
             <div class="col-sm-10">
-              <textarea name="message" placeholder="<?php echo $entry_message; ?>" id="input-message" class="form-control summernote"></textarea>
+              <textarea name="message" placeholder="<?php echo $entry_message; ?>" id="input-message" data-lang="<?php echo $lang; ?>" class="form-control summernote"></textarea>
             </div>
           </div>
         </form>

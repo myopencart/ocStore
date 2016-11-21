@@ -303,6 +303,7 @@ class ControllerCatalogCategory extends Controller {
         $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
     } else {
         $this->document->addScript('view/javascript/summernote/summernote.js');
+        $this->document->addScript('view/javascript/summernote/lang/summernote-' . $this->language->get('lang') . '.js');
         $this->document->addScript('view/javascript/summernote/opencart.js');
         $this->document->addStyle('view/javascript/summernote/summernote.css');
     }
@@ -412,6 +413,8 @@ class ControllerCatalogCategory extends Controller {
 		$this->load->model('localisation/language');
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
+
+		$data['lang'] = $this->language->get('lang');
 
 		if (isset($this->request->post['category_description'])) {
 			$data['category_description'] = $this->request->post['category_description'];

@@ -2,10 +2,16 @@ $(document).ready(function() {
 	// Override summernotes image manager
 	$('.summernote').each(function() {
 		var element = this;
+		var lang = $(element).data('lang');
+		
+		if (typeof(lang) == 'undefined') {
+			lang = 'en-US';
+		}
 		
 		$(element).summernote({
 			disableDragAndDrop: true,
 			height: 300,
+			lang: lang,
 			emptyPara: '',
 			toolbar: [
 				['style', ['style']],
