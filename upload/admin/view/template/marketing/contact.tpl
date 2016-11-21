@@ -85,26 +85,19 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-message"><?php echo $entry_message; ?></label>
             <div class="col-sm-10">
-              <textarea name="message" placeholder="<?php echo $entry_message; ?>" id="input-message" class="form-control"></textarea>
+              <textarea name="message" placeholder="<?php echo $entry_message; ?>" id="input-message" class="form-control summernote"></textarea>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
-  <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
-  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+
   <script type="text/javascript"><!--
-<?php if ($ckeditor) { ?>
-ckeditorInit('input-message', '<?php echo $token; ?>');
-<?php } else { ?>
-$('#input-message').summernote({
-	height: 300,
-	lang:'<?php echo $lang; ?>'
-});
-<?php } ?>
-//--></script>
+    <?php if ($ckeditor) { ?>
+      ckeditorInit('input-message', getURLVar('token'));
+    <?php } ?>
+  //--></script>
   <script type="text/javascript"><!--
 $('select[name=\'to\']').on('change', function() {
 	$('.to').hide();

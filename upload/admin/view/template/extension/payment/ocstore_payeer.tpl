@@ -335,7 +335,7 @@
                     <textarea name="ocstore_payeer_langdata[<?php echo $language['language_id']; ?>][mail_customer_success_content]" rows="5"
                               id="mail-customer-success-content<?php echo $language['language_id']; ?>"
                               placeholder="<?php echo $entry_mail_customer_success_content; ?>"
-                              class="form-control"><?php echo !empty($ocstore_payeer_langdata[$language['language_id']]['mail_customer_success_content'])
+                              class="form-control summernote"><?php echo !empty($ocstore_payeer_langdata[$language['language_id']]['mail_customer_success_content'])
                                                    ? $ocstore_payeer_langdata[$language['language_id']]['mail_customer_success_content'] : $sample_mail_customer_success_content; ?></textarea>
                   </div>
                   <?php } ?>
@@ -399,7 +399,7 @@
                     <textarea name="ocstore_payeer_langdata[<?php echo $language['language_id']; ?>][mail_customer_fail_content]" rows="5"
                               id="mail-customer-fail-content<?php echo $language['language_id']; ?>"
                               placeholder="<?php echo $entry_mail_customer_fail_content; ?>"
-                              class="form-control"><?php echo !empty($ocstore_payeer_langdata[$language['language_id']]['mail_customer_fail_content'])
+                              class="form-control summernote"><?php echo !empty($ocstore_payeer_langdata[$language['language_id']]['mail_customer_fail_content'])
                                                    ? $ocstore_payeer_langdata[$language['language_id']]['mail_customer_fail_content'] : $sample_mail_customer_fail_content; ?></textarea>
                   </div>
                   <?php } ?>
@@ -453,7 +453,7 @@
                   <textarea name="ocstore_payeer_mail_admin_success_content" rows="5"
                             id="input-mail-admin-success-content"
                             placeholder="<?php echo $entry_mail_admin_success_content; ?>"
-                            class="form-control"><?php echo !empty($ocstore_payeer_mail_admin_success_content)
+                            class="form-control summernote"><?php echo !empty($ocstore_payeer_mail_admin_success_content)
                                                  ? $ocstore_payeer_mail_admin_success_content : $sample_mail_admin_success_content; ?></textarea>
                   <?php if ($error_mail_admin_success_content) { ?>
                   <div class="text-danger"><?php echo $error_mail_admin_success_content; ?></div>
@@ -505,7 +505,7 @@
                   <textarea name="ocstore_payeer_mail_admin_fail_content" rows="5"
                             id="input-mail-admin-fail-content"
                             placeholder="<?php echo $entry_mail_admin_fail_content; ?>"
-                            class="form-control"><?php echo !empty($ocstore_payeer_mail_admin_fail_content)
+                            class="form-control summernote"><?php echo !empty($ocstore_payeer_mail_admin_fail_content)
                                                  ? $ocstore_payeer_mail_admin_fail_content : $sample_mail_admin_fail_content; ?></textarea>
                   <?php if ($error_mail_admin_fail_content) { ?>
                   <div class="text-danger"><?php echo $error_mail_admin_fail_content; ?></div>
@@ -634,18 +634,9 @@
   <?php if ($ckeditor) { ?>
   ckeditorInit('input-mail-admin-success-content', getURLVar('token'));
   ckeditorInit('input-mail-admin-fail-content', getURLVar('token'));
-  <?php } else { ?>
-  $('#input-mail-admin-success-content').summernote({height: 300});
-  $('#input-mail-admin-fail-content').summernote({height: 300});
-  <?php } ?>
-
   <?php foreach ($oc_languages as $language) { ?>
-  <?php if ($ckeditor) { ?>
-  ckeditorInit('mail-customer-success-content<?php echo $language['language_id']; ?>', getURLVar('token'));
-  ckeditorInit('mail-customer-fail-content<?php echo $language['language_id']; ?>', getURLVar('token'));
-  <?php } else { ?>
-  $('#mail-customer-success-content<?php echo $language['language_id']; ?>').summernote({height: 300});
-  $('#mail-customer-fail-content<?php echo $language['language_id']; ?>').summernote({height: 300});
+    ckeditorInit('mail-customer-success-content<?php echo $language['language_id']; ?>', getURLVar('token'));
+    ckeditorInit('mail-customer-fail-content<?php echo $language['language_id']; ?>', getURLVar('token'));
   <?php } ?>
   <?php } ?>
 

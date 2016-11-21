@@ -263,7 +263,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo $entry_description; ?></label>
                 <div class="col-sm-10">
-                  <textarea name="description" id="description-field"><?php echo $product['description']; ?></textarea>
+                  <textarea name="description" id="description-field" class="summernote"><?php echo $product['description']; ?></textarea>
                 </div>
               </div>
             </div>
@@ -2419,9 +2419,7 @@
     <?php } ?>
 
     <?php if ($ckeditor) { ?>
-    ckeditorInit('description-field', '<?php echo $token; ?>');
-    <?php } else { ?>
-    $('#description-field').summernote({height: 300, lang:'<?php echo $lang; ?>'});
+    ckeditorInit('description-field', getURLVar('token'));
     <?php } ?>
   });
 

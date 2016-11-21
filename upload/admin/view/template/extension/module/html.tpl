@@ -77,15 +77,10 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
-  <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
-  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>  
   <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
 <?php if ($ckeditor) { ?>
-ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
-<?php } else { ?>
-$('#input-description<?php echo $language['language_id']; ?>').summernote({height: 300, lang:'<?php echo $lang; ?>'});
+ckeditorInit('input-description<?php echo $language['language_id']; ?>', getURLVar('token'));
 <?php } ?>
 <?php } ?>
 //--></script> 

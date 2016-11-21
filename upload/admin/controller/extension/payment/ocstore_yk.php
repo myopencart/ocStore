@@ -69,6 +69,10 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
         if ($this->config->get('config_editor_default')) {
             $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
             $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+        } else {
+            $this->document->addScript('view/javascript/summernote/summernote.js');
+            $this->document->addScript('view/javascript/summernote/opencart.js');
+            $this->document->addStyle('view/javascript/summernote/summernote.css');
         }
 
         $server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;

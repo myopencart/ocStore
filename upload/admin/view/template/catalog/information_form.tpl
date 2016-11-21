@@ -215,15 +215,10 @@
       </div>
     </div>
   </div>
-<?php if (!$ckeditor) { ?>
-  <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
-  <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
-  <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>  
-<?php } ?>
   <script type="text/javascript"><!--
   <?php if ($ckeditor) { ?>
     <?php foreach ($languages as $language) { ?>
-      ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
+      ckeditorInit('input-description<?php echo $language['language_id']; ?>', getURLVar('token'));
     <?php } ?>
   <?php } ?>
   //--></script>

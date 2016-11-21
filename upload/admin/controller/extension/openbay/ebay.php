@@ -1274,6 +1274,10 @@ class ControllerExtensionOpenbayEbay extends Controller {
     if ($this->config->get('config_editor_default')) {
         $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
         $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+    } else {
+        $this->document->addScript('view/javascript/summernote/summernote.js');
+        $this->document->addScript('view/javascript/summernote/opencart.js');
+        $this->document->addStyle('view/javascript/summernote/summernote.css');
     }
 
 		if ($this->checkConfig() == true) {

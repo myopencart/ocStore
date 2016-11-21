@@ -11,6 +11,10 @@ class ControllerMarketingContact extends Controller {
     if ($this->config->get('config_editor_default')) {
         $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
         $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+    } else {
+        $this->document->addScript('view/javascript/summernote/summernote.js');
+        $this->document->addScript('view/javascript/summernote/opencart.js');
+        $this->document->addStyle('view/javascript/summernote/summernote.css');
     }
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -40,8 +44,6 @@ class ControllerMarketingContact extends Controller {
 
 		$data['button_send'] = $this->language->get('button_send');
 		$data['button_cancel'] = $this->language->get('button_cancel');
-
-		$data['lang'] = $this->language->get('lang');
 
 		$data['token'] = $this->session->data['token'];
 		$data['ckeditor'] = $this->config->get('config_editor_default');
@@ -178,6 +180,7 @@ class ControllerMarketingContact extends Controller {
 
 								if ($customer_info) {
 									$emails[] = $customer_info['email'];
+									$email_total++;
 								}
 							}
 						}
