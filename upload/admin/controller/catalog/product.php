@@ -3,7 +3,7 @@ class ControllerCatalogProduct extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->language->load('catalog/product');
+		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -13,7 +13,7 @@ class ControllerCatalogProduct extends Controller {
 	}
 
 	public function add() {
-		$this->language->load('catalog/product');
+		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -62,14 +62,14 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
 		$this->getForm();
 	}
 
 	public function edit() {
-		$this->language->load('catalog/product');
+		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -118,14 +118,14 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
 		$this->getForm();
 	}
 
 	public function delete() {
-		$this->language->load('catalog/product');
+		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -176,14 +176,14 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
 		$this->getList();
 	}
 
 	public function copy() {
-		$this->language->load('catalog/product');
+		$this->load->language('catalog/product');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -234,7 +234,7 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
 		$this->getList();
@@ -277,6 +277,12 @@ class ControllerCatalogProduct extends Controller {
 			$filter_status = null;
 		}
 
+		if (isset($this->request->get['filter_image'])) {
+			$filter_image = $this->request->get['filter_image'];
+		} else {
+			$filter_image = null;
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -317,12 +323,12 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
 		}
 
-    if (isset($this->request->get['filter_category'])) {
-      $url .= '&filter_category=' . $this->request->get['filter_category'];
-    }
-            
 		if (isset($this->request->get['filter_status'])) {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
+		}
+
+		if (isset($this->request->get['filter_image'])) {
+			$url .= '&filter_image=' . $this->request->get['filter_image'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -341,17 +347,17 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL')
+			'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true)
 		);
 
-		$data['add'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$data['copy'] = $this->url->link('catalog/product/copy', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['add'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'] . $url, true);
+		$data['copy'] = $this->url->link('catalog/product/copy', 'token=' . $this->session->data['token'] . $url, true);
+		$data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, true);
 
 		$data['products'] = array();
 
@@ -360,8 +366,9 @@ class ControllerCatalogProduct extends Controller {
 			'filter_model'	  => $filter_model,
 			'filter_price'	  => $filter_price,
 			'filter_quantity' => $filter_quantity,
-      'filter_category' => $filter_category,
+            'filter_category' => $filter_category,
 			'filter_status'   => $filter_status,
+			'filter_image'    => $filter_image,
 			'sort'            => $sort,
 			'order'           => $order,
 			'start'           => ($page - 1) * $this->config->get('config_limit_admin'),
@@ -386,7 +393,7 @@ class ControllerCatalogProduct extends Controller {
 		foreach ($results as $result) {
 
       $category =  $this->model_catalog_product->getProductCategories($result['product_id']);
-            
+
 			if (is_file(DIR_IMAGE . $result['image'])) {
 				$image = $this->model_tool_image->resize($result['image'], 40, 40);
 			} else {
@@ -414,8 +421,8 @@ class ControllerCatalogProduct extends Controller {
 				'category'   => $category,
 				'special'    => $special,
 				'quantity'   => $result['quantity'],
-				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
-				'edit'       => $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
+				'status'     => $result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'edit'       => $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, true)
 			);
 		}
 
@@ -429,7 +436,7 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['column_image'] = $this->language->get('column_image');
 		$data['column_name'] = $this->language->get('column_name');
-		$data['column_category'] = $this->language->get('column_category');		
+		$data['column_category'] = $this->language->get('column_category');
 		$data['column_model'] = $this->language->get('column_model');
 		$data['column_price'] = $this->language->get('column_price');
 		$data['column_quantity'] = $this->language->get('column_quantity');
@@ -441,6 +448,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_price'] = $this->language->get('entry_price');
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
 		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_image'] = $this->language->get('entry_image');
 
 		$data['button_copy'] = $this->language->get('button_copy');
 		$data['button_add'] = $this->language->get('button_add');
@@ -496,6 +504,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
+		if (isset($this->request->get['filter_image'])) {
+			$url .= '&filter_image=' . $this->request->get['filter_image'];
+		}
+
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
 		} else {
@@ -506,12 +518,12 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, 'SSL');
-		$data['sort_model'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, 'SSL');
-		$data['sort_price'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, 'SSL');
-		$data['sort_quantity'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, 'SSL');
-		$data['sort_status'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, 'SSL');
-		$data['sort_order'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, 'SSL');
+		$data['sort_name'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, true);
+		$data['sort_model'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, true);
+		$data['sort_price'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, true);
+		$data['sort_quantity'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, true);
+		$data['sort_status'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, true);
+		$data['sort_order'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, true);
 
 		$url = '';
 
@@ -531,12 +543,12 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
 		}
 
-		if (isset($this->request->get['filter_category'])) {
-      $url .= '&filter_category=' . $this->request->get['filter_category'];
-    }
-
 		if (isset($this->request->get['filter_status'])) {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
+		}
+
+		if (isset($this->request->get['filter_image'])) {
+			$url .= '&filter_image=' . $this->request->get['filter_image'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -551,7 +563,7 @@ class ControllerCatalogProduct extends Controller {
 		$pagination->total = $product_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+		$pagination->url = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
@@ -559,13 +571,11 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['filter_name'] = $filter_name;
 		$data['filter_model'] = $filter_model;
-
-    	    $data['filter_category'] = $filter_category;
-            
 		$data['filter_price'] = $filter_price;
 		$data['filter_quantity'] = $filter_quantity;
 		$data['filter_category'] = $filter_category;
 		$data['filter_status'] = $filter_status;
+		$data['filter_image'] = $filter_image;
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;
@@ -574,7 +584,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/product_list.tpl', $data));
+		$this->response->setOutput($this->load->view('catalog/product_list', $data));
 	}
 
 	protected function getForm() {
@@ -582,6 +592,11 @@ class ControllerCatalogProduct extends Controller {
     if ($this->config->get('config_editor_default')) {
         $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
         $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
+    } else {
+        $this->document->addScript('view/javascript/summernote/summernote.js');
+        $this->document->addScript('view/javascript/summernote/lang/summernote-' . $this->language->get('lang') . '.js');
+        $this->document->addScript('view/javascript/summernote/opencart.js');
+        $this->document->addStyle('view/javascript/summernote/summernote.css');
     }
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -636,6 +651,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_width'] = $this->language->get('entry_width');
 		$data['entry_height'] = $this->language->get('entry_height');
 		$data['entry_image'] = $this->language->get('entry_image');
+		$data['entry_additional_image'] = $this->language->get('entry_additional_image');
 		$data['entry_store'] = $this->language->get('entry_store');
 		$data['entry_manufacturer'] = $this->language->get('entry_manufacturer');
 		$data['entry_download'] = $this->language->get('entry_download');
@@ -676,6 +692,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['help_related'] = $this->language->get('help_related');
 		$data['help_tag'] = $this->language->get('help_tag');
 
+		$data['button_view'] = $this->language->get('button_view');
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 		$data['button_attribute_add'] = $this->language->get('button_attribute_add');
@@ -766,21 +783,23 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
+			'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL')
+			'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true)
 		);
 
 		if (!isset($this->request->get['product_id'])) {
-			$data['action'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$data['action'] = $this->url->link('catalog/product/add', 'token=' . $this->session->data['token'] . $url, true);
 		} else {
-			$data['action'] = $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
+			$data['action'] = $this->url->link('catalog/product/edit', 'token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url, true);
+
+			$data['product_page'] = HTTP_CATALOG.'index.php?route=product/product&product_id='.$this->request->get['product_id'];
 		}
 
-		$data['cancel'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['cancel'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true);
 
 		if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			$product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
@@ -802,26 +821,6 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['product_description'] = array();
 		}
-
-		if (isset($this->request->post['image'])) {
-			$data['image'] = $this->request->post['image'];
-		} elseif (!empty($product_info)) {
-			$data['image'] = $product_info['image'];
-		} else {
-			$data['image'] = '';
-		}
-
-		$this->load->model('tool/image');
-
-		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
-			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['image'])) {
-			$data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
-		} else {
-			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
-		}
-
-		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
 		if (isset($this->request->post['model'])) {
 			$data['model'] = $this->request->post['model'];
@@ -1094,7 +1093,7 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		$this->load->model('catalog/manufacturer');
-		
+
     $data['manufacturers'] = $this->model_catalog_manufacturer->getManufacturers();
 
 		if (isset($this->request->post['manufacturer_id'])) {
@@ -1121,14 +1120,6 @@ class ControllerCatalogProduct extends Controller {
 
 		// Categories
 		$this->load->model('catalog/category');
-
-		if (isset($this->request->post['product_category'])) {
-			$categories = $this->request->post['product_category'];
-		} elseif (isset($this->request->get['product_id'])) {
-			$categories = $this->model_catalog_product->getProductCategories($this->request->get['product_id']);
-		} else {
-			$categories = array();
-		}
 
 		$filter_data = array(
 			'sort'        => 'name',
@@ -1301,6 +1292,27 @@ class ControllerCatalogProduct extends Controller {
 				'date_end'          => ($product_special['date_end'] != '0000-00-00') ? $product_special['date_end'] :  ''
 			);
 		}
+		
+		// Image
+		if (isset($this->request->post['image'])) {
+			$data['image'] = $this->request->post['image'];
+		} elseif (!empty($product_info)) {
+			$data['image'] = $product_info['image'];
+		} else {
+			$data['image'] = '';
+		}
+
+		$this->load->model('tool/image');
+
+		if (isset($this->request->post['image']) && is_file(DIR_IMAGE . $this->request->post['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
+		} elseif (!empty($product_info) && is_file(DIR_IMAGE . $product_info['image'])) {
+			$data['thumb'] = $this->model_tool_image->resize($product_info['image'], 100, 100);
+		} else {
+			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
+		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 
 		// Images
 		if (isset($this->request->post['product_image'])) {
@@ -1406,7 +1418,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/product_form.tpl', $data));
+		$this->response->setOutput($this->load->view('catalog/product_form', $data));
 	}
 
 	protected function validateForm() {

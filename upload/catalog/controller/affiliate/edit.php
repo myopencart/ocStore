@@ -4,9 +4,9 @@ class ControllerAffiliateEdit extends Controller {
 
 	public function index() {
 		if (!$this->affiliate->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('affiliate/edit', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('affiliate/edit', '', true);
 
-			$this->response->redirect($this->url->link('affiliate/login', '', 'SSL'));
+			$this->response->redirect($this->url->link('affiliate/login', '', true));
 		}
 
 		$this->load->language('affiliate/edit');
@@ -21,16 +21,18 @@ class ControllerAffiliateEdit extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			// Add to activity log
-			$this->load->model('affiliate/activity');
+			if ($this->config->get('config_customer_activity')) {
+				$this->load->model('affiliate/activity');
 
-			$activity_data = array(
-				'affiliate_id' => $this->affiliate->getId(),
-				'name'         => $this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastName()
-			);
+				$activity_data = array(
+					'affiliate_id' => $this->affiliate->getId(),
+					'name'         => $this->affiliate->getFirstName() . ' ' . $this->affiliate->getLastName()
+				);
 
-			$this->model_affiliate_activity->addActivity('edit', $activity_data);
+				$this->model_affiliate_activity->addActivity('edit', $activity_data);
+			}
 
-			$this->response->redirect($this->url->link('affiliate/account', '', 'SSL'));
+			$this->response->redirect($this->url->link('affiliate/account', '', true));
 		}
 
 		$data['breadcrumbs'] = array();
@@ -42,12 +44,12 @@ class ControllerAffiliateEdit extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
-			'href' => $this->url->link('affiliate/account', '', 'SSL')
+			'href' => $this->url->link('affiliate/account', '', true)
 		);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_edit'),
-			'href' => $this->url->link('affiliate/edit', '', 'SSL')
+			'href' => $this->url->link('affiliate/edit', '', true)
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
@@ -133,7 +135,7 @@ class ControllerAffiliateEdit extends Controller {
 			$data['error_zone'] = '';
 		}
 
-		$data['action'] = $this->url->link('affiliate/edit', '', 'SSL');
+		$data['action'] = $this->url->link('affiliate/edit', '', true);
 
 		if ($this->request->server['REQUEST_METHOD'] != 'POST') {
 			$affiliate_info = $this->model_affiliate_affiliate->getAffiliate($this->affiliate->getId());
@@ -247,7 +249,7 @@ class ControllerAffiliateEdit extends Controller {
 
 		$data['countries'] = $this->model_localisation_country->getCountries();
 
-		$data['back'] = $this->url->link('affiliate/account', '', 'SSL');
+		$data['back'] = $this->url->link('affiliate/account', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -256,11 +258,7 @@ class ControllerAffiliateEdit extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/affiliate/edit.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/affiliate/edit.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/affiliate/edit.tpl', $data));
-		}
+		$this->response->setOutput($this->load->view('affiliate/edit', $data));
 	}
 
 	protected function validate() {

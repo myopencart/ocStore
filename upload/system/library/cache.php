@@ -1,26 +1,26 @@
 <?php
 class Cache {
-	private $cache;
+	private $adaptor;
 
-	public function __construct($driver, $expire = 3600) {
-		$class = 'Cache\\' . $driver;
+	public function __construct($adaptor, $expire = 3600) {
+		$class = 'Cache\\' . $adaptor;
 
 		if (class_exists($class)) {
-			$this->cache = new $class($expire);
+			$this->adaptor = new $class($expire);
 		} else {
-			exit('Error: Could not load cache driver ' . $driver . ' cache!');
+			throw new \Exception('Error: Could not load cache adaptor ' . $adaptor . ' cache!');
 		}
 	}
-
+	
 	public function get($key) {
-		return $this->cache->get($key);
+		return $this->adaptor->get($key);
 	}
 
 	public function set($key, $value) {
-		return $this->cache->set($key, $value);
+		return $this->adaptor->set($key, $value);
 	}
 
 	public function delete($key) {
-		return $this->cache->delete($key);
+		return $this->adaptor->delete($key);
 	}
 }

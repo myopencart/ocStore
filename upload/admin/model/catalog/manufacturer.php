@@ -1,7 +1,6 @@
 <?php
 class ModelCatalogManufacturer extends Model {
 	public function addManufacturer($data) {
-		$this->event->trigger('pre.admin.manufacturer.add', $data);
 
 		$this->load->model('localisation/language');
 		$language_info = $this->model_localisation_language->getLanguageByCode($this->config->get('config_language'));
@@ -32,14 +31,11 @@ class ModelCatalogManufacturer extends Model {
 
 		$this->cache->delete('manufacturer');
 
-		$this->event->trigger('post.admin.manufacturer.add', $manufacturer_id);
-
 		return $manufacturer_id;
 	}
 
 	public function editManufacturer($manufacturer_id, $data) {
-		$this->event->trigger('pre.admin.manufacturer.edit', $data);
-
+		
 		$this->load->model('localisation/language');
 		$language_info = $this->model_localisation_language->getLanguageByCode($this->config->get('config_language'));
     $front_language_id = $language_info['language_id'];
@@ -72,25 +68,19 @@ class ModelCatalogManufacturer extends Model {
 		}
 
 		$this->cache->delete('manufacturer');
-
-		$this->event->trigger('post.admin.manufacturer.edit', $manufacturer_id);
 	}
 
 	public function deleteManufacturer($manufacturer_id) {
-		$this->event->trigger('pre.admin.manufacturer.delete', $manufacturer_id);
-
 		$this->db->query("DELETE FROM " . DB_PREFIX . "manufacturer WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "manufacturer_to_store WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "manufacturer_description WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
 
 		$this->cache->delete('manufacturer');
-
-		$this->event->trigger('post.admin.manufacturer.delete', $manufacturer_id);
 	}
 
 	public function getManufacturer($manufacturer_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "') AS keyword FROM " . DB_PREFIX . "manufacturer WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
+		$query = $this->db->query("SELECT DISTINCT *, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "' LIMIT 1) AS keyword FROM " . DB_PREFIX . "manufacturer WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
 
 		return $query->row;
 	}

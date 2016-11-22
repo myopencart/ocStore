@@ -35,9 +35,17 @@
             </div>
           </div>
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-code"><span data-toggle="tooltip" title="<?php echo $help_code; ?>"><?php echo $entry_code; ?></span></label>
+            <label class="col-sm-2 control-label" for="input-code"><?php echo $entry_code; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="code" value="<?php echo $code; ?>" placeholder="<?php echo $entry_code; ?>" id="input-code" class="form-control" />
+              <select name="code" id="input-code" class="form-control">
+                <?php foreach ($languages as $language) { ?>
+                <?php if ($language == $code) { ?>
+                <option value="<?php echo $language; ?>" selected="selected"><?php echo $language; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $language; ?>"><?php echo $language; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select>
               <?php if ($error_code) { ?>
               <div class="text-danger"><?php echo $error_code; ?></div>
               <?php } ?>
@@ -51,25 +59,7 @@
               <div class="text-danger"><?php echo $error_locale; ?></div>
               <?php } ?>
             </div>
-          </div>
-          <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-image"><span data-toggle="tooltip" title="<?php echo $help_image; ?>"><?php echo $entry_image; ?></span></label>
-            <div class="col-sm-10">
-              <input type="text" name="image" value="<?php echo $image; ?>" placeholder="<?php echo $entry_image; ?>" id="input-image" class="form-control" />
-              <?php if ($error_image) { ?>
-              <div class="text-danger"><?php echo $error_image; ?></div>
-              <?php } ?>
-            </div>
-          </div>
-          <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-directory"><span data-toggle="tooltip" title="<?php echo $help_directory; ?>"><?php echo $entry_directory; ?></span></label>
-            <div class="col-sm-10">
-              <input type="text" name="directory" value="<?php echo $directory; ?>" placeholder="<?php echo $entry_directory; ?>" id="input-directory" class="form-control" />
-              <?php if ($error_directory) { ?>
-              <div class="text-danger"><?php echo $error_directory; ?></div>
-              <?php } ?>
-            </div>
-          </div>
+          </div>          
           <div class="form-group">
             <label class="col-sm-2 control-label" for="input-status"><span data-toggle="tooltip" title="<?php echo $help_status; ?>"><?php echo $entry_status; ?></span></label>
             <div class="col-sm-10">
@@ -95,4 +85,4 @@
     </div>
   </div>
 </div>
-<?php echo $footer; ?>
+<?php echo $footer; ?> 

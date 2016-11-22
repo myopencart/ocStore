@@ -218,15 +218,19 @@ $('input[name=\'shipping_address\']').on('change', function() {
 //--></script>
 <script type="text/javascript"><!--
 $('#collapse-shipping-address .form-group[data-sort]').detach().each(function() {
-	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#collapse-shipping-address .form-group').length) {
-		$('#collapse-shipping-address .form-group').eq($(this).attr('data-sort')).before(this);
+	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#collapse-shipping-address .form-group').length-2) {
+		$('#collapse-shipping-address .form-group').eq(parseInt($(this).attr('data-sort'))+2).before(this);
 	}
 
-	if ($(this).attr('data-sort') > $('#collapse-shipping-address .form-group').length) {
+	if ($(this).attr('data-sort') > $('#collapse-shipping-address .form-group').length-2) {
 		$('#collapse-shipping-address .form-group:last').after(this);
 	}
 
-	if ($(this).attr('data-sort') < -$('#collapse-shipping-address .form-group').length) {
+	if ($(this).attr('data-sort') == $('#collapse-shipping-address .form-group').length-2) {
+		$('#collapse-shipping-address .form-group:last').after(this);
+	}
+
+	if ($(this).attr('data-sort') < -$('#collapse-shipping-address .form-group').length-2) {
 		$('#collapse-shipping-address .form-group:first').before(this);
 	}
 });
@@ -273,7 +277,7 @@ $('#collapse-shipping-address button[id^=\'button-shipping-custom-field\']').on(
 					if (json['success']) {
 						alert(json['success']);
 
-						$(node).parent().find('input[name^=\'custom_field\']').attr('value', json['code']);
+						$(node).parent().find('input[name^=\'custom_field\']').val(json['code']);
 					}
 				},
 				error: function(xhr, ajaxOptions, thrownError) {

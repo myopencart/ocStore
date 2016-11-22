@@ -29,7 +29,7 @@
             <label class="col-sm-2 control-label"><?php echo $entry_name; ?></label>
             <div class="col-sm-10">
               <?php foreach ($languages as $language) { ?>
-              <div class="input-group"><span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+              <div class="input-group"><span class="input-group-addon"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /></span>
                 <input type="text" name="attribute_description[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($attribute_description[$language['language_id']]) ? $attribute_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" class="form-control" />
               </div>
               <?php if (isset($error_name[$language['language_id']])) { ?>
@@ -42,6 +42,7 @@
             <label class="col-sm-2 control-label" for="input-attribute-group"><?php echo $entry_attribute_group; ?></label>
             <div class="col-sm-10">
               <select name="attribute_group_id" id="input-attribute-group" class="form-control">
+                <option value="0"></option>
                 <?php foreach ($attribute_groups as $attribute_group) { ?>
                 <?php if ($attribute_group['attribute_group_id'] == $attribute_group_id) { ?>
                 <option value="<?php echo $attribute_group['attribute_group_id']; ?>" selected="selected"><?php echo $attribute_group['name']; ?></option>

@@ -62,7 +62,7 @@ class ControllerProductSearch extends Controller {
 		if (isset($this->request->get['limit'])) {
 			$limit = (int)$this->request->get['limit'];
 		} else {
-			$limit = $this->config->get('config_product_limit');
+			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
 		}
 
 		if (isset($this->request->get['search'])) {
@@ -215,25 +215,25 @@ class ControllerProductSearch extends Controller {
 
 			foreach ($results as $result) {
 				if ($result['image']) {
-					$image = $this->model_tool_image->resize($result['image'], $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+					$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
 				} else {
-					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get('config_image_product_width'), $this->config->get('config_image_product_height'));
+					$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
 				}
 
-				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')));
+				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$price = false;
 				}
 
 				if ((float)$result['special']) {
-					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
+					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$special = false;
 				}
 
 				if ($this->config->get('config_tax')) {
-					$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price']);
+					$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
 				} else {
 					$tax = false;
 				}
@@ -248,12 +248,12 @@ class ControllerProductSearch extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
+					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
-					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
-					'rating'      => $result['rating'],
+					'minimum'     => ($result['minimum'] > 0) ? $result['minimum'] : 1,
+					'rating'      => $rating,
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'] . $url)
 				);
 			}
@@ -374,7 +374,7 @@ class ControllerProductSearch extends Controller {
 
 			$data['limits'] = array();
 
-			$limits = array_unique(array($this->config->get('config_product_limit'), 25, 50, 75, 100));
+			$limits = array_unique(array($this->config->get($this->config->get('config_theme') . '_product_limit'), 25, 50, 75, 100));
 
 			sort($limits);
 
@@ -432,15 +432,43 @@ class ControllerProductSearch extends Controller {
 
 			// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
 			if ($page == 1) {
-			    $this->document->addLink($this->url->link('product/search', '', 'SSL'), 'canonical');
+			    $this->document->addLink($this->url->link('product/search', '', true), 'canonical');
 			} elseif ($page == 2) {
-			    $this->document->addLink($this->url->link('product/search', '', 'SSL'), 'prev');
+			    $this->document->addLink($this->url->link('product/search', '', true), 'prev');
 			} else {
-			    $this->document->addLink($this->url->link('product/search', $url . '&page='. ($page - 1), 'SSL'), 'prev');
+			    $this->document->addLink($this->url->link('product/search', $url . '&page='. ($page - 1), true), 'prev');
 			}
 
 			if ($limit && ceil($product_total / $limit) > $page) {
-			    $this->document->addLink($this->url->link('product/search', $url . '&page='. ($page + 1), 'SSL'), 'next');
+			    $this->document->addLink($this->url->link('product/search', $url . '&page='. ($page + 1), true), 'next');
+			}
+
+			if (isset($this->request->get['search']) && $this->config->get('config_customer_search')) {
+				$this->load->model('account/search');
+
+				if ($this->customer->isLogged()) {
+					$customer_id = $this->customer->getId();
+				} else {
+					$customer_id = 0;
+				}
+
+				if (isset($this->request->server['REMOTE_ADDR'])) {
+					$ip = $this->request->server['REMOTE_ADDR'];
+				} else {
+					$ip = '';
+				}
+
+				$search_data = array(
+					'keyword'       => $search,
+					'category_id'   => $category_id,
+					'sub_category'  => $sub_category,
+					'description'   => $description,
+					'products'      => $product_total,
+					'customer_id'   => $customer_id,
+					'ip'            => $ip
+				);
+
+				$this->model_account_search->addSearch($search_data);
 			}
 		}
 
@@ -460,10 +488,6 @@ class ControllerProductSearch extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/search.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/product/search.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/product/search.tpl', $data));
-		}
+		$this->response->setOutput($this->load->view('product/search', $data));
 	}
 }

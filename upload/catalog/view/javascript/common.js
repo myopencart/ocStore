@@ -1,7 +1,7 @@
 function getURLVar(key) {
 	var value = [];
 
-	var query = String(document.location).split('?');
+	var query = document.location.search.split('?');
 
 	if (query[1]) {
 		var part = query[1].split('&');
@@ -33,28 +33,28 @@ $(document).ready(function() {
 	});
 
 	// Currency
-	$('#currency .currency-select').on('click', function(e) {
+	$('#form-currency .currency-select').on('click', function(e) {
 		e.preventDefault();
 
-		$('#currency input[name=\'code\']').attr('value', $(this).attr('name'));
+		$('#form-currency input[name=\'code\']').val($(this).attr('name'));
 
-		$('#currency').submit();
+		$('#form-currency').submit();
 	});
 
 	// Language
-	$('#language a').on('click', function(e) {
+	$('#form-language .language-select').on('click', function(e) {
 		e.preventDefault();
 
-		$('#language input[name=\'code\']').attr('value', $(this).attr('href'));
+		$('#form-language input[name=\'code\']').val($(this).attr('name'));
 
-		$('#language').submit();
+		$('#form-language').submit();
 	});
 
 	/* Search */
 	$('#search input[name=\'search\']').parent().find('button').on('click', function() {
-		url = $('base').attr('href') + 'index.php?route=product/search';
+		var url = $('base').attr('href') + 'index.php?route=product/search';
 
-		var value = $('header input[name=\'search\']').val();
+		var value = $('header #search input[name=\'search\']').val();
 
 		if (value) {
 			url += '&search=' + encodeURIComponent(value);
@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 	$('#search input[name=\'search\']').on('keydown', function(e) {
 		if (e.keyCode == 13) {
-			$('header input[name=\'search\']').parent().find('button').trigger('click');
+			$('header #search input[name=\'search\']').parent().find('button').trigger('click');
 		}
 	});
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
 		var i = (dropdown.left + $(this).outerWidth()) - (menu.left + $('#menu').outerWidth());
 
 		if (i > 0) {
-			$(this).css('margin-left', '-' + (i + 5) + 'px');
+			$(this).css('margin-left', '-' + (i + 10) + 'px');
 		}
 	});
 
@@ -85,8 +85,9 @@ $(document).ready(function() {
 	$('#list-view').click(function() {
 		$('#content .product-grid > .clearfix').remove();
 
-		//$('#content .product-layout').attr('class', 'product-layout product-list col-xs-12');
 		$('#content .row > .product-grid').attr('class', 'product-layout product-list col-xs-12');
+		$('#grid-view').removeClass('active');
+		$('#list-view').addClass('active');
 
 		localStorage.setItem('display', 'list');
 	});
@@ -94,7 +95,7 @@ $(document).ready(function() {
 	// Product Grid
 	$('#grid-view').click(function() {
 		// What a shame bootstrap does not take into account dynamically loaded columns
-		cols = $('#column-right, #column-left').length;
+		var cols = $('#column-right, #column-left').length;
 
 		if (cols == 2) {
 			$('#content .product-list').attr('class', 'product-layout product-grid col-lg-6 col-md-6 col-sm-12 col-xs-12');
@@ -104,13 +105,18 @@ $(document).ready(function() {
 			$('#content .product-list').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-6 col-xs-12');
 		}
 
-		 localStorage.setItem('display', 'grid');
+		$('#list-view').removeClass('active');
+		$('#grid-view').addClass('active');
+
+		localStorage.setItem('display', 'grid');
 	});
 
 	if (localStorage.getItem('display') == 'list') {
 		$('#list-view').trigger('click');
+		$('#list-view').addClass('active');
 	} else {
 		$('#grid-view').trigger('click');
+		$('#grid-view').addClass('active');
 	}
 
 	// Checkout
@@ -163,9 +169,9 @@ var cart = {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
 			},
-	        error: function(xhr, ajaxOptions, thrownError) {
-	            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	        }
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
 		});
 	},
 	'update': function(key, quantity) {
@@ -192,9 +198,9 @@ var cart = {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
 			},
-	        error: function(xhr, ajaxOptions, thrownError) {
-	            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	        }
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
 		});
 	},
 	'remove': function(key) {
@@ -214,16 +220,18 @@ var cart = {
 				setTimeout(function () {
 					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 				}, 100);
+				
+				var now_location = String(document.location.pathname);
 
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+				if ((now_location == '/cart/') || (now_location == '/checkout/') || (getURLVar('route') == 'checkout/cart') || (getURLVar('route') == 'checkout/checkout')) {
 					location = 'index.php?route=checkout/cart';
 				} else {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
 			},
-	        error: function(xhr, ajaxOptions, thrownError) {
-	            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	        }
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
 		});
 	}
 }
@@ -256,9 +264,9 @@ var voucher = {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
 			},
-	        error: function(xhr, ajaxOptions, thrownError) {
-	            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	        }
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
 		});
 	}
 }
@@ -286,9 +294,9 @@ var wishlist = {
 
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 			},
-	        error: function(xhr, ajaxOptions, thrownError) {
-	            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	        }
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
 		});
 	},
 	'remove': function() {
@@ -314,9 +322,9 @@ var compare = {
 					$('html, body').animate({ scrollTop: 0 }, 'slow');
 				}
 			},
-	        error: function(xhr, ajaxOptions, thrownError) {
-	            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-	        }
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+			}
 		});
 	},
 	'remove': function() {

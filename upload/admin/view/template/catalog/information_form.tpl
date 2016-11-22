@@ -34,7 +34,7 @@
             <div class="tab-pane active" id="tab-general">
               <ul class="nav nav-tabs" id="language">
                 <?php foreach ($languages as $language) { ?>
-                <li><a href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                <li><a href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
                 <?php } ?>
               </ul>
               <div class="tab-content">
@@ -52,7 +52,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="information_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($information_description[$language['language_id']]) ? $information_description[$language['language_id']]['description'] : ''; ?></textarea>
+                      <textarea name="information_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" data-lang="<?php echo $lang; ?>" class="form-control summernote"><?php echo isset($information_description[$language['language_id']]) ? $information_description[$language['language_id']]['description'] : ''; ?></textarea>
                       <?php if (isset($error_description[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_description[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -216,17 +216,12 @@
     </div>
   </div>
   <script type="text/javascript"><!--
-<?php foreach ($languages as $language) { ?>
-<?php if ($ckeditor) { ?>
-ckeditorInit('input-description<?php echo $language['language_id']; ?>', '<?php echo $token; ?>');
-<?php } else { ?>
-$('#input-description<?php echo $language['language_id']; ?>').summernote({
-	height: 300,
-    lang:'<?php echo $lang; ?>'
-});
-<?php } ?>
-<?php } ?>
-//--></script>
+  <?php if ($ckeditor) { ?>
+    <?php foreach ($languages as $language) { ?>
+      ckeditorInit('input-description<?php echo $language['language_id']; ?>', getURLVar('token'));
+    <?php } ?>
+  <?php } ?>
+  //--></script>
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 //--></script></div>

@@ -85,23 +85,19 @@
           <div class="form-group required">
             <label class="col-sm-2 control-label" for="input-message"><?php echo $entry_message; ?></label>
             <div class="col-sm-10">
-              <textarea name="message" placeholder="<?php echo $entry_message; ?>" id="input-message" class="form-control"></textarea>
+              <textarea name="message" placeholder="<?php echo $entry_message; ?>" id="input-message" data-lang="<?php echo $lang; ?>" class="form-control summernote"></textarea>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
+
   <script type="text/javascript"><!--
-<?php if ($ckeditor) { ?>
-ckeditorInit('input-message', '<?php echo $token; ?>');
-<?php } else { ?>
-$('#input-message').summernote({
-	height: 300,
-	lang:'<?php echo $lang; ?>'
-});
-<?php } ?>
-//--></script>
+    <?php if ($ckeditor) { ?>
+      ckeditorInit('input-message', getURLVar('token'));
+    <?php } ?>
+  //--></script>
   <script type="text/javascript"><!--
 $('select[name=\'to\']').on('change', function() {
 	$('.to').hide();
@@ -145,13 +141,13 @@ $('#input-customer').parent().find('.well').delegate('.fa-minus-circle', 'click'
 $('input[name=\'affiliates\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'index.php?route=customer/customer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: 'index.php?route=marketing/affiliate/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {
 					return {
 						label: item['name'],
-						value: item['customer_id']
+						value: item['affiliate_id']
 					}
 				}));
 			}
@@ -202,9 +198,6 @@ $('#input-product').parent().find('.well').delegate('.fa-minus-circle', 'click',
 function send(url) {
 	<?php if ($ckeditor) { ?>
 	$('textarea[name=\'message\']').val(CKEDITOR.instances['input-message'].getData());
-	<?php } else { ?>
-	// Summer not fix
-	$('textarea[name=\'message\']').val($('#input-message').code());
 	<?php } ?>
 
 	$.ajax({
@@ -226,6 +219,10 @@ function send(url) {
 					$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['warning'] + '</div>');
 				}
 
+				if (json['error']['email']) {
+					$('#content > .container-fluid').prepend('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error']['email'] + '</div>');
+				}
+
 				if (json['error']['subject']) {
 					$('input[name=\'subject\']').after('<div class="text-danger">' + json['error']['subject'] + '</div>');
 				}
@@ -235,17 +232,16 @@ function send(url) {
 				}
 			}
 
-			if (json['next']) {
-				if (json['success']) {
-					$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i>  ' + json['success'] + '</div>');
-
-					send(json['next']);
-				}
-			} else {
-				if (json['success']) {
-					$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-				}
+			if (json['success']) {
+				$('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i>  ' + json['success'] + '</div>');
 			}
+
+			if (json['next']) {
+				send(json['next']);
+			}
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 		}
 	});
 }

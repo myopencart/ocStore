@@ -88,3 +88,13 @@ http://www.denwer.ru/
 
 
 
+
+----------------------------
+COMPOSER OR NOT TO COMPOSER
+----------------------------
+From version 2.2 composer has been added to aid developers who want to use composer libraries. 2 versions of OpenCart
+will become available, one compiled and one non-compiled (composer.json only - no files in vendor folder).
+
+We STRONGLY advise leaving the vendor folder outside of the webroot - so files cannot be accessed directly.
+
+Composer installing is extremely simple - https://getcomposer.org

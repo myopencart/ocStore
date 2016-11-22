@@ -1,8 +1,6 @@
 <?php
 class ModelCheckoutOrder extends Model {
 	public function addOrder($data) {
-		$this->event->trigger('pre.order.add', $data);
-
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "order` SET invoice_prefix = '" . $this->db->escape($data['invoice_prefix']) . "', store_id = '" . (int)$data['store_id'] . "', store_name = '" . $this->db->escape($data['store_name']) . "', store_url = '" . $this->db->escape($data['store_url']) . "', customer_id = '" . (int)$data['customer_id'] . "', customer_group_id = '" . (int)$data['customer_group_id'] . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : '') . "', payment_firstname = '" . $this->db->escape($data['payment_firstname']) . "', payment_lastname = '" . $this->db->escape($data['payment_lastname']) . "', payment_company = '" . $this->db->escape($data['payment_company']) . "', payment_address_1 = '" . $this->db->escape($data['payment_address_1']) . "', payment_address_2 = '" . $this->db->escape($data['payment_address_2']) . "', payment_city = '" . $this->db->escape($data['payment_city']) . "', payment_postcode = '" . $this->db->escape($data['payment_postcode']) . "', payment_country = '" . $this->db->escape($data['payment_country']) . "', payment_country_id = '" . (int)$data['payment_country_id'] . "', payment_zone = '" . $this->db->escape($data['payment_zone']) . "', payment_zone_id = '" . (int)$data['payment_zone_id'] . "', payment_address_format = '" . $this->db->escape($data['payment_address_format']) . "', payment_custom_field = '" . $this->db->escape(isset($data['payment_custom_field']) ? json_encode($data['payment_custom_field']) : '') . "', payment_method = '" . $this->db->escape($data['payment_method']) . "', payment_code = '" . $this->db->escape($data['payment_code']) . "', shipping_firstname = '" . $this->db->escape($data['shipping_firstname']) . "', shipping_lastname = '" . $this->db->escape($data['shipping_lastname']) . "', shipping_company = '" . $this->db->escape($data['shipping_company']) . "', shipping_address_1 = '" . $this->db->escape($data['shipping_address_1']) . "', shipping_address_2 = '" . $this->db->escape($data['shipping_address_2']) . "', shipping_city = '" . $this->db->escape($data['shipping_city']) . "', shipping_postcode = '" . $this->db->escape($data['shipping_postcode']) . "', shipping_country = '" . $this->db->escape($data['shipping_country']) . "', shipping_country_id = '" . (int)$data['shipping_country_id'] . "', shipping_zone = '" . $this->db->escape($data['shipping_zone']) . "', shipping_zone_id = '" . (int)$data['shipping_zone_id'] . "', shipping_address_format = '" . $this->db->escape($data['shipping_address_format']) . "', shipping_custom_field = '" . $this->db->escape(isset($data['shipping_custom_field']) ? json_encode($data['shipping_custom_field']) : '') . "', shipping_method = '" . $this->db->escape($data['shipping_method']) . "', shipping_code = '" . $this->db->escape($data['shipping_code']) . "', comment = '" . $this->db->escape($data['comment']) . "', total = '" . (float)$data['total'] . "', affiliate_id = '" . (int)$data['affiliate_id'] . "', commission = '" . (float)$data['commission'] . "', marketing_id = '" . (int)$data['marketing_id'] . "', tracking = '" . $this->db->escape($data['tracking']) . "', language_id = '" . (int)$data['language_id'] . "', currency_id = '" . (int)$data['currency_id'] . "', currency_code = '" . $this->db->escape($data['currency_code']) . "', currency_value = '" . (float)$data['currency_value'] . "', ip = '" . $this->db->escape($data['ip']) . "', forwarded_ip = '" .  $this->db->escape($data['forwarded_ip']) . "', user_agent = '" . $this->db->escape($data['user_agent']) . "', accept_language = '" . $this->db->escape($data['accept_language']) . "', date_added = NOW(), date_modified = NOW()");
 
 		$order_id = $this->db->getLastId();
@@ -21,7 +19,7 @@ class ModelCheckoutOrder extends Model {
 		}
 
 		// Gift Voucher
-		$this->load->model('total/voucher');
+		$this->load->model('extension/total/voucher');
 
 		// Vouchers
 		if (isset($data['vouchers'])) {
@@ -30,7 +28,7 @@ class ModelCheckoutOrder extends Model {
 
 				$order_voucher_id = $this->db->getLastId();
 
-				$voucher_id = $this->model_total_voucher->addVoucher($order_id, $voucher);
+				$voucher_id = $this->model_extension_total_voucher->addVoucher($order_id, $voucher);
 
 				$this->db->query("UPDATE " . DB_PREFIX . "order_voucher SET voucher_id = '" . (int)$voucher_id . "' WHERE order_voucher_id = '" . (int)$order_voucher_id . "'");
 			}
@@ -43,14 +41,10 @@ class ModelCheckoutOrder extends Model {
 			}
 		}
 
-		$this->event->trigger('post.order.add', $order_id);
-
 		return $order_id;
 	}
 
 	public function editOrder($order_id, $data) {
-		$this->event->trigger('pre.order.edit', $data);
-
 		// Void the order first
 		$this->addOrderHistory($order_id, 0);
 
@@ -73,9 +67,9 @@ class ModelCheckoutOrder extends Model {
 		}
 
 		// Gift Voucher
-		$this->load->model('total/voucher');
+		$this->load->model('extension/total/voucher');
 
-		$this->model_total_voucher->disableVoucher($order_id);
+		$this->model_extension_total_voucher->disableVoucher($order_id);
 
 		// Vouchers
 		$this->db->query("DELETE FROM " . DB_PREFIX . "order_voucher WHERE order_id = '" . (int)$order_id . "'");
@@ -86,7 +80,7 @@ class ModelCheckoutOrder extends Model {
 
 				$order_voucher_id = $this->db->getLastId();
 
-				$voucher_id = $this->model_total_voucher->addVoucher($order_id, $voucher);
+				$voucher_id = $this->model_extension_total_voucher->addVoucher($order_id, $voucher);
 
 				$this->db->query("UPDATE " . DB_PREFIX . "order_voucher SET voucher_id = '" . (int)$voucher_id . "' WHERE order_voucher_id = '" . (int)$order_voucher_id . "'");
 			}
@@ -100,13 +94,9 @@ class ModelCheckoutOrder extends Model {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "order_total SET order_id = '" . (int)$order_id . "', code = '" . $this->db->escape($total['code']) . "', title = '" . $this->db->escape($total['title']) . "', `value` = '" . (float)$total['value'] . "', sort_order = '" . (int)$total['sort_order'] . "'");
 			}
 		}
-
-		$this->event->trigger('post.order.edit', $order_id);
 	}
 
 	public function deleteOrder($order_id) {
-		$this->event->trigger('pre.order.delete', $order_id);
-
 		// Void the order first
 		$this->addOrderHistory($order_id, 0);
 
@@ -120,11 +110,9 @@ class ModelCheckoutOrder extends Model {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "affiliate_transaction` WHERE order_id = '" . (int)$order_id . "'");
 
 		// Gift Voucher
-		$this->load->model('total/voucher');
+		$this->load->model('extension/total/voucher');
 
-		$this->model_total_voucher->disableVoucher($order_id);
-
-		$this->event->trigger('post.order.delete', $order_id);
+		$this->model_extension_total_voucher->disableVoucher($order_id);
 	}
 
 	public function getOrder($order_id) {
@@ -173,10 +161,8 @@ class ModelCheckoutOrder extends Model {
 
 			if ($language_info) {
 				$language_code = $language_info['code'];
-				$language_directory = $language_info['directory'];
 			} else {
-				$language_code = '';
-				$language_directory = '';
+				$language_code = $this->config->get('config_language');
 			}
 
 			return array(
@@ -237,7 +223,6 @@ class ModelCheckoutOrder extends Model {
 				'commission'              => $order_query->row['commission'],
 				'language_id'             => $order_query->row['language_id'],
 				'language_code'           => $language_code,
-				'language_directory'      => $language_directory,
 				'currency_id'             => $order_query->row['currency_id'],
 				'currency_code'           => $order_query->row['currency_code'],
 				'currency_value'          => $order_query->row['currency_value'],
@@ -245,8 +230,8 @@ class ModelCheckoutOrder extends Model {
 				'forwarded_ip'            => $order_query->row['forwarded_ip'],
 				'user_agent'              => $order_query->row['user_agent'],
 				'accept_language'         => $order_query->row['accept_language'],
-				'date_modified'           => $order_query->row['date_modified'],
-				'date_added'              => $order_query->row['date_added']
+				'date_added'              => $order_query->row['date_added'],
+				'date_modified'           => $order_query->row['date_modified']
 			);
 		} else {
 			return false;
@@ -254,15 +239,6 @@ class ModelCheckoutOrder extends Model {
 	}
 
 	public function addOrderHistory($order_id, $order_status_id, $comment = '', $notify = false, $override = false) {
-		$event_data = array(
-			'order_id'		  => $order_id,
-			'order_status_id' => $order_status_id,
-			'comment'		  => $comment,
-			'notify'		  => $notify
-		);
-
-		$this->event->trigger('pre.order.history.add', $event_data);
-
 		$order_info = $this->getOrder($order_id);
 
 		if ($order_info) {
@@ -286,7 +262,7 @@ class ModelCheckoutOrder extends Model {
 
 				foreach ($extensions as $extension) {
 					if ($this->config->get($extension['code'] . '_status')) {
-						$this->load->model('fraud/' . $extension['code']);
+						$this->load->model('extension/fraud/' . $extension['code']);
 
 						$fraud_status_id = $this->{'model_fraud_' . $extension['code']}->check($order_info);
 
@@ -303,17 +279,17 @@ class ModelCheckoutOrder extends Model {
 				$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 
 				foreach ($order_total_query->rows as $order_total) {
-					$this->load->model('total/' . $order_total['code']);
+					$this->load->model('extension/total/' . $order_total['code']);
 
-					if (method_exists($this->{'model_total_' . $order_total['code']}, 'confirm')) {
-					  // Confirm coupon, vouchers and reward points
-					  $fraud_status_id = $this->{'model_total_' . $order_total['code']}->confirm($order_info, $order_total);
+					if (property_exists($this->{'model_extension_total_' . $order_total['code']}, 'confirm')) {
+						// Confirm coupon, vouchers and reward points
+						$fraud_status_id = $this->{'model_extension_total_' . $order_total['code']}->confirm($order_info, $order_total);
 
-					  // If the balance on the coupon, vouchers and reward points is not enough to cover the transaction or has already been used then the fraud order status is returned.
-					  if ($fraud_status_id) {
-						  $order_status_id = $fraud_status_id;
-					  }
-				  }
+						// If the balance on the coupon, vouchers and reward points is not enough to cover the transaction or has already been used then the fraud order status is returned.
+						if ($fraud_status_id) {
+							$order_status_id = $fraud_status_id;
+						}
+					}
 				}
 
 				// Add commission if sale is linked to affiliate referral.
@@ -363,12 +339,10 @@ class ModelCheckoutOrder extends Model {
 				$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 
 				foreach ($order_total_query->rows as $order_total) {
-					if (is_file(DIR_APPLICATION . 'model/total/' . $order_total['code'] . '.php')) {
-						$this->load->model('total/' . $order_total['code']);
-					}
+					$this->load->model('extension/total/' . $order_total['code']);
 
-					if (method_exists($this->{'model_total_' . $order_total['code']}, 'unconfirm')) {
-						$this->{'model_total_' . $order_total['code']}->unconfirm($order_id);
+					if (property_exists($this->{'model_extension_total_' . $order_total['code']}, 'unconfirm')) {
+						$this->{'model_extension_total_' . $order_total['code']}->unconfirm($order_id);
 					}
 				}
 
@@ -399,8 +373,8 @@ class ModelCheckoutOrder extends Model {
 				}
 
 				// Load the language for any mails that might be required to be sent out
-				$language = new Language($order_info['language_directory']);
-				$language->load($order_info['language_directory']);
+				$language = new Language($order_info['language_code']);
+				$language->load($order_info['language_code']);
 				$language->load('mail/order');
 
 				$order_status_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_status WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
@@ -587,6 +561,8 @@ class ModelCheckoutOrder extends Model {
 				}
 
 				// Order Totals
+				$data['totals'] = array();
+
 				$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 
 				foreach ($order_total_query->rows as $total) {
@@ -594,12 +570,6 @@ class ModelCheckoutOrder extends Model {
 						'title' => $total['title'],
 						'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']),
 					);
-				}
-
-				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/mail/order.tpl')) {
-					$html = $this->load->view($this->config->get('config_template') . '/template/mail/order.tpl', $data);
-				} else {
-					$html = $this->load->view('default/template/mail/order.tpl', $data);
 				}
 
 				// Text Mail
@@ -683,12 +653,12 @@ class ModelCheckoutOrder extends Model {
 				$mail->setFrom($this->config->get('config_email'));
 				$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-				$mail->setHtml($html);
+				$mail->setHtml($this->load->view('mail/order', $data));
 				$mail->setText($text);
 				$mail->send();
 
 				// Admin Alert Mail
-				if ($this->config->get('config_order_mail')) {
+				if (in_array('order', (array)$this->config->get('config_mail_alert'))) {
 					$subject = sprintf($language->get('text_new_subject'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'), $order_id);
 
 					// HTML Mail
@@ -715,12 +685,6 @@ class ModelCheckoutOrder extends Model {
 					$data['text_link'] = '';
 					$data['link'] = '';
 					$data['download'] = '';
-
-					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/mail/order.tpl')) {
-						$html = $this->load->view($this->config->get('config_template') . '/template/mail/order.tpl', $data);
-					} else {
-						$html = $this->load->view('default/template/mail/order.tpl', $data);
-					}
 
 					// Text
 					$text  = $language->get('text_new_received') . "\n\n";
@@ -777,12 +741,12 @@ class ModelCheckoutOrder extends Model {
 					$mail->setFrom($this->config->get('config_email'));
 					$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 					$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-					$mail->setHtml($html);
+					$mail->setHtml($this->load->view('mail/order', $data));
 					$mail->setText($text);
 					$mail->send();
 
 					// Send to additional alert emails
-					$emails = explode(',', $this->config->get('config_mail_alert'));
+					$emails = explode(',', $this->config->get('config_alert_email'));
 
 					foreach ($emails as $email) {
 						if ($email && preg_match($this->config->get('config_mail_regexp'), $email)) {
@@ -814,8 +778,8 @@ class ModelCheckoutOrder extends Model {
 
 			// If order status is not 0 then send update text email
 			if ($order_info['order_status_id'] && $order_status_id && $notify) {
-				$language = new Language($order_info['language_directory']);
-				$language->load($order_info['language_directory']);
+				$language = new Language($order_info['language_code']);
+				$language->load($order_info['language_code']);
 				$language->load('mail/order');
 
 				$subject = sprintf($language->get('text_update_subject'), html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'), $order_id);
@@ -841,25 +805,24 @@ class ModelCheckoutOrder extends Model {
 				}
 
 				$message .= $language->get('text_update_footer');
+                if ($notify) {
+                    $mail = new Mail();
+                    $mail->protocol = $this->config->get('config_mail_protocol');
+                    $mail->parameter = $this->config->get('config_mail_parameter');
+                    $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+                    $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+                    $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+                    $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+                    $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
-				$mail = new Mail();
-				$mail->protocol = $this->config->get('config_mail_protocol');
-				$mail->parameter = $this->config->get('config_mail_parameter');
-				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-				$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-				$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-				$mail->setTo($order_info['email']);
-				$mail->setFrom($this->config->get('config_email'));
-				$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
-				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-				$mail->setText($message);
-				$mail->send();
+                    $mail->setTo($order_info['email']);
+                    $mail->setFrom($this->config->get('config_email'));
+                    $mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
+                    $mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+                    $mail->setText($message);
+                    $mail->send();
+                }
 			}
 		}
-
-		$this->event->trigger('post.order.history.add', $order_id);
 	}
 }

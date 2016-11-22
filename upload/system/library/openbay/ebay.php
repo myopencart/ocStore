@@ -44,7 +44,7 @@ final class Ebay {
 			if (defined("HTTPS_CATALOG")) {
 				$domain = HTTPS_CATALOG;
 			} else {
-				$domain = HTTPS_SERVER;
+				$domain = $this->config->get('config_url');
 			}
 
 			$data = array('token' => $this->token, 'secret' => $this->secret, 'server' => $this->server, 'domain' => $domain, 'openbay_version' => (int)$this->config->get('openbay_version'), 'opencart_version' => VERSION, 'data' => $post, 'content_type' => $content_type, 'language' => $this->config->get('openbay_language'));
@@ -53,7 +53,7 @@ final class Ebay {
 				CURLOPT_POST            => 1,
 				CURLOPT_HEADER          => 0,
 				CURLOPT_URL             => $this->url . $call,
-				CURLOPT_USERAGENT       => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
+				CURLOPT_USERAGENT       => "OpenBay Pro for eBay",
 				CURLOPT_FRESH_CONNECT   => 1,
 				CURLOPT_RETURNTRANSFER  => 1,
 				CURLOPT_FORBID_REUSE    => 1,
@@ -113,7 +113,7 @@ final class Ebay {
 			if (defined("HTTPS_CATALOG")) {
 				$domain = HTTPS_CATALOG;
 			} else {
-				$domain = HTTPS_SERVER;
+				$domain = $this->config->get('config_url');
 			}
 
 			$data = array('token' => $this->token, 'secret' => $this->secret, 'server' => $this->server, 'domain' => $domain, 'openbay_version' => (int)$this->config->get('openbay_version'), 'opencart_version' => VERSION, 'data' => $post, 'content_type' => $content_type, 'language' => $this->config->get('openbay_language'));
@@ -143,8 +143,6 @@ final class Ebay {
 	}
 
 	private function setLogger() {
-		$this->load->library('log');
-
 		if(file_exists(DIR_LOGS . 'ebaylog.log')) {
 			if(filesize(DIR_LOGS . 'ebaylog.log') > ($this->max_log_size * 1000000)) {
 				rename(DIR_LOGS . 'ebaylog.log', DIR_LOGS . '_ebaylog_' . date('Y-m-d_H-i-s') . '.log');
@@ -158,7 +156,7 @@ final class Ebay {
 		if ($this->logging == 1) {
 			if (function_exists('getmypid')) {
 				$process_id = getmypid();
-				$data = $process_id . ' - ' . $data;
+				$data = $process_id . ' - ' . print_r($data, true);
 			}
 
 			if ($write == true) {
@@ -538,7 +536,7 @@ final class Ebay {
 
 		$openstock = false;
 		if ($this->openbay->addonLoad('openstock') == true) {
-			$this->load->model('module/openstock');
+			$this->load->model('extension/module/openstock');
 			$openstock = true;
 		}
 
@@ -573,7 +571,7 @@ final class Ebay {
 		//loop through ended listings, if back in stock and not multi var - relist it
 		foreach ($linked_ended_items as $item) {
 			if ($openstock == true) {
-				$options = $this->model_module_openstock->getVariants($item['productId']);
+				$options = $this->model_extension_module_openstock->getVariants($item['productId']);
 			} else {
 				$options = array();
 			}
@@ -619,7 +617,7 @@ final class Ebay {
 				} else {
 					//get any options that are set for this product
 					if ($openstock == true) {
-						$options = $this->model_module_openstock->getVariants($item['productId']);
+						$options = $this->model_extension_module_openstock->getVariants($item['productId']);
 					} else {
 						$options = array();
 					}
@@ -706,14 +704,14 @@ final class Ebay {
 			$this->log('productUpdateListen(' . $product_id . ') - listing found (' . $item_id . ')');
 
 			if ($this->openbay->addonLoad('openstock') && (isset($product['has_option']) && $product['has_option'] == 1)) {
-				$this->load->model('module/openstock');
+				$this->load->model('extension/module/openstock');
 				$this->load->model('tool/image');
 				$this->load->model('catalog/product');
 
 				$this->log('productUpdateListen(' . $product_id . ') - Variant');
 
 				if (!isset($data['variant'])) {
-					$variants = $this->model_module_openstock->getVariants($product_id);
+					$variants = $this->model_extension_module_openstock->getVariants($product_id);
 				} else {
 					$variants = $data['variant'];
 				}
@@ -989,11 +987,11 @@ final class Ebay {
 		return $header_response;
 	}
 
-	private function getImageCopy($url, $new_image) {
+	private function getImageCopy($url, $image_new) {
 		$handle = @fopen($url, 'r');
 
 		if ($handle !== false) {
-			if (!@copy($url, $new_image)) {
+			if (!@copy($url, $image_new)) {
 				$this->log('getImages() - FAILED COPY: ' . $url);
 				$this->log(print_r(error_get_last(), true));
 				return false;

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+        <name>OcStore 2.3.x track number</name>
+	<code>track_no</code>
+        <author>Alexander Toporkov (toporchillo@gmail.com)</author>
+        <file path="admin/controller/sale/order.php">
+			<operation>
+				<search><![CDATA[$data['shipping_method'] = $order_info['shipping_method'];]]></search>
+				<add position="after"><![CDATA[
+			$data['track_no_on'] = $this->config->get('track_no_status');
+			$data['track_no'] = isset($order_info['track_no']) ? $order_info['track_no'] : '';
+				]]></add>
+			</operation>
+			<operation>
+				<search><![CDATA[public function history() {]]></search>
+				<add position="before"><![CDATA[
+	public function set_track_no() {
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			if ($this->user->hasPermission('modify', 'sale/order')) {
+				$this->load->model('sale/track_no');
+				$error = '';
+				$resp = $this->model_sale_track_no->save($this->request->get['order_id'], $this->request->post['track_no'], $error);
+				if ($resp)
+					$this->response->setOutput(0);
+				else
+					$this->response->setOutput(1);
+			}
+		}
+	}
+				]]></add>
+			</operation>
+		</file>
+		
+		<file path="admin/model/sale/order.php">
+			<operation>
+				<search><![CDATA[$order_query->row['order_id'],]]></search>
+				<add position="after"><![CDATA[
+				'track_no'                => (isset($order_query->row['track_no']) ? $order_query->row['track_no'] : ''),]]></add>
+			</operation>
+		</file>
+
+        <file path="catalog/model/checkout/order.php">
+			<operation>
+				<search><![CDATA[$order_query->row['order_id'],]]></search>
+				<add position="after"><![CDATA[
+				'track_no'                => (isset($order_query->row['track_no']) ? $order_query->row['track_no'] : ''),]]></add>
+			</operation>
+		</file>
+
+        <file path="admin/view/template/sale/order_info.tpl">
+			<operation>
+				<search><![CDATA[<td><?php echo $text_reward; ?></td>]]></search>
+				<add position="before"><![CDATA[
+			<?php if ($track_no_on) { ?>
+                <td>Трек-номер:</td>
+                <td class="text-right"><input type="text" name="order_track_no" value="<?php echo $track_no; ?>" /></td>
+                <td class="text-center">
+                  <button id="button-track_no-add" data-loading-text="<?php echo $text_loading; ?>" data-toggle="tooltip" title="Сохранить трек-номер" class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i></button>
+              </tr>
+              <tr>
+			<?php } ?>  
+				]]></add>
+			</operation>
+			<operation>
+				<search><![CDATA[<?php echo $footer; ?>]]></search>
+				<add position="before"><![CDATA[
+<?php if ($track_no_on) { ?>
+<script type="text/javascript"><!--
+$('#button-track_no-add').on('click', function() {
+	$.ajax({
+		url: '<?php echo $store_url; ?>index.php?route=api/track_no/save&token=' + token + '&order_id=<?php echo $order_id; ?>',
+		type: 'post',
+		dataType: 'json',
+		data: 'track_no=' + encodeURIComponent($('input[name=\'order_track_no\']').val()),
+		beforeSend: function() {
+			$('.track_no_alert').remove();
+			$('#button-track_no-add').attr('disabled', 'disabled');
+			$('#button-track_no-add').button('loading');
+		},
+		complete: function() {
+			$('#button-track_no-add').button('reset');
+			$('#button-track_no-add').attr('disabled', 'disabled');
+		},
+		success: function(json) {
+			$('.alert').remove();
+
+			if (json['error']) {
+				$('.container-fluid').eq(1).find('.row').eq(0).before('<div class="track_no_alert alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + ' <button data-dismiss="alert" class="close" type="button">×</button></div>');
+			}
+
+			if (json['success']) {
+				$('.container-fluid').eq(1).find('.row').eq(0).before('<div class="track_no_alert alert alert-success"><i class="fa fa-exclamation-circle"></i> ' + json['success'] + ' <button data-dismiss="alert" class="close" type="button">×</button></div>');
+				$('#history').load('index.php?route=sale/order/history&token=<?php echo $token; ?>&order_id=<?php echo $order_id; ?>');
+			}
+		},
+	});
+});
+//--></script>
+<?php } ?>
+				]]></add>
+			</operation>
+		
+		<!-- Далее изменения для просмотра заказа покупателем -->
+		<file path="catalog/model/account/order.php">
+			<operation>
+				<search><![CDATA[$order_query->row['order_id'],]]></search>
+				<add position="after"><![CDATA[
+				'track_no'                => (isset($order_query->row['track_no']) ? $order_query->row['track_no'] : ''),
+				]]></add>
+			</operation>
+		</file>
+		<file path="catalog/controller/account/order.php">
+			<operation>
+				<search><![CDATA[if ($order_info['invoice_no']) {]]></search>
+				<add position="before"><![CDATA[
+			if ($order_info['track_no']) {
+				$data['track_no'] = $order_info['track_no'];
+			} else {
+				$data['track_no'] = '';
+			}
+				]]></add>
+			</operation>
+		</file>
+		<file path="catalog/view/theme/*/template/account/order_info.tpl">
+			<operation>
+				<search><![CDATA[<b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>]]></search>
+				<add position="after"><![CDATA[
+              <?php } ?>
+              <?php if ($track_no) { ?>
+              <br /><b>Трек-номер:</b> <?php echo $track_no; ?>
+				]]></add>
+			</operation>
+		</file>
+			
+<b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>			
+	</file>
+</modification>

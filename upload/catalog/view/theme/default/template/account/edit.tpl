@@ -238,6 +238,10 @@ $('.form-group[data-sort]').detach().each(function() {
 		$('.form-group:last').after(this);
 	}
 
+	if ($(this).attr('data-sort') == $('.form-group').length) {
+		$('.form-group:last').after(this);
+	}
+
 	if ($(this).attr('data-sort') < -$('.form-group').length) {
 		$('.form-group:first').before(this);
 	}
@@ -285,7 +289,7 @@ $('button[id^=\'button-custom-field\']').on('click', function() {
 					if (json['success']) {
 						alert(json['success']);
 
-						$(node).parent().find('input').attr('value', json['code']);
+						$(node).parent().find('input').val(json['code']);
 					}
 				},
 				error: function(xhr, ajaxOptions, thrownError) {

@@ -13,9 +13,9 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
-					$this->load->model('shipping/' . $result['code']);
+					$this->load->model('extension/shipping/' . $result['code']);
 
-					$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+					$quote = $this->{'model_extension_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
 
 					if ($quote) {
 						$method_data[$result['code']] = array(
@@ -69,11 +69,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$data['comment'] = '';
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/shipping_method.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/shipping_method.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/checkout/shipping_method.tpl', $data));
-		}
+		$this->response->setOutput($this->load->view('checkout/shipping_method', $data));
 	}
 
 	public function save() {
@@ -83,12 +79,12 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 		// Validate if shipping is required. If not the customer should not have reached this page.
 		if (!$this->cart->hasShipping()) {
-			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+			$json['redirect'] = $this->url->link('checkout/checkout', '', true);
 		}
 
 		// Validate if shipping address has been set.
 		if (!isset($this->session->data['shipping_address'])) {
-			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+			$json['redirect'] = $this->url->link('checkout/checkout', '', true);
 		}
 
 		// Validate cart has products and has stock.

@@ -77,7 +77,7 @@ class ControllerCheckoutRegister extends Controller {
 
 		// Captcha
 		if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('register', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('captcha/' . $this->config->get('config_captcha'));
+			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'));
 		} else {
 			$data['captcha'] = '';
 		}
@@ -88,7 +88,7 @@ class ControllerCheckoutRegister extends Controller {
 			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_account_id'));
 
 			if ($information_info) {
-				$data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_account_id'), 'SSL'), $information_info['title'], $information_info['title']);
+				$data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_account_id'), true), $information_info['title'], $information_info['title']);
 			} else {
 				$data['text_agree'] = '';
 			}
@@ -98,11 +98,7 @@ class ControllerCheckoutRegister extends Controller {
 
 		$data['shipping_required'] = $this->cart->hasShipping();
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/register.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/register.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/checkout/register.tpl', $data));
-		}
+		$this->response->setOutput($this->load->view('checkout/register', $data));
 	}
 
 	public function save() {
@@ -112,7 +108,7 @@ class ControllerCheckoutRegister extends Controller {
 
 		// Validate if customer is already logged out.
 		if ($this->customer->isLogged()) {
-			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+			$json['redirect'] = $this->url->link('checkout/checkout', '', true);
 		}
 
 		// Validate cart has products and has stock.
@@ -219,12 +215,14 @@ class ControllerCheckoutRegister extends Controller {
 			foreach ($custom_fields as $custom_field) {
 				if ($custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['location']][$custom_field['custom_field_id']])) {
 					$json['error']['custom_field' . $custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
+				} elseif (($custom_field['type'] == 'text') && !empty($custom_field['validation']) && !filter_var($this->request->post['custom_field'][$custom_field['location']][$custom_field['custom_field_id']], FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => $custom_field['validation'])))) {
+					$json['error']['custom_field' . $custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
 				}
 			}
 
 			// Captcha
 			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('register', (array)$this->config->get('config_captcha_page'))) {
-				$captcha = $this->load->controller('captcha/' . $this->config->get('config_captcha') . '/validate');
+				$captcha = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
 
 				if ($captcha) {
 					$json['error']['captcha'] = $captcha;
@@ -266,14 +264,16 @@ class ControllerCheckoutRegister extends Controller {
 			unset($this->session->data['payment_methods']);
 
 			// Add to activity log
-			$this->load->model('account/activity');
+			if ($this->config->get('config_customer_activity')) {
+				$this->load->model('account/activity');
 
-			$activity_data = array(
-				'customer_id' => $customer_id,
-				'name'        => $this->request->post['firstname'] . ' ' . $this->request->post['lastname']
-			);
+				$activity_data = array(
+					'customer_id' => $customer_id,
+					'name'        => $this->request->post['firstname'] . ' ' . $this->request->post['lastname']
+				);
 
-			$this->model_account_activity->addActivity('register', $activity_data);
+				$this->model_account_activity->addActivity('register', $activity_data);
+			}
 		}
 
 		$this->response->addHeader('Content-Type: application/json');
