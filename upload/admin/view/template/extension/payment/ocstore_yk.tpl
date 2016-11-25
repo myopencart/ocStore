@@ -757,7 +757,6 @@
   <?php } ?>
   <?php } ?>
 
-  $(document).ready(function(){
     $('[name="ocstore_yk_laterpay_mode"]').each(function(indx){
       changeLaterpayMode($(this).val());
     });
@@ -776,7 +775,6 @@
     $('[name="ocstore_yk_type"] option:selected').each(function(indx){
       changeType($(this).val());
     });
-  });
   
     $('[name="ocstore_yk_laterpay_mode"]').on('change', function(){
       changeLaterpayMode($(this).val());
