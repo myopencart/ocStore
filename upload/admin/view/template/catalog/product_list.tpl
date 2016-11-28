@@ -42,8 +42,8 @@
                 <input type="text" name="filter_model" value="<?php echo $filter_model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
               </div>
               <div class="form-group">
-                <label class="control-label" for="input-status"><?php echo $column_category; ?></label>
-                <select name="filter_category" id="input-status" class="form-control">
+                <label class="control-label" for="input-category"><?php echo $column_category; ?></label>
+                <select name="filter_category" id="input-category" class="form-control">
                   <option value="*"></option>
                   <?php foreach ($categories as $category) { ?>
                   <?php if ($category['product_count'] >= 1) { ?>
