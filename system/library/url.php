@@ -23,7 +23,27 @@ class Url {
 		$url .= 'index.php?route=' . $route;
 			
 		if ($args) {
-			$url .= str_replace('&', '&amp;', '&' . ltrim($args, '&')); 
+			if($route == 'common/home') {
+				if($connection == 'NONSSL') {
+					$url = HTTP_SERVER.str_replace('&', '&amp;', '?' . ltrim($args, '&')); 
+					return $url;
+				}else{
+					$url = HTTPS_SERVER.str_replace('&', '&amp;', '?' . ltrim($args, '&')); 
+					return $url;
+				}
+		
+			}else{
+				$url .= str_replace('&', '&amp;', '&' . ltrim($args, '&')); 
+			}
+						
+		}else{
+			if($route == 'common/home'){
+				if($connection == 'NONSSL'){ 
+					return HTTP_SERVER;
+				}else{
+					return HTTPS_SERVER;
+				}
+			}
 		}
 		
 		foreach ($this->rewrite as $rewrite) {
