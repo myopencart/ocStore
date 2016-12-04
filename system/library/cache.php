@@ -5,7 +5,7 @@ class Cache {
 	public function get($key) {
 		$files = glob(DIR_CACHE . 'cache.' . preg_replace('/[^A-Z0-9\._-]/i', '', $key) . '.*');
 
-		if ($files) {
+		if ($files && file_exists($files[0])) {
 			$cache = file_get_contents($files[0]);
 			
 			$data = unserialize($cache);
