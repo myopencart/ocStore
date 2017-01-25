@@ -12,7 +12,7 @@ class ControllerExtensionFeedUnisender extends Controller {
 
   	public function subscribtions() {
 		$key = $this->request->get['key'];
-        $ch = curl_init ('http://api.unisender.com/ru/api/getLists?format=json&api_key='.$key) ;
+        $ch = curl_init ('https://api.unisender.com/ru/api/getLists?format=json&api_key='.$key) ;
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1) ;
         $res = curl_exec ($ch) ;
         curl_close ($ch) ;		
