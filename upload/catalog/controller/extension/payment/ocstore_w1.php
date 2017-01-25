@@ -72,7 +72,7 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
         if ($this->validate(false, false)) {
             $created = isset($this->request->post['WMI_ORDER_STATE']) && ($this->request->post['WMI_ORDER_STATE'] == 'Created');
             if ($this->order['order_status_id'] && !$created) {
-                $this->model_checkout_order->addOrderHistory($this->order['order_id'], $this->config->get('ocstore_w1_order_fail_status_id'), 'W1: Order ' . $this->request->post['WMI_ORDER_ID'], true);
+                $this->model_checkout_order->addOrderHistory($this->order['order_id'], $this->config->get('ocstore_w1_order_fail_status_id'), 'W1: Payment Fail', true);
             }
         }
 
