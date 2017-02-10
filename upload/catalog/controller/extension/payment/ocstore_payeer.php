@@ -382,8 +382,16 @@ class ControllerExtensionPaymentOcstorePayeer extends Controller {
             $mail->smtp_timeout    = $this->config->get('config_mail_smtp_timeout  ');
         }
 
+        $mail->setTo($to);
+        $mail->setFrom($this->config->get('config_email'));
+        $mail->setSender($this->config->get('config_name'));
+        $mail->setSubject($subject);
+        $mail->setHtml($message);
+        $mail->send();
+
+
 				if ($type == 'admin') {
-          $emails = explode(',', $this->config->get('config_mail_alert'));
+          $emails = explode(',', $this->config->get('config_alert_email'));
           $regexp = $this->config->get('config_mail_regexp') ?: '/^[^\@]+@.*.[a-z]{2,15}$/i';
 
           foreach ($emails as $email) {

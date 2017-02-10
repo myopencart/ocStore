@@ -588,7 +588,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
 				$mail->send();
 
 				if ($type == 'admin') {
-            $emails = explode(',', $this->config->get('config_mail_alert'));
+            $emails = explode(',', $this->config->get('config_alert_email'));
             $regexp = $this->config->get('config_mail_regexp') ?: '/^[^\@]+@.*.[a-z]{2,15}$/i';
             foreach ($emails as $email) {
                 if ($email && preg_match($regexp, $email)) {
