@@ -492,7 +492,7 @@ class ControllerSettingSetting extends Controller {
 			$data['config_theme'] = $this->config->get('config_theme');
 		}
 
-		if ($this->request->server['HTTPS']) {
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$data['store_url'] = HTTPS_CATALOG;
 		} else {
 			$data['store_url'] = HTTP_CATALOG;
@@ -1468,7 +1468,7 @@ class ControllerSettingSetting extends Controller {
 	}
 	
 	public function theme() {
-		if ($this->request->server['HTTPS']) {
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = HTTPS_CATALOG;
 		} else {
 			$server = HTTP_CATALOG;

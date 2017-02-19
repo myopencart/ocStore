@@ -29,7 +29,7 @@ class ControllerErrorNotFound extends Controller {
 
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link($route, $url, $this->request->server['HTTPS'])
+				'href' => $this->url->link($route, $url, isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')))
 			);
 		}
 

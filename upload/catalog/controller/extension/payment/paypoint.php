@@ -93,7 +93,7 @@ class ControllerExtensionPaymentPaypoint extends Controller {
 
 			$data['title'] = sprintf($this->language->get('heading_title'), $this->config->get('config_name'));
 
-			if (!$this->request->server['HTTPS']) {
+			if (!isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 				$data['base'] = HTTP_SERVER;
 			} else {
 				$data['base'] = HTTPS_SERVER;
