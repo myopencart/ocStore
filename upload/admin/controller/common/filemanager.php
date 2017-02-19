@@ -15,7 +15,7 @@ class ControllerCommonFileManager extends Controller {
 		$this->load->language('common/filemanager');
 
 		// Find which protocol to use to pass the full image link back
-		if ($this->request->server['HTTPS']) {
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = HTTPS_CATALOG;
 		} else {
 			$server = HTTP_CATALOG;

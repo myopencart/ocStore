@@ -80,7 +80,7 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
             $this->document->addStyle('view/javascript/summernote/summernote.css');
         }
 
-        $server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
+        $server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
 
         $data = $this->_setData(array(
                              'heading_title',

@@ -125,7 +125,7 @@ class ModelExtensionPaymentOcstoreYk extends Model {
 
         $this->load->language('extension/payment/ocstore_yk');
 
-        $server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? $this->config->get('config_ssl') : $this->config->get('config_url');
+        $server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? $this->config->get('config_ssl') : $this->config->get('config_url');
         $path = $server . 'catalog/view/theme/default/image/payment/ocstore_yk/';
         $title = $this->config->get($method_code . '_langdata');
 
