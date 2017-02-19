@@ -5,7 +5,7 @@ class ControllerCommonLanguage extends Controller {
 
 		$data['text_language'] = $this->language->get('text_language');
 
-		$data['action'] = $this->url->link('common/language/language', '', $this->request->server['HTTPS']);
+		$data['action'] = $this->url->link('common/language/language', '', isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')));
 
 		$data['code'] = $this->session->data['language'];
 
@@ -39,7 +39,7 @@ class ControllerCommonLanguage extends Controller {
 				$url = '&' . urldecode(http_build_query($url_data, '', '&'));
 			}
 
-			$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
+			$data['redirect'] = $this->url->link($route, $url, isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')));
 		}
 
 		return $this->load->view('common/language', $data);

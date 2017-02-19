@@ -69,10 +69,10 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
     }
     
     public function fail() {
-        if ($this->validate(false)) {
+        if ($this->validate(false, false)) {
             $created = isset($this->request->post['WMI_ORDER_STATE']) && ($this->request->post['WMI_ORDER_STATE'] == 'Created');
             if ($this->order['order_status_id'] && !$created) {
-                $this->model_checkout_order->addOrderHistory($this->order['order_id'], $this->config->get('ocstore_w1_order_fail_status_id'), 'W1: Order ' . $this->request->post['WMI_ORDER_ID'], true);
+                $this->model_checkout_order->addOrderHistory($this->order['order_id'], $this->config->get('ocstore_w1_order_fail_status_id'), 'W1: Payment Fail', true);
             }
         }
 
@@ -80,11 +80,7 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
     }
     
     public function success() {
-        if ($this->validate(false)) {
-            $this->response->redirect($this->url->link('checkout/success', '', 'SSL'));
-        } else {
-            $this->response->redirect($this->url->link('checkout/failure', '', 'SSL'));
-        }
+        $this->response->redirect($this->url->link('checkout/success', '', 'SSL'));
     }
     
     public function callback() {
@@ -134,12 +130,24 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
         return isset($this->iso4271[$value]) ? $this->iso4271[$value] : false;
     }
 
-    protected function validate($check_sign_hash = true) {
+    protected function validate($check_sign_hash = true, $check_request_method = true) {
         $this->load->model('checkout/order');
 
-        if ($this->request->server['REQUEST_METHOD'] != 'POST') {
-            $this->sendForbidden('HTTP method should be POST');
-            return false;
+        if ($check_request_method) {
+            if ($this->request->server['REQUEST_METHOD'] != 'POST') {
+                $this->sendForbidden('HTTP method should be POST');
+                return false;
+            }
+        } else {
+            //Fix от 19.12.2016. На Fail URL W1 может прислать пустой GET-запрос. В этом случае попытаемся получить order_id из сессии.
+            if ($this->request->server['REQUEST_METHOD'] != 'POST') {
+                if (isset($this->session->data['order_id'])) {
+                    $this->request->post['WMI_PAYMENT_NO'] = $this->session->data['order_id'];
+                } else {
+                    $this->sendForbidden('Unknown Order ID');
+                    return false;
+                }
+            }
         }
 
         if ($check_sign_hash) {
@@ -167,14 +175,14 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
     }
 
     protected function sendForbidden($error) {
-        $this->log->Write('ERROR: ' . $error);
+        //$this->log->Write('ERROR: ' . $error);
         ob_start();
         echo 'WMI_RESULT=RETRY&WMI_DESCRIPTION=' . urlencode($error);
         ob_end_flush();
     }
 
     protected function sendOk() {
-        $this->log->Write('SEND OK');
+        //$this->log->Write('SEND OK');
         ob_start();
         echo "WMI_RESULT=OK";
         ob_end_flush();

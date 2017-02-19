@@ -170,29 +170,30 @@ class ControllerStartupSeoPro extends Controller {
 		}
 
 		$queries = array();
-
+		if(!in_array($route, array('product/search'))) {
 		foreach ($data as $key => $value) {
-			switch ($key) {
-				case 'product_id':
-				case 'manufacturer_id':
-				case 'category_id':
-				case 'information_id':
-				case 'order_id':
-					$queries[] = $key . '=' . $value;
-					unset($data[$key]);
-					$postfix = 1;
-					break;
+				switch ($key) {
+					case 'product_id':
+					case 'manufacturer_id':
+					case 'category_id':
+					case 'information_id':
+					case 'order_id':
+						$queries[] = $key . '=' . $value;
+						unset($data[$key]);
+						$postfix = 1;
+						break;
 
-				case 'path':
-					$categories = explode('_', $value);
-					foreach ($categories as $category) {
-						$queries[] = 'category_id=' . $category;
-					}
-					unset($data[$key]);
-					break;
+					case 'path':
+						$categories = explode('_', $value);
+						foreach ($categories as $category) {
+							$queries[] = 'category_id=' . $category;
+						}
+						unset($data[$key]);
+						break;
 
-				default:
-					break;
+					default:
+						break;
+				}
 			}
 		}
 

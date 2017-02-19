@@ -18,7 +18,7 @@ class ControllerCommonColumnLeft extends Controller {
 		}
 		
 		// Language
-		$data['action'] = $this->url->link('common/column_left/language', '', $this->request->server['HTTPS']);
+		$data['action'] = $this->url->link('common/column_left/language', '', isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')));
 		
 		if (isset($this->session->data['language'])) {
 			$data['code'] = $this->session->data['language'];
@@ -49,7 +49,7 @@ class ControllerCommonColumnLeft extends Controller {
 				$url = '&' . urldecode(http_build_query($url_data, '', '&'));
 			}
 
-			$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
+			$data['redirect'] = $this->url->link($route, $url, isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')));
 		}
 		
 		return $this->load->view('common/column_left', $data);

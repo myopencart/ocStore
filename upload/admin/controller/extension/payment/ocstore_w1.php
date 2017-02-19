@@ -120,7 +120,7 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
 		$this->load->model('localisation/currency');
 		$data['currencies'] = $this->model_localisation_currency->getCurrencies();
 		
-		$server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
+		$server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
 
 		$data['ocstore_w1_result_url'] = $server . 'index.php?route=extension/payment/ocstore_w1/callback';
 		

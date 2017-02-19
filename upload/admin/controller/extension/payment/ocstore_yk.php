@@ -18,7 +18,7 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
 
     public function index() {
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate())) {
-            if (!$this->request->post['ocstore_yk_company_enabled_methods'] && !$this->request->post['ocstore_yk_physical_enabled_methods']) {
+            if (!isset($this->request->post['ocstore_yk_company_enabled_methods']) && !isset($this->request->post['ocstore_yk_physical_enabled_methods'])) {
                 $this->request->post['ocstore_yk_status'] = '0';
             } else {
                 $this->request->post['ocstore_yk_status'] = '1';
@@ -41,14 +41,18 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
 
             $replace_data = array();
 
-            foreach ($this->request->post['company_enabled_methods'] as $method => $text) {
-                $replace_data[] = 'ocstore_yk_company_' . $method  . '_minimal_order';
-                $replace_data[] = 'ocstore_yk_company_' . $method  . '_maximal_order';
+            if (isset($this->request->post['company_enabled_methods']) && is_array($this->request->post['company_enabled_methods'])) {
+                foreach ($this->request->post['company_enabled_methods'] as $method => $text) {
+                    $replace_data[] = 'ocstore_yk_company_' . $method  . '_minimal_order';
+                    $replace_data[] = 'ocstore_yk_company_' . $method  . '_maximal_order';
+                }
             }
 
-            foreach ($this->request->post['physical_enabled_methods'] as $method => $text) {
-                $replace_data[] = 'ocstore_yk_physical_' . $method  . '_minimal_order';
-                $replace_data[] = 'ocstore_yk_physical_' . $method  . '_maximal_order';
+            if (isset($this->request->post['physical_enabled_methods']) && is_array($this->request->post['physical_enabled_methods'])) {
+                foreach ($this->request->post['physical_enabled_methods'] as $method => $text) {
+                    $replace_data[] = 'ocstore_yk_physical_' . $method  . '_minimal_order';
+                    $replace_data[] = 'ocstore_yk_physical_' . $method  . '_maximal_order';
+                }
             }
 
             $this->_replaceData(',', '.', $replace_data);
@@ -76,7 +80,7 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
             $this->document->addStyle('view/javascript/summernote/summernote.css');
         }
 
-        $server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
+        $server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
 
         $data = $this->_setData(array(
                              'heading_title',

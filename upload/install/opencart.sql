@@ -235,7 +235,18 @@ INSERT INTO `oc_attribute_description` (`attribute_id`, `language_id`, `name`) V
 (9, 1, 'test 6'),
 (10, 1, 'test 7'),
 (11, 1, 'test 8'),
-(3, 1, 'Clockspeed');
+(3, 1, 'Clockspeed'),
+(1, 2, 'Description'),
+(2, 2, 'No. of Cores'),
+(4, 2, 'test 1'),
+(5, 2, 'test 2'),
+(6, 2, 'test 3'),
+(7, 2, 'test 4'),
+(8, 2, 'test 5'),
+(9, 2, 'test 6'),
+(10, 2, 'test 7'),
+(11, 2, 'test 8'),
+(3, 2, 'Clockspeed');
 
 -- --------------------------------------------------------
 
@@ -347,7 +358,21 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `language_id`, `t
 (90, 8, 1, 'Disney', '', 'catalog/demo/manufacturer/disney.png', 0),
 (80, 7, 1, 'MacBookAir', '', 'catalog/demo/banners/MacBookAir.jpg', 0),
 (97, 8, 1, 'Starbucks', '', 'catalog/demo/manufacturer/starbucks.png', 0),
-(98, 8, 1, 'Nintendo', '', 'catalog/demo/manufacturer/nintendo.png', 0);
+(98, 8, 1, 'Nintendo', '', 'catalog/demo/manufacturer/nintendo.png', 0),
+(99, 7, 2, 'iPhone 6', 'index.php?route=product/product&amp;path=57&amp;product_id=49', 'catalog/demo/banners/iPhone6.jpg', 0),
+(100, 6, 2, 'HP Banner', 'index.php?route=product/manufacturer/info&amp;manufacturer_id=7', 'catalog/demo/compaq_presario.jpg', 0),
+(101, 8, 2, 'NFL', '', 'catalog/demo/manufacturer/nfl.png', 0),
+(102, 8, 2, 'RedBull', '', 'catalog/demo/manufacturer/redbull.png', 0),
+(103, 8, 2, 'Sony', '', 'catalog/demo/manufacturer/sony.png', 0),
+(104, 8, 2, 'Coca Cola', '', 'catalog/demo/manufacturer/cocacola.png', 0),
+(105, 8, 2, 'Burger King', '', 'catalog/demo/manufacturer/burgerking.png', 0),
+(106, 8, 2, 'Canon', '', 'catalog/demo/manufacturer/canon.png', 0),
+(107, 8, 2, 'Harley Davidson', '', 'catalog/demo/manufacturer/harley.png', 0),
+(108, 8, 2, 'Dell', '', 'catalog/demo/manufacturer/dell.png', 0),
+(109, 8, 2, 'Disney', '', 'catalog/demo/manufacturer/disney.png', 0),
+(110, 7, 2, 'MacBookAir', '', 'catalog/demo/banners/MacBookAir.jpg', 0),
+(111, 8, 2, 'Starbucks', '', 'catalog/demo/manufacturer/starbucks.png', 0),
+(112, 8, 2, 'Nintendo', '', 'catalog/demo/manufacturer/nintendo.png', 0);
 
 -- --------------------------------------------------------
 
@@ -1190,7 +1215,8 @@ CREATE TABLE `oc_customer_group_description` (
 --
 
 INSERT INTO `oc_customer_group_description` (`customer_group_id`, `language_id`, `name`, `description`) VALUES
-(1, 1, 'Default', 'test');
+(1, 1, 'Default', 'test'),
+(1, 2, 'Default', 'test');
 
 -- --------------------------------------------------------
 

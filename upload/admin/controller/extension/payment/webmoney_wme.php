@@ -144,7 +144,7 @@ class ControllerExtensionPaymentWebmoneyWME extends Controller {
 		
 		
 		// URL
-		$server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
+		$server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
 
 		$data['webmoney_wme_result_url'] 		= $server . 'index.php?route=extension/payment/webmoney_wme/callback';
 		$data['webmoney_wme_success_url'] 	= $server . 'index.php?route=extension/payment/webmoney_wme/success';

@@ -14,7 +14,7 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
-		if ($this->request->server['HTTPS']) {
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
 		} else {
 			$server = $this->config->get('config_url');
@@ -44,7 +44,7 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		$this->load->language('common/header');
-		$data['og_url'] = (isset($this->request->server['HTTPS']) ? HTTPS_SERVER : HTTP_SERVER) . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
+		$data['og_url'] = (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_SERVER : HTTP_SERVER) . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
 		$data['og_image'] = $this->document->getOgImage();
 
 		$data['text_home'] = $this->language->get('text_home');

@@ -144,7 +144,7 @@ class ControllerExtensionPaymentWebmoneyWMR extends Controller {
 		
 		
 		// URL
-		$server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
+		$server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
 
 		$data['webmoney_wmr_result_url'] 		= $server . 'index.php?route=extension/payment/webmoney_wmr/callback';
 		$data['webmoney_wmr_success_url'] 	= $server . 'index.php?route=extension/payment/webmoney_wmr/success';

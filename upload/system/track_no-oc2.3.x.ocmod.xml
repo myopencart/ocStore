@@ -99,6 +99,7 @@ $('#button-track_no-add').on('click', function() {
 <?php } ?>
 				]]></add>
 			</operation>
+		</file>
 		
 		<!-- Далее изменения для просмотра заказа покупателем -->
 		<file path="catalog/model/account/order.php">
@@ -131,7 +132,4 @@ $('#button-track_no-add').on('click', function() {
 				]]></add>
 			</operation>
 		</file>
-			
-<b><?php echo $text_shipping_method; ?></b> <?php echo $shipping_method; ?>			
-	</file>
 </modification>

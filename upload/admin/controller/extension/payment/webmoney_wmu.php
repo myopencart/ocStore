@@ -144,7 +144,7 @@ class ControllerExtensionPaymentWebmoneyWMU extends Controller {
 		
 		
 		// URL
-		$server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? HTTPS_CATALOG : HTTP_CATALOG;
+		$server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
 
 		$data['webmoney_wmu_result_url'] 		= $server . 'index.php?route=extension/payment/webmoney_wmu/callback';
 		$data['webmoney_wmu_success_url'] 	= $server . 'index.php?route=extension/payment/webmoney_wmu/success';

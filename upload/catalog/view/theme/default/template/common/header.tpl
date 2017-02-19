@@ -9,15 +9,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title><?php echo $title; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?></title>
+<title><?php echo $title;  ?></title>
 <base href="<?php echo $base; ?>" />
 <?php if ($description) { ?>
-<meta name="description" content="<?php echo $description; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?>" />
+<meta name="description" content="<?php echo $description; ?>" />
 <?php } ?>
 <?php if ($keywords) { ?>
 <meta name="keywords" content= "<?php echo $keywords; ?>" />
 <?php } ?>
-<meta property="og:title" content="<?php echo $title; if (isset($_GET['page'])) { echo " - ". ((int) $_GET['page'])." ".$text_page;} ?>" />
+<meta property="og:title" content="<?php echo $title; ?>" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo $og_url; ?>" />
 <?php if ($og_image) { ?>

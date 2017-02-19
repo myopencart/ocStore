@@ -107,7 +107,7 @@ class ControllerCheckoutConfirm extends Controller {
 			if ($order_data['store_id']) {
 				$order_data['store_url'] = $this->config->get('config_url');
 			} else {
-				if ($this->request->server['HTTPS']) {
+				if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 					$order_data['store_url'] = HTTPS_SERVER;
 				} else {
 					$order_data['store_url'] = HTTP_SERVER;

@@ -291,7 +291,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         $sum = number_format($sum, 2, '.', '');
         $targets = sprintf($this->language->get('text_order_description'), $order_id, $sum, $sCurrencyCode);
         
-        $server = isset($this->request->server['HTTPS']) && $this->request->server['HTTPS'] ? $this->config->get('config_ssl') : $this->config->get('config_url');
+        $server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? $this->config->get('config_ssl') : $this->config->get('config_url');
         $server = str_replace('http://', 'https://', $server);
 
         if ($this->config->get('ocstore_yk_type')) {
@@ -588,7 +588,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
 				$mail->send();
 
 				if ($type == 'admin') {
-            $emails = explode(',', $this->config->get('config_mail_alert'));
+            $emails = explode(',', $this->config->get('config_alert_email'));
             $regexp = $this->config->get('config_mail_regexp') ?: '/^[^\@]+@.*.[a-z]{2,15}$/i';
             foreach ($emails as $email) {
                 if ($email && preg_match($regexp, $email)) {
