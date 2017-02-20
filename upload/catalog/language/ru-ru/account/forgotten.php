@@ -16,6 +16,6 @@ $_['entry_confirm']   = 'Подтвердить';
 
 // Error
 $_['error_email']     = 'E-Mail адрес не найден, проверьте и попробуйте ещё раз!';
-$_['error_approved']  = 'Warning: Your account requires approval before you can login.';
-$_['error_password']  = 'Password must be between 4 and 20 characters!';
-$_['error_confirm']   = 'Password and password confirmation do not match!';
+$_['error_approved']  = 'Внимание: Требуется подтверждение вашей учетной записи перед авторизацией.';
+$_['error_password']  = 'Пароль должен быть от 4 до 20 символов!';
+$_['error_confirm']   = 'Пароли не совпадают!';
