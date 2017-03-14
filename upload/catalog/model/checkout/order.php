@@ -769,8 +769,6 @@ class ModelCheckoutOrder extends Model {
 							$this->config->get('config_sms_message'))
 					);
 
-					$this->load->library('sms');
-
 					$sms = new Sms($this->config->get('config_sms_gatename'), $options);
 					$sms->send();
 				}
