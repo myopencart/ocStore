@@ -41,6 +41,15 @@ class ModelLocalisationLanguage extends Model {
 
 		$this->cache->delete('category');
 
+		// Manufacturer
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "manufacturer_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+
+		foreach ($query->rows as $manufacturer) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "manufacturer_description SET manufacturer_id = '" . (int)$manufacturer['manufacturer_id'] . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($manufacturer['name']) . "', description = '" . $this->db->escape($manufacturer['description']) . "', meta_title = '" . $this->db->escape($manufacturer['meta_title']) . "', meta_h1 = '" . $this->db->escape($manufacturer['meta_h1']) . "', meta_description = '" . $this->db->escape($manufacturer['meta_description']) . "', meta_keyword = '" . $this->db->escape($manufacturer['meta_keyword']) . "'");
+		}
+
+		$this->cache->delete('manufacturer');
+
 		// Customer Group
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_group_description WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
@@ -224,6 +233,10 @@ class ModelLocalisationLanguage extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_description WHERE language_id = '" . (int)$language_id . "'");
 
 		$this->cache->delete('category');
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "manufacturer_description WHERE language_id = '" . (int)$language_id . "'");
+
+		$this->cache->delete('manufacturer');
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "customer_group_description WHERE language_id = '" . (int)$language_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "download_description WHERE language_id = '" . (int)$language_id . "'");
