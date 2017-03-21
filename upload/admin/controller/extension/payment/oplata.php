@@ -55,24 +55,21 @@ class ControllerExtensionPaymentOplata extends Controller
 
    		$data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_home'),
-			'href'      => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => false
+			'href'      => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL')
    		);
 
    		$data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_payment'),
-			'href'      => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+			'href'      => $this->url->link('extension/extension', 'type=payment&token=' . $this->session->data['token'], 'SSL')
    		);
 
    		$data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('extension/payment/oplata', 'token=' . $this->session->data['token'], 'SSL'),      		
-      		'separator' => ' :: '
+			'href'      => $this->url->link('extension/payment/oplata', 'token=' . $this->session->data['token'], 'SSL')
    		);
 				
 		$data['action'] = $this->url->link('extension/payment/oplata', 'token=' . $this->session->data['token'], 'SSL');
-		$data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'], 'SSL');
+		$data['cancel'] = $this->url->link('extension/extension', 'type=payment&token=' . $this->session->data['token'], 'SSL');
 
 //------------------------------------------------------------
 		$this->load->model('localisation/order_status');
