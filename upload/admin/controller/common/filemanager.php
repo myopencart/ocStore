@@ -30,8 +30,8 @@ class ControllerCommonFileManager extends Controller {
 		// Save current directory
 		if (!isset($this->request->get['directory'])) {
 			if (!isset($this->request->get['parent'])) { //New call Filemanager
-				$this->request->get['directory'] = isset($this->request->cookie['file_manager']['directory']) ? $this->request->cookie['file_manager']['directory'] : null;
-				$this->request->get['page'] = isset($this->request->cookie['file_manager']['page']) ? $this->request->cookie['file_manager']['page'] : null;
+				$this->request->get['directory'] = isset($this->request->cookie['file_manager']['directory']) ? $this->request->cookie['file_manager']['directory'] : '';
+				$this->request->get['page'] = isset($this->request->cookie['file_manager']['page']) ? $this->request->cookie['file_manager']['page'] : 1;
 			} else { // Trying to go back to the root directory, delete cookies
 				setcookie('file_manager[directory]', '', time() - 3600, '/', $this->request->server['HTTP_HOST']);
 				setcookie('file_manager[page]', '', time() - 3600, '/', $this->request->server['HTTP_HOST']);
