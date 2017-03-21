@@ -9,6 +9,9 @@
         <operation>
             <search><![CDATA[public function index() {]]></search>
             <add position="after"><![CDATA[
+            if ($this->config->get('oplata_status')) { //Fondy Payment Method
+                $this->document->addScript('https://api.fondy.eu/static_common/v1/checkout/ipsp.js');
+            }
             if (isset($this->session->data['oplata_error'])){
 			$data['oplata_error']=$this->session->data['oplata_error'];
 			 
@@ -26,13 +29,4 @@
 			]]></add>
         </operation>
     </file>
-	<file path="catalog/view/theme/*/template/common/header.tpl">
-        <operation>
-            <search><![CDATA[<?php foreach ($styles as $style) { ?>]]></search>
-            <add position="before"><![CDATA[
-              <script src="https://api.fondy.eu/static_common/v1/checkout/ipsp.js"></script>
-			]]></add>
-        </operation>
-    </file>
-
 </modification>
