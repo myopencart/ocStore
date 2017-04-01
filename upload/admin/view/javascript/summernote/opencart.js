@@ -1,13 +1,13 @@
-$(document).ready(function() {
+var script = document.createElement('script'),
+
+script.src = 'view/javascript/summernote/lang/summernote-' + lang + '.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+$(window).load(function() {
 	// Override summernotes image manager
 	$('.summernote').each(function() {
 		var element = this;
-		var lang = $(element).data('lang');
-		
-		if (typeof(lang) == 'undefined') {
-			lang = 'en-US';
-		}
-		
+
 		$(element).summernote({
 			disableDragAndDrop: true,
 			height: 300,
@@ -33,7 +33,7 @@ $(document).ready(function() {
 						tooltip: $.summernote.lang[$.summernote.options.lang].image.image,
 						click: function () {
 							$('#modal-image').remove();
-						
+
 							$.ajax({
 								url: 'index.php?route=common/filemanager&token=' + getURLVar('token'),
 								dataType: 'html',
@@ -47,25 +47,25 @@ $(document).ready(function() {
 								},
 								success: function(html) {
 									$('body').append('<div id="modal-image" class="modal">' + html + '</div>');
-									
+
 									$('#modal-image').modal('show');
-									
+
 									$('#modal-image').delegate('a.thumbnail', 'click', function(e) {
 										e.preventDefault();
-										
+
 										$(element).summernote('insertImage', $(this).attr('href'));
-																	
+
 										$('#modal-image').modal('hide');
 									});
 								}
-							});						
+							});
 						}
 					});
-				
+
 					return button.render();
 				}
   			}
 		});
 	});
-	
+
 });
