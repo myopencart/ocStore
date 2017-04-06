@@ -23,7 +23,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
 
     public function index($setting) {
         $payment_type = isset($setting['paymentType']) ? $setting['paymentType'] : 'AC';
-        $langdata = $this->config->get('shopuils_yk_langdata');
+        $langdata = $this->config->get('ocstore_yk_langdata');
         $payment_langdata = $this->config->get($this->getSubMethod($payment_type, 'langdata'));
 
         $data = $this->_setData(array(
