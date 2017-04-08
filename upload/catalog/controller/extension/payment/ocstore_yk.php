@@ -301,7 +301,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
                 'scid'            => $this->config->get('ocstore_yk_scid'),
                 'orderNumber'     => $order_id,
                 'sum'             => $sum,
-                'customerNumber'  => $order_info['payment_firstname'] . ' ' . $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'] . ' ' . $order_info['payment_city'] . ' ' . $order_info['email'], //???
+                'customerNumber'  => (int)$this->customer->getId(),
                 'shopSuccessURL'  => $server . 'index.php?route=extension/payment/ocstore_yk/success',
                 'shopFailURL'     => $server . 'index.php?route=extension/payment/ocstore_yk/fail',
                 'cps_email'       => $order_info['email'],
