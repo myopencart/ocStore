@@ -40,10 +40,10 @@ class ModelExtensionShippingByTotal extends Model {
 				if ((string)$cost != '') {
 					$quote_data['by_total_' . $result['geo_zone_id']] = array(
 						'code'         => 'by_total.by_total_' . $result['geo_zone_id'],
-						'title'        => $result['name'] . '  (' . $this->language->get('text_total') . ' ' . $this->currency->format($this->tax->calculate($cart_total, $this->config->get('by_total_tax_class_id'), $this->config->get('config_tax'))) . ')',
+						'title'        => $result['name'] . '  (' . $this->language->get('text_total') . ' ' . $this->currency->format($this->tax->calculate($cart_total, $this->config->get('by_total_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency']) . ')',
 						'cost'         => $cost,
 						'tax_class_id' => $this->config->get('by_total_tax_class_id'),
-						'text'         => $this->currency->format($this->tax->calculate($cost, $this->config->get('by_total_tax_class_id'), $this->config->get('config_tax')))
+						'text'         => $this->currency->format($this->tax->calculate($cost, $this->config->get('by_total_tax_class_id'), $this->config->get('config_tax')), $this->session->data['currency'])
 					);
 				}
 			}
