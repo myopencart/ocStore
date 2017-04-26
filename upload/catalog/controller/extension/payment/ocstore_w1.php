@@ -3,10 +3,10 @@
  * Платежная система Wallet One (Единая касса)
  * 
  * @cms       ocStore 2.3
- * @author    OcTeam
- * @support   https://opencartforum.com/user/3463-shoputils
+ * @author    ocStore Team
+ * @support   https://opencartforum.com/profile/3463-shoputils
  * @version   1.0
- * @copyright  Copyright (c) 2016 OcTeam (http://myopencart.com , http://opencartforum.com)
+ * @copyright  Copyright (c) 2016 ocStore Team (https://myopencart.com , https://opencartforum.com)
  */
 class ControllerExtensionPaymentOcstoreW1 extends Controller {
     private $order;
