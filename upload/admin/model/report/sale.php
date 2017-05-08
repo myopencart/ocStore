@@ -2,6 +2,8 @@
 class ModelReportSale extends Model {
 	public function getTotalSales($data = array()) {
 		$sql = "SELECT SUM(total) AS total FROM `" . DB_PREFIX . "order` WHERE order_status_id > '0'";
+		
+		$sql .= " AND order_status_id IN(" . implode(",", $this->config->get('config_complete_status')) . ") ";
 
 		if (!empty($data['filter_date_added'])) {
 			$sql .= " AND DATE(date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
