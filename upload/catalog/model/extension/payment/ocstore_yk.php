@@ -94,7 +94,7 @@ class ModelExtensionPaymentOcstoreYk extends Model {
 
     protected function isLaterpayButtonLK($order_info) {
         //Laterpay Button LK Enabled?
-        if ($this->config->get('ocstore_yk_laterpay_button_lk')) {            
+        if ($this->config->get('ocstore_yk_laterpay_button_lk') && !$this->config->get('ocstore_yk_laterpay_mode')) {            
             if (!$order_info || (strpos($order_info['payment_code'], self::$_METHOD_CODE) === false) || !$this->config->get($order_info['payment_code'] . '_status')) {
                 return false;
             }

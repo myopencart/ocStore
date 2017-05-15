@@ -143,7 +143,8 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         $this->logWrite('  GET:' . var_export($this->request->get, true), self::$LOG_FULL);
 
         //Защита от 'дурака', на случай, если в анкете перепутали урлы check и aviso
-        $this->session->data['ocstore_yk_check'] = isset($this->request->post['orderNumber']) ? $this->request->post['orderNumber'] : 0;
+        $order_id = isset($this->request->post['orderNumber']) ? (int)$this->request->post['orderNumber'] : '0';
+        $this->cache->set('ocstore_yk_check.' . $order_id, $order_id);
         //Если все OK - checkURL должен вернуть шлюзу 'code = 0', иначе code = 1
         $this->sendOk((int)!$this->validate(), 'check');
     }
@@ -162,8 +163,9 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         }
         
         //Защита от 'дурака', на случай, если в анкете перепутали урлы check и aviso
-        if (isset($this->session->data['ocstore_yk_check']) && ($this->session->data['ocstore_yk_check'] == $this->order['order_id'])) {
-            unset($this->session->data['ocstore_yk_check']);
+        $check_info = $this->cache->get('ocstore_yk_check.' . (int)$this->order['order_id']);
+        if ($check_info && ($check_info == $this->order['order_id'])) {
+            $this->cache->delete('ocstore_yk_check.' . (int)$this->order['order_id']);
         } else {
             $this->sendForbidden('CallbackURL: First there should be a request to the Check URL', self::$LOG_SHORT);
             $this->sendOk(1, 'aviso');
