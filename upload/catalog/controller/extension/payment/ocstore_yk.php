@@ -142,9 +142,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         $this->logWrite('  POST:' . var_export($this->request->post, true), self::$LOG_FULL);
         $this->logWrite('  GET:' . var_export($this->request->get, true), self::$LOG_FULL);
 
-        //Защита от 'дурака', на случай, если в анкете перепутали урлы check и aviso
-        $order_id = isset($this->request->post['orderNumber']) ? (int)$this->request->post['orderNumber'] : '0';
-        $this->cache->set('ocstore_yk_check.' . $order_id, $order_id);
         //Если все OK - checkURL должен вернуть шлюзу 'code = 0', иначе code = 1
         $this->sendOk((int)!$this->validate(), 'check');
     }
@@ -161,16 +158,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
             $this->sendOk(1, 'aviso');
             exit;
         }
-        
-        //Защита от 'дурака', на случай, если в анкете перепутали урлы check и aviso
-        $check_info = $this->cache->get('ocstore_yk_check.' . (int)$this->order['order_id']);
-        if ($check_info && ($check_info == $this->order['order_id'])) {
-            $this->cache->delete('ocstore_yk_check.' . (int)$this->order['order_id']);
-        } else {
-            $this->sendForbidden('CallbackURL: First there should be a request to the Check URL', self::$LOG_SHORT);
-            $this->sendOk(1, 'aviso');
-            exit;
-       }
 
         if ($this->order['order_status_id']){
             //Reverse $this->config->get('ocstore_yk_notify_customer_success')
@@ -212,7 +199,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         }
         
         if ($this->config->get('ocstore_yk_type')) {
-            $this->response->redirect($this->url->link('checkout/success', 'SSL'));
+            $this->response->redirect($this->url->link('checkout/success', '', 'SSL'));
         }
     }
 
