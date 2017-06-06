@@ -370,7 +370,7 @@ class ControllerExtensionThemeThemeDefault extends Controller {
 		}
 
 		if (!$this->request->post['theme_default_product_description_length']) {
-			$this->error['product_description_length'] = $this->language->get('error_limit');
+			$this->error['product_description_length'] = $this->language->get('error_product_description_length');
 		}
 
 		if (!$this->request->post['theme_default_image_category_width'] || !$this->request->post['theme_default_image_category_height']) {
