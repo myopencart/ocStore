@@ -6,7 +6,7 @@ $_['text_disabled']       = 'Выключить';
 $_['text_home']       = 'Dashboard';
 
 // Text
-$_['text_edit']       = 'Редакторование модуля';
+$_['text_edit']       = 'Редактирование модуля';
 
 $_['text_payment']       = 'Оплата';
 $_['text_oplata']       	 = '<a onclick="window.open(\'http://fondy.eu\');"><img src="view/image/payment/oplata.png" alt="Fondy" title="Oplata" style="border: 1px solid #EEEEEE;" /></a>';
