@@ -279,13 +279,13 @@ class ControllerToolUpload extends Controller {
 
 		if ($upload_info) {
 			$file = DIR_UPLOAD . $upload_info['filename'];
-			$mask = basename($upload_info['name']);
+			$mask = $upload_info['name'];
 
 			if (!headers_sent()) {
 				if (is_file($file)) {
 					header('Content-Type: application/octet-stream');
 					header('Content-Description: File Transfer');
-					header('Content-Disposition: attachment; filename="' . ($mask ? $mask : basename($file)) . '"');
+					header('Content-Disposition: attachment; filename="' . ($mask ? $mask : $file) . '"');
 					header('Content-Transfer-Encoding: binary');
 					header('Expires: 0');
 					header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
