@@ -23,7 +23,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
 
     public function index($setting) {
         $payment_type = isset($setting['paymentType']) ? $setting['paymentType'] : 'AC';
-        $langdata = $this->config->get('shopuils_yk_langdata');
+        $langdata = $this->config->get('ocstore_yk_langdata');
         $payment_langdata = $this->config->get($this->getSubMethod($payment_type, 'langdata'));
 
         $data = $this->_setData(array(
@@ -142,8 +142,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         $this->logWrite('  POST:' . var_export($this->request->post, true), self::$LOG_FULL);
         $this->logWrite('  GET:' . var_export($this->request->get, true), self::$LOG_FULL);
 
-        //Защита от 'дурака', на случай, если в анкете перепутали урлы check и aviso
-        $this->session->data['ocstore_yk_check'] = isset($this->request->post['orderNumber']) ? $this->request->post['orderNumber'] : 0;
         //Если все OK - checkURL должен вернуть шлюзу 'code = 0', иначе code = 1
         $this->sendOk((int)!$this->validate(), 'check');
     }
@@ -160,15 +158,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
             $this->sendOk(1, 'aviso');
             exit;
         }
-        
-        //Защита от 'дурака', на случай, если в анкете перепутали урлы check и aviso
-        if (isset($this->session->data['ocstore_yk_check']) && ($this->session->data['ocstore_yk_check'] == $this->order['order_id'])) {
-            unset($this->session->data['ocstore_yk_check']);
-        } else {
-            $this->sendForbidden('CallbackURL: First there should be a request to the Check URL', self::$LOG_SHORT);
-            $this->sendOk(1, 'aviso');
-            exit;
-       }
 
         if ($this->order['order_status_id']){
             //Reverse $this->config->get('ocstore_yk_notify_customer_success')
@@ -210,7 +199,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         }
         
         if ($this->config->get('ocstore_yk_type')) {
-            $this->response->redirect($this->url->link('checkout/success', 'SSL'));
+            $this->response->redirect($this->url->link('checkout/success', '', 'SSL'));
         }
     }
 
@@ -301,7 +290,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
                 'scid'            => $this->config->get('ocstore_yk_scid'),
                 'orderNumber'     => $order_id,
                 'sum'             => $sum,
-                'customerNumber'  => $order_info['payment_firstname'] . ' ' . $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'] . ' ' . $order_info['payment_city'] . ' ' . $order_info['email'], //???
+                'customerNumber'  => (int)$this->customer->getId(),
                 'shopSuccessURL'  => $server . 'index.php?route=extension/payment/ocstore_yk/success',
                 'shopFailURL'     => $server . 'index.php?route=extension/payment/ocstore_yk/fail',
                 'cps_email'       => $order_info['email'],

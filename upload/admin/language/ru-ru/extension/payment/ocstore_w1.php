@@ -5,8 +5,8 @@ $_['heading_title']           = 'W1 - Единая Касса';
 // Text 
 $_['text_extension']          = 'Платежи';
 $_['text_success']            = 'Настройки модуля обновлены!';
-$_['text_ocstore_w1']         = '<a style="cursor: pointer;" onclick="window.open(\'https://www.walletone.com/merchant/?promo=ocstore\');"><img src="view/image/payment/ocstore_w1.png" height="40" alt="Wallet One" title="Wallet One" /></a>';
-$_['text_register']           = 'Зарегистрируйтесь в кассе на <a target="_blank" href="https://www.walletone.com/merchant/?promo=ocstore">сайте</a>. Пользователям ocStore предоставляется тариф "Малый бизнес" на 3 месяца.';
+$_['text_ocstore_w1']         = '<a style="cursor: pointer;" onclick="window.open(\'https://www.walletone.com/merchant/?promo=ocstore2017\');"><img src="view/image/payment/ocstore_w1.png" height="40" alt="Wallet One" title="Wallet One" /></a>';
+$_['text_register']           = 'Зарегистрируйтесь в кассе на <a target="_blank" href="https://www.walletone.com/merchant/?promo=ocstore2017">сайте</a>. Пользователям ocStore предоставляется тариф "Средний бизнес" на 3 месяца.';
 $_['text_instruction']        = 'В <a href="https://www.walletone.com/merchant/client/#/settings/integration" target="_blank">личном кабинете</a> во вкладке «Настройки» в разделе «Интеграция» нужно указать следующие настройки:';
 $_['text_setting']            = 'Настройки';
 $_['text_info']               = 'Аккаунт W1';

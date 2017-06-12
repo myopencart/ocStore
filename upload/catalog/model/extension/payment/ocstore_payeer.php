@@ -79,7 +79,7 @@ class ModelExtensionPaymentOcstorePayeer extends Model {
 
     protected function isLaterpayButtonLK($order_id) {
         //Laterpay Button LK Enabled?
-        if ($this->config->get('ocstore_payeer_laterpay_button_lk')) {
+        if ($this->config->get('ocstore_payeer_laterpay_button_lk') || !$this->config->get('ocstore_payeer_laterpay_mode')) {
             if (!isset($this->_order_info)) {
                 $this->_order_info = $this->getOrder($order_id);
             }

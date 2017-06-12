@@ -2086,11 +2086,11 @@ CREATE TABLE `oc_module` (
 --
 
 INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
-(30, 'Category', 'banner', '{"name":"Category","banner_id":"6","width":"182","height":"182","status":"1"}'),
-(29, 'Home Page', 'carousel', '{"name":"Home Page","banner_id":"8","width":"130","height":"100","status":"1"}'),
-(28, 'Home Page', 'featured', '{"name":"Home Page","product":["43","40","42","30"],"limit":"4","width":"200","height":"200","status":"1"}'),
-(27, 'Home Page', 'slideshow', '{"name":"Home Page","banner_id":"7","width":"1140","height":"380","status":"1"}'),
-(31, 'Banner 1', 'banner', '{"name":"Banner 1","banner_id":"6","width":"182","height":"182","status":"1"}');
+(30, 'Баннер на странице категорий', 'banner', '{"name":"Баннер на странице категорий","banner_id":"6","width":"182","height":"182","status":"1"}'),
+(29, 'Карусель на главной странице', 'carousel', '{"name":"Карусель на главной странице","banner_id":"8","width":"130","height":"100","status":"1"}'),
+(28, 'Рекомендуемые на главной странице', 'featured', '{"name":"Рекомендуемые на главной странице","product":["43","40","42","30"],"limit":"4","width":"200","height":"200","status":"1"}'),
+(27, 'Слайдшоу на главной странице', 'slideshow', '{"name":"Слайдшоу на главной странице","banner_id":"7","width":"1140","height":"380","status":"1"}'),
+(31, 'Баннер Продукция HP', 'banner', '{"name":"Баннер Продукция HP","banner_id":"6","width":"182","height":"182","status":"1"}');
 
 -- --------------------------------------------------------
 
