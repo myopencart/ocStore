@@ -2,10 +2,10 @@
 class ModelToolImage extends Model {
 	public function resize($filename, $width, $height) {
 		if (!is_file(DIR_IMAGE . $filename)) {
-			if (is_file(DIR_IMAGE . 'no_image.jpg')) {
-				$filename = 'no_image.jpg';
-			} elseif (is_file(DIR_IMAGE . 'no_image.png')) {
+			if (is_file(DIR_IMAGE . 'no_image.png')) {
 				$filename = 'no_image.png';
+			} elseif (is_file(DIR_IMAGE . 'no_image.jpg')) {
+				$filename = 'no_image.jpg';
 			} else {
 				return;
 			}
@@ -45,7 +45,7 @@ class ModelToolImage extends Model {
 		}
 
 		$imagepath_parts = explode('/', $image_new);
-		$new_image = implode('/', array_map('rawurlencode', $imagepath_parts));
+		$image_new = implode('/', array_map('rawurlencode', $imagepath_parts));
 		
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			return HTTPS_CATALOG . 'image/' . $image_new;
