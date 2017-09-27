@@ -40,7 +40,8 @@ class ModelExtensionShippingTrackNo extends Model {
 		if ($this->config->get('track_no_sms_notify')) {
 			$this->smsNotify($order_info, $this->getComment($order_info, $this->config->get('track_no_sms_text')));
 		}
-		if ($this->config->get('track_no_export_liveinform') && (preg_match('/\w\w\d{9}\w\w/i', $track_no) || preg_match('/\d{14}/i', $track_no) || preg_match('/\d{10}/i', $track_no))) {
+		if ($this->config->get('track_no_export_liveinform') && 
+            (preg_match('/\w\w\d{9}\w\w/i', $track_no) || preg_match('/\d{14}/i', $track_no) || preg_match('/\d{10}/i', $track_no) || preg_match('/\w\w\w\d{7}/i', $track_no))) {
 			$this->exportLiveinform($this->config->get('track_no_liveinform_api_id'), $this->config->get('track_no_liveinform_type'), $order_info);
 		}
 		return array('success'=>$this->liveinform_success, 'error'=>$this->liveinform_error);
@@ -50,14 +51,14 @@ class ModelExtensionShippingTrackNo extends Model {
 		$options = array(
 			'to'       => $order['telephone'],
 			'copy'     => '',
-			'from'     => $this->config->get('config_sms_from'),
-			'username'    => $this->config->get('config_sms_gate_username'),
-			'password' => $this->config->get('config_sms_gate_password'),
+			'from'     => $this->config->get('track_no_sms_gate_from'),
+			'username'    => $this->config->get('track_no_sms_gate_username'),
+			'password' => $this->config->get('track_no_sms_gate_password'),
 			'message'  => $message,
 			'ext'      => null
 		);
 			
-		$sms = new Sms($this->config->get('config_sms_gatename'), $options);
+		$sms = new Sms($this->config->get('track_no_sms_gatename'), $options);
 		$sms->send();
 		if ($sms->error) {
 			$this->liveinform_error.= "\n".trim($sms->error);
@@ -104,7 +105,8 @@ class ModelExtensionShippingTrackNo extends Model {
 		}
 		$body = file_get_contents('http://www.liveinform.ru/api/add/?api_id='.$api_id.'&phone='.$phone.'&tracking='.urlencode($order_info['track_no'])
 			.'&type='.$type.'&order_id='.urlencode($order_info['order_id']).'&email='.urlencode($order_info['email'])
-            .'&firstname='.urlencode($order_info['shipping_firstname']).'&lastname='.urlencode($order_info['shipping_lastname']));
+            .'&firstname='.urlencode($order_info['shipping_firstname']).'&lastname='.urlencode($order_info['shipping_lastname'])
+            .'&index='.urlencode($order_info['shipping_postcode']));
 		$code = substr($body, 0, 3);
 		if ($code == '100') {
 			$this->liveinform_success.= "\n".$this->LIVEINFORM_RESP[$code];
@@ -128,7 +130,7 @@ class ModelExtensionShippingTrackNo extends Model {
 		$this->load->model('checkout/order');
 		$orders = $this->getLiveinformOrdersToUpdate();
 		foreach ($orders as $order) {
-            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no']) && !preg_match('/\d{10}/i', $track_no)) {
+            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no']) && !preg_match('/\d{10}/i', $track_no) && !preg_match('/\w\w\w\d{7}/i', $track_no)) {
                 continue;
             }
             $states = $this->getLiveinformStatus($api_id, $order);

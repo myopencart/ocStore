@@ -1,6 +1,6 @@
 <?php
 final class Unisender extends SmsGate {
-	private $baseurl = 'http://api.unisender.com/ru/api/sendSms?format=json';
+	private $baseurl = 'https://api.unisender.com/ru/api/sendSms?format=json';
 	public $error;
 	
 	public function send() {
