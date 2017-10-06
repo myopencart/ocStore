@@ -21,6 +21,10 @@ class ControllerExtensionShippingTrackNo extends Controller {
 		'email_text'=>'Уважаемый {shipping_firstname} {shipping_lastname}, ваш заказ №{order_id} передан службе доставки, трек-номер: {track_no}.',
 
 		'sms_notify'=>0,
+		'sms_gatename'=>'unisender',
+		'sms_gate_username'=>'',
+		'sms_gate_password'=>'',
+		'sms_gate_from'=>''
 		'sms_text'=>'Ваш заказ №{order_id} передан службе доставки, трек-номер: {track_no}.',
 		
 		'export_liveinform'=>0,
@@ -141,7 +145,6 @@ class ControllerExtensionShippingTrackNo extends Controller {
 			}
 		}
 
-		$data['sms_on'] = $this->config->get('config_sms_gatename');
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');

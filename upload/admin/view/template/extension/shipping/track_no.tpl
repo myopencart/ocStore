@@ -97,10 +97,44 @@
 			<label class="col-sm-3 control-label" for="track_no_sms_notify"><span data-toggle="tooltip" title="Перейдите в раздел Система - Настройки - Мой магазин, и там настройте SMS-шлюз">Уведомлять покупателя по SMS:</span></label>
 			<div class="col-sm-7">
 				<div class="checkbox"><label><input class="_form_flag" rel="_sms_notify" type="checkbox" name="track_no_sms_notify" value="1" <?php echo ($track_no_sms_notify ? ' checked="checked"' : ''); ?>/>
-				<?php if (!$sms_on) { ?><span style="color: red;">SMS-информирование у вас не настроено, либо не поддерживается. SMS отправляться не будут.</span><?php } ?>
 				</div>
 			</div>
 		  </div>
+          
+            <div class="form-group _sms_notify">
+              <label class="col-sm-2 control-label" for="input-template">SMS шлюз:</label>
+              <div class="col-sm-10">
+                <select name="track_no_sms_gatename" id="select-smsgate" class="form-control">
+                  <?php foreach ($sms_gatenames as $sms_gatename) { ?>
+                  <?php if ($rupostupd_sms_gatename == $sms_gatename) { ?>
+                  <option value="<?php echo $sms_gatename; ?>" selected="selected"><?php echo $sms_gatename; ?></option>
+                  <?php } else { ?>
+                  <option value="<?php echo $sms_gatename; ?>"><?php echo $sms_gatename; ?></option>
+                  <?php } ?>
+                  <?php } ?>
+                </select>
+                <br />
+                <span id="sms_gate_link"></span>
+              </div>
+            </div>
+            <div class="form-group _sms_notify">
+              <label class="col-sm-2 control-label" for="input-sms-gate-username">Логин или ID на SMS шлюзе:</label>
+              <div class="col-sm-10">
+                <input type="text" name="track_no_sms_gate_username" value="<?php echo $rupostupd_sms_gate_username; ?>" id="input-sms-gate-username" class="form-control" />
+              </div>
+            </div>
+            <div class="form-group _sms_notify">
+              <label class="col-sm-2 control-label" for="input-config-sms-gate-password">Пароль,token или API key на SMS шлюзе:</label>
+              <div class="col-sm-10">
+                <input type="password" name="track_no_sms_gate_password" value="<?php echo $rupostupd_sms_gate_password; ?>" id="input-sms-gate-password" class="form-control" />
+              </div>
+            </div>	
+            <div class="form-group _sms_notify">
+              <label class="col-sm-2 control-label" for="input-config-sms-gate-from">Отправитель SMS:</label>
+              <div class="col-sm-10">
+                <input type="text" name="track_no_sms_gate_from" value="<?php echo $rupostupd_sms_gate_from; ?>" id="input-sms-gate-from" class="form-control" />
+              </div>
+            </div>          
 		  
 		  <div class="form-group _sms_notify">
 			<label class="col-sm-3 control-label" for="track_no_sms_text"><span data-toggle="tooltip" title="Подстановка в SMS: {order_id} - номер заказа, {track_no} - трек-номер, {shipping_firstname} и {shipping_lastname} - имя и фамилия покупателя.">Текст SMS:</span></label>
@@ -243,6 +277,30 @@
 </div>
 <script>
 $(document).ready(function() {
+
+var smsGates = {
+    bytehand: 'https://www.bytehand.com/?r=3ddf1b2421770b0c',
+    bytehandcom: 'https://www.bytehand.com/?r=3ddf1b2421770b0c',
+	smsc: 'https://smsc.ru/?ppOpenCart',
+    smscru: 'https://smsc.ru/?ppOpenCart',
+    smscua: 'https://smsc.ru/?ppOpenCart',
+	epochtasms: 'http://www.epochta.ru/#a_aid=opencart',
+	epochta: 'http://www.epochta.ru/#a_aid=opencart',
+    epochtasmscomua: 'http://www.epochta.ru/#a_aid=opencart',
+	unisender: 'http://www.unisender.com/?a=opencart',
+    unisenderru: 'http://www.unisender.com/?a=opencart'
+};
+$('#select-smsgate').change(function() {
+	var gate = $(this).val();
+	if (smsGates[gate]) {
+		$('#sms_gate_link').html('<a href="'+smsGates[gate]+'" target="_blank">Получить доступ</a>');
+	}
+	else {
+		$('#sms_gate_link').html('');
+	}
+});
+$('#select-smsgate').trigger('change');
+
 
 $('._form_flag').change(function() {
 	if ($(this).is(':checked')) {
