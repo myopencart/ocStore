@@ -1,8 +1,8 @@
 <?php
 /**
  * Support:
- * https://opencartforum.com/user/3463-shoputils/
- * http://opencart.shoputils.ru/?route=information/contact
+ * https://opencartforum.com/profile/3463-shoputils/
+ * https://opencart.market/?route=information/contact
  * 
 */
 class ControllerExtensionPaymentOcstoreYk extends Controller {

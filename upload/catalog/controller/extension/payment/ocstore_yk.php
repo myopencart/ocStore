@@ -1,8 +1,8 @@
 <?php
 /**
  * Support:
- * https://opencartforum.com/user/3463-shoputils/
- * http://opencart.shoputils.ru/?route=information/contact
+ * https://opencartforum.com/profile/3463-shoputils/
+ * https://opencart.market/?route=information/contact
  * 
 */
 class ControllerExtensionPaymentocstoreYk extends Controller {
@@ -27,13 +27,14 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         $payment_langdata = $this->config->get($this->getSubMethod($payment_type, 'langdata'));
 
         $data = $this->_setData(array(
+                 'text_loading',
                  'entry_payment_methods',
                  'button_laterpay'  => $this->language->get('button_laterpay'),
                  'button_confirm'    => $payment_langdata[$this->config->get('config_language_id')]['button_confirm'] ?: $this->language->get('button_confirm'),
                  'instruction'    => nl2br($langdata[$this->config->get('config_language_id')]['instruction']),
                  'continue'       => $this->url->link('checkout/success', '', 'SSL'),
                  'laterpay_mode'  => $this->getLaterpayMode(),
-                 'action'         => $this->url->link($this->pay, '', 'SSL'),
+                 'action'         => $this->url->link($this->pay, 'order_id=' . (isset($this->session->data['order_id']) ? $this->session->data['order_id'] : 0), 'SSL'),
                  'confirm'        => $this->url->link('extension/payment/ocstore_yk/confirm', '', 'SSL'),
                  'parameters'     => array('paymentType'  => $payment_type)
                  //'parameters'   => $this->makeForm()
@@ -46,7 +47,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
     public function laterpay() {
         if ($this->validateLaterpay()) {
             $data = $this->_setData(array(
-                'action'     => $this->url->link($this->pay, '&order_id=' . $this->request->get['order_id'], 'SSL'),
+                'action'     => $this->url->link($this->pay, 'order_id=' . $this->request->get['order_id'], 'SSL'),
                 'parameters' => $this->getCustomerData()
                 //'parameters' => $this->makeForm($this->request->get['order_id'])
             ));
@@ -78,11 +79,11 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
             $this->response->setOutput($this->load->view('extension/payment/ocstore_yk_pay', $data));
         } else {
             //откуда ушел - туда и вернется
-            if ($this->validateSession()) {
-                $this->logWrite('Page Pay: validateSession Success', self::$LOG_SHORT);
+            if ($this->validateOrder()) {
+                $this->logWrite('Page Pay: validateOrder Success, order_id=' . $this->request->get['order_id'], self::$LOG_SHORT);
                 $this->response->redirect($this->url->link('checkout/success', '', 'SSL'));
             } else {
-                $this->logWrite('Page Pay: validateSession Fail', self::$LOG_SHORT);
+                $this->logWrite('Page Pay: validateOrder Fail, order_id=' . $this->request->get['order_id'], self::$LOG_SHORT);
                 $this->response->redirect($this->url->link('checkout/failure', '', 'SSL'));
             }
         }
@@ -133,7 +134,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
             }
         }
         $this->sendOk();
-        $this->success();
     }
 
     //Company Check
@@ -251,8 +251,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         if (!empty($this->session->data['order_id'])) {
             $this->load->model('checkout/order');
             $this->model_checkout_order->addOrderHistory($this->session->data['order_id'], $this->config->get('ocstore_yk_order_confirm_status_id'));
-            //откуда ушел - туда и вернется
-            $this->session->data['return_from_yandex']['order_id'] = $this->session->data['order_id'];
         }
     }
 
@@ -320,9 +318,9 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
 
     protected function getCustomerData() {
         if (isset($this->request->get['paymentType']) && $this->request->get['paymentType']) {
-            return array('paymentType'  => utf8_substr($this->request->get['paymentType'], -2, 2)); //Нужно вернуть 2 последних символа кода метода оплаты
+            return array('paymentType' => utf8_substr($this->request->get['paymentType'], -2, 2)); //Нужно вернуть 2 последних символа кода метода оплаты
         } else {
-            return 'AC';
+            return array('paymentType' => 'AC');
         }
         //return array('paymentType'  => isset($this->request->get['paymentType']) ? $this->request->get['paymentType'] : 'AC');
     }
@@ -340,18 +338,22 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         return true;
     }
 
-    protected function validateSession() {
-        if (isset($this->session->data['return_from_yandex'])) {
-            $this->load->model('checkout/order');
-            $success_order_info = $this->model_checkout_order->getOrder($this->session->data['return_from_yandex']['order_id']);
-            unset($this->session->data['return_from_yandex']);
-            if (!$success_order_info) {
-                return false;
-            }
-            return $success_order_info['order_status_id'] == $this->config->get('ocstore_yk_order_status_id');
+    protected function validateOrder() {
+        if (isset($this->request->get['order_id'])){
+            $order_id = $this->request->get['order_id'];
         } else {
+            $this->request->get['order_id'] = 0;
             return false;
         }
+
+        $this->load->model('checkout/order');
+        $success_order_info = $this->model_checkout_order->getOrder($order_id);
+
+        if (!$success_order_info) {
+            return false;
+        }
+
+        return $success_order_info['order_status_id'] == $this->config->get('ocstore_yk_order_status_id');
     }
 
     protected function validate($check_sign_hash = true, $check_request_method = true) {
