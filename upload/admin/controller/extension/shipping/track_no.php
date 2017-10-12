@@ -24,7 +24,7 @@ class ControllerExtensionShippingTrackNo extends Controller {
 		'sms_gatename'=>'unisender',
 		'sms_gate_username'=>'',
 		'sms_gate_password'=>'',
-		'sms_gate_from'=>''
+		'sms_gate_from'=>'',
 		'sms_text'=>'Ваш заказ №{order_id} передан службе доставки, трек-номер: {track_no}.',
 		
 		'export_liveinform'=>0,
