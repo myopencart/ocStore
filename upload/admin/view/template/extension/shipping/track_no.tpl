@@ -106,7 +106,7 @@
               <div class="col-sm-10">
                 <select name="track_no_sms_gatename" id="select-smsgate" class="form-control">
                   <?php foreach ($sms_gatenames as $sms_gatename) { ?>
-                  <?php if ($rupostupd_sms_gatename == $sms_gatename) { ?>
+                  <?php if ($track_no_sms_gatename == $sms_gatename) { ?>
                   <option value="<?php echo $sms_gatename; ?>" selected="selected"><?php echo $sms_gatename; ?></option>
                   <?php } else { ?>
                   <option value="<?php echo $sms_gatename; ?>"><?php echo $sms_gatename; ?></option>
@@ -120,19 +120,19 @@
             <div class="form-group _sms_notify">
               <label class="col-sm-2 control-label" for="input-sms-gate-username">Логин или ID на SMS шлюзе:</label>
               <div class="col-sm-10">
-                <input type="text" name="track_no_sms_gate_username" value="<?php echo $rupostupd_sms_gate_username; ?>" id="input-sms-gate-username" class="form-control" />
+                <input type="text" name="track_no_sms_gate_username" value="<?php echo $track_no_sms_gate_username; ?>" id="input-sms-gate-username" class="form-control" />
               </div>
             </div>
             <div class="form-group _sms_notify">
               <label class="col-sm-2 control-label" for="input-config-sms-gate-password">Пароль,token или API key на SMS шлюзе:</label>
               <div class="col-sm-10">
-                <input type="password" name="track_no_sms_gate_password" value="<?php echo $rupostupd_sms_gate_password; ?>" id="input-sms-gate-password" class="form-control" />
+                <input type="password" name="track_no_sms_gate_password" value="<?php echo $track_no_sms_gate_password; ?>" id="input-sms-gate-password" class="form-control" />
               </div>
             </div>	
             <div class="form-group _sms_notify">
               <label class="col-sm-2 control-label" for="input-config-sms-gate-from">Отправитель SMS:</label>
               <div class="col-sm-10">
-                <input type="text" name="track_no_sms_gate_from" value="<?php echo $rupostupd_sms_gate_from; ?>" id="input-sms-gate-from" class="form-control" />
+                <input type="text" name="track_no_sms_gate_from" value="<?php echo $track_no_sms_gate_from; ?>" id="input-sms-gate-from" class="form-control" />
               </div>
             </div>          
 		  
