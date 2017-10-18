@@ -154,9 +154,12 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
         $this->logWrite('  GET:' . var_export($this->request->get, true), self::$LOG_FULL);
 
         if (!$this->validate()) {
-        //Validate Fail - paymentAvisoURL должен вернуть шлюзу 'code = 1'
+            //Validate Fail - paymentAvisoURL должен вернуть шлюзу 'code = 1'
             $this->sendOk(1, 'aviso');
             exit;
+        } else {
+            //Все OK - paymentAvisoURL должен вернуть шлюзу 'code = 0'
+            $this->sendOk(0, 'aviso');
         }
 
         if ($this->order['order_status_id']){
@@ -185,8 +188,6 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
                                 'Mail to Admin Sent Successfully: Payment Success ' . $text_mode);
             }
         }
-        //Все OK - paymentAvisoURL должен вернуть шлюзу 'code = 0'
-        $this->sendOk(0, 'aviso');
     }
 
     public function success() {
@@ -485,11 +486,14 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
             echo "HTTP 200 OK";
         } else {
             //company mode
-            $this->logWrite('OK: code = ' . $code . '; type = ' . ($type == 'check' ? 'check' : 'aviso') . '; POST: ' . http_build_query($this->request->post, '', ','), self::$LOG_SHORT);
-            header("Content-type: text/xml; charset=utf-8");
+            header("Content-type: application/xml; charset=utf-8");
             $message =  '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
             $message .=      '<' . ($type == 'check' ? 'checkOrderResponse' : 'paymentAvisoResponse') . ' performedDatetime="' . date("c") . '" code="' . $code . '" invoiceId="' . (isset($this->request->post['invoiceId']) ? $this->request->post['invoiceId'] : '') . '" shopId="'.$this->config->get('ocstore_yk_shop_id') . '" />';
+            $this->logWrite('OK: ' . $message, self::$LOG_SHORT);
+
+            ob_start();
             echo $message;
+            ob_end_flush();
         }
     }
 
