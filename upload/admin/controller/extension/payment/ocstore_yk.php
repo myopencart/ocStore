@@ -41,15 +41,15 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
 
             $replace_data = array();
 
-            if (isset($this->request->post['company_enabled_methods']) && is_array($this->request->post['company_enabled_methods'])) {
-                foreach ($this->request->post['company_enabled_methods'] as $method => $text) {
+            if (isset($this->request->post['ocstore_yk_company_enabled_methods']) && is_array($this->request->post['ocstore_yk_company_enabled_methods'])) {
+                foreach ($this->request->post['ocstore_yk_company_enabled_methods'] as $method => $text) {
                     $replace_data[] = 'ocstore_yk_company_' . $method  . '_minimal_order';
                     $replace_data[] = 'ocstore_yk_company_' . $method  . '_maximal_order';
                 }
             }
 
-            if (isset($this->request->post['physical_enabled_methods']) && is_array($this->request->post['physical_enabled_methods'])) {
-                foreach ($this->request->post['physical_enabled_methods'] as $method => $text) {
+            if (isset($this->request->post['ocstore_yk_physical_enabled_methods']) && is_array($this->request->post['ocstore_yk_physical_enabled_methods'])) {
+                foreach ($this->request->post['ocstore_yk_physical_enabled_methods'] as $method => $text) {
                     $replace_data[] = 'ocstore_yk_physical_' . $method  . '_minimal_order';
                     $replace_data[] = 'ocstore_yk_physical_' . $method  . '_maximal_order';
                 }
@@ -80,7 +80,7 @@ class ControllerExtensionPaymentOcstoreYk extends Controller {
             $this->document->addStyle('view/javascript/summernote/summernote.css');
         }
 
-        $server = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_CATALOG : HTTP_CATALOG;
+        $server = (isset($this->request->server['HTTPS']) && ((strtolower($this->request->server['HTTPS']) == 'on') || ($this->request->server['HTTPS'] == '1'))) || (isset($this->request->server['SERVER_PORT']) && $this->request->server['SERVER_PORT'] == 443) ? HTTPS_CATALOG : HTTP_CATALOG;
 
         $data = $this->_setData(array(
                              'heading_title',

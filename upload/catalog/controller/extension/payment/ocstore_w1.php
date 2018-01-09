@@ -153,7 +153,7 @@ class ControllerExtensionPaymentOcstoreW1 extends Controller {
         if ($check_sign_hash) {
             $params = array();
             foreach ($this->request->post as $key => $value) {
-                if ($key !== "WMI_SIGNATURE") $params[$key] = urldecode($value);
+                if ($key !== "WMI_SIGNATURE") $params[$key] = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
             }
 
             $signature = $this->calculateSignature($params);
