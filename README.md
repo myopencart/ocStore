@@ -9,7 +9,7 @@ ocStore - это онлайн магазин, который основан на
 Прежде, чем создать сообщение об ошибке, пожалуйста, прочитайте инструкцию:
 
  1. Посетите [OpenCart форум](https://opencartforum.com/), возможно что там, Вы найдете решение.
- 2. Проверьте все открытые (и закрытые) вопросы на [Баг-трекер GitHub] (https://github.com/myopencart/ocstore/issues).
+ 2. Проверьте все открытые (и закрытые) вопросы на [Баг-трекер GitHub](https://github.com/myopencart/ocstore/issues).
  3. Если ошибка связана с движком OpenCart, пожалуйста, создайте отчет [на форуме](https://opencartforum.com/forum/15-отчёты-об-ошибках/).
  4. ПРОЧИТАЙТЕ [весь список изменений](https://github.com/myopencart/ocStore/blob/ocStore2/changelog.md).
  5. Что бы найти ответ на Ваш вопрос, используйте [поиск по форуму](https://opencartforum.com/index.php?app=core&module=search).
@@ -32,14 +32,14 @@ ocStore - это онлайн магазин, который основан на
 
 ## Лицензия
 
-[GNU General Public License версии 3 (GPLv3)] (https://github.com/myopencart/ocStore/blob/ocStore2/license.txt)
+[GNU General Public License версии 3 (GPLv3)](https://github.com/myopencart/ocStore/blob/ocStore2/license.txt)
 
 ## Ссылки
 
-- [Сайт ocStore] (https://myopencart.com/)
-- [OpenCart форум] (https://opencartforum.com/)
-- [Документация] (https://docs.myopencart.com/)
-- [Facebook] (https://www.facebook.com/ocstore)
-- [Вконтакте] (http://vk.com/myopencartcom)
-- [Twitter] (https://twitter.com/myopencartcom)
-- [YouTube] (https://www.youtube.com/c/MyOpenCart)
+- [Сайт ocStore](https://myopencart.com/)
+- [OpenCart форум](https://opencartforum.com/)
+- [Документация](https://docs.myopencart.com/)
+- [Facebook](https://www.facebook.com/ocstore)
+- [Вконтакте](http://vk.com/myopencartcom)
+- [Twitter](https://twitter.com/myopencartcom)
+- [YouTube](https://www.youtube.com/c/MyOpenCart)
