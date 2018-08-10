@@ -104,6 +104,7 @@ class ControllerStartupStartup extends Controller {
 		
 		// Set the config language_id
 		$this->config->set('config_language_id', $languages[$code]['language_id']);	
+		$this->config->set('config_language', $code);
 
 		// Set multiLanguage settings
 		$langdata = $this->config->get('config_langdata');
