@@ -266,9 +266,6 @@ function write_config_files($options) {
 	$output .= 'define(\'DB_PREFIX\', \'' . addslashes($options['db_prefix']) . '\');' . "\n";
 	$output .= 'define(\'DB_PORT\', \'' . addslashes($options['db_port']) . '\');' . "\n";
 
-    $output .= '// OpenCart API' . "\n";
-    $output .= 'define(\'OPENCARTFORUM_SERVER\', \'https://opencartforum.com/\');' . "\n";
-
 	$output .= '?>';
 
 	$file = fopen(DIR_OPENCART . 'config.php', 'w');
@@ -309,9 +306,6 @@ function write_config_files($options) {
 	$output .= 'define(\'DB_DATABASE\', \'' . addslashes($options['db_database']) . '\');' . "\n";
 	$output .= 'define(\'DB_PREFIX\', \'' . addslashes($options['db_prefix']) . '\');' . "\n";
 	$output .= 'define(\'DB_PORT\', \'' . addslashes($options['db_port']) . '\');' . "\n";
-
-    $output .= '// OpenCart API' . "\n";
-    $output .= 'define(\'OPENCARTFORUM_SERVER\', \'https://opencartforum.com/\');' . "\n";
 
     $output .= '?>';
 

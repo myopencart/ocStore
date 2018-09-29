@@ -146,10 +146,8 @@ class ControllerExtensionOpencartforum extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		//var_dump(OPENCARTFORUM_SERVER . 'marketplace/api?' . $url);
-		//exit();
 
-		$curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api?' . $url);
+		$curl = curl_init('https://opencartforum.com/marketplace/api?' . $url);
 
 
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
@@ -671,7 +669,7 @@ class ControllerExtensionOpencartforum extends Controller {
 		$url .= '&extension_id=' . $extension_id;
 		$url .= '&time=' . $time;
 
-		$curl = curl_init(OPENCARTFORUM_SERVER . 'marketplace/api/info?' . $url);
+		$curl = curl_init('https://opencartforum.com/marketplace/api/info?' . $url);
 
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
