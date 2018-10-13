@@ -62,10 +62,8 @@ class Session {
 			return $this->adaptor->create_sid();
 		} elseif (function_exists('random_bytes')) {
         	return substr(bin2hex(random_bytes(26)), 0, 26);
-		} elseif (function_exists('openssl_random_pseudo_bytes')) {
+		} else (function_exists('openssl_random_pseudo_bytes')) {
 			return substr(bin2hex(openssl_random_pseudo_bytes(26)), 0, 26);
-		} else {
-			return substr(bin2hex(mcrypt_create_iv(26, MCRYPT_DEV_URANDOM)), 0, 26);
 		}
 	}
 		

@@ -156,14 +156,14 @@
                   <?php } ?></td>
               </tr>
               <tr>
-                <td><?php echo $text_mcrypt; ?></td>
-                <td><?php if ($mcrypt_encrypt) { ?>
+                <td><?php echo $text_openssl; ?></td>
+                <td><?php if ($openssl_encrypt) { ?>
                   <?php echo $text_on; ?>
                   <?php } else { ?>
                   <?php echo $text_off; ?>
                   <?php } ?></td>
                 <td><?php echo $text_on; ?></td>
-                <td class="text-center"><?php if ($mcrypt_encrypt) { ?>
+                <td class="text-center"><?php if ($openssl_encrypt) { ?>
                   <span class="text-success"><i class="fa fa-check-circle"></i></span>
                   <?php } else { ?>
                   <span class="text-danger"><i class="fa fa-minus-circle"></i></span>

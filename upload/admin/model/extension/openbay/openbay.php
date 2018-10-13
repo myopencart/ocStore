@@ -615,8 +615,8 @@ class ModelExtensionOpenBayOpenbay extends Model {
 	public function requirementTest() {
 		$error = array();
 
-		if (!function_exists('mcrypt_encrypt')) {
-			$error[] = $this->language->get('error_mcrypt');
+		if (!function_exists('openssl_encrypt')) {
+			$error[] = $this->language->get('error_openssl');
 		}
 
 		if (!function_exists('mb_detect_encoding')) {
