@@ -11,7 +11,7 @@ class ModelExtensionShippingTrackNo extends Model {
 	
 	public function save($order_id, $track_no) {
 		if (!$this->config->get('track_no_status')) {
-			return false;
+            return array('error'=>'Модуль "Трек-номер заказа" отключен');
 		}
 		$track_no = trim($track_no);
 		$this->load->model('checkout/order');
@@ -40,9 +40,8 @@ class ModelExtensionShippingTrackNo extends Model {
 		if ($this->config->get('track_no_sms_notify')) {
 			$this->smsNotify($order_info, $this->getComment($order_info, $this->config->get('track_no_sms_text')));
 		}
-		if ($this->config->get('track_no_export_liveinform') && 
-            (preg_match('/\w\w\d{9}\w\w/i', $track_no) || preg_match('/\d{14}/i', $track_no) || preg_match('/\d{10}/i', $track_no) || preg_match('/\w\w\w\d{7}/i', $track_no))) {
-			$this->exportLiveinform($this->config->get('track_no_liveinform_api_id'), $this->config->get('track_no_liveinform_type'), $order_info);
+		if ($this->config->get('track_no_export_liveinform')) {
+			$this->exportLiveinform($this->config->get('track_no_liveinform_api_id'), $order_info);
 		}
 		return array('success'=>$this->liveinform_success, 'error'=>$this->liveinform_error);
 	}
@@ -94,30 +93,52 @@ class ModelExtensionShippingTrackNo extends Model {
 	/**
 	* Регистрировать заказ в LiveInform
 	* @param str $api_id
-	* @param int $type
 	* @param array $order_info
 	**/
-	public function exportLiveinform($api_id, $type, $order_info) {
+	public function exportLiveinform($api_id, $order_info) {
 		$phone = $this->preparePhone($order_info['telephone']);
 		if (!$phone) {
 			$this->liveinform_error.= "\n".$this->LIVEINFORM_RESP['201'];
 			return false;
 		}
-		$body = file_get_contents('http://www.liveinform.ru/api/add/?api_id='.$api_id.'&phone='.$phone.'&tracking='.urlencode($order_info['track_no'])
-			.'&type='.$type.'&order_id='.urlencode($order_info['order_id']).'&email='.urlencode($order_info['email'])
-            .'&firstname='.urlencode($order_info['shipping_firstname']).'&lastname='.urlencode($order_info['shipping_lastname'])
-            .'&index='.urlencode($order_info['shipping_postcode']));
-		$code = substr($body, 0, 3);
-		if ($code == '100') {
-			$this->liveinform_success.= "\n".$this->LIVEINFORM_RESP[$code];
+        $orders = array(
+            0 => array('tracking' => $order_info['track_no'], 'phone' => $phone, 'firstname' => $order_info['shipping_firstname'], 'lastname' => $order_info['shipping_lastname'], 'order_id' => $order_info['order_id'], 'email' => $order_info['email'], 'index' => $order_info['shipping_postcode'], 'from' => 'OpenCart_'.VERSION),
+        );
+        $ch = curl_init("https://www.liveinform.ru/api/v2/add/");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('api_id' => $api_id, 'orders' => json_encode($orders, true)));
+        $body = curl_exec($ch);
+        if ($errorCode = curl_errno($ch)) {
+            $info = curl_getinfo($ch);
+            curl_close($ch);
+            $this->liveinform_error.= "\nОшибка соединения с сервисом LiveInform: ".curl_error($ch);
+            return false;
+        }
+        curl_close($ch);
+        
+        try {
+            $ret = json_decode($body, true);
+        }
+        catch (Exception $e) {
+			$this->liveinform_error.= "\nСервис LiveInform вернул невалидный результат.";
+            return false;
+        }
+        if ($ret['status'] == 'OK') {
+			$this->liveinform_success.= "\nОтслеживание LiveInform успешно добавлено.";
 			$this->log('Заказ #'.$order_info['track_no'].' (ID:'.$order_info['order_id'].'). Отправлен в LiveInform, тел.: ' . $order_info['telephone'], 4);
 			return true;
-		}
-		else {
-			$this->liveinform_error.= "\nLiveInform не принял трек-номер для отслеживания: ".isset($this->LIVEINFORM_RESP[$code]) ? $this->LIVEINFORM_RESP[$code] : 'Неизвестная ошибка ('.$code.')';
-			$this->log('Заказ #'.$order_info['track_no'].' (ID:'.$order_info['order_id'].'). Отправить в LiveInform не получилось, тел.: ' . $order_info['telephone'].' ('.$this->liveinform_error.')', 3);
+        }
+        else if (isset($ret['error'])) {
+            $this->liveinform_error.= "\nLiveInform не принял трек-номер для отслеживания: " . (isset($ret['error'][0]['text']) ? $ret['error'][0]['text'] : "причина не сообщается.");
 			return false;
-		}
+        }
+        else {
+            $this->liveinform_error.= "\nLiveInform не принял трек-номер для отслеживания: причина не сообщается.";
+			return false;
+        }
 	}
 	
     public function updateLiveinform() {
@@ -130,15 +151,21 @@ class ModelExtensionShippingTrackNo extends Model {
 		$this->load->model('checkout/order');
 		$orders = $this->getLiveinformOrdersToUpdate();
 		foreach ($orders as $order) {
-            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no']) && !preg_match('/\d{10}/i', $track_no) && !preg_match('/\w\w\w\d{7}/i', $track_no)) {
+            if (!$order['track_no']) {
                 continue;
             }
+            /*
+            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no']) && !preg_match('/\d{10}/i', $order['track_no']) && !preg_match('/\w\w\w\d{7}/i', $order['track_no'])) {
+                continue;
+            }
+            */
             $states = $this->getLiveinformStatus($api_id, $order);
             if ($states === false) {
                 continue;
             }
             $query = $this->db->query("SELECT comment FROM `".DB_PREFIX."order_history` WHERE order_id='".(int)$order['order_id']."' ORDER BY date_added DESC");
 			$history_pul = array();
+            $sh_status = intval($states['status']);
             foreach ($states as $state) {
 				if (!isset($state['date']) || !$state['date']) {
 					continue;
@@ -158,13 +185,13 @@ class ModelExtensionShippingTrackNo extends Model {
 					$order['index'] = $state['index'];
                     $comment = $state['date'].' '.$this->getComment($order, $this->config->get('track_no_sync_comment'));
 					$order_status_id = $order['order_status_id'];
-					if ($state['operation'] == 'Вручение') {
+					if ($sh_status == 2) {
 						$order_status_id = $this->config->get('track_no_issued_status');
 					}
-					elseif ($state['text'] == 'Прибыло в место вручения' || $state['text'] == 'Временное отсутствие адресата') {
+					elseif ($sh_status == 1) {
 						$order_status_id = $this->config->get('track_no_postoffice_status');
 					}
-					elseif ($state['operation'] == 'Возврат') {
+					elseif ($sh_status == 3) {
 						$order_status_id = $this->config->get('track_no_return_status');
 					}
 					else {
@@ -207,7 +234,7 @@ class ModelExtensionShippingTrackNo extends Model {
             $json = trim(substr($body, 3));
             try {
                 $state_data = json_decode($json, true);
-                return array_reverse($state_data);
+                return array_reverse($state_data, true);
             }
             catch (Exception $e) {
                 $this->log('Заказ #'.$order_info['track_no'].' (ID:'.$order_info['order_id'].'). LiveInform вернул невалидный JSON: `'.$json.'`', 3);
