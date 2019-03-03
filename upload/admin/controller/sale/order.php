@@ -1623,7 +1623,7 @@ class ControllerSaleOrder extends Controller {
 				$store_info = $this->model_setting_setting->getSetting('config', $order_info['store_id']);
 
 				if ($store_info) {
-					$store_address = $store_info['config_address'];
+					$store_address = $store_info['config_langdata'][(int)$this->config->get('config_language_id')]['address'];
 					$store_email = $store_info['config_email'];
 					$store_telephone = $store_info['config_telephone'];
 					$store_fax = $store_info['config_fax'];
@@ -1864,7 +1864,7 @@ class ControllerSaleOrder extends Controller {
 				$store_info = $this->model_setting_setting->getSetting('config', $order_info['store_id']);
 
 				if ($store_info) {
-					$store_address = $store_info['config_address'];
+					$store_address = $store_info['config_langdata'][(int)$this->config->get('config_language_id')]['address'];
 					$store_email = $store_info['config_email'];
 					$store_telephone = $store_info['config_telephone'];
 					$store_fax = $store_info['config_fax'];
