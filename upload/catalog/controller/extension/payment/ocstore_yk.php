@@ -62,13 +62,23 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
     }
 
     public function pay() {
+        $this->logWrite('PayURL: ', self::$LOG_SHORT);
+        $this->logWrite('  POST:' . var_export($this->request->post, true), self::$LOG_FULL);
+        $this->logWrite('  GET:' . var_export($this->request->get, true), self::$LOG_FULL);
+
         if ((isset($this->request->server['HTTPS']) && ((strtolower($this->request->server['HTTPS']) == 'on') || ($this->request->server['HTTPS'] == '1'))) || (isset($this->request->server['SERVER_PORT']) && $this->request->server['SERVER_PORT'] == 443)) {
             $server = $this->config->get('config_ssl');
         } else {
             $server = $this->config->get('config_url');
         }
 
-        $order_id = isset($this->request->get['order_id']) ? $this->request->get['order_id'] : 0;
+        if (isset($this->request->get['amp;order_id'])) {
+            $order_id = $this->request->get['amp;order_id'];
+        } elseif (isset($this->request->get['order_id'])) {
+            $order_id = $this->request->get['order_id'];
+        } else {
+            $order_id = 0;
+        }
 
         if ($this->request->server['REQUEST_METHOD'] == 'POST') {
             $data = $this->_setData(array(
@@ -91,7 +101,7 @@ class ControllerExtensionPaymentocstoreYk extends Controller {
                 }
             } else {
                 $data['loading']        = $server . 'catalog/view/theme/default/image/ocstore_yk_loading.gif';
-                $data['wait']           = 10;
+                $data['wait']           = 30;
                 $data['redirect']       = str_replace('&amp;', '&', $this->url->link($this->pay, 'wait_complete&order_id=' . $order_id, 'SSL'));
                 $data['heading_title']  = $this->language->get('heading_title');
                 $data['text_wait']      = sprintf($this->language->get('text_wait'), $data['wait']);
