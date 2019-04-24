@@ -8,7 +8,7 @@
 * @copyright (C) 2013- Alexander Toporkov
 * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 *
-* Version of this module: http://opencartforum.ru/files/file/1258-unisender-eksport-kontakov/
+* Version of this module: https://opencartforum.com/files/file/1258-unisender-eksport-kontakov/
 */
 class ControllerExtensionFeedUnisender extends Controller {
 

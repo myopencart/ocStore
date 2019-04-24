@@ -35,29 +35,13 @@ final class Openbay {
 		}
 	}
 
-	public function encrypt($msg, $k, $base64 = false) {
-		$td = mcrypt_module_open('rijndael-256', '', 'ctr', '');
+	public function encrypt($msg, $key, $base64 = false) {
+		$iv = substr(hash_hmac('sha256', $key, hash('sha256', $key, true)), 0, 32);
 
-		if (!$td) {
-			return false;
-		}
-
-		$iv = mcrypt_create_iv(32, MCRYPT_RAND);
-
-		if (mcrypt_generic_init($td, $k, $iv) !== 0) {
-			return false;
-		}
-
-		$msg = mcrypt_generic($td, $msg);
-		$msg = $iv . $msg;
-		$mac = $this->pbkdf2($msg, $k, 1000, 32);
-		$msg .= $mac;
-
-		mcrypt_generic_deinit($td);
-		mcrypt_module_close($td);
+		$msg = strtr(base64_encode(openssl_encrypt($msg, 'aes-128-cbc', hash('sha256', hex2bin($key), true), 0, hex2bin($iv))), '+/=', '-_,');
 
 		if ($base64) {
-			$msg = base64_encode($msg);
+			//$msg = base64_encode($msg);
 		}
 
 		return $msg;
@@ -65,32 +49,12 @@ final class Openbay {
 
 	public function decrypt($msg, $k, $base64 = false) {
 		if ($base64) {
-			$msg = base64_decode($msg);
+			//$msg = base64_decode($msg);
 		}
 
-		if (!$td = mcrypt_module_open('rijndael-256', '', 'ctr', '')) {
-			return false;
-		}
+	  $iv = substr(hash_hmac('sha256', $key, hash('sha256', $key, true)), 0, 32);
 
-		$iv = substr($msg, 0, 32);
-		$mo = strlen($msg) - 32;
-		$em = substr($msg, $mo);
-		$msg = substr($msg, 32, strlen($msg) - 64);
-		$mac = $this->pbkdf2($iv . $msg, $k, 1000, 32);
-
-		if ($em !== $mac) {
-			return false;
-		}
-
-		if (mcrypt_generic_init($td, $k, $iv) !== 0) {
-			return false;
-		}
-
-		$msg = mdecrypt_generic($td, $msg);
-		$msg = unserialize($msg);
-
-		mcrypt_generic_deinit($td);
-		mcrypt_module_close($td);
+		$msg = trim(openssl_decrypt(base64_decode(strtr($msg, '-_,', '+/=')), 'aes-128-cbc', hash('sha256', hex2bin($key), true), 0, hex2bin($iv)));
 
 		return $msg;
 	}

@@ -147,12 +147,11 @@
 			<label class="col-sm-3 control-label" for="track_no_export_liveinform"><span data-toggle="tooltip" title="LiveInform.ru - сервис отслеживания статусов доставки Почты России и уведомления покупателей.">Экспортировать в <a href="http://www.liveinform.ru/?partner=2324" target="_blank">LiveInform.ru</a>:</span></label>
 			<div class="col-sm-7">
 				<div class="checkbox"><label><input class="_form_flag" rel="_export_liveinform" type="checkbox" name="track_no_export_liveinform" value="1" <?php echo ($track_no_export_liveinform ? ' checked="checked"' : ''); ?>/>
-				<span style="color: red;" data-toggle="tooltip" title="14 цифр для Почты России; либо 2 буквы, 9 цифр, 2 буквы для EMS; либо 10 цифр для СДЭК">Только если трек-номер Почты России, EMS или СДЭК</span>
 				</div>
 			</div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform">
+		  <div class="form-group">
 			<label class="col-sm-3 control-label" for="track_no_liveinform_api_id">API ID:</label>
 			<div class="col-sm-7">
 				<input type="text" name="track_no_liveinform_api_id" value="<?php echo $track_no_liveinform_api_id; ?>" class="form-control input-small" />
@@ -160,22 +159,7 @@
 			</div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform">
-			<label class="col-sm-3 control-label" for="track_no_liveinform_type">Тип отслеживания:</label>
-			<div class="col-sm-7">
-              <select name="track_no_liveinform_type" class="form-control">			
-                <?php if ($track_no_liveinform_type == '1') { ?>
-                <option value="1" selected="selected">1</option>
-                <option value="2">2</option>
-                <?php } else { ?>
-                <option value="1">1</option>
-                <option value="2" selected="selected">2</option>
-                <?php } ?>
-              </select>
-			</div>
-		  </div>
-              
-		  <div class="form-group _export_liveinform">
+		  <div class="form-group">
               <label class="col-sm-3 control-label" for="track_no_liveinform_sync">Синхронизировать статусы <a href="http://www.liveinform.ru/?partner=2324" target="_blank">LiveInform</a>:</label>
 			<div class="col-sm-7">
 				<div class="checkbox"><label><input class="_form_flag" rel="_liveinform_sync" type="checkbox" name="track_no_liveinform_sync" value="1" <?php echo ($track_no_liveinform_sync ? ' checked="checked"' : ''); ?>/>
@@ -183,14 +167,14 @@
 			</div>
 		  </div>
               
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
               <label class="col-sm-3 control-label"><span data-toggle="tooltip" title="Запускать по планировщику через wget">Скрипт синхронизации:</span></label>
 			<div class="col-sm-7">
 				<a href="<?php echo $liveinform_sync_url; ?>" target="_blank"><?php echo $liveinform_sync_url; ?></a>
 			</div>
 		  </div>
               
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
             <label class="col-sm-3 control-label" for="order-statuses">Не обрабатывать заказы с этими статусами:</label>
             <div class="col-sm-7">
               <select name="track_no_order_statuses[]" id="order-statuses" size="15" multiple class="form-control">			
@@ -201,7 +185,7 @@
             </div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
             <label class="col-sm-3 control-label" for="track_no_shipping_status">Статус заказа, когда он "В пути":</label>
             <div class="col-sm-7">
               <select name="track_no_shipping_status" class="form-control">			
@@ -216,7 +200,7 @@
             </div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
             <label class="col-sm-3 control-label" for="track_no_postoffice_status">Статус заказа, когда он "На почте":</label>
             <div class="col-sm-7">
               <select name="track_no_postoffice_status" class="form-control">			
@@ -231,7 +215,7 @@
             </div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
             <label class="col-sm-3 control-label" for="track_no_issued_status">Статус заказа, когда он "Вручен":</label>
             <div class="col-sm-7">
               <select name="track_no_issued_status" class="form-control">			
@@ -246,7 +230,7 @@
             </div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
             <label class="col-sm-3 control-label" for="track_no_return_status">Статус заказа, когда "Возврат":</label>
             <div class="col-sm-7">
               <select name="track_no_return_status" class="form-control">			
@@ -261,7 +245,7 @@
             </div>
 		  </div>
 		  
-		  <div class="form-group _export_liveinform _liveinform_sync">
+		  <div class="form-group _liveinform_sync">
 			<label class="col-sm-3 control-label" for="track_no_sync_comment"><span data-toggle="tooltip" title="Подстановка в комментарий: {order_id} - номер заказа, {track_no} - трек-номер, {shipping_firstname} и {shipping_lastname} - имя и фамилия покупателя.">Текст комментария:</span></label>
 			<div class="col-sm-7">
 				<textarea name="track_no_sync_comment" rows="5" class="form-control"><?php echo $track_no_sync_comment; ?></textarea>

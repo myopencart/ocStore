@@ -29,7 +29,6 @@ class ControllerExtensionShippingTrackNo extends Controller {
 		
 		'export_liveinform'=>0,
 		'liveinform_api_id'=>'',
-		'liveinform_type'=>1,
 		'liveinform_sync'=>0,
 		'shipping_status'=>2,
 		'postoffice_status'=>2,

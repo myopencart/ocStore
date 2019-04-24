@@ -10,14 +10,14 @@
   </head>
   <body>
     <div style="text-align:center;"><?php echo $text_proceed_payment; ?><br /><img src="<?php echo $loading; ?>" alt="" /></div>
-    <form action="<?php echo $action ?>" method="post" id="checkout">
+    <form action="<?php echo $action; ?>" method="post" id="checkout">
         <?php foreach ($parameters as $key => $value) { ?>
           <?php if (is_array($value)) { ?>
             <?php foreach ($value as $val) { ?>
-              <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $val; ?>"/>
+              <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $val; ?>" />
             <?php } ?>
           <?php } else { ?>
-              <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>"/>
+              <input type="hidden" name="<?php echo $key; ?>" value='<?php echo $value; ?>' />
           <?php } ?>
         <?php } ?>
     </form>

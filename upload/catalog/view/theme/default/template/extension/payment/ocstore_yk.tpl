@@ -1,14 +1,14 @@
 <?php if ($instruction) { ?>
   <div class="well well-sm"><p><?php echo $instruction; ?></p></div>
 <?php } ?>
-    <form action="<?php echo $action ?>" method="post" id="checkout">
+    <form action="<?php echo $action; ?>" method="post" id="checkout">
         <?php foreach ($parameters as $key => $value) { ?>
           <?php if (is_array($value)) { ?>
                 <?php foreach ($value as $name => $title) { ?>
-                    <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $name; ?>"/>
+                    <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $name; ?>" />
                 <?php } ?>
           <?php } else { ?>
-              <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>"/>
+              <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>" />
           <?php } ?>
         <?php } ?>
     </form>
@@ -17,7 +17,7 @@
     <?php if ($laterpay_mode == 2) { //laterpay_mode == 'mixed' ?>
     <input type="button" value="<?php echo $button_laterpay; ?>" id="button-laterpay" class="btn btn-primary" />
     <?php } ?>
-    <input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="btn btn-primary" />
+    <input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="btn btn-primary" data-loading-text="<?php echo $text_loading; ?>" />
   </div>
 <script type="text/javascript"><!--
     $('#button-laterpay, #button-confirm').on('click', function() {
@@ -26,7 +26,6 @@
             type: 'get',
             url: '<?php echo $confirm; ?>',
             beforeSend: function() {
-                $('#button-confirm').attr('disabled', true);
                 $('#button-confirm').button('loading');
             },
             complete: function() {

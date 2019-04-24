@@ -92,9 +92,17 @@ class ControllerExtensionExtensionTotal extends Controller {
 		// Compatibility code for old extension folders
 		$files = glob(DIR_APPLICATION . 'controller/{extension/total,total}/*.php', GLOB_BRACE);
 
+		$this->load->model('user/user_group');
+
+		$user_group_info = $this->model_user_user_group->getUserGroup($this->user->user_group_id);
+
+		$hiden = isset($user_group_info['permission']['hiden']) ? $user_group_info['permission']['hiden'] : array();
+
 		if ($files) {
 			foreach ($files as $file) {
 				$extension = basename($file, '.php');
+
+				if (in_array('extension/total/' . $extension, $hiden)) continue;
 
 				$this->load->language('extension/total/' . $extension);
 

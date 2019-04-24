@@ -48,7 +48,7 @@ class Mail {
 	}
 
 	public function setHtml($html) {
-		$this->html = $html;
+		$this->html = chunk_split(base64_encode($html));
 	}
 
 	public function addAttachment($filename) {
@@ -124,7 +124,7 @@ class Mail {
 
 			$message .= '--' . $boundary . '_alt' . PHP_EOL;
 			$message .= 'Content-Type: text/html; charset="utf-8"' . PHP_EOL;
-			$message .= 'Content-Transfer-Encoding: 8bit' . PHP_EOL . PHP_EOL;
+			$message .= 'Content-Transfer-Encoding: base64' . PHP_EOL . PHP_EOL;
 			$message .= $this->html . PHP_EOL;
 			$message .= '--' . $boundary . '_alt--' . PHP_EOL;
 		}

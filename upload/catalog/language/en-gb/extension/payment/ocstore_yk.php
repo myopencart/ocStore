@@ -9,6 +9,7 @@ $_['text_order_description']  = 'Заказ №%d, на сумму: %s (%s)';
 $_['text_comment']            = 'Yandex.Money: Payment Method: %s';
 $_['text_proceed_payment']    = 'Подождите... Происходит переход к оплате...';
 $_['text_yk_onpay']           = 'Пожалуйста, оплатите покупку перейдя по ссылке: %s';
+$_['text_wait']               = 'Не закрывайте эту страницу!<br />Переход в магазин произойдет через <span>%d</span> сек.';
 
 $_['error_fail_checkout_extension'] = 'Unsupported Checkout Extension!';
 $_['text_error_action']             = 'action != "checkOrder" или "paymentAviso" , неверный тип action';

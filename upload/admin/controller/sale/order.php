@@ -386,7 +386,7 @@ class ControllerSaleOrder extends Controller {
 	public function getForm() {
 		$data['heading_title'] = $this->language->get('heading_title');
 
-		$data['text_form'] = !isset($this->request->get['order_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+		$data['text_form'] = !isset($this->request->get['order_id']) ? $this->language->get('text_add') : sprintf($this->language->get('text_edit'), $this->request->get['order_id']);
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_default'] = $this->language->get('text_default');
 		$data['text_select'] = $this->language->get('text_select');
@@ -1623,7 +1623,7 @@ class ControllerSaleOrder extends Controller {
 				$store_info = $this->model_setting_setting->getSetting('config', $order_info['store_id']);
 
 				if ($store_info) {
-					$store_address = $store_info['config_address'];
+					$store_address = $store_info['config_langdata'][(int)$this->config->get('config_language_id')]['address'];
 					$store_email = $store_info['config_email'];
 					$store_telephone = $store_info['config_telephone'];
 					$store_fax = $store_info['config_fax'];
@@ -1864,7 +1864,7 @@ class ControllerSaleOrder extends Controller {
 				$store_info = $this->model_setting_setting->getSetting('config', $order_info['store_id']);
 
 				if ($store_info) {
-					$store_address = $store_info['config_address'];
+					$store_address = $store_info['config_langdata'][(int)$this->config->get('config_language_id')]['address'];
 					$store_email = $store_info['config_email'];
 					$store_telephone = $store_info['config_telephone'];
 					$store_fax = $store_info['config_fax'];

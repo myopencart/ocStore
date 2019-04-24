@@ -3,10 +3,10 @@
 $_['heading_title']                           = 'Заказы';
 
 // Text
-$_['text_success']               = 'Выполнено: вашы заказы успешно изменены!';
+$_['text_success']                            = 'Выполнено: ваши заказы успешно изменены!';
 $_['text_list']                               = 'Список заказов';
 $_['text_add']                                = 'Добавление заказа';
-$_['text_edit']                               = 'Редактирование заказа';
+$_['text_edit']                               = 'Редактирование заказа #%s';
 $_['text_order_detail']                       = 'Информация о заказе';
 $_['text_customer_detail']                    = 'Информация о покупателе';
 $_['text_option']                             = 'Операции';
@@ -21,11 +21,11 @@ $_['text_telephone']                          = 'Телефон:';
 $_['text_invoice']                            = 'Счет';
 $_['text_reward']                             = 'Бонусных баллов:';
 $_['text_affiliate']                          = 'Партнер:';
-$_['text_order']                              = 'Детали заказа';
+$_['text_order']                              = 'Детали заказа #%s';
 $_['text_payment_address']                    = 'Адрес оплаты';
 $_['text_shipping_address']                   = 'Адрес доставки';
 $_['text_comment']                            = 'Коментарий:';
-$_['text_history']            			 	        = 'Добавить историю заказов';
+$_['text_history']                            = 'Добавить историю заказов';
 $_['text_history_add']                        = 'Управление историей заказа';
 $_['text_account_custom_field']               = 'Пользовательские поля аккаунта покупателя';
 $_['text_payment_custom_field']               = 'Пользовательские поля адреса оплаты покупателя';
@@ -58,7 +58,7 @@ $_['text_commission_added']                   = 'Комиссионные усп
 $_['text_commission_removed']                 = 'Комиссионные успешно удалены!';
 $_['text_restock']                            = 'Товары успешно добавлены!';
 $_['text_upload']                             = 'Ваш файл был успешно загружен!';
-$_['text_picklist']            				  = 'Список доставки';
+$_['text_picklist']                           = 'Список доставки';
 
 // Column
 $_['column_order_id']                         = 'Заказ №';
@@ -111,13 +111,13 @@ $_['entry_order_status']                      = 'Статус заказа';
 $_['entry_notify']                            = 'Уведомить покупателя';
 $_['entry_override']                          = 'Игнорировать';
 $_['entry_comment']                           = 'Комментарий к заказу';
-$_['entry_currency']           				        = 'Валюта';
+$_['entry_currency']                          = 'Валюта';
 $_['entry_shipping_method']                   = 'Способ доставки';
 $_['entry_payment_method']                    = 'Способ оплаты';
 $_['entry_coupon']                            = 'Код купона';
 $_['entry_voucher']                           = 'Код сертификата';
 $_['entry_reward']                            = 'Бонусные баллы';
-$_['entry_order_id']                          = 'Заказ №';
+$_['entry_order_id']                          = 'Заказ #';
 $_['entry_total']                             = 'Итого';
 $_['entry_date_added']                        = 'Дата добавления';
 $_['entry_date_modified']                     = 'Дата редактирования';
@@ -129,4 +129,4 @@ $_['help_override']                           = 'Включить игнорир
 $_['error_warning']                           = 'Внимание: Внимательно проверьте форму на наличие ошибок!';
 $_['error_permission']                        = 'Внимание: У вас нет прав для изменения заказов!';
 $_['error_action']                            = 'Внимание: Действие не может быть завершено!';
-$_['error_filetype']			                    = 'Недопустимый тип файла!';
+$_['error_filetype']                          = 'Недопустимый тип файла!';

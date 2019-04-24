@@ -315,14 +315,14 @@ class ControllerStartupSeoPro extends Controller {
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$config_ssl = substr($this->config->get('config_ssl'), 0, $this->strpos_offset('/', $this->config->get('config_ssl'), 3) + 1);
 			$url = str_replace('&amp;', '&', $config_ssl . ltrim($this->request->server['REQUEST_URI'], '/'));
-			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), true));
+			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route', 'utm_source', 'utm_medium', 'utm_content', 'utm_campaign', 'utm_term')), true));
 		} else {
 			$config_url = substr($this->config->get('config_url'), 0, $this->strpos_offset('/', $this->config->get('config_url'), 3) + 1);
 			$url = str_replace('&amp;', '&', $config_url . ltrim($this->request->server['REQUEST_URI'], '/'));
-			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), false));
+			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route', 'utm_source', 'utm_medium', 'utm_content', 'utm_campaign', 'utm_term')), false));
 		}
 
-		if (rawurldecode($url) != rawurldecode($seo) && isset($this->request->server['SERVER_PROTOCOL'])) {
+		if (urldecode($url) != urldecode($seo) && isset($this->request->server['SERVER_PROTOCOL'])) {
 			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 
 			$this->response->redirect($seo, 301);
