@@ -154,11 +154,6 @@ class ModelExtensionShippingTrackNo extends Model {
             if (!$order['track_no']) {
                 continue;
             }
-            /*
-            if (!preg_match('/\w\w\d{9}\w\w/i', $order['track_no']) && !preg_match('/\d{14}/i', $order['track_no']) && !preg_match('/\d{10}/i', $order['track_no']) && !preg_match('/\w\w\w\d{7}/i', $order['track_no'])) {
-                continue;
-            }
-            */
             $states = $this->getLiveinformStatus($api_id, $order);
             if ($states === false) {
                 continue;
