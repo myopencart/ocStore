@@ -13,7 +13,7 @@ $_['column_product']        = 'Товар';
 $_['column_author']         = 'Автор';
 $_['column_rating']         = 'Рейтинг';
 $_['column_status']         = 'Статус';
-$_['column_date_added']     = 'Добавлено';
+$_['column_date_added']     = 'Дата добавления';
 $_['column_action']         = 'Действие';
 
 // Entry
@@ -22,7 +22,7 @@ $_['entry_author']          = 'Автор:';
 $_['entry_rating']          = 'Рейтинг:';
 $_['entry_status']          = 'Статус:';
 $_['entry_text']          	= 'Текст:';
-$_['entry_date_added']      = 'Дата добавления';
+$_['entry_date_added']      = 'Дата добавления:';
 
 // Help
 $_['help_product']          = '(Автодополнение)';
