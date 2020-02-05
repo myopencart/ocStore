@@ -24,8 +24,11 @@ function getURLVar(key) {
 
 $(document).ready(function() {
 	//Form Submit for IE Browser
-	$('button[type=\'submit\']').on('click', function() {
-		$("form[id*='form-']").submit();
+	$('button[type=\'submit\']').on('click', function(e) {
+		if ($("form[id*='form-']").length) {
+			e.preventDefault();
+			$("form[id*='form-']").submit();
+		}
 	});
 
 	// Highlight any found errors
