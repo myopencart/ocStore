@@ -1,5 +1,5 @@
 {
-	"name": "opencart/opencart",
+    "name": "opencart/opencart",
     "type": "project",
     "description": "OpenCart",
     "keywords": ["opencart", "ecommerce", "framework", "opensource"],
