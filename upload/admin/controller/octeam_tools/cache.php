@@ -1,7 +1,7 @@
 <?php 
 class ControllerOcteamToolsCache extends Controller {
     private $error = array();
-    private $version = '1.2.ocs2101';
+    private $version = '1.2.ocs23024';
 
     public function __construct($registry) {
         parent::__construct($registry);
@@ -90,13 +90,18 @@ class ControllerOcteamToolsCache extends Controller {
                     continue;
                 }
 
-                if ($file->isDir()){
-                    @rmdir($file->getRealPath());
-                    $result .= 'Remove folder `' . $file . '`' . PHP_EOL;
-                } else {
-                    @unlink($file->getRealPath());
-                    $result .= 'Remove file `' . $file . '`' . PHP_EOL;
-                }
+				if ($file->getRealPath() == $file) {
+					if ($file->isDir()){
+						@rmdir($file);
+						$result .= 'Remove folder `' . $file . '`' . PHP_EOL;
+					} else {
+						@unlink($file);
+						$result .= 'Remove file `' . $file . '`' . PHP_EOL;
+					}
+				} else {
+					$result .= 'Не может удалить путь1 `' . $file . '`' . PHP_EOL;
+					$result .= 'Не может удалить путь2 `' . $file->getRealPath() . '`' . PHP_EOL;
+				}
             }
 
         } else {
@@ -106,4 +111,3 @@ class ControllerOcteamToolsCache extends Controller {
         return $result;
     }
 }
-?>
