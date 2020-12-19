@@ -34,7 +34,7 @@ class ControllerOcteamToolsCache extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_octeam_toolset'),
-			'href' => $this->url->link('octeam/toolset', 'token=' . $this->session->data['token'], true),
+			'href' => $this->url->link('octeam/toolset', 'token=' . $this->session->data['token'], true)
 		);
 
 		$data['breadcrumbs'][] = array(
@@ -76,7 +76,7 @@ class ControllerOcteamToolsCache extends Controller {
 		return !$this->error;
 	}
 
-	protected function cleanDirectory($directory){
+	protected function cleanDirectory($directory) {
 		if (file_exists($directory)) {
 			$result = '';
 			$it = new RecursiveDirectoryIterator($directory);
@@ -87,12 +87,12 @@ class ControllerOcteamToolsCache extends Controller {
 					continue;
 				}
 
-				if ($file->getRealPath() == $file) {
+				if ($file->getRealPath() > '') {
 					if ($file->isDir()) {
-						@rmdir($file);
+						@rmdir($file->getRealPath());
 						$result .= 'Remove folder `' . $file . '`' . PHP_EOL;
 					} else {
-						@unlink($file);
+						@unlink($file->getRealPath());
 						$result .= 'Remove file `' . $file . '`' . PHP_EOL;
 					}
 				} else {
