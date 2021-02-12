@@ -41,7 +41,7 @@ http://forum.opencart.com/viewtopic.php?f=2&t=36519
 
 
 
-Другие вопросы по поддержке смотрите по адресу: http://myopencart.com
+Другие вопросы по поддержке смотрите по адресу: http://ocstore.com
 Пожалуйста, все возможные ошибки отправляйте в ветку форума для вашей версии OpenCart http://opencartforum.com/
 
 С уважением команда OcStore Team

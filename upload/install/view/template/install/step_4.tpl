@@ -41,7 +41,7 @@
       <div class="col-sm-12"><i class="fa fa-envelope-o fa-5x"></i>
         <h3><?php echo $text_mail; ?><br>
           <small><?php echo $text_mail_description; ?></small></h3>
-        <a href="http://myopencart.com/subscribe/" target="_BLANK" class="btn btn-secondary"><?php echo $button_mail; ?></a></div>
+        <a href="http://ocstore.com/subscribe/" target="_BLANK" class="btn btn-secondary"><?php echo $button_mail; ?></a></div>
     </div>
   </div>
   <div class="core-modules">

@@ -71,8 +71,8 @@
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-life-ring fa-lg"></i></a>
       <ul class="dropdown-menu dropdown-menu-right">
         <li class="dropdown-header"><?php echo $text_help; ?></li>
-        <li><a href="http://myopencart.com" target="_blank"><?php echo $text_homepage; ?></a></li>
-        <li><a href="http://docs.myopencart.com" target="_blank"><?php echo $text_documentation; ?></a></li>
+        <li><a href="http://ocstore.com" target="_blank"><?php echo $text_homepage; ?></a></li>
+        <li><a href="http://docs.ocstore.com" target="_blank"><?php echo $text_documentation; ?></a></li>
         <li><a href="https://opencartforum.com" target="_blank"><?php echo $text_support; ?></a></li>
       </ul>
     </li>
