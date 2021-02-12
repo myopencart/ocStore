@@ -372,7 +372,7 @@ class Mail {
 				}
 
 				if (substr($reply, 0, 3) != 354) {
-					throw new \Exception('Error: DATA not accepted from server!');
+					throw new \Exception('Error: DATA not accepted from server! (' . $reply . ')');
 				}
 
 				// According to rfc 821 we should not send more than 1000 including the CRLF
@@ -406,7 +406,7 @@ class Mail {
 				}
 
 				if (substr($reply, 0, 3) != 250) {
-					throw new \Exception('Error: DATA not accepted from server!');
+					throw new \Exception('Error: DATA not accepted from server! (' . $reply . ')');
 				}
 
 				fputs($handle, 'QUIT' . "\r\n");
