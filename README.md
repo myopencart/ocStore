@@ -28,7 +28,7 @@ ocStore - это онлайн магазин, который основан на
 
 ## Установка и Обновление
 
-Пожалуйста, прочитайте соответсвующий файл (install.txt/upgrade.txt) внутри архива, или воспользуйтесь разделом на форуме [Установка, обновление, настройка](https://opencartforum.com/forum/6-установка-обновление-настройка/).
+Пожалуйста, прочитайте соответствующий файл (install.txt/upgrade.txt) внутри архива, или воспользуйтесь разделом на форуме [Установка, обновление, настройка](https://opencartforum.com/forum/6-установка-обновление-настройка/).
 
 ## Лицензия
 
@@ -36,10 +36,10 @@ ocStore - это онлайн магазин, который основан на
 
 ## Ссылки
 
-- [Сайт ocStore] (https://myopencart.com/)
+- [Сайт ocStore] (https://ocstore.com/)
 - [OpenCart форум] (https://opencartforum.com/)
-- [Документация] (https://docs.myopencart.com/)
-- [Facebook] (https://www.facebook.com/ocstore)
-- [Вконтакте] (http://vk.com/myopencartcom)
-- [Twitter] (https://twitter.com/myopencartcom)
-- [YouTube] (https://www.youtube.com/c/MyOpenCart)
+- [Документация] (https://docs.ocstore.com/)
+- [Facebook] (https://www.facebook.com/opencartforum)
+- [Вконтакте] (https://vk.com/opencartforumcom)
+- [Twitter] (https://twitter.com/opencartforum)
+- [YouTube] (https://www.youtube.com/c/OpenCartForumCom)
