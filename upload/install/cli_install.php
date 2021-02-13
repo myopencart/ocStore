@@ -264,7 +264,12 @@ function write_config_files($options) {
 	$output .= 'define(\'DB_PASSWORD\', \'' . addslashes($options['db_password']) . '\');' . "\n";
 	$output .= 'define(\'DB_DATABASE\', \'' . addslashes($options['db_database']) . '\');' . "\n";
 	$output .= 'define(\'DB_PREFIX\', \'' . addslashes($options['db_prefix']) . '\');' . "\n";
-	$output .= 'define(\'DB_PORT\', \'' . addslashes($options['db_port']) . '\');' . "\n";
+	$output .= 'define(\'DB_PORT\', \'' . addslashes($options['db_port']) . '\');' . "\n\n";
+
+	$output .= '// Redis' . "\n";
+	$output .= '// define(\'CACHE_HOSTNAME\', \'localhost\');' . "\n";
+	$output .= '// define(\'CACHE_PORT\', \'6379\');' . "\n";
+	$output .= '// define(\'CACHE_PREFIX\', \'oc_\');' . "\n";
 
 	$output .= '?>';
 
