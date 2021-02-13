@@ -301,9 +301,23 @@ class ControllerStartupSeoPro extends Controller {
 	}
 
 	private function validate() {
-		if (isset($this->request->get['route']) && $this->request->get['route'] == 'error/not_found') {
+
+		// break redirect for php-cli-script
+		if (php_sapi_name() === 'cli')
 			return;
+
+		// fix flat link for xml feed
+		if (isset($this->request->get['route'])) {
+			$break_routes = [
+				'error/not_found',
+				'extension/feed/google_sitemap',
+				'extension/feed/google_base'
+			];
+
+			if (in_array($this->request->get['route'], $break_routes))
+				return;
 		}
+
 		if(empty($this->request->get['route'])) {
 			$this->request->get['route'] = 'common/home';
 		}
