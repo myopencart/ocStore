@@ -4,14 +4,20 @@ final class MySQLi {
 	private $connection;
 
 	public function __construct($hostname, $username, $password, $database, $port = '3306') {
-		$this->connection = new \mysqli($hostname, $username, $password, $database, $port);
-
-		if ($this->connection->connect_error) {
-			throw new \Exception('Error: ' . $this->connection->error . '<br />Error No: ' . $this->connection->errno);
+		try {
+			$mysqli = new \mysqli($hostname, $username, $password, $database, $port);
+		} catch (mysqli_sql_exception $e) {
+			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
 		}
 
-		$this->connection->set_charset("utf8");
-		$this->connection->query("SET SQL_MODE = ''");
+		if (!$mysqli->connect_errno) {
+			$this->connection = $mysqli;
+			$this->connection->report_mode = MYSQLI_REPORT_ERROR;
+			$this->connection->set_charset('utf8');
+			$this->connection->query("SET SESSION sql_mode = ''");
+		} else {
+			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
+		}
 	}
 
 	public function query($sql) {
