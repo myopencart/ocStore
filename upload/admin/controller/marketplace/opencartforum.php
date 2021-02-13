@@ -157,7 +157,6 @@ class ControllerMarketplaceOpencartforum extends Controller {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
 		curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
-		curl_setopt($curl, CURLOPT_POST, 1);
 
 		$response = curl_exec($curl);
 
@@ -609,7 +608,7 @@ class ControllerMarketplaceOpencartforum extends Controller {
 		}
 
 		$pagination = new Pagination();
-		$pagination->total = $extension_total;
+		$pagination->total = (int)$extension_total;
 		$pagination->page = $page;
 		$pagination->limit = 12;
 		$pagination->url = $this->url->link('marketplace/opencartforum', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
@@ -669,7 +668,6 @@ class ControllerMarketplaceOpencartforum extends Controller {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
 		curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
-		curl_setopt($curl, CURLOPT_POST, 1);
 
 		$response = curl_exec($curl);
 
