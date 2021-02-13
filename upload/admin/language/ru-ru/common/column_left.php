@@ -23,6 +23,7 @@ $_['text_extension']          				= 'Дополнения';
 $_['text_filter']          					= 'Фильтры';
 $_['text_geo_zone']          				= 'Географические зоны';
 $_['text_information']          			= 'Статьи';
+$_['text_opencartforum']                    = 'OpenCartForum магазин';
 $_['text_installer']          				= 'Установка дополнений';
 $_['text_language']          				= 'Языки';
 $_['text_layout']          					= 'Схемы';

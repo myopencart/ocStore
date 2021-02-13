@@ -652,3 +652,11 @@ div.ckeditor {
 #filemanager .fa-folder.fa-5x {
     font-size: 10.5em;
 }
+
+
+/* OpenCartForum marketplace */
+#extension-list .row {margin: 0;}
+#marketplace .extension-name {
+	min-height: 90px;
+}
+#marketplace .pagination {margin:25px 0}
