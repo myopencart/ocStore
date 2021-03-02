@@ -90,6 +90,13 @@
     </div>
   </div>
   <script type="text/javascript"><!--
+// Reorderable drag-and-drop lists
+$('#featured-product div input').before(' <i class="fa fa-hand-grab-o handle"></i> ');
+$('#featured-product').sortable({
+  handle: '.handle',
+  chosenClass: 'handle-active',
+});
+
 $('input[name=\'product_name\']').autocomplete({
 	source: function(request, response) {
 		$.ajax({

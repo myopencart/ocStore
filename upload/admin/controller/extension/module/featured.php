@@ -5,6 +5,9 @@ class ControllerExtensionModuleFeatured extends Controller {
 	public function index() {
 		$this->load->language('extension/module/featured');
 
+        $this->document->addScript('view/javascript/jquery/Sortable.js');
+        $this->document->addScript('view/javascript/jquery/jquery-sortable.js');
+
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('extension/module');
