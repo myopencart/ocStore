@@ -47,6 +47,9 @@ class ControllerDesignLayout extends Controller {
 	public function edit() {
 		$this->load->language('design/layout');
 
+        $this->document->addScript('view/javascript/jquery/Sortable.js');
+        $this->document->addScript('view/javascript/jquery/jquery-sortable.js');
+
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->load->model('design/layout');
@@ -268,6 +271,7 @@ class ControllerDesignLayout extends Controller {
 		$data['text_column_left'] = $this->language->get('text_column_left');
 		$data['text_column_right'] = $this->language->get('text_column_right');
 		$data['text_edit'] = $this->language->get('text_edit');
+		$data['text_move'] = $this->language->get('text_move');
 		$data['text_remove'] = $this->language->get('text_remove');
 		
 		$data['entry_name'] = $this->language->get('entry_name');
