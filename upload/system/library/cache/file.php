@@ -10,12 +10,12 @@ class File {
 
 		if ($files) {
 			foreach ($files as $file) {
+				$filename = basename($file);
+
 				$time = substr(strrchr($file, '.'), 1);
 
 				if ($time < time()) {
-					if (file_exists($file)) {
-						unlink($file);
-					}
+					$this->delete(substr($filename, 6, strrpos($filename, '.') - 6));
 				}
 			}
 		}
@@ -29,7 +29,13 @@ class File {
 
 			flock($handle, LOCK_SH);
 
-			$data = fread($handle, filesize($files[0]));
+			$size = filesize($files[0]);
+
+			if ($size > 0) {
+				$data = fread($handle, $size);
+			} else {
+				$data = '';
+			}
 
 			flock($handle, LOCK_UN);
 
@@ -44,7 +50,7 @@ class File {
 	public function set($key, $value) {
 		$this->delete($key);
 
-		$file = DIR_CACHE . 'cache.' . preg_replace('/[^A-Z0-9\._-]/i', '', $key) . '.' . (time() + $this->expire);
+		$file = DIR_CACHE . 'cache.' . basename($key) . '.' . (time() + $this->expire);
 
 		$handle = fopen($file, 'w');
 
@@ -59,13 +65,13 @@ class File {
 		fclose($handle);
 	}
 
-	public function delete($key) {
-		$files = glob(DIR_CACHE . 'cache.' . preg_replace('/[^A-Z0-9\._-]/i', '', $key) . '.*');
+	public function delete(string $key): void {
+		$files = glob(DIR_CACHE . 'cache.' . basename($key) . '.*');
 
 		if ($files) {
 			foreach ($files as $file) {
-				if (file_exists($file)) {
-					unlink($file);
+				if (!@unlink($file)) {
+					clearstatcache(false, $file);
 				}
 			}
 		}
