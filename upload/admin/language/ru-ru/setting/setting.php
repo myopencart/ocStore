@@ -57,6 +57,7 @@ $_['entry_zone']                       = 'Регион / область:';
 $_['entry_language']                   = 'Язык:';
 $_['entry_admin_language']             = 'Язык администратора:';
 $_['entry_currency']                   = 'Валюта:';
+$_['entry_currency_engine']            = 'Источник курсов валют';
 $_['entry_currency_auto']              = 'Обновление валют';
 $_['entry_length_class']               = 'Единица измерения:';
 $_['entry_weight_class']               = 'Вес:';

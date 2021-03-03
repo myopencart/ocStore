@@ -30,7 +30,7 @@ class ControllerSettingSetting extends Controller {
 			if ($this->config->get('config_currency_auto')) {
 				$this->load->model('localisation/currency');
 
-				$this->model_localisation_currency->refresh();
+                $this->load->controller('extension/currency/' . $this->config->get('config_currency_engine')."/currency" , $this->config->get('config_currency'));
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -95,6 +95,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_language'] = $this->language->get('entry_language');
 		$data['entry_admin_language'] = $this->language->get('entry_admin_language');
 		$data['entry_currency'] = $this->language->get('entry_currency');
+		$data['entry_currency_engine'] = $this->language->get('entry_currency_engine');
 		$data['entry_currency_auto'] = $this->language->get('entry_currency_auto');
 		$data['entry_length_class'] = $this->language->get('entry_length_class');
 		$data['entry_weight_class'] = $this->language->get('entry_weight_class');
@@ -644,6 +645,29 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$data['config_currency'] = $this->config->get('config_currency');
 		}
+
+        $data['currency_engines'] = [];
+
+        $this->load->model('setting/extension');
+
+        $extensions = $this->model_setting_extension->getExtensionsByType('currency');
+
+        foreach ($extensions as $extension) {
+            if ($this->config->get('currency_' . $extension['code'] . '_status')) {
+                $this->load->language('extension/currency/' . $extension['code'], 'extension');
+
+                $data['currency_engines'][] = [
+                    'text'  => $this->language->get('heading_title'),
+                    'value' => $extension['code']
+                ];
+            }
+        }
+
+        if (isset($this->request->post['config_currency_engine'])) {
+            $data['config_currency_engine'] = $this->request->post['config_currency_engine'];
+        } else {
+            $data['config_currency_engine'] = $this->config->get('config_currency_engine');
+        }
 
 		if (isset($this->request->post['config_currency_auto'])) {
 			$data['config_currency_auto'] = $this->request->post['config_currency_auto'];

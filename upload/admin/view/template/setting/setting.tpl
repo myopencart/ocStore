@@ -280,6 +280,20 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-currency-engine"><?php echo $entry_currency_engine; ?></label>
+                <div class="col-sm-10">
+                  <select name="config_currency_engine" id="input-currency-engine" class="form-control">
+                    <?php foreach ($currency_engines as $currency_engine) { ?>
+                    <?php if ($currency_engine['value'] == $config_currency_engine) { ?>
+                    <option value="<?php echo $currency_engine['value']; ?>" selected="selected"><?php echo $currency_engine['text']; ?></option>
+                    <?php } else { ?>
+                    <option value="<?php echo $currency_engine['value']; ?>"><?php echo $currency_engine['text']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_currency_auto; ?>"><?php echo $entry_currency_auto; ?></span></label>
                 <div class="col-sm-10">
                   <label class="radio-inline">
