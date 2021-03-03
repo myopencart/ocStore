@@ -91,7 +91,7 @@
   </div>
   <script type="text/javascript"><!--
 // Reorderable drag-and-drop lists
-$('#featured-product div input').before(' <i class="fa fa-hand-grab-o handle"></i> ');
+$('#featured-product div input').before(' <i class="fa fa-hand-grab-o handle"></i>');
 $('#featured-product').sortable({
   handle: '.handle',
   chosenClass: 'handle-active',
@@ -117,7 +117,7 @@ $('input[name=\'product_name\']').autocomplete({
 		
 		$('#featured-product' + item['value']).remove();
 		
-		$('#featured-product').append('<div id="featured-product' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product[]" value="' + item['value'] + '" /></div>');	
+		$('#featured-product').append('<div id="featured-product' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + ' <i class="fa fa-hand-grab-o handle"></i><input type="hidden" name="product[]" value="' + item['value'] + '" /></div>');
 	}
 });
 	
