@@ -22,6 +22,14 @@ class ControllerStartupSeoPro extends Controller {
 
 	public function index() {
 
+		// check double slashes
+		$current_url = $this->request->server['REQUEST_URI'];
+		if (preg_match('!/{2,}!', $current_url) ){
+			$url = preg_replace('!/{2,}!', '/', $current_url);
+			$this->response->redirect($url, 301);
+			exit;
+		}
+
 		// Add rewrite to url class
 		if ($this->config->get('config_seo_url')) {
 			$this->url->addRewrite($this);
@@ -96,6 +104,10 @@ class ControllerStartupSeoPro extends Controller {
 				if (isset($queries[$parts[0]])) {
 					$this->request->get['route'] = $queries[$parts[0]];
 				}
+			}
+			
+			if ((isset($this->request->get['path']) && isset($this->request->get['manufacturer_id'])) || (isset($this->request->get['path']) && isset($this->request->get['information_id'])) || (isset($this->request->get['manufacturer_id']) && isset($this->request->get['product_id'])) ||	(isset($this->request->get['manufacturer_id']) && isset($this->request->get['information_id']))) {
+				$this->request->get['route'] = 'error/not_found';
 			}
 
 			$this->validate();
