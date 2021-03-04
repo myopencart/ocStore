@@ -73,6 +73,8 @@ class ControllerSettingSetting extends Controller {
 		$data['text_error'] = $this->language->get('text_error');
 		$data['text_summer_note'] = $this->language->get('text_summer_note');
 		$data['text_ckeditor'] = $this->language->get('text_ckeditor');
+        $data['text_canonical_opencart'] = $this->language->get('text_canonical_opencart');
+        $data['text_canonical_ocstore'] = $this->language->get('text_canonical_ocstore');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_owner'] = $this->language->get('entry_owner');
@@ -185,6 +187,12 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_seo_url_include_path_help'] = $this->language->get('entry_seo_url_include_path_help');
 		$data['entry_seo_url_postfix_help'] = $this->language->get('entry_seo_url_postfix_help');
 		$data['entry_seo_pro_utm'] = $this->language->get('entry_seo_pro_utm');
+		$data['entry_canonical_method'] = $this->language->get('entry_canonical_method');
+		$data['entry_add_prevnext'] = $this->language->get('entry_add_prevnext');
+		$data['entry_add_prevnext_help'] = $this->language->get('entry_add_prevnext_help');
+		$data['entry_canonical_self'] = $this->language->get('entry_canonical_self');
+		$data['entry_canonical_self_help'] = $this->language->get('entry_canonical_self_help');
+		$data['entry_canonical_method_help'] = $this->language->get('entry_canonical_method_help');
 		$data['entry_google_captcha_public'] = $this->language->get('entry_google_captcha_public');
 		$data['entry_google_captcha_secret'] = $this->language->get('entry_google_captcha_secret');
 		$data['entry_sms_gatename'] = $this->language->get('entry_sms_gatename');
@@ -1221,6 +1229,24 @@ class ControllerSettingSetting extends Controller {
 		} else {
 			$data['config_seo_url'] = $this->config->get('config_seo_url');
 		}
+
+        if (isset($this->request->post['config_canonical_method'])) {
+            $data['config_canonical_method'] = $this->request->post['config_canonical_method'];
+        } else {
+            $data['config_canonical_method'] = $this->config->get('config_canonical_method');
+        }
+
+        if (isset($this->request->post['config_canonical_self'])) {
+            $data['config_canonical_self'] = $this->request->post['config_canonical_self'];
+        } else {
+            $data['config_canonical_self'] = $this->config->get('config_canonical_self');
+        }
+
+        if (isset($this->request->post['config_add_prevnext'])) {
+            $data['config_add_prevnext'] = $this->request->post['config_add_prevnext'];
+        } else {
+            $data['config_add_prevnext'] = $this->config->get('config_add_prevnext');
+        }
 
 		if (isset($this->request->post['config_seo_url_type'])) {
 			$data['config_seo_url_type'] = $this->request->post['config_seo_url_type'];

@@ -255,18 +255,47 @@ class ControllerProductSpecial extends Controller {
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
 
-		// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
-		if ($page == 1) {
-		    $this->document->addLink($this->url->link('product/special', '', true), 'canonical');
-		} elseif ($page == 2) {
-		    $this->document->addLink($this->url->link('product/special', '', true), 'prev');
-		} else {
-		    $this->document->addLink($this->url->link('product/special', 'page='. ($page - 1), true), 'prev');
-		}
+        if (!$this->config->get('config_canonical_method')) {
+            // http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
+            if ($page == 1) {
+                $this->document->addLink($this->url->link('product/special', '', true), 'canonical');
+            } elseif ($page == 2) {
+                $this->document->addLink($this->url->link('product/special', '', true), 'prev');
+            } else {
+                $this->document->addLink($this->url->link('product/special', 'page=' . ($page - 1), true), 'prev');
+            }
 
-		if ($limit && ceil($product_total / $limit) > $page) {
-		    $this->document->addLink($this->url->link('product/special', 'page='. ($page + 1), true), 'next');
-		}
+            if ($limit && ceil($product_total / $limit) > $page) {
+                $this->document->addLink($this->url->link('product/special', 'page=' . ($page + 1), true), 'next');
+            }
+        } else {
+            if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                $server = $this->config->get('config_ssl');
+            } else {
+                $server = $this->config->get('config_url');
+            };
+
+            $request_url = rtrim($server, '/') . $this->request->server['REQUEST_URI'];
+            $canonical_url = $this->url->link('product/special', '', true);
+
+
+            if (($request_url != $canonical_url) || $this->config->get('config_canonical_self')) {
+                $this->document->addLink($canonical_url, 'canonical');
+            }
+
+            if ($this->config->get('config_add_prevnext')) {
+
+                if ($page == 2) {
+                    $this->document->addLink($this->url->link('product/special', '', true), 'prev');
+                } elseif ($page > 2)  {
+                    $this->document->addLink($this->url->link('product/special', 'page=' . ($page - 1), true), 'prev');
+                }
+
+                if ($limit && ceil($product_total / $limit) > $page) {
+                    $this->document->addLink($this->url->link('product/special', 'page=' . ($page + 1), true), 'next');
+                }
+            }
+        }
 
 		$data['sort'] = $sort;
 		$data['order'] = $order;

@@ -1427,6 +1427,78 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_canonical_method_help; ?>"><?php echo $entry_canonical_method; ?></span></label>
+                  <div class="col-sm-10">
+                    <?php if($config_canonical_method) { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_method" value="1" checked="checked"/>
+                      <?php echo $text_canonical_ocstore; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_method" value="0"/>
+                      <?php echo $text_canonical_opencart; ?>
+                    </label>
+                    <?php } else { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_method" value="1"/>
+                      <?php echo $text_canonical_ocstore; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_method" value="0" checked="checked"/>
+                      <?php echo $text_canonical_opencart; ?>
+                    </label>
+                    <?php } ?>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_canonical_self_help; ?>"><?php echo $entry_canonical_self; ?></span></label>
+                  <div class="col-sm-10">
+                    <?php if($config_canonical_self) { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_self" value="1" checked="checked"/>
+                      <?php echo $text_yes; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_self" value="0"/>
+                      <?php echo $text_no; ?>
+                    </label>
+                    <?php } else { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_self" value="1"/>
+                      <?php echo $text_yes; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_canonical_self" value="0" checked="checked"/>
+                      <?php echo $text_no; ?>
+                    </label>
+                    <?php } ?>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_add_prevnext_help; ?>"><?php echo $entry_add_prevnext; ?></span></label>
+                  <div class="col-sm-10">
+                    <?php if($config_add_prevnext) { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_add_prevnext" value="1" checked="checked"/>
+                      <?php echo $text_yes; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_add_prevnext" value="0"/>
+                      <?php echo $text_no; ?>
+                    </label>
+                    <?php } else { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_add_prevnext" value="1"/>
+                      <?php echo $text_yes; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_add_prevnext" value="0" checked="checked"/>
+                      <?php echo $text_no; ?>
+                    </label>
+                    <?php } ?>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label" for="input-seo_pro_utm"><span data-toggle="tooltip" title="<?php echo $help_seo_pro_utm; ?>"><?php echo $entry_seo_pro_utm; ?></span></label>
                   <div class="col-sm-10">
                     <textarea name="config_seo_pro_utm" rows="5" placeholder="<?php echo $entry_seo_pro_utm; ?>" id="input-seo_pro_utm" class="form-control"><?php echo $config_seo_pro_utm; ?></textarea>

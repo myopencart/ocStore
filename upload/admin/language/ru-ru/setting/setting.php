@@ -34,6 +34,8 @@ $_['text_upload']                      = 'Загрузки';
 $_['text_error']                       = 'Обработка ошибок';
 $_['text_summer_note']                 = 'Summer Note';
 $_['text_ckeditor']                    = 'CKEditor';
+$_['text_canonical_ocstore']           = 'ocStore решение';
+$_['text_canonical_opencart']          = 'Оригинальный OpenCart';
 
 // Entry
 $_['entry_name']                       = 'Название магазина:';
@@ -171,8 +173,13 @@ $_['text_seo_pro']					   = 'SeoPro';
 $_['entry_seo_url_type']			   = 'Тип ЧПУ:';
 $_['entry_seo_url_include_path']	   = 'ЧПУ товаров с категориями:';
 $_['entry_seo_url_include_path_help']  = '/category/subcategory/product (только для SeoPro)';
-$_['entry_seo_url_postfix']			       = 'Окончание ЧПУ';
-$_['entry_seo_url_postfix_help']	     = 'Например .html (только для SeoPro)';
+$_['entry_seo_url_postfix']			   = 'Окончание ЧПУ';
+$_['entry_seo_url_postfix_help']	   = 'Например .html (только для SeoPro)';
+$_['entry_canonical_method']	       = 'Способ вывода тегов canonical, prev, next. <a target="_blank" href="https://opencartforum.com/topic/174539-sposob-vyvoda-tegov-canonical-prev-next-v-ocstore/">Подробнее</a>';
+$_['entry_add_prevnext']	           = 'Вывести prev, next теги для пагинации';
+$_['entry_add_prevnext_help']	       = 'Работает только при включенном способе вывода тегов - ocStore решение';
+$_['entry_canonical_self']	           = 'Выводить тег canonical на основную страницу';
+$_['entry_canonical_self_help']	       = 'Работает только при включенном способе вывода тегов - ocStore решение';
 $_['entry_seo_pro_utm']                = 'UTM-метки для SeoPro (только для карточки товара)';
 $_['entry_status']                     = 'Статус';
 
