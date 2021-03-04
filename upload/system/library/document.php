@@ -32,12 +32,13 @@ class Document {
 		return $this->keywords;
 	}
 
-	public function addLink($href, $rel) {
-		$this->links[$href] = array(
-			'href' => $href,
-			'rel'  => $rel
-		);
-	}
+    public function addLink($href, $rel) {
+        $key = md5($href . $rel);
+        $this->links[$key] = array(
+            'href' => $href,
+            'rel'  => $rel
+        );
+    }
 
 	public function getLinks() {
 		return $this->links;
