@@ -46,8 +46,7 @@ class ControllerAccountOrder extends Controller {
 		$data['column_date_added'] = $this->language->get('column_date_added');
 
 		$data['button_view'] = $this->language->get('button_view');
-    $data['button_ocstore_payeer_onpay'] = $this->language->get('button_ocstore_payeer_onpay');
-    $data['button_ocstore_yk_onpay'] = $this->language->get('button_ocstore_yk_onpay');
+        $data['button_ocstore_payeer_onpay'] = $this->language->get('button_ocstore_payeer_onpay');
 		$data['button_continue'] = $this->language->get('button_continue');
 
 		if (isset($this->request->get['page'])) {
@@ -59,7 +58,6 @@ class ControllerAccountOrder extends Controller {
 		$data['orders'] = array();
 
 		$this->load->model('extension/payment/ocstore_payeer');
-		$this->load->model('extension/payment/ocstore_yk');
 		$this->load->model('account/order');
 
 		$order_total = $this->model_account_order->getTotalOrders();
@@ -70,8 +68,6 @@ class ControllerAccountOrder extends Controller {
 			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
 			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
 
-			$ocstore_yk_onpay_info  = $this->model_extension_payment_ocstore_yk->checkLaterpay($result['order_id']);
-
 			$data['orders'][] = array(
 				'order_id'   => $result['order_id'],
 				'name'       => $result['firstname'] . ' ' . $result['lastname'],
@@ -80,7 +76,6 @@ class ControllerAccountOrder extends Controller {
 				'products'   => ($product_total + $voucher_total),
 				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
 				'ocstore_payeer_onpay'  => $this->model_extension_payment_ocstore_payeer->checkLaterpay($result['order_id']) ? $this->url->link('extension/payment/ocstore_payeer/laterpay', sprintf('order_id=%s&order_tt=%s', $result['order_id'], $result['total'], 'SSL')) : '',
-				'ocstore_yk_onpay'      => $ocstore_yk_onpay_info['onpay'] ? $this->url->link('extension/payment/ocstore_yk/laterpay', sprintf('order_id=%s&order_ttl=%s&paymentType=%s', $result['order_id'], $result['total'], $ocstore_yk_onpay_info['payment_code']), 'SSL') : '',
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 			);
 		}
