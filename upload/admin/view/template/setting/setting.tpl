@@ -380,6 +380,15 @@
                     <?php } ?>
                   </div>
                 </div>
+                <div class="form-group required">
+                  <label class="col-sm-2 control-label" for="input-autocomplete-limit"><span data-toggle="tooltip" title="<?php echo $help_limit_autocomplete; ?>"><?php echo $entry_limit_autocomplete; ?></span></label>
+                  <div class="col-sm-10">
+                    <input type="text" name="config_limit_autocomplete" value="<?php echo $config_limit_autocomplete; ?>" placeholder="<?php echo $entry_limit_autocomplete; ?>" id="input-autocomplete-limit" class="form-control" />
+                    <?php if ($error_limit_autocomplete) { ?>
+                    <div class="text-danger"><?php echo $error_limit_autocomplete; ?></div>
+                    <?php } ?>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_product_upc_hide; ?>"><?php echo $entry_product_upc_hide; ?></span></label>
                   <div class="col-sm-10">

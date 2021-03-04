@@ -100,6 +100,7 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_length_class'] = $this->language->get('entry_length_class');
 		$data['entry_weight_class'] = $this->language->get('entry_weight_class');
 		$data['entry_limit_admin'] = $this->language->get('entry_limit_admin');
+		$data['entry_limit_autocomplete'] = $this->language->get('entry_limit_autocomplete');
 		$data['entry_product_count'] = $this->language->get('entry_product_count');
 		$data['entry_product_upc_hide'] = $this->language->get('entry_product_upc_hide');
 		$data['entry_product_ean_hide'] = $this->language->get('entry_product_ean_hide');
@@ -203,6 +204,7 @@ class ControllerSettingSetting extends Controller {
 		$data['help_currency'] = $this->language->get('help_currency');
 		$data['help_currency_auto'] = $this->language->get('help_currency_auto');
 		$data['help_limit_admin'] = $this->language->get('help_limit_admin');
+		$data['help_limit_autocomplete'] = $this->language->get('help_limit_autocomplete');
 		$data['help_product_count'] = $this->language->get('help_product_count');
 		$data['help_product_upc_hide'] = $this->language->get('help_product_upc_hide');
 		$data['help_product_ean_hide'] = $this->language->get('help_product_ean_hide');
@@ -417,6 +419,12 @@ class ControllerSettingSetting extends Controller {
 			$data['error_limit_admin'] = $this->error['limit_admin'];
 		} else {
 			$data['error_limit_admin'] = '';
+		}
+
+		if (isset($this->error['limit_autocomplete'])) {
+			$data['error_limit_autocomplete'] = $this->error['limit_autocomplete'];
+		} else {
+			$data['error_limit_autocomplete'] = '';
 		}
 
 		if (isset($this->error['mail_regexp'])) {
@@ -703,6 +711,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_limit_admin'] = $this->request->post['config_limit_admin'];
 		} else {
 			$data['config_limit_admin'] = $this->config->get('config_limit_admin');
+		}
+
+		if (isset($this->request->post['config_limit_autocomplete'])) {
+			$data['config_limit_autocomplete'] = $this->request->post['config_limit_autocomplete'];
+		} else {
+			$data['config_limit_autocomplete'] = $this->config->get('config_limit_autocomplete');
 		}
 
 		if (isset($this->request->post['config_product_count'])) {
@@ -1426,6 +1440,10 @@ class ControllerSettingSetting extends Controller {
 			$this->error['limit_admin'] = $this->language->get('error_limit');
 		}
 
+		if (!$this->request->post['config_limit_autocomplete']) {
+			$this->error['limit_autocomplete'] = $this->language->get('error_limit');
+		}
+
 		if ($this->request->post['config_login_attempts'] < 1) {
 			$this->error['login_attempts'] = $this->language->get('error_login_attempts');
 		}
@@ -1474,6 +1492,10 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_limit_admin']) {
 			$this->error['limit_admin'] = $this->language->get('error_limit');
+		}
+
+		if (!$this->request->post['config_limit_autocomplete']) {
+			$this->error['limit_autocomplete'] = $this->language->get('error_limit');
 		}
 
 		if (!trim($this->request->post['config_mail_regexp'])) {
