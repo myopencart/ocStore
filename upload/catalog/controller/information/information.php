@@ -18,6 +18,21 @@ class ControllerInformationInformation extends Controller {
 			$information_id = 0;
 		}
 
+        if ($this->config->get('config_canonical_method')) {
+            if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                $server = $this->config->get('config_ssl');
+            } else {
+                $server = $this->config->get('config_url');
+            };
+
+            $request_url = rtrim($server, '/') . $this->request->server['REQUEST_URI'];
+            $canonical_url = $this->url->link('information/information', 'information_id=' . $information_id, true);
+
+            if (($request_url != $canonical_url) || $this->config->get('config_canonical_self')) {
+                $this->document->addLink($canonical_url, 'canonical');
+            }
+        }
+
 		$information_info = $this->model_catalog_information->getInformation($information_id);
 
 		if ($information_info) {

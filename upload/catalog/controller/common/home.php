@@ -6,7 +6,22 @@ class ControllerCommonHome extends Controller {
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
 
 		if (isset($this->request->get['route'])) {
-			$this->document->addLink($this->config->get('config_url'), 'canonical');
+            if ($this->config->get('config_canonical_method')) {
+                if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                    $server = $this->config->get('config_ssl');
+                } else {
+                    $server = $this->config->get('config_url');
+                };
+
+                $request_url = rtrim($server, '/') . $this->request->server['REQUEST_URI'];
+                $canonical_url = $this->config->get('config_url');
+
+                if (($request_url != $canonical_url) || $this->config->get('config_canonical_self')) {
+                    $this->document->addLink($this->config->get('config_url'), 'canonical');
+                }
+            } else {
+                $this->document->addLink($this->config->get('config_url'), 'canonical');
+            }
 		}
 
 		$data['column_left'] = $this->load->controller('common/column_left');
