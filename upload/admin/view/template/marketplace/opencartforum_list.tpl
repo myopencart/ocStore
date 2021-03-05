@@ -42,16 +42,24 @@
       <div class="col-sm-9">
         <div class="btn-group">
           <?php foreach ($licenses as $license) { ?>
-          <? if ($license['value'] == $filter_license) { ?><a href="<?php echo $license['href']; ?>" class="btn btn-default active"><?php echo $license['text']; ?></a><?php } else { ?><a href="<?php echo $license['href']; ?>" class="btn btn-default"><?php echo $license['text']; ?></a><?php } ?>
-          <?php } ?></div>
+           <?php if ($license['value'] == $filter_license) { ?>
+            <a href="<?php echo $license['href']; ?>" class="btn btn-default active"><?php echo $license['text']; ?></a>
+           <?php } else { ?>
+            <a href="<?php echo $license['href']; ?>" class="btn btn-default"><?php echo $license['text']; ?></a>
+            <?php } ?>
+          <?php } ?>
+        </div>
       </div>
       <div class="col-sm-3">
       <div class=" input-group">
-          <div class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></div>
+        <div class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></div>
         <select onchange="location = this.value;" class="form-control">
           <?php foreach ($sorts as $sort) { ?>
-          <? if ($sort['value'] == $sort) { ?><option value="<?php echo $sort['href']; ?>" selected="selected"><?php echo $sort['text']; ?></option><?php } else { ?><option value="<?php echo $sort['href']; ?>"><?php echo $sort['text']; ?></option>
-          <?php } ?>
+           <?php if ($sort['value'] == $sort) { ?>
+            <option value="<?php echo $sort['href']; ?>" selected="selected"><?php echo $sort['text']; ?></option>
+           <?php } else { ?>
+            <option value="<?php echo $sort['href']; ?>"><?php echo $sort['text']; ?></option>
+           <?php } ?>
           <?php } ?>
         </select>
       </div>
@@ -120,9 +128,8 @@
         <div class="row">
           <div class="col-sm-12 text-center"><?php echo $pagination; ?></div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 <script type="text/javascript"><!--
 $('#button-filter').on('click', function(e) {
 	var url = 'index.php?route=marketplace/opencartforum&token=<?php echo $token; ?>';
