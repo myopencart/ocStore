@@ -107,8 +107,9 @@ class ControllerExtensionCurrencyCbr extends Controller {
                 foreach ($items as $item)
                 {
                     $code = $item->getElementsByTagName('CharCode')->item(0)->nodeValue;
-                    $curs = $item->getElementsByTagName('Value')->item(0)->nodeValue;
-                    $currencies[$code] = floatval(str_replace(',', '.', $curs));
+                    $curs = str_replace(',', '.', $item->getElementsByTagName('Value')->item(0)->nodeValue);
+                    $nominal = $item->getElementsByTagName('Nominal')->item(0)->nodeValue;
+                    $currencies[$code] = floatval($curs/$nominal);
                 }
 
 
