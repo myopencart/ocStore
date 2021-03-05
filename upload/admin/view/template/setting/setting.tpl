@@ -1852,5 +1852,5 @@ $('select[name=\'config_country_id\']').trigger('change');
 
 $('#store-language a:first').tab('show');
 $('#content-language a:first').tab('show');
-//--></script></div>
+//--></script>
 <?php echo $footer; ?>
