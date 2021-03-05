@@ -101,4 +101,5 @@ $_['text_paypal']                    = 'PayPal';
 $_['text_paypal_search']             = 'Search';
 $_['text_complete_status']           = 'Orders Completed'; 
 $_['text_processing_status']         = 'Orders Processing'; 
-$_['text_other_status']              = 'Other Statuses'; 
+$_['text_other_status']              = 'Other Statuses';
+$_['text_octeam_toolset']            = 'OC Team Tools';
