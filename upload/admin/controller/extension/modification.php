@@ -25,6 +25,13 @@ class ControllerExtensionModification extends Controller {
         $this->load->model('extension/modification');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
+            $modification = $this->model_extension_modification->getModification($this->request->get['modification_id']);
+
+            if ($modification) {
+                $this->model_extension_modification->addModificationBackup($this->request->get['modification_id'], $modification);
+            }
+
             $this->model_extension_modification->editModification($this->request->get['modification_id'], $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
@@ -52,6 +59,44 @@ class ControllerExtensionModification extends Controller {
         }
 
         $this->getForm();
+    }
+
+    public function restore() {
+        $this->load->language('extension/extension');
+
+        $this->document->setTitle($this->language->get('heading_title'));
+
+        $this->load->model('extension/modification');
+
+        if (isset($this->request->get['modification_id']) AND isset($this->request->get['backup_id'])) {
+
+            $backup = $this->model_extension_modification->getModificationBackup($this->request->get['modification_id'],$this->request->get['backup_id']);
+
+            $url = '';
+
+            if ($backup) {
+                $this->model_extension_modification->setModificationRestore($this->request->get['modification_id'], $backup['xml']);
+                $this->refresh();
+                $this->response->redirect($this->url->link('extension/modification/edit', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'] . $url, true));
+            } else {
+                $this->response->redirect($this->url->link('extension/modification/edit', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'] . $url, true));
+            }
+        }
+
+        $this->getForm();
+    }
+
+    public function clearHistory() {
+
+        // Check user has permission
+        if (!$this->user->hasPermission('modify', 'extension/modification')) {
+            $json['error'] = $this->language->get('error_permission');
+        }
+
+        $this->load->model('extension/modification');
+        $this->model_extension_modification->deleteModificationBackups($this->request->get['modification_id']);
+
+        $this->response->redirect($this->url->link('extension/modification/edit', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'], true));
     }
 
     public function download() {
@@ -1103,14 +1148,23 @@ class ControllerExtensionModification extends Controller {
 
         $data['heading_title'] = $this->language->get('heading_title');
         $data['text_form'] = $this->language->get('text_form');
+        $data['text_no_results'] = $this->language->get('text_no_results');
         $data['entry_name'] = $this->language->get('entry_name');
         $data['entry_xml'] = $this->language->get('entry_xml');
+
+        $data['column_id'] = $this->language->get('column_id');
+        $data['column_code'] = $this->language->get('column_code');
+        $data['column_date_added'] = $this->language->get('column_date_added');
+        $data['column_restore'] = $this->language->get('column_restore');
 
         $data['button_update'] = $this->language->get('button_update');
         $data['button_save'] = $this->language->get('button_save');
         $data['button_cancel'] = $this->language->get('button_cancel');
+        $data['button_restore'] = $this->language->get('button_restore');
+        $data['button_history'] = $this->language->get('button_history');
 
         $data['tab_general'] = $this->language->get('tab_general');
+        $data['tab_backup'] = $this->language->get('tab_backup');
 
         $data['token'] = $this->session->data['token'];
 
@@ -1136,9 +1190,26 @@ class ControllerExtensionModification extends Controller {
             $data['action'] = $this->url->link('extension/modification/edit', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'] . $url, true);
         }
 
+        $data['restore'] = $this->url->link('extension/modification/restore', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'] . $url, true);
+        $data['history'] = $this->url->link('extension/modification/clearhistory', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'] . $url, true);
         $data['cancel'] = $this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, true);
 
         $this->load->model('extension/modification');
+
+        $backups = $this->model_extension_modification->getModificationBackups($this->request->get['modification_id']);
+
+        $data['backups'] = array();
+
+        if ($backups) {
+            foreach ($backups as $backup) {
+                $data['backups'][] = array(
+                    'backup_id'     => $backup['backup_id'],
+                    'code'          => $backup['code'],
+                    'date_added'    => $backup['date_added'],
+                    'restore'       => $this->url->link('extension/modification/restore', 'token=' . $this->session->data['token'] . '&modification_id=' . $this->request->get['modification_id'] . '&backup_id=' . $backup['backup_id'] . $url, true)
+                );
+            }
+        }
 
         $modification = $this->model_extension_modification->getModification($this->request->get['modification_id']);
 

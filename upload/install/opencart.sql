@@ -2067,6 +2067,20 @@ CREATE TABLE `oc_modification` (
   PRIMARY KEY (`modification_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Table structure for table `oc_modification`
+--
+
+DROP TABLE IF EXISTS `oc_modification_backup`;
+CREATE TABLE `oc_modification_backup` (
+  `backup_id` int(11) NOT NULL,
+  `modification_id` int(11) NOT NULL,
+  `code` varchar(64) NOT NULL,
+  `xml` mediumtext NOT NULL,
+  `date_added` datetime NOT NULL
+  PRIMARY KEY (`backup_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 -- ----------------------------------------------------------
 
 -- Table structure for table `oc_module`
