@@ -119,7 +119,7 @@ class ModelCatalogManufacturer extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY m.name";
+			$sql .= " ORDER BY name";
 		}
 
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
