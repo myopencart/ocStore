@@ -2077,7 +2077,7 @@ CREATE TABLE `oc_modification_backup` (
   `modification_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `xml` mediumtext NOT NULL,
-  `date_added` datetime NOT NULL
+  `date_added` datetime NOT NULL,
   PRIMARY KEY (`backup_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
