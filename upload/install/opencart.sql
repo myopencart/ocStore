@@ -1528,7 +1528,8 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (25, 'dashboard', 'online'),
 (26, 'dashboard', 'map'),
 (27, 'dashboard', 'customer'),
-(28, 'dashboard', 'chart');
+(28, 'dashboard', 'chart'),
+(29, 'currency', 'cbr');
 
 -- --------------------------------------------------------
 
