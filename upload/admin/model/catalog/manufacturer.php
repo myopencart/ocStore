@@ -30,6 +30,9 @@ class ModelCatalogManufacturer extends Model {
 		}
 
 		$this->cache->delete('manufacturer');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 
 		return $manufacturer_id;
 	}
@@ -68,6 +71,9 @@ class ModelCatalogManufacturer extends Model {
 		}
 
 		$this->cache->delete('manufacturer');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function deleteManufacturer($manufacturer_id) {
@@ -77,6 +83,9 @@ class ModelCatalogManufacturer extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "manufacturer_description WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
 
 		$this->cache->delete('manufacturer');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function getManufacturer($manufacturer_id) {

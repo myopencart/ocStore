@@ -50,6 +50,9 @@ class ModelCatalogCategory extends Model {
 		}
 
 		$this->cache->delete('category');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 
 		return $category_id;
 	}
@@ -149,6 +152,9 @@ class ModelCatalogCategory extends Model {
 		}
 
 		$this->cache->delete('category');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function deleteCategory($category_id) {
@@ -170,6 +176,9 @@ class ModelCatalogCategory extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_category WHERE category_id = '" . (int)$category_id . "'");
 
 		$this->cache->delete('category');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function repairCategories($parent_id = 0) {

@@ -175,6 +175,8 @@ $_['entry_seo_url_include_path']	   = 'ЧПУ товаров с категори
 $_['entry_seo_url_include_path_help']  = '/category/subcategory/product (только для SeoPro)';
 $_['entry_seo_url_postfix']			   = 'Окончание ЧПУ';
 $_['entry_seo_url_postfix_help']	   = 'Например .html (только для SeoPro)';
+$_['entry_flush_cache_seopro']	       = 'Сбросить кеш SeoPro при редактировании';
+$_['entry_flush_cache_seopro_help']	   = 'Сброс кеша SeoPro происходит при редактировании товаров, категорий, производителей, статей';
 $_['entry_canonical_method']	       = 'Способ вывода тегов canonical, prev, next. <a target="_blank" href="https://opencartforum.com/topic/174539-sposob-vyvoda-tegov-canonical-prev-next-v-ocstore/">Подробнее</a>';
 $_['entry_add_prevnext']	           = 'Вывести prev, next теги для пагинации';
 $_['entry_add_prevnext_help']	       = 'Работает только при включенном способе вывода тегов - ocStore решение';
