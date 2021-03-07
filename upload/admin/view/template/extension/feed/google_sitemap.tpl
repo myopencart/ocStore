@@ -45,6 +45,30 @@
               <textarea rows="5" readonly id="input-data-feed" class="form-control"><?php echo $data_feed; ?></textarea>
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label"><?php echo $entry_disable_generate_products; ?></label>
+            <div class="col-sm-10">
+              <?php if($google_sitemap_disable_products) { ?>
+              <label class="radio-inline">
+                <input type="radio" name="google_sitemap_disable_products" value="1" checked="checked"/>
+                <?php echo $text_yes; ?>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="google_sitemap_disable_products" value="0"/>
+                <?php echo $text_no; ?>
+              </label>
+              <?php } else { ?>
+              <label class="radio-inline">
+                <input type="radio" name="google_sitemap_disable_products" value="1"/>
+                <?php echo $text_yes; ?>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="google_sitemap_disable_products" value="0" checked="checked"/>
+                <?php echo $text_no; ?>
+              </label>
+              <?php } ?>
+            </div>
+          </div>
         </form>
       </div>
     </div>

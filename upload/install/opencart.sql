@@ -3469,6 +3469,8 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'category', 'category_status', '1', 0),
 (0, 'account', 'account_status', '1', 0),
 (0, 'affiliate', 'affiliate_status', '1', 0),
+(0, 'google_sitemap', 'google_sitemap_status', '0', 0),
+(0, 'google_sitemap', 'google_sitemap_disable_products', '1', 0),
 (0, 'theme_default', 'theme_default_product_limit', '15', 0),
 (0, 'theme_default', 'theme_default_product_description_length', '100', 0),
 (0, 'theme_default', 'theme_default_image_thumb_width', '228', 0),
