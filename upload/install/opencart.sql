@@ -2074,7 +2074,7 @@ CREATE TABLE `oc_modification` (
 
 DROP TABLE IF EXISTS `oc_modification_backup`;
 CREATE TABLE `oc_modification_backup` (
-  `backup_id` int(11) NOT NULL,
+  `backup_id` int(11) NOT NULL AUTO_INCREMENT,
   `modification_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `xml` mediumtext NOT NULL,
