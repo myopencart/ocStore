@@ -343,6 +343,7 @@ class ControllerExtensionModification extends Controller {
 		if (isset($this->request->post['selected']) && $this->validate()) {
 			foreach ($this->request->post['selected'] as $modification_id) {
 				$this->model_extension_modification->deleteModification($modification_id);
+                $this->model_extension_modification->deleteModificationBackups($modification_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
