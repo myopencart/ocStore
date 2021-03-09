@@ -5,12 +5,12 @@ class ModelExtensionModification extends Model {
 	}
 
 	public function addModificationBackup($modification_id, $data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "modification_backup SET modification_id = '" . (int)$modification_id . "', code = '" . $this->db->escape($data['code']) . "', xml = '" . $this->db->escape($data['xml']) . "', date_added = NOW()");
+        $xml = html_entity_decode($data['xml']);
+		$this->db->query("INSERT INTO " . DB_PREFIX . "modification_backup SET modification_id = '" . (int)$modification_id . "', code = '" . $this->db->escape($data['code']) . "', xml = '" . $this->db->escape($xml) . "', date_added = NOW()");
 	}
 
 	public function editModification($modification_id, $data) {
         $xml = html_entity_decode($data['xml']);
-
 	    $this->db->query("UPDATE " . DB_PREFIX . "modification SET xml = '" . $this->db->escape($xml) . "', name = '" . $this->db->escape($data['name']) . "' WHERE modification_id = '" . (int)$modification_id . "'");
 	}
 

@@ -1220,9 +1220,9 @@ class ControllerExtensionModification extends Controller {
         }
 
         if (isset($this->request->post['xml'])) {
-            $data['xml'] = $this->request->post['xml'];
+            $data['xml'] = htmlentities(ltrim($this->request->post['xml'], "﻿"));
         } elseif (isset($modification)) {
-            $data['xml'] = $modification['xml'];
+            $data['xml'] = htmlentities(ltrim($modification['xml'], "﻿"));
         }
 
         $data['header'] = $this->load->controller('common/header');
