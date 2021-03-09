@@ -123,7 +123,7 @@ class ControllerExtensionCurrencyNbu extends Controller {
 
 							$to = $currencies[$result['code']];
 
-							$this->model_localisation_currency->editValueByCode($result['code'], 1 / ($currencies[$default] * ($from / $to)));
+							$this->model_localisation_currency->editValueByCode($result['code'], ($currencies[$default] * ($from / $to)));
 						}
 					}
 				}
