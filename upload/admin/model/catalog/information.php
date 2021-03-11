@@ -26,6 +26,9 @@ class ModelCatalogInformation extends Model {
 		}
 
 		$this->cache->delete('information');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 
 		return $information_id;
 	}
@@ -62,6 +65,9 @@ class ModelCatalogInformation extends Model {
 		}
 
 		$this->cache->delete('information');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function deleteInformation($information_id) {
@@ -72,6 +78,9 @@ class ModelCatalogInformation extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'information_id=" . (int)$information_id . "'");
 
 		$this->cache->delete('information');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function getInformation($information_id) {

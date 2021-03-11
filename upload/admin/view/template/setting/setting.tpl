@@ -1427,6 +1427,30 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_flush_cache_seopro_help; ?>"><?php echo $entry_flush_cache_seopro; ?></span></label>
+                  <div class="col-sm-10">
+                    <?php if($config_flush_cache_seopro) { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_flush_cache_seopro" value="1" checked="checked"/>
+                      <?php echo $text_yes; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_flush_cache_seopro" value="0"/>
+                      <?php echo $text_no; ?>
+                    </label>
+                    <?php } else { ?>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_flush_cache_seopro" value="1"/>
+                      <?php echo $text_yes; ?>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="config_flush_cache_seopro" value="0" checked="checked"/>
+                      <?php echo $text_no; ?>
+                    </label>
+                    <?php } ?>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $entry_canonical_method_help; ?>"><?php echo $entry_canonical_method; ?></span></label>
                   <div class="col-sm-10">
                     <?php if($config_canonical_method) { ?>
@@ -1852,5 +1876,5 @@ $('select[name=\'config_country_id\']').trigger('change');
 
 $('#store-language a:first').tab('show');
 $('#content-language a:first').tab('show');
-//--></script></div>
+//--></script>
 <?php echo $footer; ?>

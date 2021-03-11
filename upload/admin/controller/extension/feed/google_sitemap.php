@@ -22,9 +22,12 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
 		$data['text_edit'] = $this->language->get('text_edit');
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
+		$data['text_yes'] = $this->language->get('text_yes');
+		$data['text_no'] = $this->language->get('text_no');
 
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_data_feed'] = $this->language->get('entry_data_feed');
+		$data['entry_disable_generate_products'] = $this->language->get('entry_disable_generate_products');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -62,6 +65,12 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
 			$data['google_sitemap_status'] = $this->request->post['google_sitemap_status'];
 		} else {
 			$data['google_sitemap_status'] = $this->config->get('google_sitemap_status');
+		}
+
+		if (isset($this->request->post['google_sitemap_disable_products'])) {
+			$data['google_sitemap_disable_products'] = $this->request->post['google_sitemap_disable_products'];
+		} else {
+			$data['google_sitemap_disable_products'] = $this->config->get('google_sitemap_disable_products');
 		}
 
 		$data['data_feed'] = HTTP_CATALOG . 'index.php?route=extension/feed/google_sitemap';

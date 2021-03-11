@@ -290,7 +290,7 @@ class ControllerStartupSeoPro extends Controller {
 		}
 
 		if (!isset($path[$category_id])) {
-			$max_level = 10;
+			$max_level = 5;
 
 			$sql = "SELECT CONCAT_WS('_'";
 			for ($i = $max_level-1; $i >= 0; --$i) {

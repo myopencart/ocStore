@@ -26,7 +26,6 @@
         <textarea wrap="off" rows="15" readonly="readonly" class="form-control" id="cache_result"></textarea>
       </div>
     </div>
-  </div>
 </div>
 
 <script type="text/javascript"><!--

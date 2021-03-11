@@ -129,6 +129,9 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$this->cache->delete('product');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 
 		return $product_id;
 	}
@@ -290,6 +293,9 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$this->cache->delete('product');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
 	}
 
 	public function copyProduct($product_id) {
@@ -348,6 +354,10 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_product WHERE product_id = '" . (int)$product_id . "'");
 
 		$this->cache->delete('product');
+        if ($this->config->get('config_flush_cache_seopro')) {
+            $this->cache->delete('seo_pro');
+        }
+
 	}
 
 	public function getProduct($product_id) {

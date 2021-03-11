@@ -91,9 +91,6 @@ class ControllerExtensionCurrencyEcb extends Controller {
 
 			curl_close($curl);
 
-			var_dump($response);
-			exit();
-
 			if ($response) {
 				$dom = new \DOMDocument('1.0', 'UTF-8');
 				$dom->loadXml($response);

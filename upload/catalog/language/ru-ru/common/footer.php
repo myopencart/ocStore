@@ -14,4 +14,4 @@ $_['text_account']      = 'Личный кабинет';
 $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Мои закладки';
 $_['text_newsletter']   = 'Рассылка новостей';
-$_['text_powered']      = 'Работает на <a target="_blank" href="https://ocstore.com/">ocStore</a><br /> %s &copy; %s';
+$_['text_powered']      = 'Работает на <a target="_blank" href="https://ocstore.com/?utm_source=ocstore23">ocStore</a><br /> %s &copy; %s';

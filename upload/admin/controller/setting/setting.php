@@ -182,6 +182,8 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');
 		$data['entry_seo_url'] = $this->language->get('entry_seo_url');
 		$data['entry_seo_url_type'] = $this->language->get('entry_seo_url_type');
+		$data['entry_flush_cache_seopro'] = $this->language->get('entry_flush_cache_seopro');
+		$data['entry_flush_cache_seopro_help'] = $this->language->get('entry_flush_cache_seopro_help');
 		$data['entry_seo_url_include_path'] = $this->language->get('entry_seo_url_include_path');
 		$data['entry_seo_url_postfix'] = $this->language->get('entry_seo_url_postfix');
 		$data['entry_seo_url_include_path_help'] = $this->language->get('entry_seo_url_include_path_help');
@@ -1228,6 +1230,12 @@ class ControllerSettingSetting extends Controller {
 			$data['config_seo_url'] = $this->request->post['config_seo_url'];
 		} else {
 			$data['config_seo_url'] = $this->config->get('config_seo_url');
+		}
+
+		if (isset($this->request->post['config_flush_cache_seopro'])) {
+			$data['config_flush_cache_seopro'] = $this->request->post['config_flush_cache_seopro'];
+		} else {
+			$data['config_flush_cache_seopro'] = $this->config->get('config_flush_cache_seopro');
 		}
 
         if (isset($this->request->post['config_canonical_method'])) {
