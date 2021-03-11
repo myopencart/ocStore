@@ -27,7 +27,11 @@ $(document).ready(function() {
 	$('button[type=\'submit\']').on('click', function(e) {
 		if ($("form[id*='form-']").length) {
 			e.preventDefault();
-			$("form[id*='form-']").submit();
+			if (typeof($(this).attr('form')) != "undefined" && $(this).attr('form') !== null) {
+				$("form[id='"+$(this).attr('form')+"']").submit();
+			} else {
+				$("form[id*='form-']").submit();
+			}
 		}
 	});
 
