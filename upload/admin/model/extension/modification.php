@@ -11,7 +11,8 @@ class ModelExtensionModification extends Model {
 
 	public function editModification($modification_id, $data) {
         $xml = html_entity_decode($data['xml']);
-	    $this->db->query("UPDATE " . DB_PREFIX . "modification SET xml = '" . $this->db->escape($xml) . "', name = '" . $this->db->escape($data['name']) . "' WHERE modification_id = '" . (int)$modification_id . "'");
+        $name = html_entity_decode($data['name']);
+	    $this->db->query("UPDATE " . DB_PREFIX . "modification SET xml = '" . $this->db->escape($xml) . "', name = '" . $this->db->escape($name) . "' WHERE modification_id = '" . (int)$modification_id . "'");
 	}
 
 	public function setModificationRestore($modification_id, $xml) {
