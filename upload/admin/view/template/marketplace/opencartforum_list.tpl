@@ -42,42 +42,49 @@
       <div class="col-sm-9">
         <div class="btn-group">
           <?php foreach ($licenses as $license) { ?>
-          <? if ($license['value'] == $filter_license) { ?><a href="<?php echo $license['href']; ?>" class="btn btn-default active"><?php echo $license['text']; ?></a><?php } else { ?><a href="<?php echo $license['href']; ?>" class="btn btn-default"><?php echo $license['text']; ?></a><?php } ?>
-          <?php } ?></div>
+           <?php if ($license['value'] == $filter_license) { ?>
+            <a href="<?php echo $license['href']; ?>" class="btn btn-default active"><?php echo $license['text']; ?></a>
+           <?php } else { ?>
+            <a href="<?php echo $license['href']; ?>" class="btn btn-default"><?php echo $license['text']; ?></a>
+            <?php } ?>
+          <?php } ?>
+        </div>
       </div>
       <div class="col-sm-3">
       <div class=" input-group">
-          <div class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></div>
+        <div class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></div>
         <select onchange="location = this.value;" class="form-control">
           <?php foreach ($sorts as $sort) { ?>
-          <? if ($sort['value'] == $sort) { ?><option value="<?php echo $sort['href']; ?>" selected="selected"><?php echo $sort['text']; ?></option><?php } else { ?><option value="<?php echo $sort['href']; ?>"><?php echo $sort['text']; ?></option>
-          <?php } ?>
+           <?php if ($sort['value'] == $sort) { ?>
+            <option value="<?php echo $sort['href']; ?>" selected="selected"><?php echo $sort['text']; ?></option>
+           <?php } else { ?>
+            <option value="<?php echo $sort['href']; ?>"><?php echo $sort['text']; ?></option>
+           <?php } ?>
           <?php } ?>
         </select>
       </div>
       </div>
       </div>
       </div>
-
         <div id="extension-list"><?php if ($promotions) { ?>
           <h3>Featured</h3>
-          <div class="row"><?php foreach ($extensions as $promotion) { ?>
-            <?php if ($extension) { ?>
+          <div class="row"><?php foreach ($promotions as $promotion) { ?>
+            <?php if ($promotion) { ?>
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
               <section>
-                <div class="extension-preview"><a href="<?php echo $extension['href']; ?>">
+                <div class="extension-preview"><a href="<?php echo $promotion['href']; ?>">
                   <div class="extension-description"></div>
-                  <img src="<?php echo $extension['image']; ?>" alt="<?php echo $extension['name']; ?>" title="<?php echo $extension['name']; ?>" class="img-responsive" /></a></div>
+                  <img src="<?php echo $promotion['image']; ?>" alt="<?php echo $promotion['name']; ?>" title="<?php echo $promotion['name']; ?>" class="img-responsive" /></a></div>
                 <div class="extension-name">
-                  <h4><a href="<?php echo $extension['href']; ?>"><?php echo $extension['name']; ?></a></h4>
-                  <?php echo $extension['price']; ?></div>
+                  <h4><a href="<?php echo $promotion['href']; ?>"><?php echo $promotion['name']; ?></a></h4>
+                  <?php echo $promotion['price']; ?></div>
                 <div class="extension-rate">
                   <div class="row">
                     <div class="col-xs-6"><?php for ($i = 1; $i <= 5; $i++) { ?>
-                      <?php if ($extension['rating'] >= $i ) { ?><i class="fa fa-star"></i><?php } else { ?><i class="fa fa-star-o"></i><?php } ?>
-                      <?php } ?></div></div>
+                      <?php if ($promotion['rating'] >= $i ) { ?><i class="fa fa-star"></i><?php } else { ?><i class="fa fa-star-o"></i><?php } ?>
+                      <?php } ?></div>
                     <div class="col-xs-6">
-                      <div class="text-right"><?php echo $extension['rating_total']; ?> <?php echo $text_reviews; ?></div>
+                      <div class="text-right"><?php echo $promotion['rating_total']; ?> <?php echo $text_reviews; ?></div>
                     </div>
                   </div>
                 </div>
@@ -120,9 +127,8 @@
         <div class="row">
           <div class="col-sm-12 text-center"><?php echo $pagination; ?></div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 <script type="text/javascript"><!--
 $('#button-filter').on('click', function(e) {
 	var url = 'index.php?route=marketplace/opencartforum&token=<?php echo $token; ?>';

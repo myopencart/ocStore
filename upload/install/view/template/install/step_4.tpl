@@ -33,7 +33,7 @@
       <h2 class="text-center"><i class="fa fa-circle-o-notch fa-spin"></i> <?php echo $text_loading; ?></h2>
     </div>
     <div class="row">
-      <div class="col-sm-12 text-center"> <a class="btn btn-default" href="https://opencartforum.com/files/&utm_source=ocstore_install&utm_medium=store_link&utm_campaign=ocstore23_install" target="_BLANK"><?php echo $text_extension; ?></a> </div>
+      <div class="col-sm-12 text-center"> <a class="btn btn-default" href="https://opencartforum.com/files/?utm_source=ocstore_install&utm_medium=store_link&utm_campaign=ocstore23_install" target="_BLANK"><?php echo $text_extension; ?></a> </div>
     </div>
   </div>
   <div class="mailing">

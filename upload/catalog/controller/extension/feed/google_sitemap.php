@@ -41,14 +41,16 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
 				$output .= '<priority>0.7</priority>';
 				$output .= '</url>';
 
-				$products = $this->model_catalog_product->getProducts(array('filter_manufacturer_id' => $manufacturer['manufacturer_id']));
+				if (!$this->config->get('google_sitemap_disable_products')) {
+                    $products = $this->model_catalog_product->getProducts(array('filter_manufacturer_id' => $manufacturer['manufacturer_id']));
 
-				foreach ($products as $product) {
-					$output .= '<url>';
-					$output .= '<loc>' . $this->url->link('product/product', 'manufacturer_id=' . $manufacturer['manufacturer_id'] . '&product_id=' . $product['product_id']) . '</loc>';
-					$output .= '<changefreq>weekly</changefreq>';
-					$output .= '<priority>1.0</priority>';
-					$output .= '</url>';
+                    foreach ($products as $product) {
+                        $output .= '<url>';
+                        $output .= '<loc>' . $this->url->link('product/product', 'manufacturer_id=' . $manufacturer['manufacturer_id'] . '&product_id=' . $product['product_id']) . '</loc>';
+                        $output .= '<changefreq>weekly</changefreq>';
+                        $output .= '<priority>1.0</priority>';
+                        $output .= '</url>';
+                    }
 				}
 			}
 
@@ -89,15 +91,17 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
 			$output .= '<priority>0.7</priority>';
 			$output .= '</url>';
 
-			$products = $this->model_catalog_product->getProducts(array('filter_category_id' => $result['category_id']));
+            if (!$this->config->get('google_sitemap_disable_products')) {
+                $products = $this->model_catalog_product->getProducts(array('filter_category_id' => $result['category_id']));
 
-			foreach ($products as $product) {
-				$output .= '<url>';
-				$output .= '<loc>' . $this->url->link('product/product', 'path=' . $new_path . '&product_id=' . $product['product_id']) . '</loc>';
-				$output .= '<changefreq>weekly</changefreq>';
-				$output .= '<priority>1.0</priority>';
-				$output .= '</url>';
-			}
+                foreach ($products as $product) {
+                    $output .= '<url>';
+                    $output .= '<loc>' . $this->url->link('product/product', 'path=' . $new_path . '&product_id=' . $product['product_id']) . '</loc>';
+                    $output .= '<changefreq>weekly</changefreq>';
+                    $output .= '<priority>1.0</priority>';
+                    $output .= '</url>';
+                }
+            }
 
 			$output .= $this->getCategories($result['category_id'], $new_path);
 		}

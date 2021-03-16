@@ -1528,7 +1528,8 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (25, 'dashboard', 'online'),
 (26, 'dashboard', 'map'),
 (27, 'dashboard', 'customer'),
-(28, 'dashboard', 'chart');
+(28, 'dashboard', 'chart'),
+(29, 'currency', 'cbr');
 
 -- --------------------------------------------------------
 
@@ -2065,6 +2066,20 @@ CREATE TABLE `oc_modification` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`modification_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Table structure for table `oc_modification`
+--
+
+DROP TABLE IF EXISTS `oc_modification_backup`;
+CREATE TABLE `oc_modification_backup` (
+  `backup_id` int(11) NOT NULL AUTO_INCREMENT,
+  `modification_id` int(11) NOT NULL,
+  `code` varchar(64) NOT NULL,
+  `xml` mediumtext NOT NULL,
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`backup_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- ----------------------------------------------------------
@@ -3455,6 +3470,8 @@ INSERT INTO `oc_setting` (`store_id`, `code`, `key`, `value`, `serialized`) VALU
 (0, 'category', 'category_status', '1', 0),
 (0, 'account', 'account_status', '1', 0),
 (0, 'affiliate', 'affiliate_status', '1', 0),
+(0, 'google_sitemap', 'google_sitemap_status', '0', 0),
+(0, 'google_sitemap', 'google_sitemap_disable_products', '1', 0),
 (0, 'theme_default', 'theme_default_product_limit', '15', 0),
 (0, 'theme_default', 'theme_default_product_description_length', '100', 0),
 (0, 'theme_default', 'theme_default_image_thumb_width', '228', 0),

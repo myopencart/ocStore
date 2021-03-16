@@ -27,11 +27,23 @@
     <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_refresh; ?>
       <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
+        <?php if ($modifications) { ?>
+        <div class="form-group">
+          <label class="col-sm-2 control-label"><?php echo $entry_progress; ?></label>
+          <div class="col-sm-10">
+            <div class="progress">
+              <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div id="progress-text"></div>
+          </div>
+        </div>
+        <?php } ?>
         <ul class="nav nav-tabs">
           <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
           <li><a href="#tab-log" data-toggle="tab"><?php echo $tab_log; ?></a></li>
@@ -86,7 +98,11 @@
                       <td class="text-left"><?php echo $modification['version']; ?></td>
                       <td class="text-left"><?php echo $modification['status']; ?></td>
                       <td class="text-left"><?php echo $modification['date_added']; ?></td>
-                      <td class="text-right"><?php if ($modification['link']) { ?>
+                      <td class="text-right">
+                        <a href="<?php echo $modification['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-success"><i class="fa fa-pencil"></i></a>
+                        <a href="<?php echo $modification['download']; ?>" data-toggle="tooltip" title="<?php echo $button_download; ?>" class="btn btn-primary" download="<?php echo $modification['filename']; ?>"><i class="fa fa-download"></i></a>
+                        <button type="button" data-loading-text="<?php echo $text_loading; ?>" data-modification-id="<?php echo $modification['modification_id']; ?>" data-toggle="tooltip" title="<?php echo $button_upload; ?>"  class="btn btn-primary button-upload"><i class="fa fa-upload"></i></button>
+                        <?php if ($modification['link']) { ?>
                         <a href="<?php echo $modification['link']; ?>" data-toggle="tooltip" title="<?php echo $button_link; ?>" class="btn btn-info" target="_blank"><i class="fa fa-link"></i></a>
                         <?php } else { ?>
                         <button type="button" class="btn btn-info" disabled="disabled"><i class="fa fa-link"></i></button>
@@ -123,4 +139,112 @@
     </div>
   </div>
 </div>
+<script type="text/javascript"><!--
+  var step = new Array();
+  var total = 0;
+
+  $('.button-upload').on('click', function() {
+    $('#form-upload').remove();
+    var modification_id =  $(this).attr('data-modification-id');
+
+    $('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+
+    $('#form-upload input[name=\'file\']').trigger('click');
+
+    if (typeof timer != 'undefined') {
+      clearInterval(timer);
+    }
+
+    timer = setInterval(function() {
+      if ($('#form-upload input[name=\'file\']').val() != '') {
+        clearInterval(timer);
+
+        // Reset everything
+        $('.alert').remove();
+        $('#progress-bar').css('width', '0%');
+        $('#progress-bar').removeClass('progress-bar-danger progress-bar-success');
+        $('#progress-text').html('');
+
+        $.ajax({
+          url: 'index.php?route=extension/modification/upload&token=<?php echo $token; ?>&modification_id='+modification_id,
+          type: 'post',
+          dataType: 'json',
+          data: new FormData($('#form-upload')[0]),
+          cache: false,
+          contentType: false,
+          processData: false,
+          beforeSend: function() {
+            $('#button-upload').button('loading');
+          },
+          complete: function() {
+            $('#button-upload').button('reset');
+          },
+          success: function(json) {
+            if (json['error']) {
+              $('#progress-bar').addClass('progress-bar-danger');
+              $('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+            }
+
+            if (json['step']) {
+              step = json['step'];
+              total = step.length;
+
+              if (json['overwrite'].length) {
+                html = '';
+
+                for (i = 0; i < json['overwrite'].length; i++) {
+                  html += json['overwrite'][i] + "\n";
+                }
+
+                $('#overwrite').html(html);
+
+                $('#button-continue').prop('disabled', false);
+              } else {
+                next();
+              }
+            }
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+          }
+        });
+      }
+    }, 500);
+  });
+
+  function next() {
+    data = step.shift();
+
+    if (data) {
+      $('#progress-bar').css('width', (100 - (step.length / total) * 100) + '%');
+      $('#progress-text').html('<span class="text-info">' + data['text'] + '</span>');
+
+      $.ajax({
+        url: data.url,
+        type: 'post',
+        dataType: 'json',
+        data: 'path=' + data.path,
+        success: function(json) {
+          if (json['error']) {
+            $('#progress-bar').addClass('progress-bar-danger');
+            $('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+            $('#button-clear').prop('disabled', false);
+          }
+
+          if (json['success']) {
+            $('#progress-bar').addClass('progress-bar-success');
+            $('#progress-text').html('<span class="text-success">' + json['success'] + '</span>');
+          }
+
+          if (!json['error'] && !json['success']) {
+            next();
+          }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+      });
+    }
+  }
+//--></script>
 <?php echo $footer; ?>
