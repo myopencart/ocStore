@@ -61,10 +61,11 @@ class ControllerExtensionPaymentOcstorePayeer extends Controller {
             $this->document->addScript('view/javascript/ckeditor/ckeditor.js');
             $this->document->addScript('view/javascript/ckeditor/ckeditor_init.js');
         } else {
-            $this->document->addScript('view/javascript/summernote/summernote.js');
+            $this->document->addScript('view/javascript/summernote/summernote.min.js');
+            $this->document->addScript('view/javascript/summernote/summernote-image-attributes.js');
             $this->document->addScript('view/javascript/summernote/lang/summernote-' . $this->language->get('lang') . '.js');
             $this->document->addScript('view/javascript/summernote/opencart.js');
-            $this->document->addStyle('view/javascript/summernote/summernote.css');
+            $this->document->addStyle('view/javascript/summernote/summernote.min.css');
         }
 
         $data = $this->_setData(array(
