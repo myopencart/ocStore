@@ -1461,7 +1461,7 @@ class ControllerCustomerCustomer extends Controller {
 				'filter_name'  => $filter_name,
 				'filter_email' => $filter_email,
 				'start'        => 0,
-				'limit'        => 5
+				'limit'        => $this->config->get('config_limit_autocomplete')
 			);
 
 			$results = $this->model_customer_customer->getCustomers($filter_data);
