@@ -1233,7 +1233,7 @@ class ControllerMarketingAffiliate extends Controller {
 				'filter_name'  => $filter_name,
 				'filter_email' => $filter_email,
 				'start'        => 0,
-				'limit'        => 5
+				'limit'        => $this->config->get('config_limit_autocomplete')
 			);
 
 			$results = $this->model_marketing_affiliate->getAffiliates($filter_data);

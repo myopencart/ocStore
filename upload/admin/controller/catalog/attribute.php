@@ -414,7 +414,7 @@ class ControllerCatalogAttribute extends Controller {
 			$filter_data = array(
 				'filter_name' => $this->request->get['filter_name'],
 				'start'       => 0,
-				'limit'       => $this->config->get('entry_limit_autocomplete')
+				'limit'       => $this->config->get('config_limit_autocomplete')
 			);
 
 			$results = $this->model_catalog_attribute->getAttributes($filter_data);
