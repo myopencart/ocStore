@@ -37,9 +37,14 @@
       </div>
     </div>
   </div>
-  <?php if ($categories) { ?>
-  <script type="text/javascript"><!--
+<?php if ($categories) { ?>
+<script type="text/javascript"><!--
+if (window.sessionStorage.getItem('extension')) {
+	$('select[name="type"]').val(window.sessionStorage.getItem('extension'));
+}
+
 $('select[name="type"]').on('change', function() {
+	window.sessionStorage.setItem('extension', $('select[name="type"]').val());
 	$.ajax({
 		url: $('select[name="type"]').val(),
 		dataType: 'html',
@@ -111,6 +116,6 @@ $('#extension').on('click', '.btn-danger, .btn-warning', function(e) {
 	}
 });
 //--></script>
-  <?php } ?>
+<?php } ?>
 </div>
 <?php echo $footer; ?> 
