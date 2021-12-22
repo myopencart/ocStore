@@ -740,9 +740,7 @@ class ControllerExtensionModification extends Controller {
 			$this->model_setting_setting->editSettingValue('config', 'config_maintenance', $maintenance);
 
 			// Do not return success message if refresh() was called with $data
-			if (!empty($data['redirect'])) {
-				$this->session->data['success'] = $this->language->get('text_success');
-			}
+			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
 
@@ -758,7 +756,7 @@ class ControllerExtensionModification extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-		//	$this->response->redirect($this->url->link(!empty($data['redirect']) ? $data['redirect'] : 'extension/modification', 'token=' . $this->session->data['token'] . $url, true));
+			$this->response->redirect($this->url->link(!empty($data['redirect']) ? $data['redirect'] : 'extension/modification', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
 		$this->getList();
@@ -1011,15 +1009,14 @@ class ControllerExtensionModification extends Controller {
 		$data['text_no_results'] = $this->language->get('text_no_results');
 		$data['text_confirm'] = $this->language->get('text_confirm');
 		$data['text_refresh'] = $this->language->get('text_refresh');
+		$data['text_upload'] = $this->language->get('text_upload');
+		$data['text_loading'] = $this->language->get('text_loading');
 
-        $data['text_upload'] = $this->language->get('text_upload');
-        $data['text_loading'] = $this->language->get('text_loading');
+		$data['entry_upload'] = $this->language->get('entry_upload');
+		$data['entry_overwrite'] = $this->language->get('entry_overwrite');
+		$data['entry_progress'] = $this->language->get('entry_progress');
 
-        $data['entry_upload'] = $this->language->get('entry_upload');
-        $data['entry_overwrite'] = $this->language->get('entry_overwrite');
-        $data['entry_progress'] = $this->language->get('entry_progress');
-
-        $data['help_upload'] = $this->language->get('help_upload');
+		$data['help_upload'] = $this->language->get('help_upload');
 
 		$data['column_name'] = $this->language->get('column_name');
 		$data['column_author'] = $this->language->get('column_author');
@@ -1037,9 +1034,9 @@ class ControllerExtensionModification extends Controller {
 		$data['button_edit'] = $this->language->get('button_edit');
 		$data['button_enable'] = $this->language->get('button_enable');
 		$data['button_disable'] = $this->language->get('button_disable');
-        $data['button_upload'] = $this->language->get('button_upload');
-        $data['button_clear'] = $this->language->get('button_clear');
-        $data['button_continue'] = $this->language->get('button_continue');
+		$data['button_upload'] = $this->language->get('button_upload');
+		$data['button_clear'] = $this->language->get('button_clear');
+		$data['button_continue'] = $this->language->get('button_continue');
 
 		$data['tab_general'] = $this->language->get('tab_general');
 		$data['tab_log'] = $this->language->get('tab_log');
