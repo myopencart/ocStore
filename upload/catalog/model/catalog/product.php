@@ -43,7 +43,7 @@ class ModelCatalogProduct extends Model {
 				'height'           => $query->row['height'],
 				'length_class_id'  => $query->row['length_class_id'],
 				'subtract'         => $query->row['subtract'],
-				'rating'           => round($query->row['rating']),
+				'rating'           => (int)$query->row['rating'],
 				'reviews'          => $query->row['reviews'] ? $query->row['reviews'] : 0,
 				'minimum'          => $query->row['minimum'],
 				'sort_order'       => $query->row['sort_order'],
